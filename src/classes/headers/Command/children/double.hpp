@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "../../Game/game.hpp"
 
 using namespace std;
 
 class Double: public Command {
     public:
-        Double();
+        Double(); // ID = 3
+        void doublePrice(const Game& Game);
 };
 
 #endif

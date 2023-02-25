@@ -6,10 +6,11 @@ using namespace std;
 
 class Combination {
     private:
-        int value;
+        double value;
 
     public:
-        Combination();    
+        Combination();
+        void countValue();
 };
 
 #endif

@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "../../Game/game.hpp"
 
 using namespace std;
 
 class SwapCard: public Command {
     public:
-        SwapCard();
+        SwapCard(); // ID = 8
+        void swapCard(const Game& Game);
 };
 
 #endif

@@ -11,13 +11,16 @@ class DeckCard: public InventoryHolder {
     protected:
         Card *deck;
         int neff;
-        const int size = 52;
+        int size = 52;
     
     public:
         DeckCard();
-        DeckCard(int neff);
+        DeckCard(int neff, int size);
         DeckCard(const DeckCard& other);
         ~DeckCard();
+        Card pop();
+        void push(const Card& Card);
+        int getNeff();
 };
 
 #endif

@@ -7,12 +7,13 @@ using namespace std;
 class Card {
     protected:
         int number;
-        string color;
+        string color; 
+
     public:
         Card();
         Card(int number, string color);
-        //Card(const Card& other);
-        //~Card();
+        int getNumber();
+        string getColor();
 };
 
 #endif

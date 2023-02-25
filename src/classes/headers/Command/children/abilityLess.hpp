@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "../../Game/game.hpp"
 
 using namespace std;
 
 class Abilityless: public Command {
     public:
-        Abilityless();
+        Abilityless(); // ID = 10
+        void offAbility(const Game& Game);
 };
 
 #endif

@@ -21,6 +21,16 @@ class Game {
         Game();
         Game(const Game& other);
         ~Game();
+        void startGame();
+        int chooseWinner();
+        void setRound(int round);
+        void setPoint(long long int point);
+        void setIsClockWise(bool isClockWise);
+        void setPlayerTurn(int playerTurn);
+        int getRound();
+        long long int getPoint();
+        bool getIsClockWise();
+        int getPlayerTurn();
 };
 
 #endif

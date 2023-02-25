@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "../../Game/game.hpp"
 
 using namespace std;
 
 class ReRoll: public Command {
     public:
-        ReRoll();
+        ReRoll(); // ID = 2
+        void reRoll(const DeckCard& DeckCard, const Game& Game);
 };
 
 #endif

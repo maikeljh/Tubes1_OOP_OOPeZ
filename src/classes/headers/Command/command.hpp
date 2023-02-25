@@ -11,6 +11,8 @@ class Command {
     
     public:
         Command();
+        Command(int commandId);
+        int commandParser(string command);
 };
 
 #endif

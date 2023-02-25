@@ -17,6 +17,9 @@ class TableCard {
         TableCard();
         TableCard(const TableCard& other);
         ~TableCard();
+        void addCard(const Card& C);
+        void clearTable();
+        void printTable();
 };
 
 #endif

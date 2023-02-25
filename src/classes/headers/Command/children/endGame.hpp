@@ -3,12 +3,15 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "../../Game/game.hpp"
 
 using namespace std;
 
 class EndGame: public Command {
     public:
-        EndGame();
+        EndGame(); // ID = 11
+        void printLeaderboard(const Game& Game);
+        void printWinner(const Game& Game);
 };
 
 #endif

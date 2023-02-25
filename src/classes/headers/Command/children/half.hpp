@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "../../Game/game.hpp"
 
 using namespace std;
 
 class Half: public Command {
     public:
-        Half();
+        Half(); // ID = 5
+        void halfPrice(const Game& Game);
 };
 
 #endif

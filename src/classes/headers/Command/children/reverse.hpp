@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "../../Game/game.hpp"
 
 using namespace std;
 
 class Reverse: public Command {
     public:
-        Reverse();
+        Reverse(); // ID = 7
+        void reverseTurn(const Game& Game);
 };
 
 #endif

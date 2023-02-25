@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "../../Game/game.hpp"
 
 using namespace std;
 
 class Quadruple: public Command {
     public:
-        Quadruple();
+        Quadruple(); // ID = 4
+        void doublePrize(const Game& Game);
 };
 
 #endif
