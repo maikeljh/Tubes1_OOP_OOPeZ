@@ -11,7 +11,7 @@ using namespace std;
 
 class Player: public InventoryHolder {
     private:
-        const int id;
+        int id;
         string nickname;
         long long int point;
         Card *mainDeck;
@@ -20,12 +20,12 @@ class Player: public InventoryHolder {
     
     public:
         Player();
+        Player(DeckCard& DC, string nickname);
         Player& operator=(const Player&);
         void useAbilityCard();
         bool checkValidAbilityCard(string ability);
         void addAbilityCard(const AbilityCard& AC);
         Card getCard(int index);
-        void setNickname(string name);
 };
 
 #endif
