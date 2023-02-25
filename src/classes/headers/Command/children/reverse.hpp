@@ -10,7 +10,7 @@ using namespace std;
 class Reverse: public Command {
     public:
         Reverse(); // ID = 7
-        void reverseTurn(const Game& Game);
+        void useAbility(Game& Game);
 };
 
 #endif

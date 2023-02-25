@@ -6,6 +6,7 @@
 #include "../DeckCard/deckCard.hpp"
 #include "../../../Card/abilityCard.hpp"
 #include "../../../Card/children/PlayerCard.hpp"
+#include "../../../Combination/combination.hpp"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ class Player: public InventoryHolder {
         PlayerCard *mainDeck;
         AbilityCard ability;
         static int playersCreated;
+        Combination kombo;
     
     public:
         Player();
@@ -26,6 +28,7 @@ class Player: public InventoryHolder {
         bool checkValidAbilityCard(string ability);
         void addAbilityCard(const AbilityCard& AC);
         Card getCard(int index);
+        Combination getCombo();
 };
 
 #endif

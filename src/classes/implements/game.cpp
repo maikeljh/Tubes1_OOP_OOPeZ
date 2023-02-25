@@ -25,3 +25,52 @@ Game::Game(const Game& other){
 Game::~Game(){
     delete[] this->players;
 }
+
+void Game::startGame(){
+    cout << "Halo! Selamat Datang di Kompetisi Kartu ala Kerajaan Permen" << endl;
+}
+
+int Game::chooseWinner(){
+    double maximum = 0;
+    int idx = 0;
+    for(int i = 0; i < 7; i++){
+        if(this->players[i].getCombo().getValue() > maximum){
+            maximum = this->players[i].getCombo().getValue();
+            idx = i;
+        }
+    }
+    
+    return idx;
+}
+
+void Game::setRound(int round){
+    this->round = round;
+}
+
+void Game::setPoint(long long int point){
+    this->point = point;
+}
+
+void Game::setIsClockWise(bool isClockWise){
+    this->isClockWise = isClockWise;
+}
+
+void Game::setPlayerTurn(int playerTurn){
+    this->playerTurn = playerTurn;
+}
+
+int Game::getRound(){
+    return this->round;
+}  
+
+long long int Game::getPoint(){
+    return this->point;
+}
+
+bool Game::getIsClockWise(){
+    return this->isClockWise;
+}
+
+int Game::getPlayerTurn(){
+    return this->playerTurn;
+}

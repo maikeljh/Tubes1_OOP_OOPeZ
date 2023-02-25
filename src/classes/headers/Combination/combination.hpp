@@ -11,6 +11,8 @@ class Combination {
     public:
         Combination();
         void countValue();
+        double getValue();
+        void setValue();
 };
 
 #endif

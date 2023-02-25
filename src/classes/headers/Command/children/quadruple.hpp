@@ -10,7 +10,7 @@ using namespace std;
 class Quadruple: public Command {
     public:
         Quadruple(); // ID = 4
-        void doublePrize(const Game& Game);
+        void useAbilty(Game& Game);
 };
 
 #endif

@@ -12,10 +12,10 @@ class PlayerCard: public Card {
 
     public:
         PlayerCard();
-        PlayerCard(int owner);
+        PlayerCard(const Card& C);
+        PlayerCard(const Card& C, int owner);
         PlayerCard(const PlayerCard& other);
-        PlayerCard& operator=(const Card&);
-        ~PlayerCard();
+        PlayerCard& operator=(Card&);
         void setOwner(int id);
 };
 

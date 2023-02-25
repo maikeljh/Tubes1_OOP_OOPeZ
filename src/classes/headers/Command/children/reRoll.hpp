@@ -10,7 +10,7 @@ using namespace std;
 class ReRoll: public Command {
     public:
         ReRoll(); // ID = 2
-        void reRoll(const DeckCard& DeckCard, const Game& Game);
+        void useAbility(DeckCard& DeckCard, Game& Game);
 };
 
 #endif

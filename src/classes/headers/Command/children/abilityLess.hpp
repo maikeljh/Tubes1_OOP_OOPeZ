@@ -10,7 +10,7 @@ using namespace std;
 class Abilityless: public Command {
     public:
         Abilityless(); // ID = 10
-        void offAbility(const Game& Game);
+        void useAbility(Game& Game);
 };
 
 #endif
