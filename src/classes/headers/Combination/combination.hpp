@@ -5,7 +5,11 @@
 using namespace std;
 
 class Combination {
+    private:
+        int value;
 
+    public:
+        Combination();    
 };
 
 #endif

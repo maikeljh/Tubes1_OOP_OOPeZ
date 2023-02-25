@@ -7,7 +7,8 @@
 using namespace std;
 
 class Quarter: public Command {
-
+    public:
+        Quarter();
 };
 
 #endif

@@ -7,7 +7,8 @@
 using namespace std;
 
 class Double: public Command {
-
+    public:
+        Double();
 };
 
 #endif

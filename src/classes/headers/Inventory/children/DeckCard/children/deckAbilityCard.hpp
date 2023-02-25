@@ -7,7 +7,11 @@
 using namespace std;
 
 class DeckAbilityCard: public DeckCard {
-
+    private:
+        const int max = 7;
+    
+    public:
+        DeckAbilityCard();
 };
 
 #endif

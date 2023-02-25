@@ -5,7 +5,8 @@
 using namespace std;
 
 class FileReader {
-
+    public:
+        FileReader();
 };
 
 #endif

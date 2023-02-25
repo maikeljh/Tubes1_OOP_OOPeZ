@@ -7,7 +7,8 @@
 using namespace std;
 
 class EndGame: public Command {
-
+    public:
+        EndGame();
 };
 
 #endif

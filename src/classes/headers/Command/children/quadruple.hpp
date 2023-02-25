@@ -7,7 +7,8 @@
 using namespace std;
 
 class Quadruple: public Command {
-
+    public:
+        Quadruple();
 };
 
 #endif

@@ -7,7 +7,8 @@
 using namespace std;
 
 class SwapCard: public Command {
-
+    public:
+        SwapCard();
 };
 
 #endif

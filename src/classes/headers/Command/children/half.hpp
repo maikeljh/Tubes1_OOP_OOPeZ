@@ -7,7 +7,8 @@
 using namespace std;
 
 class Half: public Command {
-
+    public:
+        Half();
 };
 
 #endif

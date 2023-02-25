@@ -5,7 +5,8 @@
 using namespace std;
 
 class InventoryHolder {
-
+    public:
+        InventoryHolder();
 };
 
 #endif

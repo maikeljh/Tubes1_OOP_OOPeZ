@@ -6,7 +6,11 @@
 using namespace std;
 
 class Command {
-
+    protected:
+        int commandId;
+    
+    public:
+        Command();
 };
 
 #endif

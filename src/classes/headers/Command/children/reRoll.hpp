@@ -7,7 +7,8 @@
 using namespace std;
 
 class ReRoll: public Command {
-
+    public:
+        ReRoll();
 };
 
 #endif

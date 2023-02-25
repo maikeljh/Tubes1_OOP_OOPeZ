@@ -7,7 +7,8 @@
 using namespace std;
 
 class Next: public Command {
-
+    public:
+        Next();
 };
 
 #endif

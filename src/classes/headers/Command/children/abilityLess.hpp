@@ -7,7 +7,8 @@
 using namespace std;
 
 class Abilityless: public Command {
-
+    public:
+        Abilityless();
 };
 
 #endif

@@ -7,7 +7,8 @@
 using namespace std;
 
 class Reverse: public Command {
-
+    public:
+        Reverse();
 };
 
 #endif
