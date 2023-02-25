@@ -14,7 +14,9 @@ class PlayerCard: public Card {
         PlayerCard();
         PlayerCard(int owner);
         PlayerCard(const PlayerCard& other);
+        PlayerCard& operator=(const Card&);
         ~PlayerCard();
+        void setOwner(int id);
 };
 
 #endif

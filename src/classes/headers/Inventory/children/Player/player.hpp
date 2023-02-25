@@ -5,7 +5,7 @@
 #include "../../inventoryHolder.hpp"
 #include "../DeckCard/deckCard.hpp"
 #include "../../../Card/abilityCard.hpp"
-#include "../../../Card/Card.hpp"
+#include "../../../Card/children/PlayerCard.hpp"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ class Player: public InventoryHolder {
         int id;
         string nickname;
         long long int point;
-        Card *mainDeck;
+        PlayerCard *mainDeck;
         AbilityCard ability;
         static int playersCreated;
     
