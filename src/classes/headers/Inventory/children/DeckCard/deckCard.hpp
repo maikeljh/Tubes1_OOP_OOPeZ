@@ -8,7 +8,7 @@
 using namespace std;
 
 class DeckCard: public InventoryHolder {
-    protected:
+    private:
         Card *deck;
         int neff;
         int size = 52;
@@ -21,6 +21,8 @@ class DeckCard: public InventoryHolder {
         Card pop();
         void push(const Card& Card);
         int getNeff();
+        int getSize();
+        void printDeckCard();
 };
 
 #endif

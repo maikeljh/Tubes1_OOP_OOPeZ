@@ -10,4 +10,4 @@ run: all
 all: build
 
 build:
-	$(CC) $(SOURCE_FOLDER)/main.cpp -o $(OUTPUT_FOLDER)/main
+	$(CC) $(SOURCE_FOLDER)/main.cpp $(SOURCE_FOLDER)/classes/implements/game.cpp -o $(OUTPUT_FOLDER)/main

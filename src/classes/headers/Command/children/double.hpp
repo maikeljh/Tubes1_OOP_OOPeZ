@@ -10,7 +10,7 @@ using namespace std;
 class Double: public Command {
     public:
         Double(); // ID = 3
-        void doublePrice(Game& Game);
+        void useAction(Game& Game);
 };
 
 #endif
