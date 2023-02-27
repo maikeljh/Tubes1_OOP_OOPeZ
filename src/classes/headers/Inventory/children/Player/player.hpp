@@ -28,6 +28,8 @@ class Player: public InventoryHolder {
         bool checkValidAbilityCard(string ability);
         void addAbilityCard(const AbilityCard& AC);
         Card getCard(int index);
+        void printPlayerCard();
+        string getNickname();
         Combination getCombo();
 };
 
