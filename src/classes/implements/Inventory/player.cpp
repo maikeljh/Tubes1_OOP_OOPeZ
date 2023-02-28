@@ -7,7 +7,7 @@ int Player::playersCreated = 0;
 
 Player::Player(){}
 
-Player::Player(DeckCard& D, string nickname):id(this->playersCreated+1){
+Player::Player(DeckCard& D, string nickname):InventoryHolder(), id(this->playersCreated+1){
     this->nickname = nickname;
     this->point = 0;
     this->mainDeck.push_back(D.pop());
@@ -27,7 +27,33 @@ Player& Player::operator=(const Player& other){
     this->mainDeck[1].setOwner(this->id);
     return *this;
 }
+Player::~Player(){
 
+}
+
+void Player::useAbilityCard(){
+    // panggil useAbility
+}
+bool Player::checkValidAbilityCard(string ability){
+    return this->ability.getType() == ability;
+}
+void Player::addAbilityCard(const AbilityCard& AC){
+    this->ability = AC;
+}
+
+Card Player::getCard(int idx){
+    return this->mainDeck[idx];
+}
+
+void Player::push(const PlayerCard& PC){
+   this->mainDeck.push_back(PC);
+}
+
+PlayerCard Player::pop(){
+    PlayerCard PCx = this->mainDeck.back();
+    this->mainDeck.pop_back();
+    return PCx;
+}
 void Player::printPlayerCard(){
     cout << "1. " << this->mainDeck[0].getNumber() << " " << this->mainDeck[0].getColor() << endl;
     cout << "2. " << this->mainDeck[1].getNumber() << " " << this->mainDeck[1].getColor() << endl;
@@ -43,8 +69,4 @@ Combination Player::getCombo(){
 
 long long int Player::getPoint(){
     return this->point;
-}
-
-Player::~Player(){
-
 }

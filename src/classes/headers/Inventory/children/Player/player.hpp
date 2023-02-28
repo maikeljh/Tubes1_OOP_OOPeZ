@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class Player: public InventoryHolder {
+class Player: public InventoryHolder<PlayerCard> {
     private:
         int id;
         string nickname;
@@ -30,6 +30,8 @@ class Player: public InventoryHolder {
         bool checkValidAbilityCard(string ability);
         void addAbilityCard(const AbilityCard& AC);
         Card getCard(int index);
+        void push(const PlayerCard& PC);
+        PlayerCard pop();
         void printPlayerCard();
         string getNickname();
         Combination getCombo();

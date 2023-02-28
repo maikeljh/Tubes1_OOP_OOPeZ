@@ -2,5 +2,5 @@
 #include <iostream>
 
 using namespace std;
-
-InventoryHolder::InventoryHolder(){}
+template <class T>
+InventoryHolder<T>::InventoryHolder(){}
