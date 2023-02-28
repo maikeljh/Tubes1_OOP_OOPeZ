@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class Player: public InventoryHolder<PlayerCard> {
+class Player: public InventoryHolder {
     private:
         int id;
         string nickname;
