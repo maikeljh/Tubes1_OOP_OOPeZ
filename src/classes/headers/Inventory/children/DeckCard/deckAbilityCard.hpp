@@ -2,6 +2,7 @@
 #define DECK_ABILITY_CARD_HPP
 
 #include <iostream>
+#include <vector>
 #include "../../../Card/abilityCard.hpp"
 #include "../../inventoryHolder.hpp"
 
@@ -9,7 +10,7 @@ using namespace std;
 
 class DeckAbilityCard: public InventoryHolder {
     private:
-        AbilityCard *deck;
+        vector<AbilityCard> deck;
         int neff;
         const int size = 7;
 

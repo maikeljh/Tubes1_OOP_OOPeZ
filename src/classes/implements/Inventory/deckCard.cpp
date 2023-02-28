@@ -4,16 +4,18 @@
 using namespace std;
 
 DeckCard::DeckCard():InventoryHolder(),neff(0){
-    this->deck = new Card[this->size];
+
 }
 
 Card DeckCard::pop(){
     this->neff--;
+    Card C = this->deck[this->neff];
+    this->deck.pop_back();
     return this->deck[this->neff];
 }
 
 void DeckCard::push(const Card& Card){
-    this->deck[this->neff] = Card;
+    this->deck.push_back(Card);
     this->neff++;
 }
 
@@ -29,5 +31,5 @@ int DeckCard::getNeff(){
 }
 
 DeckCard::~DeckCard(){
-    delete[] this->deck;
+
 }

@@ -4,19 +4,22 @@
 #include <iostream>
 #include "../Inventory/children/Player/player.hpp"
 #include "../Inventory/children/DeckCard/deckCard.hpp"
+#include "../Card/tableCard.hpp"
 
 using namespace std;
 
 class Game {
     private:
         int round;
-        Player *players;
+        vector<Player> players;
         const int nPlayers = 7;
         long long int point;
         DeckCard deck;
         bool isClockWise;
         int playerTurn;
-    
+        TableCard table;
+        const long long int maxPoint = (long long) 1 << 32;
+
     public:
         Game();
         Game(const Game& other);
@@ -31,6 +34,7 @@ class Game {
         long long int getPoint();
         bool getIsClockWise();
         int getPlayerTurn();
+        bool isEndGame();
 };
 
 #endif

@@ -6,7 +6,6 @@ using namespace std;
 
 Game::Game(){
     this->round = 0;
-    this->players = new Player[this->nPlayers];
     this->point = 0;
     this->isClockWise = true;
     this->playerTurn = 0;
@@ -14,9 +13,11 @@ Game::Game(){
 
 Game::Game(const Game& other){
     this->round = other.round;
-    this->players = new Player[this->nPlayers];
     for(int i = 0; i < this->nPlayers; i++){
-        this->players[i] = other.players[i];
+        this->players.pop_back();
+    }
+    for(int i = 0; i < this->nPlayers; i++){
+        this->players.push_back(other.players[i]);
     }
     this->point = other.point;
     this->isClockWise = other.isClockWise;
@@ -24,7 +25,7 @@ Game::Game(const Game& other){
 }
 
 Game::~Game(){
-    delete[] this->players;
+
 }
 
 void Game::startGame(){
@@ -82,7 +83,8 @@ void Game::startGame(){
             for(int i = 1; i <= 7; i++){
                 cout << "Pemain " << i << ": ";
                 cin >> name;
-                this->players[i-1] = Player(this->deck, name);
+                Player newPlayer = Player(this->deck, name);
+                this->players.push_back(newPlayer);
             }
 
             // TES KARTU PEMAIN
@@ -90,7 +92,18 @@ void Game::startGame(){
                 cout << "\nKartu Pemain " << this->players[i].getNickname() << endl;
                 this->players[i].printPlayerCard();
             }
+            
+            string command;
 
+            while(!isEndGame()){
+                while(this->round <= 6){
+                    this->round++;
+                    cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
+                    cin >> command;
+                    this->playerTurn = (this->playerTurn + 1) % 7;
+                }
+                this->round = 0;
+            }
 }
 
 int Game::chooseWinner(){
@@ -136,4 +149,14 @@ bool Game::getIsClockWise(){
 
 int Game::getPlayerTurn(){
     return this->playerTurn;
+}
+
+bool Game::isEndGame(){
+    for(int i = 0; i < this->nPlayers; i++){
+        if(this->players[i].getPoint() >= this->maxPoint){
+            return true;
+        }
+    }
+
+    return false;
 }

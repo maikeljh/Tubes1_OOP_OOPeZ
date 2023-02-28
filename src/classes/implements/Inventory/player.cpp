@@ -10,9 +10,8 @@ Player::Player(){}
 Player::Player(DeckCard& D, string nickname):id(this->playersCreated+1){
     this->nickname = nickname;
     this->point = 0;
-    this->mainDeck = new PlayerCard[2];
-    this->mainDeck[0] = D.pop();
-    this->mainDeck[1] = D.pop();
+    this->mainDeck.push_back(D.pop());
+    this->mainDeck.push_back(D.pop());
     this->mainDeck[0].setOwner(this->id);
     this->mainDeck[1].setOwner(this->id);
     this->playersCreated++;
@@ -22,9 +21,8 @@ Player& Player::operator=(const Player& other){
     this->id = other.id;
     this->nickname = other.nickname;
     this->point = other.point;
-    this->mainDeck = new PlayerCard[2];
-    this->mainDeck[0] = other.mainDeck[0];
-    this->mainDeck[1] = other.mainDeck[1];
+    this->mainDeck.push_back(other.mainDeck[0]);
+    this->mainDeck.push_back(other.mainDeck[1]);
     this->mainDeck[0].setOwner(this->id);
     this->mainDeck[1].setOwner(this->id);
     return *this;
@@ -41,4 +39,12 @@ string Player::getNickname(){
 
 Combination Player::getCombo(){
     return this->kombo;
+}
+
+long long int Player::getPoint(){
+    return this->point;
+}
+
+Player::~Player(){
+
 }
