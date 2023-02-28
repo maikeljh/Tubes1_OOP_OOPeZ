@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class DeckCard: public InventoryHolder {
+class DeckCard: public InventoryHolder<Card> {
     private:
         vector<Card> deck;
         int neff;
