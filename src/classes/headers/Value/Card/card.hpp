@@ -13,7 +13,7 @@ class Card : public Value {
     public:
         Card();
         Card(int number, string color);
-        Card& operator= (Card&);
+        Card& operator= (const Card&);
         int getNumber();
         string getColor();
         double value();

@@ -4,7 +4,7 @@
 #include <iostream>
 #include "../Inventory/children/Player/player.hpp"
 #include "../Inventory/children/DeckCard/deckCard.hpp"
-#include "../Card/tableCard.hpp"
+#include "../Value/Card/tableCard.hpp"
 
 using namespace std;
 
