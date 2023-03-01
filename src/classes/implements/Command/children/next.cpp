@@ -4,7 +4,7 @@ Next::Next(){
     commandId = 1;
 }
 
-void Next::useAction(Game& Game){
+void Next::executeAction(Game& Game){
     cout << "Giliran dilanjut ke pemain selanjutnya." << endl;
     if (Game.getIsClockWise()){
         Game.setPlayerTurn(Game.getPlayerTurn()+1);

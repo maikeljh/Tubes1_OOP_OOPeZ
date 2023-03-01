@@ -11,7 +11,7 @@ using namespace std;
 class Half: public Command {
     public:
         Half(); // ID = 5
-        void useAction(Game& Game);
+        void executeAction(Game& Game);
 };
 
 #endif
