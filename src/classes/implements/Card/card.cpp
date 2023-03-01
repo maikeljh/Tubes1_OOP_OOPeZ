@@ -20,6 +20,15 @@ Card& Card::operator=(const Card& C) {
     return *this;
 }
 
+bool Card::operator> (Card& c){
+    return this->value() > c.value();
+}
+bool Card::operator< (Card& c){
+    return this->value() < c.value();
+}
+bool Card::operator== (Card& c){
+    return this->value() == c.value();
+}
 int Card::getNumber(){
     return this->number;
 }
