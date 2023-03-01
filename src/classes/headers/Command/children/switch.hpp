@@ -9,7 +9,7 @@ using namespace std;
 
 class Switch: public Command {
     public:
-        Switch(); // ID = 10
+        Switch(); // ID = 9
         void useAbility(Game& Game);
 };
 

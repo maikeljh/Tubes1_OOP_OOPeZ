@@ -14,10 +14,9 @@ class Command {
     public:
         Command();
         Command(int commandId);
-        int commandParser(string command);
-        virtual void useAction(Game& Game);
-        virtual void useAbility(Game& Game);
-        virtual void useAbility(DeckCard& DC, Game& Game);
+        virtual void useAction(Game& Game)=0;
+        virtual void useAbility(Game& Game)=0;
+        virtual void useAbility(DeckCard<Card>& DC, Game& Game)=0;
 };
 
 #endif

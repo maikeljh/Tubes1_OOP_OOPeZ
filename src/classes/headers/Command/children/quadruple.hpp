@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "next.hpp"
 #include "../../Game/game.hpp"
 
 using namespace std;
@@ -10,7 +11,7 @@ using namespace std;
 class Quadruple: public Command {
     public:
         Quadruple(); // ID = 4
-        void useAbilty(Game& Game);
+        void useAbility(Game& Game);
 };
 
 #endif

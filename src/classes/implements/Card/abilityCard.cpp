@@ -38,3 +38,7 @@ string AbilityCard::getType(){
 bool AbilityCard::getUseable(){
     return this->useable;
 }
+
+void AbilityCard::setUseable(bool isUsable){
+    useable = isUsable;
+}
