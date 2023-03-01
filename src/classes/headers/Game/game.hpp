@@ -32,8 +32,10 @@ class Game {
         void setPlayerTurn(int playerTurn);
         int getRound();
         long long int getPoint();
+        DeckCard<Card>& getDeckCard();
         bool getIsClockWise();
         int getPlayerTurn();
+        Player getPlayer();
         bool isEndGame();
 };
 
