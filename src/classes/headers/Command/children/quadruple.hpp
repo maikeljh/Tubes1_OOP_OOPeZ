@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "../commandParser.hpp"
 #include "next.hpp"
 #include "../../Game/game.hpp"
 
