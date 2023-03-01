@@ -24,11 +24,11 @@ class Player: public InventoryHolder {
         Player();
         Player(DeckCard<Card> &DC, string nickname);
         Player& operator=(const Player&);
-        Player& Player::operator+(const Card& add);
-        Player& Player::operator-();
-        bool Player::operator>(const Player& other);
-        bool Player::operator<(const Player& other);
-        bool Player::operator==(const Player& other);
+        Player& operator+(const Card& add);
+        Player& operator-();
+        bool operator>(const Player& other);
+        bool operator<(const Player& other);
+        bool operator==(const Player& other);
         ~Player();
         void useAbilityCard();
         bool checkValidAbilityCard(string ability);
@@ -37,7 +37,7 @@ class Player: public InventoryHolder {
         Card getCard(int index);
         void push(const Card& PC);
         Card pop();
-        void printPlayerCard();
+        void printCard();
         string getNickname();
         Combination getCombo();
         long long int getPoint();

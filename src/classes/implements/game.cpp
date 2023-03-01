@@ -93,7 +93,7 @@ void Game::startGame(){
             // TES KARTU PEMAIN
             for(int i = 0; i < 7; i++){
                 cout << "\nKartu Pemain " << this->players[i].getNickname() << endl;
-                this->players[i].printPlayerCard();
+                this->players[i].printCard();
             }
             
             CommandParser CP;
@@ -105,6 +105,7 @@ void Game::startGame(){
                     cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
                     cin >> command;
                     Command *action = CP.parser(command);
+                    action->executeAction(*this);
                     this->playerTurn = (this->playerTurn + 1) % 7;
                 }
                 this->round = 0;

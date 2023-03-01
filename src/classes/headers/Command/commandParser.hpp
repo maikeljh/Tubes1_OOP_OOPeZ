@@ -14,8 +14,9 @@
 #include "./children/abilityLess.hpp"
 
 class CommandParser{
-public:
-    Command* parser(string inputCommand);
+    public:
+        CommandParser();
+        Command* parser(string inputCommand);
 };
 
 #endif

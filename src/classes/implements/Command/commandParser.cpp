@@ -1,8 +1,12 @@
 #include "../../headers/Command/commandParser.hpp"
 
+using namespace std;
+
+CommandParser::CommandParser(){}
+
 Command* CommandParser::parser(string inputCommand){
     if (inputCommand=="NEXT"){
-        Next *next;
+        Next *next = new Next();
         return next;
     } else if (inputCommand=="RE-ROLL"){
         ReRoll *reroll;
