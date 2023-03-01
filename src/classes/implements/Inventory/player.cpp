@@ -34,30 +34,15 @@ Player& Player::operator-(){
 }
 
 bool Player::operator>(const Player& other){
-    if (this->point > other.point){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return this->point > other.point;
 }
 
 bool Player::operator<(const Player& other){
-    // return other > this;
-    if (this->point < other.point){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return this->point < other.point;
 }
 bool Player::operator==(const Player& other){
-    if (this->point == other.point){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return (this->point == other.point);
+    
 }
 Player::~Player(){
 
