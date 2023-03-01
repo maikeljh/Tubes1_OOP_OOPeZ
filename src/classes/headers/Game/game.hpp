@@ -19,6 +19,7 @@ class Game {
         int playerTurn;
         TableCard table;
         const long long int maxPoint = (long long) 1 << 32;
+        int lastIdxTurn;
 
     public:
         Game();
@@ -37,6 +38,8 @@ class Game {
         int getPlayerTurn();
         Player getPlayer();
         bool isEndGame();
+        int getLastIdxTurn();
+        void setLastIdxTurn(int last);
 };
 
 #endif

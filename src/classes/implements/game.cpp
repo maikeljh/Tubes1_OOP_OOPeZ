@@ -1,5 +1,6 @@
 #include "../headers/Game/game.hpp"
 #include "../headers/CardGenerator/cardGenerator.hpp"
+#include "../headers/Command/commandParser.hpp"
 #include <iostream>
 
 using namespace std;
@@ -9,6 +10,7 @@ Game::Game(){
     this->point = 0;
     this->isClockWise = true;
     this->playerTurn = 0;
+    this->lastIdxTurn = 6;
 }
 
 Game::Game(const Game& other){
@@ -22,6 +24,7 @@ Game::Game(const Game& other){
     this->point = other.point;
     this->isClockWise = other.isClockWise;
     this->playerTurn = other.playerTurn;
+    this->lastIdxTurn = other.lastIdxTurn;
 }
 
 Game::~Game(){
@@ -93,13 +96,15 @@ void Game::startGame(){
                 this->players[i].printPlayerCard();
             }
             
+            CommandParser CP;
             string command;
-
+            
             while(!isEndGame()){
                 while(this->round <= 6){
                     this->round++;
                     cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
                     cin >> command;
+                    Command *action = CP.parser(command);
                     this->playerTurn = (this->playerTurn + 1) % 7;
                 }
                 this->round = 0;
@@ -159,4 +164,12 @@ bool Game::isEndGame(){
     }
 
     return false;
+}
+
+int Game::getLastIdxTurn(){
+    return this->lastIdxTurn;
+}
+
+void Game::setLastIdxTurn(int last){
+    this->lastIdxTurn = last;
 }
