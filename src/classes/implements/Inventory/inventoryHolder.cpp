@@ -4,3 +4,6 @@
 using namespace std;
 
 InventoryHolder::InventoryHolder(){}
+
+void InventoryHolder::printCard(){
+}

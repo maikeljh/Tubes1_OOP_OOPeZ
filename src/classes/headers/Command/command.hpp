@@ -17,7 +17,7 @@ class Command {
         int commandParser(string command);
         virtual void useAction(Game& Game);
         virtual void useAbility(Game& Game);
-        virtual void useAbility(DeckCard& DC, Game& Game);
+        virtual void useAbility(DeckCard<AbilityCard>& DC, Game& Game);
 };
 
 #endif
