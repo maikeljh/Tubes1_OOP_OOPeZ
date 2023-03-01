@@ -5,9 +5,8 @@
 #include <vector>
 #include "../../inventoryHolder.hpp"
 #include "../DeckCard/deckCard.hpp"
-#include "../../../Card/abilityCard.hpp"
-#include "../../../Card/children/playerCard.hpp"
-#include "../../../Combination/combination.hpp"
+#include "../../../Value/Card/abilityCard.hpp"
+#include "../../../Value/Combination/combination.hpp"
 
 using namespace std;
 
@@ -16,7 +15,7 @@ class Player: public InventoryHolder {
         int id;
         string nickname;
         long long int point;
-        vector<PlayerCard> mainDeck;
+        vector<Card> mainDeck;
         AbilityCard ability;
         static int playersCreated;
         Combination kombo;
@@ -30,8 +29,8 @@ class Player: public InventoryHolder {
         bool checkValidAbilityCard(string ability);
         void addAbilityCard(const AbilityCard& AC);
         Card getCard(int index);
-        void push(const PlayerCard& PC);
-        PlayerCard pop();
+        void push(const Card& PC);
+        Card pop();
         void printPlayerCard();
         string getNickname();
         Combination getCombo();

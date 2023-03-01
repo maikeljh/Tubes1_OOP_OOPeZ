@@ -12,8 +12,6 @@ Player::Player(DeckCard<Card> &D, string nickname):InventoryHolder(), id(this->p
     this->point = 0;
     this->mainDeck.push_back(D.pop());
     this->mainDeck.push_back(D.pop());
-    this->mainDeck[0].setOwner(this->id);
-    this->mainDeck[1].setOwner(this->id);
     this->playersCreated++;
 }
 
@@ -23,8 +21,6 @@ Player& Player::operator=(const Player& other){
     this->point = other.point;
     this->mainDeck.push_back(other.mainDeck[0]);
     this->mainDeck.push_back(other.mainDeck[1]);
-    this->mainDeck[0].setOwner(this->id);
-    this->mainDeck[1].setOwner(this->id);
     return *this;
 }
 Player::~Player(){
@@ -45,12 +41,12 @@ Card Player::getCard(int idx){
     return this->mainDeck[idx];
 }
 
-void Player::push(const PlayerCard& PC){
+void Player::push(const Card& PC){
    this->mainDeck.push_back(PC);
 }
 
-PlayerCard Player::pop(){
-    PlayerCard PCx = this->mainDeck.back();
+Card Player::pop(){
+    Card PCx = this->mainDeck.back();
     this->mainDeck.pop_back();
     return PCx;
 }

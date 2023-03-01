@@ -1,4 +1,4 @@
-#include "../../headers/Card/card.hpp"
+#include "../../headers/Value/Card/card.hpp"
 #include <iostream>
 
 using namespace std;
@@ -11,6 +11,13 @@ Card::Card(){
 Card::Card(int number, string color){
     this->number = number;
     this->color = color;
+}
+
+
+Card& Card::operator=(Card& C) {
+    this->number = C.number;
+    this->color = C.color;
+    return *this;
 }
 
 int Card::getNumber(){
