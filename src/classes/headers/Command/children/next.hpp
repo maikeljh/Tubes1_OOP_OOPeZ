@@ -11,7 +11,6 @@ class Next: public Command {
     public:
         Next(); // ID = 1
         void executeAction(Game& Game);
-        void executeAction(DeckCard<Card>& DC, Game& Game);
 };
 
 #endif

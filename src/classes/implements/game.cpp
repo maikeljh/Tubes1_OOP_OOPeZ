@@ -100,14 +100,20 @@ void Game::startGame(){
             string command;
             
             while(!isEndGame()){
+                this->point = 64;
                 while(this->round <= 6){
                     this->round++;
                     cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
                     cin >> command;
                     Command *action = CP.parser(command);
                     action->executeAction(*this);
-                    this->playerTurn = (this->playerTurn + 1) % 7;
+                    if(this->isClockWise){
+                        this->playerTurn = (this->playerTurn + 1) % 7;
+                    } else {
+                        this->playerTurn = (this->playerTurn - 1) % 7;
+                    }
                 }
+                cout << this->point << endl;
                 this->round = 0;
             }
 }
@@ -173,4 +179,12 @@ int Game::getLastIdxTurn(){
 
 void Game::setLastIdxTurn(int last){
     this->lastIdxTurn = last;
+}
+
+DeckCard<Card>& Game::getDeckCard(){
+    return this->deck;
+}
+
+Player& Game::getPlayer(){
+    return this->players[this->playerTurn];
 }

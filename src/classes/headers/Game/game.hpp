@@ -36,7 +36,7 @@ class Game {
         DeckCard<Card>& getDeckCard();
         bool getIsClockWise();
         int getPlayerTurn();
-        Player getPlayer();
+        Player& getPlayer();
         bool isEndGame();
         int getLastIdxTurn();
         void setLastIdxTurn(int last);

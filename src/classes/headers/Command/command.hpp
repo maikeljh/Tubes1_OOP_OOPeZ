@@ -15,7 +15,6 @@ class Command {
         Command(){}
         Command(int commandId){this->commandId = commandId;}
         virtual void executeAction(Game& Game)=0;
-        virtual void executeAction(DeckCard<Card>& DC, Game& Game)=0;
 };
 
 #endif

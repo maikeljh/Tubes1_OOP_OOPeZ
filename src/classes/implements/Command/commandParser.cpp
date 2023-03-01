@@ -12,13 +12,13 @@ Command* CommandParser::parser(string inputCommand){
         ReRoll *reroll;
         return reroll;
     } else if (inputCommand=="DOUBLE"){
-        Double *doubles;
+        Double *doubles = new Double();
         return doubles;
     } else if (inputCommand=="QUADRUPLE"){
         Quadruple *quadruple;
         return quadruple;
     } else if (inputCommand=="HALF"){
-        Half *half;
+        Half *half = new Half();
         return half;
     } else if (inputCommand=="QUARTER"){
         Quarter *quarter;

@@ -11,7 +11,7 @@ using namespace std;
 class ReRoll: public Command {
     public:
         ReRoll(); // ID = 2
-        void executeAction(DeckCard<Card>& DeckCard, Game& Game);
+        void executeAction(Game& Game);
 };
 
 #endif
