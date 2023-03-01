@@ -9,7 +9,7 @@ Command* CommandParser::parser(string inputCommand){
         Next *next = new Next();
         return next;
     } else if (inputCommand=="RE-ROLL"){
-        ReRoll *reroll;
+        ReRoll *reroll = new ReRoll();
         return reroll;
     } else if (inputCommand=="DOUBLE"){
         Double *doubles = new Double();
@@ -24,7 +24,7 @@ Command* CommandParser::parser(string inputCommand){
         Quarter *quarter;
         return quarter;
     } else if (inputCommand=="REVERSE"){
-        Reverse *reverse;
+        Reverse *reverse = new Reverse();
         return reverse;
     } else if (inputCommand=="SWAP CARD"){
         SwapCard *swapcard;

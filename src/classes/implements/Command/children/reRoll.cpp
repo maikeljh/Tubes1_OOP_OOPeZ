@@ -1,22 +1,23 @@
 #include "../../../headers/Command/children/reRoll.hpp"
 
-ReRoll::ReRoll(){
+ReRoll::ReRoll():Command(){
     commandId=2;
 }
 
 void ReRoll::executeAction(Game& Game){
-    // buang kartu
+    // Buang Kartu
     cout << "Melakukan pembuangan kartu yang sedang dimiliki" << endl;
-    Player playernow = Game.getPlayer();
-    Card c = playernow.pop();
-    c = playernow.pop();
-    // ambil kartu baru
-    playernow.push(Game.getDeckCard().pop());
-    playernow.push(Game.getDeckCard().pop());
-    cout << "Kamu mendapatkan 2 kartu baru yaitu:" << endl;
-    playernow.printCard();
-    playernow.useAbilityCard();
-    // giliran dilanjut
+    Card c = Game.getPlayer().pop();
+    c = Game.getPlayer().pop();
+
+    // Ambil Kartu Baru
+    Game.getPlayer().push(Game.getDeckCard().pop());
+    Game.getPlayer().push(Game.getDeckCard().pop());
+    cout << "\nKamu mendapatkan 2 kartu baru yaitu:" << endl;
+    Game.getPlayer().printCard();
+    Game.getPlayer().useAbilityCard();
+
+    // Giliran Dilanjut
     Next next;
     next.executeAction(Game);
 }

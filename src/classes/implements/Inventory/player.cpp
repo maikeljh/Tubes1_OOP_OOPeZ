@@ -66,6 +66,7 @@ Player::~Player(){
 void Player::useAbilityCard(){
     this->ability.setUseable(false);
 }
+
 bool Player::checkValidAbilityCard(string ability){
     return this->ability.getType() == ability;
 }
