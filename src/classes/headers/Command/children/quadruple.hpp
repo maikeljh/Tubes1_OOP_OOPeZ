@@ -12,7 +12,7 @@ using namespace std;
 class Quadruple: public Command {
     public:
         Quadruple(); // ID = 4
-        void useAbility(Game& Game);
+        void executeAction(Game& Game);
 };
 
 #endif

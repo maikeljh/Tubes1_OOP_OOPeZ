@@ -6,19 +6,12 @@ Half::Half(){
     commandId=5;
 }
 
-void Half::useAction(Game& Game){
-    /*
+void Half::executeAction(Game& Game){
     Player playernow = Game.getPlayer();
-    if (playernow.checkValidAbilityCard("HALF")){
-        cout << playernow.getNickname() << " melakukan HALF! Poin hadiah naik dari " << Game.getPoint();
-        Game.setPoint(Game.getPoint()*4);
-        cout << " menjadi " << Game.getPoint() << "!" << endl;
-        //playernow.useAbilityCard();
-    } else {
-        cout << "Ets, tidak bisa. Kamu tidak punya kartu Ability HALF." << endl;
-    }
-    */
+    cout << playernow.getNickname() << " melakukan DOUBLE! Poin hadiah turun dari " << Game.getPoint();
+    Game.setPoint(Game.getPoint()*0.5);
+    cout << " menjadi " << Game.getPoint() << "!" << endl;
     // giliran dilanjut
     Next *next;
-    next->useAction(Game);
+    next->executeAction(Game);
 }
