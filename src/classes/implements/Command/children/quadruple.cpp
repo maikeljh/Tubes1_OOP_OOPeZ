@@ -4,7 +4,7 @@ Quadruple::Quadruple(){
     commandId=4;
 }
 
-void Quadruple::useAbility(Game& Game){
+void Quadruple::executeAction(Game& Game){
     Player playernow = Game.getPlayer();
     if (playernow.checkValidAbilityCard("QUADRUPLE")){
         cout << playernow.getNickname() << " melakukan QUADRUPLE! Poin hadiah naik dari " << Game.getPoint();
@@ -16,5 +16,5 @@ void Quadruple::useAbility(Game& Game){
     }
     // giliran dilanjut
     Next *next;
-    next->useAction(Game);
+    next->executeAction(Game);
 }

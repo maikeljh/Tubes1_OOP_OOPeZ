@@ -4,7 +4,7 @@ ReRoll::ReRoll(){
     commandId=2;
 }
 
-void ReRoll::useAbility(DeckCard<Card>& DeckCard, Game& Game){
+void ReRoll::executeAction(DeckCard<Card>& DeckCard, Game& Game){
     // buang kartu
     cout << "Melakukan pembuangan kartu yang sedang dimiliki" << endl;
     Player playernow = Game.getPlayer();
@@ -18,5 +18,5 @@ void ReRoll::useAbility(DeckCard<Card>& DeckCard, Game& Game){
     playernow.useAbilityCard();
     // giliran dilanjut
     Next *next;
-    next->useAction(Game);
+    next->executeAction(Game);
 }

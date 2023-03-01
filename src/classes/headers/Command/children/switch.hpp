@@ -10,7 +10,7 @@ using namespace std;
 class Switch: public Command {
     public:
         Switch(); // ID = 9
-        void useAbility(Game& Game);
+        void executeAction(Game& Game);
 };
 
 #endif
