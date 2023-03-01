@@ -1,11 +1,11 @@
-#include "../../headers/Card/tableCard.hpp"
+#include "../../headers/Value/Card/tableCard.hpp"
 #include <iostream>
 
 using namespace std;
 
 TableCard::TableCard():neff(0){}
 
-void TableCard::addCard(const PlayerCard& C){
+void TableCard::addCard(const Card& C){
     if(neff < max){
         listOfCards.push_back(C);
         neff++;

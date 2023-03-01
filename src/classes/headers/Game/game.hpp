@@ -4,7 +4,7 @@
 #include <iostream>
 #include "../Inventory/children/Player/player.hpp"
 #include "../Inventory/children/DeckCard/deckCard.hpp"
-#include "../Card/tableCard.hpp"
+#include "../Value/Card/tableCard.hpp"
 
 using namespace std;
 
@@ -32,8 +32,10 @@ class Game {
         void setPlayerTurn(int playerTurn);
         int getRound();
         long long int getPoint();
+        DeckCard<Card>& getDeckCard();
         bool getIsClockWise();
         int getPlayerTurn();
+        Player getPlayer();
         bool isEndGame();
 };
 

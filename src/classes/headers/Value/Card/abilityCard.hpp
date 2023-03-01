@@ -19,7 +19,7 @@ class AbilityCard {
         int getOwner();
         string getType();
         bool getUseable();
-        void setUseable();
+        void setUseable(bool);
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include "../../headers/Card/abilityCard.hpp"
+#include "../../headers/Value/Card/abilityCard.hpp"
 #include <iostream>
 
 using namespace std;
@@ -37,4 +37,8 @@ string AbilityCard::getType(){
 
 bool AbilityCard::getUseable(){
     return this->useable;
+}
+
+void AbilityCard::setUseable(bool isUsable){
+    useable = isUsable;
 }

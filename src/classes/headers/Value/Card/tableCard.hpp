@@ -4,22 +4,21 @@
 #include <iostream>
 #include <vector>
 #include "card.hpp"
-#include "./children/playerCard.hpp"
-#include "../Inventory/children/DeckCard/deckCard.hpp"
+#include "../../Inventory/children/DeckCard/deckCard.hpp"
 
 using namespace std;
 
 class TableCard {
     private:
         int neff;
-        vector<PlayerCard> listOfCards;
+        vector<Card> listOfCards;
         const int max = 5;
 
     public:
         TableCard();
         TableCard(const TableCard& other);
         ~TableCard();
-        void addCard(const PlayerCard& C);
+        void addCard(const Card& C);
         void clearTable();
         void printTable();
 };

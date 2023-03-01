@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "../command.hpp"
+#include "next.hpp"
 #include "../../Game/game.hpp"
 
 using namespace std;
@@ -10,7 +11,7 @@ using namespace std;
 class ReRoll: public Command {
     public:
         ReRoll(); // ID = 2
-        void useAbility(DeckCard<AbilityCard>& DeckCard, Game& Game);
+        void useAbility(DeckCard<Card>& DeckCard, Game& Game);
 };
 
 #endif
