@@ -23,7 +23,7 @@ class Player: public InventoryHolder {
     
     public:
         Player();
-        Player(DeckCard& DC, string nickname);
+        Player(DeckCard<Card> &DC, string nickname);
         Player& operator=(const Player&);
         ~Player();
         void useAbilityCard();

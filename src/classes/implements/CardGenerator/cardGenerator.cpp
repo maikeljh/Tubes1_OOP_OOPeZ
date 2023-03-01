@@ -9,9 +9,9 @@ using namespace std;
 
 CardGenerator::CardGenerator(){}
 
-DeckCard CardGenerator::randomizeCard(){
+DeckCard<Card> CardGenerator::randomizeCard(){
     srand(time(0));
-    DeckCard DC;
+    DeckCard<Card> DC;
     vector<Card> temp, randomize;
     string colors[4] = {"Green", "Blue", "Yellow", "Red"};
     int numbers[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
@@ -39,8 +39,8 @@ DeckCard CardGenerator::randomizeCard(){
     return DC;
 }
 
-DeckAbilityCard CardGenerator::generateAbilityDeck(){
-    DeckAbilityCard DAC;
+DeckCard<AbilityCard> CardGenerator::generateAbilityDeck(){
+    DeckCard<AbilityCard> DAC;
     string abilities[7] = {"Re-Roll", "Quadruple", "Quarter", "Reverse Direction", "Swap Card", "Switch", "Abilityless"};
     for(string ability : abilities){
         DAC.push(AbilityCard(ability));
@@ -50,10 +50,10 @@ DeckAbilityCard CardGenerator::generateAbilityDeck(){
     return DAC;
 }
 
-DeckCard CardGenerator::readFile(string pathfile){
+DeckCard<Card> CardGenerator::readFile(string pathfile){
     string line;
     ifstream Read(pathfile);
-    DeckCard DC;
+    DeckCard<Card> DC;
 
     // FORMAT YANG BENAR = ANGKA WARNA
     while(getline(Read, line)){
@@ -108,8 +108,8 @@ DeckCard CardGenerator::readFile(string pathfile){
 /*
 int main(){
     CardGenerator CG;
-    DeckCard DC = CG.randomizeCard();
-    DeckAbilityCard DAC = CG.generateAbilityDeck();
+    DeckCard<Card> DC = CG.randomizeCard();
+    DeckCard<AbilityCard> DAC = CG.generateAbilityDeck();
     DeckCard DCFile = CG.readFile("../../../../config/orderCards.txt");
 }
 */

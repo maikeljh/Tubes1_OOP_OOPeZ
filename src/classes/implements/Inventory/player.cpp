@@ -7,7 +7,7 @@ int Player::playersCreated = 0;
 
 Player::Player(){}
 
-Player::Player(DeckCard& D, string nickname):InventoryHolder(), id(this->playersCreated+1){
+Player::Player(DeckCard<Card> &D, string nickname):InventoryHolder(), id(this->playersCreated+1){
     this->nickname = nickname;
     this->point = 0;
     this->mainDeck.push_back(D.pop());

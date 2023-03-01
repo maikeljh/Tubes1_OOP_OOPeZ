@@ -5,12 +5,14 @@
 #include <vector>
 #include "../../inventoryHolder.hpp"
 #include "../../../Card/card.hpp"
+#include "../../../Card/abilityCard.hpp"
 
 using namespace std;
 
+template <class T>
 class DeckCard: public InventoryHolder{
     private:
-        vector<Card> deck;
+        vector<T> deck;
         int neff;
         int size = 52;
     
@@ -19,8 +21,8 @@ class DeckCard: public InventoryHolder{
         DeckCard(int neff, int size);
         DeckCard(const DeckCard& other);
         ~DeckCard();
-        Card pop();
-        void push(const Card& Card);
+        T pop();
+        void push(const T& Card);
         int getNeff();
         int getSize();
         void printDeckCard();

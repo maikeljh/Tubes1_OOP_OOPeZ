@@ -14,7 +14,7 @@ class Game {
         vector<Player> players;
         const int nPlayers = 7;
         long long int point;
-        DeckCard deck;
+        DeckCard<Card> deck;
         bool isClockWise;
         int playerTurn;
         TableCard table;
