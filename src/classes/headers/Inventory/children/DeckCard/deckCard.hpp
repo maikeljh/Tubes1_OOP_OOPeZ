@@ -14,7 +14,7 @@ class DeckCard: public InventoryHolder{
     private:
         vector<T> deck;
         int neff;
-        int size = 52;
+        int size;
     
     public:
         DeckCard();
@@ -25,7 +25,7 @@ class DeckCard: public InventoryHolder{
         void push(const T& Card);
         int getNeff();
         int getSize();
-        void printDeckCard();
+        void printCard();
 };
 
 #endif
