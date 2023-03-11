@@ -74,6 +74,7 @@ void CandyGame::startGame(){
         cin >> name;
         Player newPlayer = Player(this->deck, name);
         this->players.push_back(newPlayer);
+        newPlayer.printCard();
     }
     
     CommandParser CP;

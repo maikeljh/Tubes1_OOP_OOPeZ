@@ -53,7 +53,7 @@ void Player::useAbilityCard(){
 }
 
 bool Player::checkValidAbilityCard(string ability){
-    return this->ability.getType() == ability;
+    return this->ability.getType() == ability && this->ability.getUseable();
 }
 void Player::addAbilityCard(const AbilityCard& AC){
     this->ability = AC;
