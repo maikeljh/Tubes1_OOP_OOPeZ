@@ -115,23 +115,19 @@ void CandyGame::startGame(){
                 // Penambahan poin untuk pemenang babak
                 for (int i = 0; i < 7; i++) {
                     this->players[i].getCombo().mergeCard(this->table.getTableCard(), this->players[i].getDeckPlayer());
-                    cout<<"------------------1----------------------"<<endl;
+                    cout << "Saat penggabungan" << endl;
                     this->players[i].getCombo().printCombo();
-                    cout<<"------------------2----------------------"<<endl;
                     this->players[i].getCombo().makeCombo();
-                    cout<<"------------------3----------------------"<<endl;
+                    cout << "Combo akhir : " << endl;
                     this->players[i].getCombo().printCombo();
-                    cout<<"------------------4----------------------"<<endl;
+                    cout << "DENGAN POIN  " << this->players[i].getCombo().getValue() << endl;
                 }
 
                 int roundWinner = this->chooseRoundWinner();
-                cout<<"------------------1----------------------"<<endl;
                 this->players[roundWinner].addPoint(this->point);
-                cout<<"------------------2----------------------"<<endl;
                 cout << "Selamat kepada pemain " << this->players[roundWinner].getNickname() << " telah memenangkan babak dan memperoleh poin sebanyak " << this->point << endl;
-                cout<<"------------------3----------------------"<<endl;
                 cout << "Dengan combo "; this->players[roundWinner].getCombo().printCombo();
-                cout<<"------------------4----------------------"<<endl;
+                cout << "DENGAN POIN  " << this->players[roundWinner].getCombo().getValue() << endl;
 
                 // Restart Game
                 this->round = 0;
@@ -152,6 +148,7 @@ int CandyGame::chooseRoundWinner() {
     int idx = 0;
     for (int i = 1; i < 7; i++) {
         if (this->players[i].getCombo() > maximum) {
+            maximum = this->players[i].getCombo();
             idx = i;
         }
     }
