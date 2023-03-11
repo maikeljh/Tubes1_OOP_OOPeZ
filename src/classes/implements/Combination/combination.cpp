@@ -518,16 +518,36 @@ double Combination::value() {
     }
     //three of a kind
     else if (this->comboCard.size() >= 3 && this->isThreeOfaKind()) {
-        if(maxValue(this->comboCard).getColor() == "Green"){
+        bool green = false;
+        bool blue = false;
+        bool yellow = false;
+        bool red = false;
+
+        for (int i = 0;i<this->comboCard.size();i++){
+            if (this->comboCard[i].getColor()=="Green"){
+                green = true;
+            }
+            else if (this->comboCard[i].getColor()=="Blue"){
+                blue = true;
+            }
+            else if (this->comboCard[i].getColor()=="Yellow"){
+                yellow = true;
+            }
+            else if (this->comboCard[i].getColor()=="Red"){
+                red = true;
+            }
+        }
+
+        if(green && blue && yellow){
             comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(1*0.02)+5.56;
         }
-        else if (maxValue(this->comboCard).getColor() == "Blue"){
+        else if (green && blue && red){
             comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(2*0.02)+5.56;
         }
-        else if (maxValue(this->comboCard).getColor() == "Yellow"){
+        else if (green && yellow && red){
             comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(3*0.02)+5.56;
         }
-        else if (maxValue(this->comboCard).getColor() == "Red"){
+        else if (blue && yellow && red){
             comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(4*0.02)+5.56;
         }
         // comboValue = maxValue(this->comboCard).value() + 5.56; //rumus
@@ -558,22 +578,22 @@ double Combination::value() {
             }
         }
         if(green && blue){
-            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(1*0.0015)+1.39;
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(1*0.015)+1.39;
         }
         else if (green && yellow){
-            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(2*0.0015)+1.39;
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(2*0.015)+1.39;
         }
         else if (blue && yellow){
-            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(3*0.0015)+1.39;
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(3*0.015)+1.39;
         }
         else if (green && red){
-            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(4*0.0015)+1.39;
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(4*0.015)+1.39;
         }
         else if (blue && red){
-            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(5*0.0015)+1.39;
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(5*0.015)+1.39;
         }
         else if (yellow && red){
-            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(6*0.0015)+1.39;
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(6*0.015)+1.39;
         }
         // comboValue = maxValue(this->comboCard).value() + 1.39;//rumus
     }
