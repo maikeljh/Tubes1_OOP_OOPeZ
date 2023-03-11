@@ -7,7 +7,7 @@ Half::Half():Command(){
 }
 
 void Half::executeAction(CandyGame& Game){
-    cout << Game.getPlayer(Game.getPlayerTurn()).getNickname() << " melakukan DOUBLE! Poin hadiah turun dari " << Game.getPoint();
+    cout << Game.getPlayer(Game.getPlayerTurn()).getNickname() << " melakukan HALF! Poin hadiah turun dari " << Game.getPoint();
     Game.setPoint(Game.getPoint()*0.5);
     cout << " menjadi " << Game.getPoint() << "!" << endl;
     Game.setValid(true);
