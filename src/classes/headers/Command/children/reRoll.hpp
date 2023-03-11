@@ -11,7 +11,7 @@ using namespace std;
 class ReRoll: public Command {
     public:
         ReRoll(); // ID = 2
-        void executeAction(Game&);
+        void executeAction(CandyGame&);
 };
 
 #endif

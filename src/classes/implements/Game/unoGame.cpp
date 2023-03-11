@@ -46,6 +46,9 @@ void UnoGame::startGame(){
     cout << "@@@@@@@@@@@@@&GJ777????77!!!!?Y5PP5555555555555555555555PGB#&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << endl;
     cout << "@@@@@@@@@@@@@@@@@@&#GP5YY555PP5555555555555555555PPGBB#&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << endl;
     cout << "@@@@@@@@@@@@@@@@@@@@@@@@&#BBGGPPPP5555PPPPPGGB##&&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" << endl;
+
+    cout << "\nHalo! Selamat Datang di Kompetisi Kartu UNO" << endl;
+
 }
 
 int UnoGame::chooseWinner(){

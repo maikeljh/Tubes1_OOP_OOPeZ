@@ -4,45 +4,42 @@ Reverse::Reverse(){
     commandId=7;
 }
 
-void Reverse::executeAction(Game& game){
-    Game *now = &game;
-    CandyGame temp = *(CandyGame*)now;
-
-    Player playernow = temp.getPlayer(temp.getPlayerTurn());
+void Reverse::executeAction(CandyGame& Game){
+    Player playernow = Game.getPlayer(Game.getPlayerTurn());
     if (playernow.checkValidAbilityCard("REVERSE")){
         cout << playernow.getNickname() << " melakukan reverse!" << endl;
         cout << "(sisa) urutan eksekusi giliran ini : ";
         
-        int i = temp.getPlayerTurn()+1;
-        while (i!=temp.getLastIdxTurn()){
-            cout << temp.getPlayer(i).getNickname();
-            if (i!=(temp.getLastIdxTurn()-1) % temp.getNPlayers()){
+        int i = Game.getPlayerTurn()+1;
+        while (i!=Game.getLastIdxTurn()){
+            cout << Game.getPlayer(i).getNickname();
+            if (i!=(Game.getLastIdxTurn()-1) % Game.getNPlayers()){
                 cout << ", ";
             }
-            i = (i+1) % temp.getNPlayers();
+            i = (i+1) % Game.getNPlayers();
         }
         cout << endl;
 
         cout << "urutan eksekusi giliran selanjutnya : ";
         // first: (playerturn-1) % nPlayers
-        int nextFirstIdx = (temp.getPlayerTurn()-1) % temp.getNPlayers();
-        cout << temp.getPlayer(nextFirstIdx).getNickname();
-        i = (nextFirstIdx-1) % temp.getNPlayers();
+        int nextFirstIdx = (Game.getPlayerTurn()-1) % Game.getNPlayers();
+        cout << Game.getPlayer(nextFirstIdx).getNickname();
+        i = (nextFirstIdx-1) % Game.getNPlayers();
         while (i!=nextFirstIdx){
-            cout << temp.getPlayer(i).getNickname();
-            while (i!=(nextFirstIdx+1) % temp.getNPlayers()){
+            cout << Game.getPlayer(i).getNickname();
+            while (i!=(nextFirstIdx+1) % Game.getNPlayers()){
                 cout << ", ";
             }
-            i = (i-1) % temp.getNPlayers();
+            i = (i-1) % Game.getNPlayers();
         }
 
         // set isReverse & next idxreverse
-        temp.setIdxReverse(nextFirstIdx);
-        temp.setIsReverse(true);
+        Game.setIdxReverse(nextFirstIdx);
+        Game.setIsReverse(true);
 
         // giliran dilanjut
         Next *next;
-        next->executeAction(game);
+        next->executeAction(Game);
     } else {
         cout << "Ets, tidak bisa. Kamu tidak punya kartu Ability REVERSE.\nSilahkan lakukan perintah lain." << endl;
     }

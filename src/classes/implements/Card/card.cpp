@@ -3,15 +3,7 @@
 
 using namespace std;
 
-Card::Card():Value(){
-    this->number = 0;
-    this->color = "";
-}
-
-Card::Card(int number, string color):Value(){
-    this->number = number;
-    this->color = color;
-}
+Card::Card(int number, string color):Value(),BaseCard(number, color){}
 
 
 Card& Card::operator=(const Card& C) {
@@ -28,17 +20,6 @@ bool Card::operator< (Card& c){
 }
 bool Card::operator== (Card& c){
     return this->value() == c.value();
-}
-int Card::getNumber(){
-    return this->number;
-}
-
-string Card::getColor(){
-    return this->color;
-}
-
-void Card::setNumber(int number) {
-    this->number = number;
 }
 
 double Card::value(){

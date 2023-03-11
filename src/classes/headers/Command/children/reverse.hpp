@@ -11,7 +11,7 @@ using namespace std;
 class Reverse: public Command {
     public:
         Reverse(); // ID = 7
-        void executeAction(Game& Game);
+        void executeAction(CandyGame& Game);
 };
 
 #endif

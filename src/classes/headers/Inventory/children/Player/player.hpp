@@ -42,7 +42,7 @@ class Player: public InventoryHolder<Card>{
         Combination getCombo();
         long long int getPoint();
         vector<Card>& getDeckPlayer();
-        
+        AbilityCard& getAbilityCard();
 };
 
 #endif
