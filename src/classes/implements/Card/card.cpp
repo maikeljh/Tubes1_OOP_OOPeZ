@@ -27,3 +27,7 @@ int Card::getNumber(){
 string Card::getColor(){
     return this->color;
 }
+
+void Card::setNumber(int number) {
+    this->number = number;
+}
