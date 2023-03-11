@@ -21,6 +21,7 @@ class Combination {
         void setValue(double);
         void setCombo(string);
         void setComboCard(vector <Card> &combo);
+        void clearCombo();
         void mergeCard(vector <Card> &TC, vector <Card> &PC);
         void makeCombo();
         void printCombo();

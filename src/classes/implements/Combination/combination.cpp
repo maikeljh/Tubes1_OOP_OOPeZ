@@ -29,6 +29,15 @@ void Combination::setComboCard(vector<Card> &combo) {
     }
 }
 
+void Combination::clearCombo(){
+    int size = this->comboCard.size();
+    for(int i = 0; i < size ; i++){
+        this->comboCard.pop_back();
+    }
+    this->combo = "";
+    this->point = 0;
+}
+
 void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
     vector <Card> CC;
     for (int i = 0; i < 5; i++) {
