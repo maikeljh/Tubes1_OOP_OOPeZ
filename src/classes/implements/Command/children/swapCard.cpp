@@ -57,7 +57,6 @@ void SwapCard::executeAction(CandyGame& Game){
                 cout << Game.getPlayer(i).getNickname() << endl;
             }
         }
-        int p;
         cin >> p; // input nomor sesuai output list player yang bisa di-swap
         if (p<playerTurn && p<playerSwap[0]){
             p--;
@@ -130,9 +129,8 @@ void SwapCard::executeAction(CandyGame& Game){
             }
         }
         playernow.useAbilityCard();
-        // giliran dilanjut
-        Next *next;
-        next->executeAction(Game);
+        
+        Game.setValid(true);
     } else {
         cout << "Oops, kartu SWAP CARD tidak dapat digunakan." << endl;
     }

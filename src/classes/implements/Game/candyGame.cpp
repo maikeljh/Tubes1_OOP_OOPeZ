@@ -75,12 +75,6 @@ void CandyGame::startGame(){
                 Player newPlayer = Player(this->deck, name);
                 this->players.push_back(newPlayer);
             }
-
-            // TES KARTU PEMAIN
-            for(int i = 0; i < 7; i++){
-                cout << "\nKartu Pemain " << this->players[i].getNickname() << endl;
-                this->players[i].printCard();
-            }
             
             CommandParser CP;
             string command;
@@ -89,18 +83,39 @@ void CandyGame::startGame(){
                 this->point = 64;
                 while(this->round <= 6){
                     this->round++;
-                    cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
-                    cin >> command;
-                    Command *action = CP.parser(command);
-                    action->executeAction(*this);
-                    if(this->isClockWise){
-                        this->playerTurn = (this->playerTurn + 1) % 7;
-                    } else {
-                        this->playerTurn = (this->playerTurn - 1) % 7;
+                    if(this->round == 2){
+                        this->deckAbility = CG.generateAbilityDeck();
+                        for(int i = 0; i < 7; i++){
+                            this->players[i].addAbilityCard(this->deckAbility.pop());
+                        }
                     }
+                    cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
+                    while(!this->valid){
+                        try{
+                            cin >> command;
+                            Command *action = CP.parser(command);
+                            action->executeAction(*this);
+                            if(this->isClockWise){
+                                this->playerTurn = (this->playerTurn + 1) % 7;
+                            } else {
+                                this->playerTurn = (this->playerTurn - 1) % 7;
+                            }
+                        } catch(...){
+                            cout << "Command tidak valid!" << endl;
+                        }
+                    }
+                    this->valid = false;
                 }
-                cout << this->point << endl;
+
+                // Restart Game
                 this->round = 0;
+                this->deck = CG.randomizeCard();
+                for(int i = 0; i < 7; i++){
+                    Card erase = this->players[i].pop();
+                    erase = this->players[i].pop();
+                    this->players[i].push(this->deck.pop());
+                    this->players[i].push(this->deck.pop());
+                }
             }
 }
 

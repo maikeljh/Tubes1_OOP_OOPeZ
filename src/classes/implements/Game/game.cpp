@@ -9,6 +9,7 @@ Game::Game(int max):table(max){
     this->isClockWise = true;
     this->playerTurn = 0;
     this->lastIdxTurn = 6;
+    this->valid = false;
 }
 
 Game::Game(const Game& other):table(5){
@@ -21,6 +22,7 @@ Game::Game(const Game& other):table(5){
     this->isClockWise = other.isClockWise;
     this->playerTurn = other.playerTurn;
     this->lastIdxTurn = other.lastIdxTurn;
+    this->valid = other.valid;
 }
 
 Game::~Game(){}
@@ -71,4 +73,12 @@ bool Game::getIsReverse(){
 
 void Game::setIsReverse(bool isReverse){
     this->isReverse = isReverse;
+}
+
+bool Game::getValid(){
+    return this->valid;
+}
+
+void Game::setValid(bool val){
+    this->valid = val;
 }

@@ -18,6 +18,7 @@ class Game {
         int lastIdxTurn;
         int idxReverse; // indeks sebelum pemakai reverse
         bool isReverse;
+        bool valid;
 
     public:
         Game(int max);
@@ -38,6 +39,8 @@ class Game {
         void setIdxReverse(int idxReverse);
         bool getIsReverse();
         void setIsReverse(bool isReverse);
+        bool getValid();
+        void setValid(bool);
 };
 
 #endif

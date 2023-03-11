@@ -5,19 +5,22 @@ ReRoll::ReRoll():Command(){
 }
 
 void ReRoll::executeAction(CandyGame& Game){
-    // Buang Kartu
-    cout << "Melakukan pembuangan kartu yang sedang dimiliki" << endl;
-    Card c = Game.getPlayer(Game.getPlayerTurn()).pop();
-    c = Game.getPlayer(Game.getPlayerTurn()).pop();
+    Player playernow = Game.getPlayer(Game.getPlayerTurn());
+    if (playernow.checkValidAbilityCard("RE-ROLL")){
+        // Buang Kartu
+        cout << "Melakukan pembuangan kartu yang sedang dimiliki" << endl;
+        Card c = Game.getPlayer(Game.getPlayerTurn()).pop();
+        c = Game.getPlayer(Game.getPlayerTurn()).pop();
 
-    // Ambil Kartu Baru
-    Game.getPlayer(Game.getPlayerTurn()).push(Game.getDeckCard().pop());
-    Game.getPlayer(Game.getPlayerTurn()).push(Game.getDeckCard().pop());
-    cout << "\nKamu mendapatkan 2 kartu baru yaitu:" << endl;
-    Game.getPlayer(Game.getPlayerTurn()).printCard();
-    Game.getPlayer(Game.getPlayerTurn()).useAbilityCard();
+        // Ambil Kartu Baru
+        Game.getPlayer(Game.getPlayerTurn()).push(Game.getDeckCard().pop());
+        Game.getPlayer(Game.getPlayerTurn()).push(Game.getDeckCard().pop());
+        cout << "\nKamu mendapatkan 2 kartu baru yaitu:" << endl;
+        Game.getPlayer(Game.getPlayerTurn()).printCard();
+        Game.getPlayer(Game.getPlayerTurn()).useAbilityCard();
 
-    // Giliran Dilanjut
-    Next next;
-    next.executeAction(Game);
+        Game.setValid(true);
+    } else {
+        cout << "Ets, tidak bisa. Kamu tidak punya kartu Ability RE-ROLL." << endl;
+    }
 }

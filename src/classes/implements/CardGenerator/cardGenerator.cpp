@@ -15,12 +15,10 @@ DeckCard<Card> CardGenerator::randomizeCard(){
     vector<Card> temp, randomize;
     string colors[4] = {"Green", "Blue", "Yellow", "Red"};
     int numbers[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-    int idx = 0;
 
     for(string color : colors){
         for(int number : numbers){
             temp.push_back(Card(number, color));
-            idx++;
         }
     }
 
@@ -34,18 +32,23 @@ DeckCard<Card> CardGenerator::randomizeCard(){
         DC.push(randomize[i]);
     }
 
-    //DC.printDeckCard();
-
     return DC;
 }
 
 DeckCard<AbilityCard> CardGenerator::generateAbilityDeck(){
     DeckCard<AbilityCard> DAC;
+    vector<AbilityCard> temp;
     string abilities[7] = {"Re-Roll", "Quadruple", "Quarter", "Reverse Direction", "Swap Card", "Switch", "Abilityless"};
+    
     for(string ability : abilities){
-        DAC.push(AbilityCard(ability));
+        temp.push_back(AbilityCard(ability));
     }
-    //DAC.printDeckCard();
+
+    for(int i = 0 ; i < 7; i++){
+        int randomIndex = rand() % (7-i);
+        DAC.push(temp[randomIndex]);
+        temp.erase(temp.begin() + randomIndex);
+    }
 
     return DAC;
 }

@@ -15,25 +15,27 @@ Command* CommandParser::parser(string inputCommand){
         Double *doubles = new Double();
         return doubles;
     } else if (inputCommand=="QUADRUPLE"){
-        Quadruple *quadruple;
+        Quadruple *quadruple = new Quadruple();
         return quadruple;
     } else if (inputCommand=="HALF"){
         Half *half = new Half();
         return half;
     } else if (inputCommand=="QUARTER"){
-        Quarter *quarter;
+        Quarter *quarter = new Quarter();
         return quarter;
     } else if (inputCommand=="REVERSE"){
         Reverse *reverse = new Reverse();
         return reverse;
     } else if (inputCommand=="SWAP CARD"){
-        SwapCard *swapcard;
+        SwapCard *swapcard = new SwapCard();
         return swapcard;
     } else if (inputCommand=="SWITCH"){
-        Switch *switches;
+        Switch *switches = new Switch();
         return switches;
     } else if (inputCommand=="ABILITYLESS"){
-        Abilityless *abilityless;
+        Abilityless *abilityless = new Abilityless();
         return abilityless;
+    } else {
+        throw "Command tidak valid";
     }
 }

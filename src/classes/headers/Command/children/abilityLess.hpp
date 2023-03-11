@@ -12,7 +12,7 @@ class Abilityless: public Command {
     public:
         Abilityless(); // ID = 10
         void executeAction(CandyGame& Game);
-        bool isAllAbilityUseable(vector<Player> players);
+        bool isAllAbilityUsed(vector<Player> players);
 };
 
 #endif

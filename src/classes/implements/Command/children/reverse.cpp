@@ -42,9 +42,7 @@ void Reverse::executeAction(CandyGame& Game){
 
         playernow.useAbilityCard();
 
-        // giliran dilanjut
-        Next *next;
-        next->executeAction(Game);
+        Game.setValid(true);
     } else {
         cout << "Ets, tidak bisa. Kamu tidak punya kartu Ability REVERSE.\nSilahkan lakukan perintah lain." << endl;
     }

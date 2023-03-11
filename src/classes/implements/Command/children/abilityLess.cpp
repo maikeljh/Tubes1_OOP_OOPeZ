@@ -11,7 +11,7 @@ void Abilityless::executeAction(CandyGame& Game){
     for (int i=0; i<Game.getNPlayers(); i++){
         players.push_back(Game.getPlayer(i));
     }
-    if (!isAllAbilityUseable(players)){
+    if (isAllAbilityUsed(players)){
         cout << "Eits, ternyata semua pemain sudah memakai kartu kemampuan. ";
         cout << "Yah kamu kena sendiri deh, kemampuanmu menjadi abilityless. Yah, pengunaan kartu ini sia-sia" << endl;
     } else if (playernow.checkValidAbilityCard("SWITCH")){
@@ -49,19 +49,17 @@ void Abilityless::executeAction(CandyGame& Game){
         cout << "Kartu ability " << playerAbilityless.getNickname() << " telah dimatikan." << endl;
         playernow.useAbilityCard();
 
-        // giliran dilanjut
-        Next *next;
-        next->executeAction(Game);
+        Game.setValid(true);
     } else {
         cout << "Eits, kamu tidak punya kartunya :P" << endl;
     }
 }
 
-bool Abilityless::isAllAbilityUseable(vector<Player> players){
+bool Abilityless::isAllAbilityUsed(vector<Player> players){
     for (int i=0; i<players.size(); i++){
-        if (!players[i].getAbilityCard().getUseable()){
+        if (players[i].getAbilityCard().getUseable()){
             return false;
         }
-        return true;
     }
+    return true;
 }

@@ -50,9 +50,7 @@ void Switch::executeAction(CandyGame& Game){
         playernow.printCard();
         playernow.useAbilityCard();
 
-        // giliran dilanjut
-        Next *next;
-        next->executeAction(Game);
+        Game.setValid(true);
     } else {
         cout << "Oops, kartu ability switchmu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n";
     }
