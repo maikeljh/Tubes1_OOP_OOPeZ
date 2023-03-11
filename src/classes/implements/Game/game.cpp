@@ -49,10 +49,26 @@ void Game::setLastIdxTurn(int last){
     this->lastIdxTurn = last;
 }
 
-Player& Game::getPlayer(){
-    return this->players[this->playerTurn];
+Player& Game::getPlayer(int idx){
+    return this->players[idx];
 }
 
 int Game::getNPlayers(){
     return this->nPlayers;
+}
+
+int Game::getIdxReverse(){
+    return idxReverse;
+}
+
+void Game::setIdxReverse(int idxReverse){
+    this->idxReverse = idxReverse;
+}
+
+bool Game::getIsReverse(){
+    return isReverse;
+}
+
+void Game::setIsReverse(bool isReverse){
+    this->isReverse = isReverse;
 }
