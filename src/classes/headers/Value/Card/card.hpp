@@ -8,6 +8,7 @@ using namespace std;
 
 class Card : public Value, public BaseCard {
     public:
+        Card();
         Card(int number, string color);
         Card& operator= (const Card&);
         bool operator> (Card&);

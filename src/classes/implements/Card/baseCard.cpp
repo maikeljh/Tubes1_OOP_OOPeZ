@@ -3,6 +3,8 @@
 
 using namespace std;
 
+BaseCard::BaseCard(){}
+
 BaseCard::BaseCard(int number, string color){
     this->number = number;
     this->color = color;
