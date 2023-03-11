@@ -154,6 +154,7 @@ void CandyGame::startGame(){
             erase = this->players[i].pop();
             this->players[i].push(this->deck.pop());
             this->players[i].push(this->deck.pop());
+            this->players[i].getCombo().clearCombo();
             this->players[i].getAbilityCard().setType("");
             this->players[i].getAbilityCard().setUseable(false);
         }

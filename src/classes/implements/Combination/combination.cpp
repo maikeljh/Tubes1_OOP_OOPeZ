@@ -29,6 +29,15 @@ void Combination::setComboCard(vector<Card> &combo) {
     }
 }
 
+void Combination::clearCombo(){
+    int size = this->comboCard.size();
+    for(int i = 0; i < size ; i++){
+        this->comboCard.pop_back();
+    }
+    this->combo = "";
+    this->point = 0;
+}
+
 void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
     vector <Card> CC;
     for (int i = 0; i < 5; i++) {
@@ -607,43 +616,67 @@ double Combination::value() {
 
 void Combination::makeCombo() {
     if (this->isStraightFlush()) {
+        cout<<"masuk straight flush 1"<<endl;
         this->straightFlush();
+        cout<<"masuk straight flush 2"<<endl;
         this->setValue(this->value());
+        cout<<"masuk straight flush 3"<<endl;
         this->setCombo("Straight Flush");
     }
     else if (this->isFourOfaKind()) {
+        cout<<"four of a kind 1"<<endl;
         this->fourOfaKind();
+        cout<<"four of a kind 2"<<endl;
         this->setValue(this->value());
+        cout<<"four of a kind 3"<<endl;
         this->setCombo("Four of a Kind");
     }
     else if (this->isFullHouse()) {
+        cout<<"full house 1"<<endl;
         this->fullHouse();
+        cout<<"full house 2"<<endl;
         this->setValue(this->value());
+        cout<<"full house 3"<<endl;
         this->setCombo("Full House");
     }
     else if (this->isFlush()) {
+        cout<<"flush 1"<<endl;
         this->flush();
-        this->setValue(this->value());
+        cout<<"flush 2"<<endl;
+        this->setValue(this->value()); // ini ada fakap kadang jd crash blm tau triggernya apa
+        cout<<"flush 3"<<endl;
         this->setCombo("Flush");
     }
     else if (this->isStraight()) {
-        this->straight();
+        cout<<"straight 1"<<endl;
+        this->straight(); // ini ada fakap kadang jd crash blm tau triggernya apa
+        cout<<"straight 2"<<endl;
         this->setValue(this->value());
+        cout<<"straight 3"<<endl;
         this->setCombo("Straight");
     }
     else if (this->isThreeOfaKind()) {
+        cout<<"three of a kind 1"<<endl;
         this->threeOfaKind();
+        cout<<"three of a kind 2"<<endl;
         this->setValue(this->value());
+        cout<<"three of a kind 3"<<endl;
         this->setCombo("Three of a Kind");
     }
     else if (this->isTwoPair()) {
+        cout<<"two pair 1"<<endl;
         this->twoPair();
+        cout<<"two pair 2"<<endl;
         this->setValue(this->value());
+        cout<<"two pair 3"<<endl;
         this->setCombo("Two Pair");
     }
     else if (this->isPair()) {
+        cout<<"pair 1"<<endl;
         this->pair();
+        cout<<"pair 2"<<endl;
         this->setValue(this->value());
+        cout<<"pair 3"<<endl;
         this->setCombo("Pair");
     }
     else {
