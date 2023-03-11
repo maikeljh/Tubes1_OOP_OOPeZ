@@ -39,7 +39,7 @@ class Player: public InventoryHolder<Card>{
         Card pop();
         void printCard();
         string getNickname();
-        Combination getCombo();
+        Combination& getCombo();
         long long int getPoint();
         vector<Card>& getDeckPlayer();
         AbilityCard& getAbilityCard();

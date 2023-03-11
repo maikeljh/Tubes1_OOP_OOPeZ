@@ -112,15 +112,18 @@ void CandyGame::startGame(){
                         this->table.addCard(this->deck.pop());
                     }
                 }
-                // Penambahan poin untuk pemenang ronde
+                // Penambahan poin untuk pemenang babak
                 for (int i = 0; i < 7; i++) {
+                    cout << "Masuk sini ga 1" << endl;
                     this->players[i].getCombo().mergeCard(this->table.getTableCard(), this->players[i].getDeckPlayer());
+                    cout << "Masuk sini ga 2" << endl;
                     this->players[i].getCombo().makeCombo();
+                    cout << "Masuk sini ga 3" << endl;
                 }
 
                 int roundWinner = this->chooseRoundWinner();
                 this->players[roundWinner].addPoint(this->point);
-                cout << "Selamat kepada pemain " << this->players[roundWinner].getNickname() << " telah memenangkan ronde dan memperoleh poin sebanyak " << this->point << endl;
+                cout << "Selamat kepada pemain " << this->players[roundWinner].getNickname() << " telah memenangkan babak dan memperoleh poin sebanyak " << this->point << endl;
                 cout << "Dengan combo "; this->players[roundWinner].getCombo().printCombo();
 
                 // Restart Game
