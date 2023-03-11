@@ -41,7 +41,7 @@ void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
 
     // Sorting card berdasarkan angka dan warnanya
 
-    this->quicksort(CC, 0, TC.size()-1);
+    this->quicksort(CC, 0, CC.size()-1);
     this->setComboCard(CC);
 }
 
@@ -63,11 +63,11 @@ Combination::~Combination() {
 }
 
 bool Combination::operator<(Combination& other) {
-    return this->point > other.point;
+    return this->point < other.point;
 }
 
 bool Combination::operator>(Combination& other) {
-    return this->point < other.point;
+    return this->point > other.point;
 }
 
 bool Combination::operator==(Combination& other) {
@@ -498,7 +498,7 @@ double Combination::value() {
     double comboValue;
     //straight flush
     if (this->isStraightFlush()) {
-        comboValue = maxValue(this->comboCard).value() + 12.32;
+        comboValue = maxValue(this->comboCard).value() + 12.41;
     }
     //four of a kind
     else if (this->isFourOfaKind()) {
@@ -506,7 +506,7 @@ double Combination::value() {
     }
     //full house
     else if (this->isFullHouse()) {
-        comboValue = maxValue(this->comboCard).value() + 9.72;
+        comboValue = maxValue(this->comboCard).value() + 9.72;//harus ambil highcard yg 3
     }
     //flush
     else if (this->isFlush()) {
@@ -518,15 +518,64 @@ double Combination::value() {
     }
     //three of a kind
     else if (this->isThreeOfaKind()) {
-        comboValue = maxValue(this->comboCard).value() + 5.56;
+        if(maxValue(this->comboCard).getColor() == "Green"){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(1*0.02)+5.56;
+        }
+        else if (maxValue(this->comboCard).getColor() == "Blue"){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(2*0.02)+5.56;
+        }
+        else if (maxValue(this->comboCard).getColor() == "Yellow"){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(3*0.02)+5.56;
+        }
+        else if (maxValue(this->comboCard).getColor() == "Red"){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(4*0.02)+5.56;
+        }
+        // comboValue = maxValue(this->comboCard).value() + 5.56; //rumus
     }
     //two pair
     else if (this->isTwoPair()) {
-        comboValue = maxValue(this->comboCard).value() + 2.78;
+        comboValue = maxValue(this->comboCard).value() + 2.78;//rumus
     }
     //pair
     else if (this->isPair()) {
-        comboValue = maxValue(this->comboCard).value() + 1.39;
+        bool green = false;
+        bool blue = false;
+        bool yellow = false;
+        bool red = false;
+
+        for (int i = 0;i<this->comboCard.size();i++){
+            if (this->comboCard[i].getColor()=="Green"){
+                green = true;
+            }
+            else if (this->comboCard[i].getColor()=="Blue"){
+                blue = true;
+            }
+            else if (this->comboCard[i].getColor()=="Yellow"){
+                yellow = true;
+            }
+            else if (this->comboCard[i].getColor()=="Red"){
+                red = true;
+            }
+        }
+        if(green && blue){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(1*0.0015)+1.39;
+        }
+        else if (green && yellow){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(2*0.0015)+1.39;
+        }
+        else if (blue && yellow){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(3*0.0015)+1.39;
+        }
+        else if (green && red){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(4*0.0015)+1.39;
+        }
+        else if (blue && red){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(5*0.0015)+1.39;
+        }
+        else if (yellow && red){
+            comboValue = (double(maxValue(this->comboCard).getNumber())/10)+(6*0.0015)+1.39;
+        }
+        // comboValue = maxValue(this->comboCard).value() + 1.39;//rumus
     }
     //highcard max value 
     else {
