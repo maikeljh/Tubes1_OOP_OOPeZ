@@ -26,6 +26,179 @@ Combination::~Combination() {
 
 }
 
+bool Combination::isStraightFlush(vector <Card> &LC){
+
+}
+bool Combination::isFourOfaKind(vector <Card> &LC){
+    int maxSama = 0;
+    for(int i = 0;i<LC.size()-1;i++){
+        int tempSama = 0;
+        for(int j = i+1;j<LC.size();j++){
+            if(LC[i].getNumber()==LC[j].getNumber()){
+                tempSama +=1;
+            }
+        }
+        if(tempSama>maxSama){
+            maxSama=tempSama;
+        }
+    }
+    if(maxSama==3){
+        return true;
+    }
+    return false;
+}
+bool Combination::isFullHouse(vector <Card> &LC){
+
+}
+bool Combination::isFlush(vector <Card> &LC){
+
+}
+bool Combination::isStraight(vector <Card> &LC){
+
+}
+bool Combination::isThreeOfaKind(vector <Card> &LC){
+    int maxSama = 0;
+    for(int i = 0;i<LC.size()-1;i++){
+        int tempSama = 0;
+        for(int j = i+1;j<LC.size();j++){
+            if(LC[i].getNumber()==LC[j].getNumber()){
+                tempSama +=1;
+            }
+        }
+        if(tempSama>maxSama){
+            maxSama=tempSama;
+        }
+    }
+    if(maxSama==2){
+        return true;
+    }
+    return false;
+
+}
+bool Combination::isTwoPair(vector <Card> &LC){
+
+}
+bool Combination::isPair(vector <Card> &LC){
+    int maxSama = 0;
+    for(int i = 0;i<LC.size()-1;i++){
+        int tempSama = 0;
+        for(int j = i+1;j<LC.size();j++){
+            if(LC[i].getNumber()==LC[j].getNumber()){
+                tempSama +=1;
+            }
+        }
+        if(tempSama>maxSama){
+            maxSama=tempSama;
+        }
+    }
+    if(maxSama==1){
+        return true;
+    }
+    return false;
+
+}
+
+vector<Card> Combination::straightFlush(vector <Card> &LC){
+
+}
+vector<Card> Combination::fourOfaKind(vector <Card> &LC){
+    int maxSama = 0;
+    Card cek;
+    vector <Card> hasil;
+    for(int i = 0;i<LC.size()-1;i++){
+        int tempSama = 0;
+        for(int j = i+1;j<LC.size();j++){
+            if(LC[i].getNumber()==LC[j].getNumber()){
+                tempSama +=1;
+            }
+        }
+        if(tempSama>maxSama){
+            maxSama=tempSama;
+            cek = LC[i];
+        }
+    }
+    for (int i = 0;i<LC.size();i++){
+        if(LC[i].getNumber()==cek.getNumber()){
+            Card temp = LC[i];
+            hasil.push_back(temp);  
+        }
+    }
+    return hasil;
+}
+vector<Card> Combination::fullHouse(vector <Card> &LC){
+
+}
+vector<Card> Combination::flush(vector <Card> &LC){
+
+}
+vector<Card> Combination::straight(vector <Card> &LC){
+
+}
+vector<Card> Combination::threeOfaKind(vector <Card> &LC){
+    int maxSama = 0;
+    Card cek;
+    vector <Card> hasil;
+    for(int i = LC.size()-1;i> 0;i--){
+        if(maxSama<2){
+            int tempSama = 0;
+            for(int j=i-1;j>=0;j--){
+                if(LC[i].getNumber()==LC[j].getNumber()){
+                tempSama +=1;
+            }
+            }
+            if(tempSama>maxSama){
+                maxSama=tempSama;
+                cek = LC[i];
+            }
+        }
+    }
+    int n = 0;
+    while(n<3){
+        for (int i = LC.size()-1;i>=0;i++){
+            if(LC[i].getNumber()==cek.getNumber()){
+                Card temp = LC[i];
+                hasil.push_back(temp);  
+                n++;
+            }
+        }
+    }
+    return hasil;
+
+}
+vector<Card> Combination::twoPair(vector <Card> &LC){
+
+}
+vector<Card> Combination::pair(vector <Card> &LC){
+    int maxSama = 0;
+    Card cek;
+    vector <Card> hasil;
+    for(int i = LC.size()-1;i> 0;i--){
+        if(maxSama<1){
+            int tempSama = 0;
+            for(int j=i-1;j>=0;j--){
+                if(LC[i].getNumber()==LC[j].getNumber()){
+                tempSama +=1;
+            }
+            }
+            if(tempSama>maxSama){
+                maxSama=tempSama;
+                cek = LC[i];
+            }
+        }
+    }
+    int n = 0;
+    while(n<2){
+        for (int i = LC.size()-1;i>=0;i++){
+            if(LC[i].getNumber()==cek.getNumber()){
+                Card temp = LC[i];
+                hasil.push_back(temp);  
+                n++;
+            }
+        }
+    }
+    return hasil;
+}
+
 double Combination::value(vector<Card> &LC) {
 
     //straight flush
