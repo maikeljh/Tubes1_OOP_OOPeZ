@@ -23,16 +23,40 @@ void Combination::setCombo(string combo) {
     this->combo = combo;
 }
 
+void Combination::setComboCard(vector<Card> &combo) {
+    for (int i = 0; i < combo.size(); i++) {
+        this->comboCard.push_back(combo[i]);
+    }
+}
+
+void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
+    vector <Card> CC;
+    for (int i = 0; i < 5; i++) {
+        Card temp = TC[i];
+        CC.push_back(temp);
+    }
+
+    for (int i = 0; i < 2; i++) {
+        Card temp = PC[i];
+        CC.push_back(temp);
+    }
+
+    // Sorting card berdasarkan angka dan warnanya
+
+    quicksort(CC, 0, TC.size()-1);
+    this->setComboCard(CC);
+}
+
 Combination::~Combination() {
 
 }
 
-bool Combination::isStraightFlush(vector <Card> &LC) {
+bool Combination::isStraightFlush() {
     bool temp;
-    for (int i = LC.size()-1 ; i >= 4; i--) {
+    for (int i = this->comboCard.size()-1 ; i >= this->comboCard.size()-3; i--) {
         temp = true;
         for (int j = i; j > i-4; j--) {
-            if (LC[j].getNumber()-1 != LC[j-1].getNumber()-1 || LC[j].getColor() != LC[j-1].getColor()) {
+            if (this->comboCard[j].getNumber()-1 != this->comboCard[j-1].getNumber()-1 || this->comboCard[j].getColor() != this->comboCard[j-1].getColor()) {
                 temp = false;
             }
         }
@@ -43,12 +67,12 @@ bool Combination::isStraightFlush(vector <Card> &LC) {
     return temp;
 }
 
-bool Combination::isFourOfaKind(vector <Card> &LC){
+bool Combination::isFourOfaKind(){
     int maxSama = 0;
-    for(int i = 0;i<LC.size()-1;i++){
+    for(int i = 0;i<this->comboCard.size()-1;i++){
         int tempSama = 0;
-        for(int j = i+1;j<LC.size();j++){
-            if(LC[i].getNumber()==LC[j].getNumber()){
+        for(int j = i+1;j<this->comboCard.size();j++){
+            if(this->comboCard[i].getNumber()==this->comboCard[j].getNumber()){
                 tempSama +=1;
             }
         }
@@ -61,11 +85,37 @@ bool Combination::isFourOfaKind(vector <Card> &LC){
     }
     return false;
 }
-bool Combination::isFullHouse(vector <Card> &LC){
+bool Combination::isFullHouse(){
+    map<int, int> comboMap;
+    map<int, int>::iterator itr;
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (comboMap.find(this->comboCard[i].getNumber()) == comboMap.end()) {
+            comboMap[this->comboCard[i].getNumber()] = 1;
+        }
+        else {
+            comboMap[this->comboCard[i].getNumber()]++;
+        }
+    }
+    bool ada3 = false;
+    bool ada2 = false;
+    for (itr = comboMap.begin(); itr != comboMap.end(); itr++) {
+        if (itr->second == 3) {
+            ada3 = true;
+        }
+        else if (itr->second == 2) {
+            ada2 = true;
+        }
+    }
 
+    if (ada2 && ada3) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
-bool Combination::isFlush(vector <Card> &LC) {
+bool Combination::isFlush() {
     map<string, int> dictWarna;
     map<string,int>::iterator itr;
     dictWarna["Green"] = 0;
@@ -73,14 +123,14 @@ bool Combination::isFlush(vector <Card> &LC) {
     dictWarna["Yellow"] = 0;
     dictWarna["Blue"] = 0;
 
-    for (int i = 0; i < LC.size(); i++) {
-        if (LC[i].getColor() == "Green") {
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (this->comboCard[i].getColor() == "Green") {
             dictWarna["Green"]++;
         }
-        else if (LC[i].getColor() == "Blue") {
+        else if (this->comboCard[i].getColor() == "Blue") {
             dictWarna["Blue"]++;
         }
-        else if (LC[i].getColor() == "Yellow") {
+        else if (this->comboCard[i].getColor() == "Yellow") {
             dictWarna["Yellow"]++;
         }
         else {
@@ -96,12 +146,12 @@ bool Combination::isFlush(vector <Card> &LC) {
     return false;
 }
 
-bool Combination::isStraight(vector <Card> &LC) {
+bool Combination::isStraight() {
     bool temp;
-    for (int i = LC.size()-1 ; i >= 4; i--) {
+    for (int i = this->comboCard.size()-1 ; i >= this->comboCard.size()-3; i--) {
         temp = true;
         for (int j = i; j > i-4; j--) {
-            if (LC[j].getNumber()-1 != LC[j-1].getNumber()) {
+            if (this->comboCard[j].getNumber()-1 != this->comboCard[j-1].getNumber()) {
                 temp = false;
             }
         }
@@ -112,12 +162,12 @@ bool Combination::isStraight(vector <Card> &LC) {
     return temp;
 }
 
-bool Combination::isThreeOfaKind(vector <Card> &LC){
+bool Combination::isThreeOfaKind(){
     int maxSama = 0;
-    for(int i = 0;i<LC.size()-1;i++){
+    for(int i = 0;i<this->comboCard.size()-1;i++){
         int tempSama = 0;
-        for(int j = i+1;j<LC.size();j++){
-            if(LC[i].getNumber()==LC[j].getNumber()){
+        for(int j = i+1;j<this->comboCard.size();j++){
+            if(this->comboCard[i].getNumber()==this->comboCard[j].getNumber()){
                 tempSama +=1;
             }
         }
@@ -131,16 +181,16 @@ bool Combination::isThreeOfaKind(vector <Card> &LC){
     return false;
 
 }
-bool Combination::isTwoPair(vector <Card> &LC){
+bool Combination::isTwoPair(){
 
 }
 
-bool Combination::isPair(vector <Card> &LC){
+bool Combination::isPair(){
     int maxSama = 0;
-    for(int i = 0;i<LC.size()-1;i++){
+    for(int i = 0;i<this->comboCard.size()-1;i++){
         int tempSama = 0;
-        for(int j = i+1;j<LC.size();j++){
-            if(LC[i].getNumber()==LC[j].getNumber()){
+        for(int j = i+1;j<this->comboCard.size();j++){
+            if(this->comboCard[i].getNumber()==this->comboCard[j].getNumber()){
                 tempSama +=1;
             }
         }
@@ -155,13 +205,13 @@ bool Combination::isPair(vector <Card> &LC){
 
 }
 
-vector<Card> Combination::straightFlush(vector<Card> &LC) {
+void Combination::straightFlush() {
     vector <Card> combo;
     int index;
-    for (int i = LC.size()-1 ; i >= 4; i--) {
+    for (int i = this->comboCard.size()-1 ; i >= 4; i--) {
         bool temp = true;
         for (int j = i; j > i-4; j--) {
-            if (LC[j].getNumber()-1 != LC[j-1].getNumber()-1 || LC[j].getColor() != LC[j-1].getColor()) {
+            if (this->comboCard[j].getNumber()-1 != this->comboCard[j-1].getNumber()-1 || this->comboCard[j].getColor() != this->comboCard[j-1].getColor()) {
                 temp = false;
             }
         }
@@ -172,42 +222,70 @@ vector<Card> Combination::straightFlush(vector<Card> &LC) {
     }
 
     for (int i = index-4; i < index+1; i++) {
-        combo.push_back(LC[i]);
+        combo.push_back(this->comboCard[i]);
     }
 
-    return combo;
+    this->setComboCard(combo);
 }
 
-vector<Card> Combination::fourOfaKind(vector <Card> &LC){
+void Combination::fourOfaKind(){
     int maxSama = 0;
     Card cek;
     vector <Card> hasil;
-    for(int i = 0;i<LC.size()-1;i++){
+    for(int i = 0;i<this->comboCard.size()-1;i++){
         int tempSama = 0;
-        for(int j = i+1;j<LC.size();j++){
-            if(LC[i].getNumber()==LC[j].getNumber()){
+        for(int j = i+1;j<this->comboCard.size();j++){
+            if(this->comboCard[i].getNumber()==this->comboCard[j].getNumber()){
                 tempSama +=1;
             }
         }
         if(tempSama>maxSama){
             maxSama=tempSama;
-            cek = LC[i];
+            cek = this->comboCard[i];
         }
     }
-    for (int i = 0;i<LC.size();i++){
-        if(LC[i].getNumber()==cek.getNumber()){
-            Card temp = LC[i];
+    for (int i = 0;i<this->comboCard.size();i++){
+        if(this->comboCard[i].getNumber()==cek.getNumber()){
+            Card temp = this->comboCard[i];
             hasil.push_back(temp);  
         }
     }
-    return hasil;
+    this->setComboCard(hasil);
 }
 
-vector<Card> Combination::fullHouse(vector <Card> &LC){
+void Combination::fullHouse(){
+    map<int, int> comboMap;
+    map<int, int>::iterator itr;
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (comboMap.find(this->comboCard[i].getNumber()) == comboMap.end()) {
+            comboMap[this->comboCard[i].getNumber()] = 1;
+        }
+        else {
+            comboMap[this->comboCard[i].getNumber()]++;
+        }
+    }
+    int ada_3;
+    int ada_2;
+    for (itr = comboMap.begin(); itr != comboMap.end(); itr++) {
+        if (itr->second == 3) {
+            ada_3 = itr->first;
+        }
+        else if (itr->second == 2) {
+            ada_2 = itr->first;
+        }
+    }
 
+    vector<Card> combo;
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (this->comboCard[i].getNumber() == ada_3 || this->comboCard[i].getNumber() == ada_2) {
+            combo.push_back(this->comboCard[i]);
+        }
+    }
+
+    this->setComboCard(combo);
 }
 
-vector<Card> Combination::flush(vector<Card> &LC) {
+void Combination::flush() {
     map<string, int> dictWarna;
     map<string,int>::iterator itr;
     string warna;
@@ -216,14 +294,14 @@ vector<Card> Combination::flush(vector<Card> &LC) {
     dictWarna["Yellow"] = 0;
     dictWarna["Blue"] = 0;
 
-    for (int i = 0; i < LC.size(); i++) {
-        if (LC[i].getColor() == "Green") {
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (this->comboCard[i].getColor() == "Green") {
             dictWarna["Green"]++;
         }
-        else if (LC[i].getColor() == "Blue") {
+        else if (this->comboCard[i].getColor() == "Blue") {
             dictWarna["Blue"]++;
         }
-        else if (LC[i].getColor() == "Yellow") {
+        else if (this->comboCard[i].getColor() == "Yellow") {
             dictWarna["Yellow"]++;
         }
         else {
@@ -238,22 +316,22 @@ vector<Card> Combination::flush(vector<Card> &LC) {
     }
 
     vector<Card> combo;
-    for (int i = 0; i < LC.size(); i++) {
-        if (LC[i].getColor() == warna) {
-            combo.push_back(LC[i]);
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (this->comboCard[i].getColor() == warna) {
+            combo.push_back(this->comboCard[i]);
         }
     }
 
-    return combo;
+    this->setComboCard(combo);
 }
 
-vector<Card> Combination::straight(vector<Card> &LC) {
+void Combination::straight() {
     int index;
     vector <Card> combo;
-    for (int i = LC.size()-1 ; i >= 4; i--) {
+    for (int i = this->comboCard.size()-1 ; i >= 4; i--) {
         bool temp = true;
         for (int j = i; j > i-4; j--) {
-            if (LC[j].getNumber()-1 != LC[j-1].getNumber()) {
+            if (this->comboCard[j].getNumber()-1 != this->comboCard[j-1].getNumber()) {
                 temp = false;
             }
         }
@@ -263,96 +341,158 @@ vector<Card> Combination::straight(vector<Card> &LC) {
     }
 
     for (int i = index-4; i < index+1; i++) {
-        combo.push_back(LC[i]);
+        combo.push_back(this->comboCard[i]);
     }
 
-    return combo;
+    this->setComboCard(combo);
 }
 
-vector<Card> Combination::threeOfaKind(vector <Card> &LC){
+void Combination::threeOfaKind(){
     int maxSama = 0;
     Card cek;
     vector <Card> hasil;
-    for(int i = LC.size()-1;i> 0;i--){
+    for(int i = this->comboCard.size()-1;i> 0;i--){
         if(maxSama<2){
             int tempSama = 0;
             for(int j=i-1;j>=0;j--){
-                if(LC[i].getNumber()==LC[j].getNumber()){
+                if(this->comboCard[i].getNumber()==this->comboCard[j].getNumber()){
                 tempSama +=1;
             }
             }
             if(tempSama>maxSama){
                 maxSama=tempSama;
-                cek = LC[i];
+                cek = this->comboCard[i];
             }
         }
     }
     int n = 0;
     while(n<3){
-        for (int i = LC.size()-1;i>=0;i++){
-            if(LC[i].getNumber()==cek.getNumber()){
-                Card temp = LC[i];
+        for (int i = this->comboCard.size()-1;i>=0;i++){
+            if(this->comboCard[i].getNumber()==cek.getNumber()){
+                Card temp = this->comboCard[i];
                 hasil.push_back(temp);  
                 n++;
             }
         }
     }
-    return hasil;
+    this->setComboCard(hasil);
 
 }
-vector<Card> Combination::twoPair(vector <Card> &LC){
+void Combination::twoPair(){
 
 }
-vector<Card> Combination::pair(vector <Card> &LC){
+void Combination::pair(){
     int maxSama = 0;
     Card cek;
     vector <Card> hasil;
-    for(int i = LC.size()-1;i> 0;i--){
+    for(int i = this->comboCard.size()-1;i> 0;i--){
         if(maxSama<1){
             int tempSama = 0;
             for(int j=i-1;j>=0;j--){
-                if(LC[i].getNumber()==LC[j].getNumber()){
+                if(this->comboCard[i].getNumber()==this->comboCard[j].getNumber()){
                 tempSama +=1;
             }
             }
             if(tempSama>maxSama){
                 maxSama=tempSama;
-                cek = LC[i];
+                cek = this->comboCard[i];
             }
         }
     }
     int n = 0;
     while(n<2){
-        for (int i = LC.size()-1;i>=0;i++){
-            if(LC[i].getNumber()==cek.getNumber()){
-                Card temp = LC[i];
+        for (int i = this->comboCard.size()-1;i>=0;i++){
+            if(this->comboCard[i].getNumber()==cek.getNumber()){
+                Card temp = this->comboCard[i];
                 hasil.push_back(temp);  
                 n++;
             }
         }
     }
-    return hasil;
+    this->setComboCard(hasil);
 }
 
-double Combination::value(vector<Card> &LC) {
-
+double Combination::value() {
+    double comboValue;
     //straight flush
-
+    if (this->isStraightFlush()) {
+        comboValue = maxValue(this->comboCard).value() + 12.32;
+    }
     //four of a kind
-
+    else if (this->isFourOfaKind()) {
+        comboValue = maxValue(this->comboCard).value() + 11.02;
+    }
     //full house
-
+    else if (this->isFullHouse()) {
+        comboValue = maxValue(this->comboCard).value() + 9.72;
+    }
     //flush
-
+    else if (this->isFlush()) {
+        comboValue = maxValue(this->comboCard).value() + 8.33;
+    }
     //straight
-
+    else if (this->isStraight()) {
+        comboValue = maxValue(this->comboCard).value() + 6.94;
+    }
     //three of a kind
-
+    else if (this->isThreeOfaKind()) {
+        comboValue = maxValue(this->comboCard).value() + 5.56;
+    }
     //two pair
-
+    else if (this->isTwoPair()) {
+        comboValue = maxValue(this->comboCard).value() + 2.78;
+    }
     //pair
-
+    else if (this->isPair()) {
+        comboValue = maxValue(this->comboCard).value() + 1.39;
+    }
     //highcard max value 
+    else {
+        comboValue = maxValue(this->comboCard).value();
+    }
+
+    return comboValue;
+}
+
+void Combination::makeCombo() {
+    if (this->isStraightFlush()) {
+        this->straightFlush();
+        this->setCombo("Straight Flush");
+    }
+    else if (this->isFourOfaKind()) {
+        this->fourOfaKind();
+        this->setCombo("Four of a Kind");
+    }
+    else if (this->isFullHouse()) {
+        this->fullHouse();
+        this->setCombo("Full House");
+    }
+    else if (this->isFlush()) {
+        this->flush();
+        this->setCombo("Flush");
+    }
+    else if (this->isStraight()) {
+        this->straight();
+        this->setCombo("Straight");
+    }
+    else if (this->isThreeOfaKind()) {
+        this->threeOfaKind();
+        this->setCombo("Three of a Kind");
+    }
+    else if (this->isTwoPair()) {
+        this->twoPair();
+        this->setCombo("Two Pair");
+    }
+    else if (this->isPair()) {
+        this->pair();
+        this->setCombo("Pair");
+    }
+    else {
+        Card highest = maxValue(this->comboCard);
+        this->comboCard.clear();
+        this->comboCard.push_back(highest);
+        this->setCombo("High Card");
+    }
 }
 
 void quicksort(vector <Card>& CC, int low, int high) {
@@ -375,26 +515,5 @@ void quicksort(vector <Card>& CC, int low, int high) {
         quicksort(CC, low, pi-1);
         quicksort(CC, pi+1, high);
     }
-
-}
-
-vector<Card> Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
-    vector <Card> CC;
-    for (int i = 0; i < 5; i++) {
-        Card temp = TC[i];
-        CC.push_back(temp);
-    }
-
-    for (int i = 0; i < 2; i++) {
-        Card temp = PC[i];
-        CC.push_back(temp);
-    }
-
-    // Sorting card berdasarkan angka dan warnanya
-
-    quicksort(CC, 0, TC.size()-1);
-}
-
-int Combination::compareTwoCombo(vector <Card> &CC1, vector <Card> &CC2) {
 
 }
