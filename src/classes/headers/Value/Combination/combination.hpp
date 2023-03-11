@@ -15,7 +15,7 @@ class Combination {
     public:
         Combination();
         ~Combination();
-        double value();
+        double value(vector<Card> &LC);
         double getValue();
         string getCombo();
         void setValue(double);
