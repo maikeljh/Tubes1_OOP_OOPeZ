@@ -3,8 +3,9 @@
 
 using namespace std;
 
-Card::Card(int number, string color):Value(),BaseCard(number, color){}
+Card::Card():Value(),BaseCard(){}
 
+Card::Card(int number, string color):Value(),BaseCard(number, color){}
 
 Card& Card::operator=(const Card& C) {
     this->number = C.number;

@@ -8,6 +8,7 @@ class BaseCard {
         string color;
 
     public:
+        BaseCard();
         BaseCard(int number, string color);
         int getNumber();
         string getColor();
