@@ -81,36 +81,43 @@ void CandyGame::startGame(){
             
             while(!isEndGame()){
                 this->point = 64;
-                while(this->round <= 6){
+                while(this->round < 6){
                     this->round++;
+                    cout << "\nRONDE " << this->round;
                     if(this->round == 2){
                         this->deckAbility = CG.generateAbilityDeck();
                         for(int i = 0; i < 7; i++){
                             this->players[i].addAbilityCard(this->deckAbility.pop());
                         }
                     }
-                    cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
-                    while(!this->valid){
-                        try{
-                            cin >> command;
-                            Command *action = CP.parser(command);
-                            action->executeAction(*this);
-                            if(this->isClockWise){
-                                this->playerTurn = (this->playerTurn + 1) % 7;
-                            } else {
-                                this->playerTurn = (this->playerTurn - 1) % 7;
+                    for(int i = 0; i < 7; i++){
+                        cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
+                        while(!this->valid){
+                            try{
+                                cin >> command;
+                                Command *action = CP.parser(command);
+                                action->executeAction(*this);
+                                if(this->isClockWise){
+                                    this->playerTurn = (this->playerTurn + 1) % 7;
+                                } else {
+                                    this->playerTurn = (this->playerTurn - 1) % 7;
+                                }
+                            } catch(...){
+                                cout << "Command tidak valid!" << endl;
                             }
-                        } catch(...){
-                            cout << "Command tidak valid!" << endl;
                         }
+                        this->valid = false;
                     }
-                    this->valid = false;
+                    if(this->round < 6){
+                        this->table.addCard(this->deck.pop());
+                    }
                 }
                 // Penambahan poin untuk pemenang ronde
                 for (int i = 0; i < 7; i++) {
                     this->players[i].getCombo().mergeCard(this->table.getTableCard(), this->players[i].getDeckPlayer());
                     this->players[i].getCombo().makeCombo();
                 }
+
                 int roundWinner = this->chooseRoundWinner();
                 this->players[roundWinner].addPoint(this->point);
 
@@ -122,6 +129,8 @@ void CandyGame::startGame(){
                     erase = this->players[i].pop();
                     this->players[i].push(this->deck.pop());
                     this->players[i].push(this->deck.pop());
+                    this->players[i].getAbilityCard().setType("");
+                    this->players[i].getAbilityCard().setUseable(false);
                 }
             }
 }
