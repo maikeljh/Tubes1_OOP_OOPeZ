@@ -42,6 +42,7 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "player.hpp": "c",
-    "inventoryholder.hpp": "c"
+    "inventoryholder.hpp": "c",
+    "map": "cpp"
   }
 }
