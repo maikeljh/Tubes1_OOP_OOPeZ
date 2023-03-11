@@ -1,0 +1,59 @@
+#include "../../../headers/Command/children/switch.hpp"
+
+Switch::Switch(){
+    commandId = 9;
+}
+
+void Switch::executeAction(CandyGame& Game){
+    Player playernow = Game.getPlayer(Game.getPlayerTurn());
+    int playerTurn = Game.getPlayerTurn();
+    if (playernow.checkValidAbilityCard("SWITCH")){
+        cout << playernow.getNickname() << " melakukan switch!" << endl;
+        cout << "Kartumu sekarang adalah:" << endl;
+        playernow.printCard();
+
+        // choose a player
+        cout << "Silahkan pilih pemain yang kartunya ingin anda tukar:" << endl;
+        for (int i=0; i<Game.getNPlayers(); i++){
+            // print player list that can be switched (all exc the current player)
+            if (i!=playerTurn){
+                if (i<playerTurn){
+                    cout << i+1 << ". ";
+                } else {
+                    cout << i << ". ";
+                }
+                cout << Game.getPlayer(i).getNickname() << endl;
+            }
+        }
+        int idxSwitch;
+        cin >> idxSwitch;
+        if (idxSwitch<playerTurn){
+            idxSwitch--;
+        }
+
+        // switch
+        Player playerSwitch = Game.getPlayer(idxSwitch);
+        vector<Card>& deck0 = playernow.getDeckPlayer();
+        vector<Card>& deck1 = playerSwitch.getDeckPlayer();
+        Card cardnow_1 = playernow.pop();
+        Card cardnow_0 = playernow.pop();
+        Card cardswitch_1 = playerSwitch.pop();
+        Card cardswitch_0 = playerSwitch.pop();
+
+        deck0.push_back(cardswitch_0);
+        deck0.push_back(cardswitch_1);
+        deck1.push_back(cardnow_0);
+        deck1.push_back(cardnow_1);
+
+        cout << "Kedua kartu " << playernow.getNickname() << " telah ditukar dengan " << playerSwitch.getNickname() << "!" << endl;
+        cout << "Kartumu sekarang adalah:" << endl;
+        playernow.printCard();
+        playernow.useAbilityCard();
+
+        // giliran dilanjut
+        Next *next;
+        next->executeAction(Game);
+    } else {
+        cout << "Oops, kartu ability switchmu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n";
+    }
+}

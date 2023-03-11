@@ -21,4 +21,5 @@ class InventoryHolder {
 };
 template class InventoryHolder<Card>;
 template class InventoryHolder<AbilityCard>;
+template class InventoryHolder<BaseCard>;
 #endif

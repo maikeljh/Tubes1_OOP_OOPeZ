@@ -95,3 +95,7 @@ long long int Player::getPoint(){
 vector<Card>& Player::getDeckPlayer(){
     return this->mainDeck;
 }
+
+AbilityCard& Player::getAbilityCard(){
+    return this->ability;
+}

@@ -4,6 +4,6 @@ Next::Next():Command(){
     commandId = 1;
 }
 
-void Next::executeAction(Game& Game){
+void Next::executeAction(CandyGame& Game){
     cout << "\nGiliran dilanjut ke pemain selanjutnya." << endl;
 }
