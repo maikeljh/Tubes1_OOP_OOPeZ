@@ -43,7 +43,7 @@ void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
 
     // Sorting card berdasarkan angka dan warnanya
 
-    quicksort(CC, 0, TC.size()-1);
+    this->quicksort(CC, 0, TC.size()-1);
     this->setComboCard(CC);
 }
 
@@ -565,7 +565,7 @@ void Combination::makeCombo() {
     }
 }
 
-void quicksort(vector <Card>& CC, int low, int high) {
+void Combination::quicksort(vector <Card>& CC, int low, int high) {
     if (low < high) {
         int pivot = CC[high].value();
         int i = low-1;

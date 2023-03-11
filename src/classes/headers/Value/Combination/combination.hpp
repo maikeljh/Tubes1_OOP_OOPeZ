@@ -42,6 +42,7 @@ class Combination {
         void threeOfaKind();
         void twoPair();
         void pair();
+        void quicksort(vector <Card>& CC, int low, int high);
 
 };
 
