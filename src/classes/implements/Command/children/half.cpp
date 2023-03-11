@@ -6,10 +6,13 @@ Half::Half():Command(){
     commandId=5;
 }
 
-void Half::executeAction(Game& Game){
-    cout << Game.getPlayer().getNickname() << " melakukan DOUBLE! Poin hadiah turun dari " << Game.getPoint();
-    Game.setPoint(Game.getPoint()*0.5);
-    cout << " menjadi " << Game.getPoint() << "!" << endl;
+void Half::executeAction(Game& game){
+    Game *now = &game;
+    CandyGame temp = *(CandyGame*)now;
+
+    cout << temp.getPlayer(temp.getPlayerTurn()).getNickname() << " melakukan DOUBLE! Poin hadiah turun dari " << temp.getPoint();
+    temp.setPoint(temp.getPoint()*0.5);
+    cout << " menjadi " << temp.getPoint() << "!" << endl;
     Next next;
-    next.executeAction(Game);
+    next.executeAction(game);
 }

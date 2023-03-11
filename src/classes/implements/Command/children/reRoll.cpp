@@ -4,20 +4,23 @@ ReRoll::ReRoll():Command(){
     commandId=2;
 }
 
-void ReRoll::executeAction(Game& Game){
+void ReRoll::executeAction(Game& game){
+    Game *now = &game;
+    CandyGame temp = *(CandyGame*)now;
+
     // Buang Kartu
     cout << "Melakukan pembuangan kartu yang sedang dimiliki" << endl;
-    Card c = Game.getPlayer().pop();
-    c = Game.getPlayer().pop();
+    Card c = temp.getPlayer(game.getPlayerTurn()).pop();
+    c = temp.getPlayer(game.getPlayerTurn()).pop();
 
     // Ambil Kartu Baru
-    Game.getPlayer().push(Game.getDeckCard().pop());
-    Game.getPlayer().push(Game.getDeckCard().pop());
+    temp.getPlayer(game.getPlayerTurn()).push(temp.getDeckCard().pop());
+    temp.getPlayer(game.getPlayerTurn()).push(temp.getDeckCard().pop());
     cout << "\nKamu mendapatkan 2 kartu baru yaitu:" << endl;
-    Game.getPlayer().printCard();
-    Game.getPlayer().useAbilityCard();
+    temp.getPlayer(game.getPlayerTurn()).printCard();
+    temp.getPlayer(game.getPlayerTurn()).useAbilityCard();
 
     // Giliran Dilanjut
     Next next;
-    next.executeAction(Game);
+    next.executeAction(game);
 }

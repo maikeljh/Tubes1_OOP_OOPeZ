@@ -14,7 +14,7 @@ class Command {
     public:
         Command(){}
         Command(int commandId){this->commandId = commandId;}
-        virtual void executeAction(Game& Game)=0;
+        virtual void executeAction(Game&)=0;
 };
 
 #endif

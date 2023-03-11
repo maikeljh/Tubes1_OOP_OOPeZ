@@ -91,3 +91,7 @@ Combination Player::getCombo(){
 long long int Player::getPoint(){
     return this->point;
 }
+
+vector<Card>& Player::getDeckPlayer(){
+    return this->mainDeck;
+}

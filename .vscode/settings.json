@@ -42,7 +42,13 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "player.hpp": "c",
+<<<<<<< HEAD
     "inventoryholder.hpp": "c",
     "map": "cpp"
   }
+=======
+    "inventoryholder.hpp": "c"
+  },
+  "C_Cpp.errorSquiggles": "enabled"
+>>>>>>> c2261c2d0df871ab5f11719473ae6d955aa202e6
 }

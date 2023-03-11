@@ -16,7 +16,7 @@ class CandyGame : public Game {
         const long long int maxPoint = (long long) 1 << 32;
 
     public:
-        CandyGame(int max);
+        CandyGame();
         CandyGame(const CandyGame& other);
         ~CandyGame();
         void startGame();

@@ -41,6 +41,7 @@ class Player: public InventoryHolder<Card>{
         string getNickname();
         Combination getCombo();
         long long int getPoint();
+        vector<Card>& getDeckPlayer();
         
 };
 
