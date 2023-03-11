@@ -8,6 +8,8 @@ class UnoAbilityCard: public AbilityCard{
         string color;
     public:
         UnoAbilityCard();
+        UnoAbilityCard(string color);
+        UnoAbilityCard(const UnoAbilityCard& other);
 };
 
 #endif
