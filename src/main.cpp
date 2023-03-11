@@ -1,9 +1,9 @@
 #include <iostream>
-#include "./classes/headers/Game/game.hpp"
+#include "./classes/headers/Game/candyGame.hpp"
 
 using namespace std;
 
 int main(){
-    Game GG;
+    CandyGame GG;
     GG.startGame();
 }

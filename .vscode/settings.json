@@ -43,5 +43,6 @@
     "typeinfo": "cpp",
     "player.hpp": "c",
     "inventoryholder.hpp": "c"
-  }
+  },
+  "C_Cpp.errorSquiggles": "enabled"
 }

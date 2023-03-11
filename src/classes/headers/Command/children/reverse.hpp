@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "../command.hpp"
-#include "../../Game/game.hpp"
+#include "../../Game/candyGame.hpp"
 #include "next.hpp"
 
 using namespace std;

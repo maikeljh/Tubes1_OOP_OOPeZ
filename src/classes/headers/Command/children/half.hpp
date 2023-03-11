@@ -4,14 +4,14 @@
 #include <iostream>
 #include "../command.hpp"
 #include "next.hpp"
-#include "../../Game/game.hpp"
+#include "../../Game/candyGame.hpp"
 
 using namespace std;
 
 class Half: public Command {
     public:
         Half(); // ID = 5
-        void executeAction(Game& Game);
+        void executeAction(Game&);
 };
 
 #endif

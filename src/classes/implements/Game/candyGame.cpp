@@ -5,7 +5,7 @@
 
 using namespace std;
 
-CandyGame::CandyGame(int max):Game(max){
+CandyGame::CandyGame():Game(5){
     this->round = 0;
     this->point = 0;
 }
