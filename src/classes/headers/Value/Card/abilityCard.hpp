@@ -14,6 +14,7 @@ class AbilityCard {
         AbilityCard(string type);
         AbilityCard(const AbilityCard& other);
         string getType();
+        void setType(string type);
         bool getUseable();
         void setUseable(bool);
 };

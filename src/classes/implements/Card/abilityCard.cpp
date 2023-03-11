@@ -29,3 +29,7 @@ bool AbilityCard::getUseable(){
 void AbilityCard::setUseable(bool isUsable){
     useable = isUsable;
 }
+
+void AbilityCard::setType(string type){
+    this->type = type;
+}

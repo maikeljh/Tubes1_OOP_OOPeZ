@@ -7,7 +7,9 @@ Switch::Switch(){
 void Switch::executeAction(CandyGame& Game){
     Player playernow = Game.getPlayer(Game.getPlayerTurn());
     int playerTurn = Game.getPlayerTurn();
-    if (playernow.checkValidAbilityCard("SWITCH")){
+    if (playernow.getAbilityCard().getType()==""){
+        cout << "Eits, kamu tidak memiliki kartu SWITCH!" << endl;
+    } else if (playernow.checkValidAbilityCard("SWITCH")){
         cout << playernow.getNickname() << " melakukan switch!" << endl;
         cout << "Kartumu sekarang adalah:" << endl;
         playernow.printCard();

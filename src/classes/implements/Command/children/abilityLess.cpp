@@ -11,45 +11,45 @@ void Abilityless::executeAction(CandyGame& Game){
     for (int i=0; i<Game.getNPlayers(); i++){
         players.push_back(Game.getPlayer(i));
     }
-    if (isAllAbilityUsed(players)){
-        cout << "Eits, ternyata semua pemain sudah memakai kartu kemampuan. ";
-        cout << "Yah kamu kena sendiri deh, kemampuanmu menjadi abilityless. Yah, pengunaan kartu ini sia-sia" << endl;
-    } else if (playernow.checkValidAbilityCard("SWITCH")){
-        cout << playernow.getNickname() << " akan mematikan kartu ablity lawan!" << endl;
-
-        // choose a player
-        cout << "Silahkan pilih pemain yang kartu abilitynya ingin dimatikan:" << endl;
-        for (int i=0; i<Game.getNPlayers(); i++){
-            // print player list that can be switched (all exc the current player)
-            if (i!=playerTurn){
-                if (i<playerTurn){
-                    cout << i+1 << ". ";
-                } else {
-                    cout << i << ". ";
-                }
-                cout << Game.getPlayer(i).getNickname() << endl;
-            }
-        }
-        int idxAbilityless;
-        cin >> idxAbilityless;
-        if (idxAbilityless<playerTurn){
-            idxAbilityless--;
-        }
-
-        // turn off ability
-        Player playerAbilityless = Game.getPlayer(idxAbilityless);
-        AbilityCard& targetAbilityCard = playerAbilityless.getAbilityCard();
-        if (targetAbilityCard.getUseable()){
-            targetAbilityCard.setUseable(false);
+    if (playernow.checkValidAbilityCard("ABILITYLESS")){
+        if (isAllAbilityUsed(players)){
+            cout << "Eits, ternyata semua pemain sudah memakai kartu kemampuan. ";
+            cout << "Yah kamu kena sendiri deh, kemampuanmu menjadi abilityless. Yah, pengunaan kartu ini sia-sia" << endl;
         } else {
-            cout << "Kartu ability " << playerAbilityless.getNickname() << " telah dipakai sebelumnya." << endl;
-            cout << "Yah, sayang penggunaan kartu ini sia-sia :(" << endl;
+            cout << playernow.getNickname() << " akan mematikan kartu ablity lawan!" << endl;
+            // choose a player
+            cout << "Silahkan pilih pemain yang kartu abilitynya ingin dimatikan:" << endl;
+            for (int i=0; i<Game.getNPlayers(); i++){
+                // print player list that can be switched (all exc the current player)
+                if (i!=playerTurn){
+                    if (i<playerTurn){
+                        cout << i+1 << ". ";
+                    } else {
+                        cout << i << ". ";
+                    }
+                    cout << Game.getPlayer(i).getNickname() << endl;
+                }
+            }
+            int idxAbilityless;
+            cin >> idxAbilityless;
+            if (idxAbilityless<playerTurn){
+                idxAbilityless--;
+            }
+
+            // Turn off ability
+            Player playerAbilityless = Game.getPlayer(idxAbilityless);
+            AbilityCard& targetAbilityCard = playerAbilityless.getAbilityCard();
+            if (targetAbilityCard.getUseable()){
+                targetAbilityCard.setUseable(false);
+                cout << "Kartu ability " << playerAbilityless.getNickname() << " telah dimatikan." << endl;
+            } else {
+                cout << "Kartu ability " << playerAbilityless.getNickname() << " telah dipakai sebelumnya." << endl;
+                cout << "Yah, sayang penggunaan kartu ini sia-sia :(" << endl;
+            }
+
+            playernow.useAbilityCard();
         }
-
-        cout << "Kartu ability " << playerAbilityless.getNickname() << " telah dimatikan." << endl;
         playernow.useAbilityCard();
-
-        Game.setValid(true);
     } else {
         cout << "Eits, kamu tidak punya kartunya :P" << endl;
     }
