@@ -26,7 +26,7 @@ Command* CommandParser::parser(string inputCommand){
     } else if (inputCommand=="REVERSE"){
         Reverse *reverse = new Reverse();
         return reverse;
-    } else if (inputCommand=="SWAP CARD"){
+    } else if (inputCommand=="SWAPCARD"){
         SwapCard *swapcard = new SwapCard();
         return swapcard;
     } else if (inputCommand=="SWITCH"){
