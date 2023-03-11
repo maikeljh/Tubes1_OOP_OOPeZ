@@ -27,23 +27,8 @@ Combination::~Combination() {
 }
 
 double Combination::value(vector<Card> &LC) {
-    bool urutan = true;
-    bool warnasama = true;
-    for(int i = 1; i<LC.size();i++){
-        if(LC[i].getNumber()!=LC[i-1].getNumber()-1){
-            urutan = false;
-        }
-        if (LC[i].getColor()!=LC[i-1].getColor()){
-            warnasama = false;
-        }
-    }
 
     //straight flush
-    if(urutan && warnasama){
-        this->combo = "Straight Flush";
-        this->comboCard = LC;
-        this->point= maxValue(LC).value() + 12.32; //ktnya highcardnya hrs pake maxvalue di generic
-    }
 
     //four of a kind
 
@@ -62,6 +47,29 @@ double Combination::value(vector<Card> &LC) {
     //highcard max value 
 }
 
+void quicksort(vector <Card>& CC, int low, int high) {
+    if (low < high) {
+        int pivot = CC[high].value();
+        int i = low-1;
+        for (int j = low; j < high; j++) {
+            if (CC[j].value() <= pivot) {
+                i += 1;
+                Card temp = CC[i];
+                CC[i] = CC[j];
+                CC[j] = temp;
+            }
+        }
+        Card temp = CC[i+1];
+        CC[i+1] = CC[high];
+        CC[high] = temp;
+        int pi = i + 1;
+
+        quicksort(CC, low, pi-1);
+        quicksort(CC, pi+1, high);
+    }
+
+}
+
 vector<Card> Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
     vector <Card> CC;
     for (int i = 0; i < 5; i++) {
@@ -76,9 +84,7 @@ vector<Card> Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
 
     // Sorting card berdasarkan angka dan warnanya
 
-    for (int i = 0; i < CC.size(); i++) {
-        
-    }
+    quicksort(CC, 0, TC.size()-1);
 }
 
 int Combination::compareTwoCombo(vector <Card> &CC1, vector <Card> &CC2) {

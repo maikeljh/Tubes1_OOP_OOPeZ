@@ -19,6 +19,7 @@ class Card : public Value {
         bool operator== (Card&);
         int getNumber();
         string getColor();
+        void setNumber(int number);
         double value();
 
 };

@@ -37,22 +37,22 @@ string Card::getColor(){
     return this->color;
 }
 
+void Card::setNumber(int number) {
+    this->number = number;
+}
+
 double Card::value(){
     // Implement High Card
-    for(int i = 1; i<14;i++){
-        if(this->number == i){
-            if(this->color == "Green"){
-                return (i/10)+(0*0.03);
-            }
-            else if (this->color == "Blue"){
-                return (i/10)+(1*0.03);
-            }
-            else if (this->color == "Yellow"){
-                return (i/10)+(2*0.03);
-            }
-            else if (this->color == "Red"){
-                return (i/10)+(3*0.03);
-            }
-        }
+    if(this->color == "Green"){
+        return (this->number/10)+(0*0.03);
+    }
+    else if (this->color == "Blue"){
+        return (this->number/10)+(1*0.03);
+    }
+    else if (this->color == "Yellow"){
+        return (this->number/10)+(2*0.03);
+    }
+    else if (this->color == "Red"){
+        return (this->number/10)+(3*0.03);
     }
 }
