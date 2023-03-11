@@ -23,6 +23,9 @@ class Combination {
         void setComboCard(vector <Card> &combo);
         void mergeCard(vector <Card> &TC, vector <Card> &PC);
         void makeCombo();
+        bool operator> (Combination&);
+        bool operator< (Combination&);
+        bool operator== (Combination&);
         bool isStraightFlush();
         bool isFourOfaKind();
         bool isFullHouse();
