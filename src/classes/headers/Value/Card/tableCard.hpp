@@ -19,6 +19,7 @@ class TableCard {
         TableCard(const TableCard& other);
         ~TableCard();
         void addCard(const Card& C);
+        vector<Card>& getTableCard();
         void clearTable();
         void printTable();
 };

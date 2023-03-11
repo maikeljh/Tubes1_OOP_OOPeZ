@@ -21,6 +21,7 @@ class CandyGame : public Game {
         ~CandyGame();
         void startGame();
         int chooseWinner();
+        int chooseRoundWinner();
         void setRound(int round);
         void setPoint(long long int point);
         int getRound();

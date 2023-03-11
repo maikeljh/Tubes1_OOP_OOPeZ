@@ -26,4 +26,8 @@ void TableCard::printTable(){
     }
 }
 
+vector<Card>& TableCard::getTableCard() {
+    return this->listOfCards;
+}
+
 TableCard::~TableCard(){}

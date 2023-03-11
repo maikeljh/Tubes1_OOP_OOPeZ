@@ -106,6 +106,13 @@ void CandyGame::startGame(){
                     }
                     this->valid = false;
                 }
+                // Penambahan poin untuk pemenang ronde
+                for (int i = 0; i < 7; i++) {
+                    this->players[i].getCombo().mergeCard(this->table.getTableCard(), this->players[i].getDeckPlayer());
+                    this->players[i].getCombo().makeCombo();
+                }
+                int roundWinner = this->chooseRoundWinner();
+                this->players[roundWinner].addPoint(this->point);
 
                 // Restart Game
                 this->round = 0;
@@ -118,6 +125,18 @@ void CandyGame::startGame(){
                 }
             }
 }
+
+int CandyGame::chooseRoundWinner() {
+    Combination maximum = this->players[0].getCombo();
+    int idx = 0;
+    for (int i = 1; i < 7; i++) {
+        if (this->players[i].getCombo() > maximum) {
+            idx = i;
+        }
+    }
+    return idx;
+}
+
 
 int CandyGame::chooseWinner(){
     double maximum = 0;
