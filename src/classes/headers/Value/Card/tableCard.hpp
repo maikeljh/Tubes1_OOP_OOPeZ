@@ -12,10 +12,10 @@ class TableCard {
     private:
         int neff;
         vector<Card> listOfCards;
-        const int max = 5;
+        const int max;
 
     public:
-        TableCard();
+        TableCard(int max);
         TableCard(const TableCard& other);
         ~TableCard();
         void addCard(const Card& C);

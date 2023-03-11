@@ -9,37 +9,29 @@
 using namespace std;
 
 class Game {
-    private:
-        int round;
+    protected:
         vector<Player> players;
         const int nPlayers = 7;
-        long long int point;
-        DeckCard<Card> deck;
         bool isClockWise;
         int playerTurn;
         TableCard table;
-        const long long int maxPoint = (long long) 1 << 32;
         int lastIdxTurn;
 
     public:
-        Game();
+        Game(int max);
         Game(const Game& other);
         ~Game();
-        void startGame();
-        int chooseWinner();
-        void setRound(int round);
-        void setPoint(long long int point);
+        virtual void startGame() = 0;
+        virtual int chooseWinner() = 0;
         void setIsClockWise(bool isClockWise);
         void setPlayerTurn(int playerTurn);
-        int getRound();
-        long long int getPoint();
-        DeckCard<Card>& getDeckCard();
         bool getIsClockWise();
         int getPlayerTurn();
         Player& getPlayer();
-        bool isEndGame();
+        virtual bool isEndGame() = 0;
         int getLastIdxTurn();
         void setLastIdxTurn(int last);
+        int getNPlayers();
 };
 
 #endif

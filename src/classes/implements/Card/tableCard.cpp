@@ -3,7 +3,7 @@
 
 using namespace std;
 
-TableCard::TableCard():neff(0){}
+TableCard::TableCard(int max):neff(0),max(max){}
 
 void TableCard::addCard(const Card& C){
     if(neff < max){
