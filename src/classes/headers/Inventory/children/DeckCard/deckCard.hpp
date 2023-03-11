@@ -10,7 +10,7 @@
 using namespace std;
 
 template <class T>
-class DeckCard: public InventoryHolder{
+class DeckCard: public InventoryHolder<T>{
     private:
         vector<T> deck;
         int neff;

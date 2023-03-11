@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class Player: public InventoryHolder {
+class Player: public InventoryHolder<Card>{
     private:
         int id;
         string nickname;

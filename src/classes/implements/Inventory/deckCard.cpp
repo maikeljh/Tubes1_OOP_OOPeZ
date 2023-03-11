@@ -9,7 +9,7 @@ DeckCard<T>::DeckCard():DeckCard(0, 52){
 }
 
 template <class T>
-DeckCard<T>::DeckCard(int neff, int size): InventoryHolder(), neff(neff), size(size){
+DeckCard<T>::DeckCard(int neff, int size): InventoryHolder<T>(), neff(neff), size(size){
 }
 
 template <class T>
