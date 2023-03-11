@@ -141,13 +141,23 @@ void CandyGame::startGame(){
 
         int roundWinner = this->chooseRoundWinner();
         this->players[roundWinner].addPoint(this->point);
-        cout << "Selamat kepada pemain " << this->players[roundWinner].getNickname() << " telah memenangkan babak dan memperoleh poin sebanyak " << this->point << endl;
+        cout << "\nSelamat kepada pemain " << this->players[roundWinner].getNickname() << " telah memenangkan babak dan memperoleh poin sebanyak " << this->point << endl;
         cout << "Dengan combo "; this->players[roundWinner].getCombo().printCombo();
         cout << "DENGAN POIN  " << this->players[roundWinner].getCombo().getValue() << endl;
 
+        // Restart Game
+        this->round = 0;
+        this->deck = CG.randomizeCard();
+        for(int i = 0; i < 7; i++){
+            Card erase = this->players[i].pop();
+            erase = this->players[i].pop();
+            this->players[i].push(this->deck.pop());
+            this->players[i].push(this->deck.pop());
+            this->players[i].getAbilityCard().setType("");
+            this->players[i].getAbilityCard().setUseable(false);
+        }
         this->table.clearTable();
     }
-
     cout << "\nSELAMAT KEPADA PEMENANG YAITU " << this->players[chooseWinner()].getNickname();
 }
 
