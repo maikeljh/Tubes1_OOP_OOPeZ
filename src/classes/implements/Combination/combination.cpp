@@ -264,7 +264,7 @@ void Combination::straightFlush() {
     for (int i = index-4; i < index+1; i++) {
         combo.push_back(this->comboCard[i]);
     }
-
+    this->comboCard.clear();
     this->setComboCard(combo);
 }
 
@@ -290,6 +290,7 @@ void Combination::fourOfaKind(){
             hasil.push_back(temp);  
         }
     }
+    this->comboCard.clear();
     this->setComboCard(hasil);
 }
 
@@ -322,6 +323,7 @@ void Combination::fullHouse(){
         }
     }
 
+    this->comboCard.clear();
     this->setComboCard(combo);
 }
 
@@ -362,6 +364,7 @@ void Combination::flush() {
         }
     }
 
+    this->comboCard.clear();
     this->setComboCard(combo);
 }
 
@@ -384,6 +387,7 @@ void Combination::straight() {
         combo.push_back(this->comboCard[i]);
     }
 
+    this->comboCard.clear();
     this->setComboCard(combo);
 }
 
@@ -411,6 +415,8 @@ void Combination::threeOfaKind(){
             hasil.push_back(temp);  
         }
     }
+
+    this->comboCard.clear();
     this->setComboCard(hasil);
 
 }
@@ -455,6 +461,8 @@ void Combination::twoPair(){
             }
         }
     }
+
+    this->comboCard.clear();
     this->setComboCard(hasil);
 }
 void Combination::pair(){
@@ -481,6 +489,8 @@ void Combination::pair(){
             hasil.push_back(temp);  
         }
     }
+
+    this->comboCard.clear();
     this->setComboCard(hasil);
 }
 
