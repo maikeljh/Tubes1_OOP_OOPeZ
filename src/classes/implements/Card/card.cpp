@@ -26,15 +26,15 @@ bool Card::operator== (Card& c){
 double Card::value(){
     // Implement High Card
     if(this->color == "Green"){
-        return (this->number/10)+(0*0.03);
+        return ((1.0 * this->number) /10)+(0*0.03);
     }
     else if (this->color == "Blue"){
-        return (this->number/10)+(1*0.03);
+        return ((1.0 * this->number)/10)+(1*0.03);
     }
     else if (this->color == "Yellow"){
-        return (this->number/10)+(2*0.03);
+        return ((1.0 * this->number)/10)+(2*0.03);
     }
     else if (this->color == "Red"){
-        return (this->number/10)+(3*0.03);
+        return ((1.0 * this->number)/10)+(3*0.03);
     }
 }
