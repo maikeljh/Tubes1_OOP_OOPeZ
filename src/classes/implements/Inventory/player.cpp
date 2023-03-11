@@ -23,18 +23,43 @@ Player& Player::operator=(const Player& other){
     this->mainDeck.push_back(other.mainDeck[1]);
     return *this;
 }
+Player& Player::operator+(const Card& add){
+    this->mainDeck.push_back(add);
+    return *this;
+}
+
+Player& Player::operator-(){
+    this->mainDeck.pop_back();
+    return *this;
+}
+
+bool Player::operator>(const Player& other){
+    return this->point > other.point;
+}
+
+bool Player::operator<(const Player& other){
+    return this->point < other.point;
+}
+bool Player::operator==(const Player& other){
+    return (this->point == other.point);
+    
+}
 Player::~Player(){
 
 }
 
 void Player::useAbilityCard(){
-    // panggil useAbility
+    this->ability.setUseable(false);
 }
+
 bool Player::checkValidAbilityCard(string ability){
     return this->ability.getType() == ability;
 }
 void Player::addAbilityCard(const AbilityCard& AC){
     this->ability = AC;
+}
+void Player::addPoint(long long int round_points){
+    this->point += round_points;
 }
 
 Card Player::getCard(int idx){
@@ -50,7 +75,7 @@ Card Player::pop(){
     this->mainDeck.pop_back();
     return PCx;
 }
-void Player::printPlayerCard(){
+void Player::printCard(){
     cout << "1. " << this->mainDeck[0].getNumber() << " " << this->mainDeck[0].getColor() << endl;
     cout << "2. " << this->mainDeck[1].getNumber() << " " << this->mainDeck[1].getColor() << endl;
 }

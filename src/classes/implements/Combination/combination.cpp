@@ -1,4 +1,5 @@
 #include "../../headers/Value/Combination/combination.hpp"
+#include "../generic.cpp"
 #include <iostream>
 
 using namespace std;
@@ -25,25 +26,42 @@ Combination::~Combination() {
 
 }
 
-double Combination::value() {
+double Combination::value(vector<Card> &LC) {
 
+    //straight flush
+
+    //four of a kind
+
+    //full house
+
+    //flush
+
+    //straight
+
+    //three of a kind
+
+    //two pair
+
+    //pair
+
+    //highcard max value 
 }
 
 void quicksort(vector <Card>& CC, int low, int high) {
     if (low < high) {
-        int pivot = CC[high].getNumber();
+        int pivot = CC[high].value();
         int i = low-1;
         for (int j = low; j < high; j++) {
-            if (CC[j].getNumber() <= pivot) {
+            if (CC[j].value() <= pivot) {
                 i += 1;
-                int temp = CC[i].getNumber();
-                CC[i].setNumber(CC[j].getNumber());
-                CC[j].setNumber(temp);
+                Card temp = CC[i];
+                CC[i] = CC[j];
+                CC[j] = temp;
             }
         }
-        int temp = CC[i+1].getNumber();
-        CC[i+1].setNumber(CC[high].getNumber());
-        CC[high].setNumber(temp);
+        Card temp = CC[i+1];
+        CC[i+1] = CC[high];
+        CC[high] = temp;
         int pi = i + 1;
 
         quicksort(CC, low, pi-1);

@@ -6,7 +6,8 @@ using namespace std;
 
 class Value {
     public:
-        virtual double value();
+        Value();
+        virtual double value() = 0;
 };
 
 #endif

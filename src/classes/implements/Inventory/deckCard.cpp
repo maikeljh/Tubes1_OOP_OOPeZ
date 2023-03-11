@@ -9,7 +9,7 @@ DeckCard<T>::DeckCard():DeckCard(0, 52){
 }
 
 template <class T>
-DeckCard<T>::DeckCard(int neff, int size): InventoryHolder(), neff(neff), size(size){
+DeckCard<T>::DeckCard(int neff, int size): InventoryHolder<T>(), neff(neff), size(size){
 }
 
 template <class T>
@@ -49,7 +49,7 @@ int DeckCard<T>::getSize(){
 }
 
 template<>
-void DeckCard<Card>::printDeckCard(){
+void DeckCard<Card>::printCard(){
     cout << "Isi dari deck sekarang :" << endl;
     for(int i = 0; i < this->neff; i++){
         cout << i+1 << ". " << this->deck[i].getNumber() <<  " " << this->deck[i].getColor() << endl;
@@ -57,7 +57,7 @@ void DeckCard<Card>::printDeckCard(){
 }
 
 template<>
-void DeckCard<AbilityCard>::printDeckCard(){
+void DeckCard<AbilityCard>::printCard(){
     cout << "Isi dari deck sekarang :" << endl;
     for(int i = 0; i < this->neff; i++){
         cout << i+1 << ". " << this->deck[i].getType() << endl;

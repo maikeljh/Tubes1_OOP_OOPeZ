@@ -1,7 +1,7 @@
 #include "../../headers/CardGenerator/cardGenerator.hpp"
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <cstring>
 #include <time.h>
 #include <vector>
 

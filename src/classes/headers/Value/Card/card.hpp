@@ -13,11 +13,15 @@ class Card : public Value {
     public:
         Card();
         Card(int number, string color);
-        Card& operator= (Card&);
+        Card& operator= (const Card&);
+        bool operator> (Card&);
+        bool operator< (Card&);
+        bool operator== (Card&);
         int getNumber();
         string getColor();
         void setNumber(int number);
         double value();
+
 };
 
 #endif

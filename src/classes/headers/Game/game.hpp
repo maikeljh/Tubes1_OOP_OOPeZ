@@ -4,37 +4,40 @@
 #include <iostream>
 #include "../Inventory/children/Player/player.hpp"
 #include "../Inventory/children/DeckCard/deckCard.hpp"
-#include "../Card/tableCard.hpp"
+#include "../Value/Card/tableCard.hpp"
 
 using namespace std;
 
 class Game {
-    private:
-        int round;
+    protected:
         vector<Player> players;
         const int nPlayers = 7;
-        long long int point;
-        DeckCard<Card> deck;
         bool isClockWise;
         int playerTurn;
         TableCard table;
-        const long long int maxPoint = (long long) 1 << 32;
+        int lastIdxTurn;
+        int idxReverse; // indeks sebelum pemakai reverse
+        bool isReverse;
 
     public:
-        Game();
+        Game(int max);
         Game(const Game& other);
         ~Game();
-        void startGame();
-        int chooseWinner();
-        void setRound(int round);
-        void setPoint(long long int point);
+        virtual void startGame() = 0;
+        virtual int chooseWinner() = 0;
         void setIsClockWise(bool isClockWise);
         void setPlayerTurn(int playerTurn);
-        int getRound();
-        long long int getPoint();
         bool getIsClockWise();
         int getPlayerTurn();
-        bool isEndGame();
+        Player& getPlayer(int idx);
+        virtual bool isEndGame() = 0;
+        int getLastIdxTurn();
+        void setLastIdxTurn(int last);
+        int getNPlayers();
+        int getIdxReverse();
+        void setIdxReverse(int idxReverse);
+        bool getIsReverse();
+        void setIsReverse(bool isReverse);
 };
 
 #endif

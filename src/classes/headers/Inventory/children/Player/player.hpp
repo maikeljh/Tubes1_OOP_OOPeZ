@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class Player: public InventoryHolder {
+class Player: public InventoryHolder<Card>{
     private:
         int id;
         string nickname;
@@ -24,17 +24,24 @@ class Player: public InventoryHolder {
         Player();
         Player(DeckCard<Card> &DC, string nickname);
         Player& operator=(const Player&);
+        Player& operator+(const Card& add);
+        Player& operator-();
+        bool operator>(const Player& other);
+        bool operator<(const Player& other);
+        bool operator==(const Player& other);
         ~Player();
         void useAbilityCard();
         bool checkValidAbilityCard(string ability);
         void addAbilityCard(const AbilityCard& AC);
+        void addPoint(long long int);
         Card getCard(int index);
         void push(const Card& PC);
         Card pop();
-        void printPlayerCard();
+        void printCard();
         string getNickname();
         Combination getCombo();
         long long int getPoint();
+        
 };
 
 #endif

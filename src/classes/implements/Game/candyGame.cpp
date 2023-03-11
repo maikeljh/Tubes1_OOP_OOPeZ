@@ -1,34 +1,23 @@
-#include "../headers/Game/game.hpp"
-#include "../headers/CardGenerator/cardGenerator.hpp"
+#include "../../headers/Game/candyGame.hpp"
+#include "../../headers/CardGenerator/cardGenerator.hpp"
+#include "../../headers/Command/commandParser.hpp"
 #include <iostream>
 
 using namespace std;
 
-Game::Game(){
+CandyGame::CandyGame(int max):Game(max){
     this->round = 0;
     this->point = 0;
-    this->isClockWise = true;
-    this->playerTurn = 0;
 }
 
-Game::Game(const Game& other){
+CandyGame::CandyGame(const CandyGame& other):Game(other){
     this->round = other.round;
-    for(int i = 0; i < this->nPlayers; i++){
-        this->players.pop_back();
-    }
-    for(int i = 0; i < this->nPlayers; i++){
-        this->players.push_back(other.players[i]);
-    }
     this->point = other.point;
-    this->isClockWise = other.isClockWise;
-    this->playerTurn = other.playerTurn;
 }
 
-Game::~Game(){
+CandyGame::~CandyGame(){}
 
-}
-
-void Game::startGame(){
+void CandyGame::startGame(){
     string name;
     string action;
     cout << "@@@@@@@@@@@@@@@@@G7^P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" <<
@@ -90,23 +79,32 @@ void Game::startGame(){
             // TES KARTU PEMAIN
             for(int i = 0; i < 7; i++){
                 cout << "\nKartu Pemain " << this->players[i].getNickname() << endl;
-                this->players[i].printPlayerCard();
+                this->players[i].printCard();
             }
             
+            CommandParser CP;
             string command;
-
+            
             while(!isEndGame()){
+                this->point = 64;
                 while(this->round <= 6){
                     this->round++;
                     cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
                     cin >> command;
-                    this->playerTurn = (this->playerTurn + 1) % 7;
+                    Command *action = CP.parser(command);
+                    action->executeAction(*this);
+                    if(this->isClockWise){
+                        this->playerTurn = (this->playerTurn + 1) % 7;
+                    } else {
+                        this->playerTurn = (this->playerTurn - 1) % 7;
+                    }
                 }
+                cout << this->point << endl;
                 this->round = 0;
             }
 }
 
-int Game::chooseWinner(){
+int CandyGame::chooseWinner(){
     double maximum = 0;
     int idx = 0;
     for(int i = 0; i < 7; i++){
@@ -119,39 +117,23 @@ int Game::chooseWinner(){
     return idx;
 }
 
-void Game::setRound(int round){
+void CandyGame::setRound(int round){
     this->round = round;
 }
 
-void Game::setPoint(long long int point){
+void CandyGame::setPoint(long long int point){
     this->point = point;
 }
 
-void Game::setIsClockWise(bool isClockWise){
-    this->isClockWise = isClockWise;
-}
-
-void Game::setPlayerTurn(int playerTurn){
-    this->playerTurn = playerTurn;
-}
-
-int Game::getRound(){
+int CandyGame::getRound(){
     return this->round;
 }  
 
-long long int Game::getPoint(){
+long long int CandyGame::getPoint(){
     return this->point;
 }
 
-bool Game::getIsClockWise(){
-    return this->isClockWise;
-}
-
-int Game::getPlayerTurn(){
-    return this->playerTurn;
-}
-
-bool Game::isEndGame(){
+bool CandyGame::isEndGame(){
     for(int i = 0; i < this->nPlayers; i++){
         if(this->players[i].getPoint() >= this->maxPoint){
             return true;
@@ -159,4 +141,8 @@ bool Game::isEndGame(){
     }
 
     return false;
+}
+
+DeckCard<Card>& CandyGame::getDeckCard(){
+    return this->deck;
 }

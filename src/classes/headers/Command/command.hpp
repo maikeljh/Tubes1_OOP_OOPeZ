@@ -12,12 +12,9 @@ class Command {
         int commandId;
     
     public:
-        Command();
-        Command(int commandId);
-        int commandParser(string command);
-        virtual void useAction(Game& Game);
-        virtual void useAbility(Game& Game);
-        virtual void useAbility(DeckCard& DC, Game& Game);
+        Command(){}
+        Command(int commandId){this->commandId = commandId;}
+        virtual void executeAction(Game& Game)=0;
 };
 
 #endif
