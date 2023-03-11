@@ -15,8 +15,8 @@ class Game {
         bool isClockWise;
         int playerTurn;
         TableCard table;
+        int firstIdxTurn;
         int lastIdxTurn;
-        int idxReverse; // indeks sebelum pemakai reverse
         bool isReverse;
         bool valid;
 
@@ -32,11 +32,11 @@ class Game {
         int getPlayerTurn();
         Player& getPlayer(int idx);
         virtual bool isEndGame() = 0;
+        int getFirstIdxTurn();
+        void setFirstIdxTurn(int first);
         int getLastIdxTurn();
         void setLastIdxTurn(int last);
         int getNPlayers();
-        int getIdxReverse();
-        void setIdxReverse(int idxReverse);
         bool getIsReverse();
         void setIsReverse(bool isReverse);
         bool getValid();

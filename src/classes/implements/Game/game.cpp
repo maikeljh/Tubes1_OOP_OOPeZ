@@ -8,7 +8,9 @@ using namespace std;
 Game::Game(int max):table(max){
     this->isClockWise = true;
     this->playerTurn = 0;
+    this->firstIdxTurn = 0;
     this->lastIdxTurn = 6;
+    this->isReverse = false;
     this->valid = false;
 }
 
@@ -21,8 +23,10 @@ Game::Game(const Game& other):table(5){
     }
     this->isClockWise = other.isClockWise;
     this->playerTurn = other.playerTurn;
+    this->firstIdxTurn = other.firstIdxTurn;
     this->lastIdxTurn = other.lastIdxTurn;
     this->valid = other.valid;
+    this->isReverse = other.isReverse;
 }
 
 Game::~Game(){}
@@ -43,6 +47,14 @@ int Game::getPlayerTurn(){
     return this->playerTurn;
 }
 
+int Game::getFirstIdxTurn(){
+    return this->firstIdxTurn;
+}
+
+void Game::setFirstIdxTurn(int first){
+    this->firstIdxTurn = first;
+}
+
 int Game::getLastIdxTurn(){
     return this->lastIdxTurn;
 }
@@ -57,14 +69,6 @@ Player& Game::getPlayer(int idx){
 
 int Game::getNPlayers(){
     return this->nPlayers;
-}
-
-int Game::getIdxReverse(){
-    return idxReverse;
-}
-
-void Game::setIdxReverse(int idxReverse){
-    this->idxReverse = idxReverse;
 }
 
 bool Game::getIsReverse(){

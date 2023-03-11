@@ -38,7 +38,7 @@ DeckCard<Card> CardGenerator::randomizeCard(){
 DeckCard<AbilityCard> CardGenerator::generateAbilityDeck(){
     DeckCard<AbilityCard> DAC;
     vector<AbilityCard> temp;
-    string abilities[7] = {"Re-Roll", "Quadruple", "Quarter", "Reverse Direction", "Swap Card", "Switch", "Abilityless"};
+    string abilities[7] = {"RE-ROLL", "QUADRUPLE", "QUARTER", "REVERSE", "SWAPCARD", "SWITCH", "ABILITYLESS"};
     
     for(string ability : abilities){
         temp.push_back(AbilityCard(ability));

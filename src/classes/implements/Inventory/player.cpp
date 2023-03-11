@@ -84,7 +84,7 @@ string Player::getNickname(){
     return this->nickname;
 }
 
-Combination Player::getCombo(){
+Combination& Player::getCombo(){
     return this->kombo;
 }
 
