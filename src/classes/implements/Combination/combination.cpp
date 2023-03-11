@@ -1,6 +1,7 @@
 #include "../../headers/Value/Combination/combination.hpp"
 #include "../generic.cpp"
 #include <iostream>
+#include <map>
 
 using namespace std;
 
@@ -24,6 +25,154 @@ void Combination::setCombo(string combo) {
 
 Combination::~Combination() {
 
+}
+
+bool Combination::isStraightFlush(vector <Card> &LC) {
+    bool temp;
+    for (int i = LC.size()-1 ; i >= 4; i--) {
+        temp = true;
+        for (int j = i; j > i-4; j--) {
+            if (LC[j].getNumber()-1 != LC[j-1].getNumber()-1 || LC[j].getColor() != LC[j-1].getColor()) {
+                temp = false;
+            }
+        }
+        if (temp == true) {
+            break;
+        }
+    }
+    return temp;
+}
+
+bool Combination::isStraight(vector <Card> &LC) {
+    bool temp;
+    for (int i = LC.size()-1 ; i >= 4; i--) {
+        temp = true;
+        for (int j = i; j > i-4; j--) {
+            if (LC[j].getNumber()-1 != LC[j-1].getNumber()) {
+                temp = false;
+            }
+        }
+        if (temp == true) {
+            break;
+        }
+    }
+    return temp;
+}
+
+bool Combination::isFlush(vector <Card> &LC) {
+    map<string, int> dictWarna;
+    map<string,int>::iterator itr;
+    dictWarna["Green"] = 0;
+    dictWarna["Red"] = 0;
+    dictWarna["Yellow"] = 0;
+    dictWarna["Blue"] = 0;
+
+    for (int i = 0; i < LC.size(); i++) {
+        if (LC[i].getColor() == "Green") {
+            dictWarna["Green"]++;
+        }
+        else if (LC[i].getColor() == "Blue") {
+            dictWarna["Blue"]++;
+        }
+        else if (LC[i].getColor() == "Yellow") {
+            dictWarna["Yellow"]++;
+        }
+        else {
+            dictWarna["Red"]++;
+        }
+    }
+
+    for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
+        if (itr->second == 5) {
+            return true;
+        }
+    }
+    return false;
+}
+
+vector<Card> Combination::straightFlush(vector<Card> &LC) {
+    vector <Card> combo;
+    int index;
+    for (int i = LC.size()-1 ; i >= 4; i--) {
+        bool temp = true;
+        for (int j = i; j > i-4; j--) {
+            if (LC[j].getNumber()-1 != LC[j-1].getNumber()-1 || LC[j].getColor() != LC[j-1].getColor()) {
+                temp = false;
+            }
+        }
+        if (temp == true) {
+            index = i;
+            break;
+        }
+    }
+
+    for (int i = index-4; i < index+1; i++) {
+        combo.push_back(LC[i]);
+    }
+
+    return combo;
+}
+
+vector<Card> Combination::straight(vector<Card> &LC) {
+    int index;
+    vector <Card> combo;
+    for (int i = LC.size()-1 ; i >= 4; i--) {
+        bool temp = true;
+        for (int j = i; j > i-4; j--) {
+            if (LC[j].getNumber()-1 != LC[j-1].getNumber()) {
+                temp = false;
+            }
+        }
+        if (temp == true) {
+            break;
+        }
+    }
+
+    for (int i = index-4; i < index+1; i++) {
+        combo.push_back(LC[i]);
+    }
+
+    return combo;
+}
+
+vector<Card> Combination::flush(vector<Card> &LC) {
+    map<string, int> dictWarna;
+    map<string,int>::iterator itr;
+    string warna;
+    dictWarna["Green"] = 0;
+    dictWarna["Red"] = 0;
+    dictWarna["Yellow"] = 0;
+    dictWarna["Blue"] = 0;
+
+    for (int i = 0; i < LC.size(); i++) {
+        if (LC[i].getColor() == "Green") {
+            dictWarna["Green"]++;
+        }
+        else if (LC[i].getColor() == "Blue") {
+            dictWarna["Blue"]++;
+        }
+        else if (LC[i].getColor() == "Yellow") {
+            dictWarna["Yellow"]++;
+        }
+        else {
+            dictWarna["Red"]++;
+        }
+    }
+
+    for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
+        if (itr->second == 5) {
+            warna = itr->first;
+        }
+    }
+
+    vector<Card> combo;
+    for (int i = 0; i < LC.size(); i++) {
+        if (LC[i].getColor() == warna) {
+            combo.push_back(LC[i]);
+        }
+    }
+
+    return combo;
 }
 
 double Combination::value(vector<Card> &LC) {
