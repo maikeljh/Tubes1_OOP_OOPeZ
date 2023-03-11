@@ -4,13 +4,15 @@
 #include <iostream>
 #include "../command.hpp"
 #include "../../Game/game.hpp"
+#include "next.hpp"
 
 using namespace std;
 
 class Abilityless: public Command {
     public:
         Abilityless(); // ID = 10
-        void executeAction(Game& Game);
+        void executeAction(CandyGame& Game);
+        bool isAllAbilityUseable(vector<Player> players);
 };
 
 #endif

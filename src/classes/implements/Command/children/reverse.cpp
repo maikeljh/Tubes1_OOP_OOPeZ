@@ -6,6 +6,9 @@ Reverse::Reverse(){
 
 void Reverse::executeAction(CandyGame& Game){
     Player playernow = Game.getPlayer(Game.getPlayerTurn());
+    if (!playernow.getAbilityCard().getUseable()){
+        cout << "Oops, kartu ability reversemu telah dimatikan sebelumnya:(. Silahkan lakukan perintah lain." << endl;
+    }
     if (playernow.checkValidAbilityCard("REVERSE")){
         cout << playernow.getNickname() << " melakukan reverse!" << endl;
         cout << "(sisa) urutan eksekusi giliran ini : ";
@@ -36,6 +39,8 @@ void Reverse::executeAction(CandyGame& Game){
         // set isReverse & next idxreverse
         Game.setIdxReverse(nextFirstIdx);
         Game.setIsReverse(true);
+
+        playernow.useAbilityCard();
 
         // giliran dilanjut
         Next *next;
