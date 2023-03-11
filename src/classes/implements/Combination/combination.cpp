@@ -32,19 +32,30 @@ void Combination::setComboCard(vector<Card> &combo) {
 void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
     vector <Card> CC;
     for (int i = 0; i < 5; i++) {
-        Card temp = TC[i];
-        CC.push_back(temp);
+        CC.push_back(TC[i]);
     }
 
     for (int i = 0; i < 2; i++) {
-        Card temp = PC[i];
-        CC.push_back(temp);
+        CC.push_back(PC[i]);
     }
 
     // Sorting card berdasarkan angka dan warnanya
 
     this->quicksort(CC, 0, TC.size()-1);
     this->setComboCard(CC);
+}
+
+void Combination::printCombo() {
+    if (this->combo != "Straight Flush" || this->combo != "Flush") {
+        cout << this->combo << endl;
+    }
+    else {
+        cout << this->combo << " " << this->comboCard[0].getColor() << endl;
+    }
+    for (int i = 0; i < this->comboCard.size() ; i++) {
+            cout << this->comboCard[i].getNumber() << " ";
+        }
+        cout << endl;
 }
 
 Combination::~Combination() {

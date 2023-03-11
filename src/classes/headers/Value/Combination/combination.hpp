@@ -23,6 +23,7 @@ class Combination {
         void setComboCard(vector <Card> &combo);
         void mergeCard(vector <Card> &TC, vector <Card> &PC);
         void makeCombo();
+        void printCombo();
         bool operator> (Combination&);
         bool operator< (Combination&);
         bool operator== (Combination&);
