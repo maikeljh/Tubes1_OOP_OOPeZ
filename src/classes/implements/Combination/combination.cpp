@@ -586,7 +586,48 @@ double Combination::value() {
     }
     //two pair
     else if (this->comboCard.size() >= 4 && this->existPlayerCard() && this->isTwoPair()) {
-        comboValue = maxValue(this->comboCard).value() + 2.78;
+        int highetPairNumber = maxValue(this->comboCard).getNumber();
+        bool green = false;
+        bool blue = false;
+        bool yellow = false;
+        bool red = false;
+
+        for (int i = 0;i<this->comboCard.size();i++){
+            if(this->comboCard[i].getNumber()==highetPairNumber){
+                if (this->comboCard[i].getColor()=="Green"){
+                    green = true;
+                }
+                else if (this->comboCard[i].getColor()=="Blue"){
+                    blue = true;
+                }
+                else if (this->comboCard[i].getColor()=="Yellow"){
+                    yellow = true;
+                }
+                else if (this->comboCard[i].getColor()=="Red"){
+                    red = true;
+                }
+            }
+        }
+        if(green && blue){
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(1*0.015)+1.39 + 2.78;
+        }
+        else if (green && yellow){
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(2*0.015)+1.39 + 2.78;
+        }
+        else if (blue && yellow){
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(3*0.015)+1.39 + 2.78;
+        }
+        else if (green && red){
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(4*0.015)+1.39 +2.78;
+        }
+        else if (blue && red){
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(5*0.015)+1.39 + 2.78;
+        }
+        else if (yellow && red){
+            comboValue = (1.0*(maxValue(this->comboCard).getNumber())/10)+(6*0.015)+1.39 +2.78;
+        }
+
+        // comboValue = maxValue(this->comboCard).value() + 2.78;
     }
     //pair
     else if (this->comboCard.size() >= 2 && this->existPlayerCard() && this->isPair()) {
