@@ -20,7 +20,7 @@ bool Card::operator< (Card& c){
     return this->value() < c.value();
 }
 bool Card::operator== (Card& c){
-    return this->value() == c.value();
+    return (this->number == c.number && this->color == c.color);
 }
 
 double Card::value(){
