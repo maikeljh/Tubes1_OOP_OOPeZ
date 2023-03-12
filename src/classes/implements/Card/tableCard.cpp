@@ -31,3 +31,7 @@ vector<Card>& TableCard::getTableCard() {
 }
 
 TableCard::~TableCard(){}
+
+int TableCard::getNeff(){
+    return this->neff;
+}

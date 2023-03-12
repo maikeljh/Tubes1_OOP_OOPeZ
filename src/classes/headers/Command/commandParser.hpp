@@ -12,6 +12,8 @@
 #include "./children/swapCard.hpp"
 #include "./children/switch.hpp"
 #include "./children/abilityLess.hpp"
+#include "./children/checkCard.hpp"
+#include "./children/checkTableCard.hpp"
 
 class CommandParser{
     public:

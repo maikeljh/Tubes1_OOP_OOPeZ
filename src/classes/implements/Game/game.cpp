@@ -86,3 +86,7 @@ bool Game::getValid(){
 void Game::setValid(bool val){
     this->valid = val;
 }
+
+TableCard& Game::getTableCard(){
+    return this->table;
+}

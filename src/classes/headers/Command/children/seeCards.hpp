@@ -1,15 +1,15 @@
-#ifndef SAY_UNO_HPP
-#define SAY_UNO_HPP
+#ifndef SEE_CARDS_HPP
+#define SEE_CARDS_HPP
 
 #include <iostream>
 #include "../command.hpp"
-#include "../../Game/game.hpp"
+#include "../../Game/unoGame.hpp"
 
 using namespace std;
 
-class SayUno : public Command {
+class SeeCards: public Command {
     public:
-        SayUno();
+        SeeCards();
         void executeActionUNO(UnoGame&);
 };
 

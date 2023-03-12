@@ -5,7 +5,9 @@
 #include "../../Game/game.hpp"
 
 using namespace std;
-class Pass : public Command{
-
+class Pass : public Command {
+    public:
+        Pass();
+        void executeActionUNO(UnoGame&);
 };
 #endif

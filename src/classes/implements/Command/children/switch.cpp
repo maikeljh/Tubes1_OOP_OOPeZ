@@ -5,10 +5,10 @@ Switch::Switch(){
 }
 
 void Switch::executeAction(CandyGame& Game){
-    Player playernow = Game.getPlayer(Game.getPlayerTurn());
+    Player& playernow = Game.getPlayer(Game.getPlayerTurn());
     int playerTurn = Game.getPlayerTurn();
-    if (playernow.getAbilityCard().getType()==""){
-        cout << "Eits, kamu tidak memiliki kartu SWITCH!" << endl;
+    if (playernow.getAbilityCard().getType() != "SWITCH"){
+        cout << "\nEits, kamu tidak memiliki kartu SWITCH!\n" << endl;
     } else if (playernow.checkValidAbilityCard("SWITCH")){
         cout << playernow.getNickname() << " melakukan switch!" << endl;
         cout << "Kartumu sekarang adalah:" << endl;
@@ -29,12 +29,12 @@ void Switch::executeAction(CandyGame& Game){
         }
         int idxSwitch;
         cin >> idxSwitch;
-        if (idxSwitch<playerTurn){
+        if (idxSwitch <= playerTurn){
             idxSwitch--;
         }
 
         // switch
-        Player playerSwitch = Game.getPlayer(idxSwitch);
+        Player& playerSwitch = Game.getPlayer(idxSwitch);
         vector<Card>& deck0 = playernow.getDeckPlayer();
         vector<Card>& deck1 = playerSwitch.getDeckPlayer();
         Card cardnow_1 = playernow.pop();
@@ -54,6 +54,6 @@ void Switch::executeAction(CandyGame& Game){
 
         Game.setValid(true);
     } else {
-        cout << "Oops, kartu ability switchmu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n";
+        cout << "\nOops, kartu ability switchmu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n";
     }
 }
