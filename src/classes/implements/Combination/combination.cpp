@@ -580,30 +580,43 @@ double Combination::value() {
     else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isFullHouse()) {
         int nCard1 = 0;
         int nCard2 = 0;
-        vector <Card> Card1;
-        vector <Card> Card2;
+        bool flag = false;
         int Card = this->comboCard[0].getNumber();
         for (int i = 0; i<this->comboCard.size();i++){
             if(this->comboCard[i].getNumber()==Card){
-                nCard1++;
-                Card1.push_back(this->comboCard[i]);
+                nCard1+=1;
             }
             else {
-                nCard2++;
-                Card2.push_back(this->comboCard[i]);
+                nCard2+=1;
             }
         }
         if(nCard1==3){
-            for (int i = 0; i<Card1.size();i++){
-                if(this->isPlayerCard(Card1[i])){
-                    comboValue = Card1[i].value() + 9.72;
+            for (int i = 0; i<3;i++){
+                if(this->isPlayerCard(this->comboCard[i])){
+                    flag = true;
+                    comboValue = this->comboCard[i].value() + 9.72;
+                }
+            }
+            if(flag == false){
+                for (int i = 3; i<this->comboCard.size();i++){
+                    if(this->isPlayerCard(this->comboCard[i])){
+                        comboValue = this->comboCard[i].value() + 9.72;
+                    }
                 }
             }
         }
         else {
-            for (int i = 0; i<Card2.size();i++){
-                if(this->isPlayerCard(Card2[i])){
-                    comboValue = Card2[i].value() + 9.72;
+            for (int i = 2; i<this->comboCard.size();i++){
+                if(this->isPlayerCard(this->comboCard[i])){
+                    flag = true;
+                    comboValue = this->comboCard[i].value() + 9.72;
+                }
+            }
+            if(flag == false){
+                for (int i = 0; i<2;i++){
+                    if(this->isPlayerCard(this->comboCard[i])){
+                        comboValue = this->comboCard[i].value() + 9.72;
+                    }
                 }
             }
         }
