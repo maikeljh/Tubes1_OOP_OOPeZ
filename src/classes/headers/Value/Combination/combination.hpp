@@ -12,6 +12,8 @@ class Combination {
         double point;
         string combo;
         vector<Card> comboCard;
+        vector<Card> playerCard;
+        vector<Card> tableCard;
     public:
         Combination();
         ~Combination();
@@ -21,10 +23,13 @@ class Combination {
         void setValue(double);
         void setCombo(string);
         void setComboCard(vector <Card> &combo);
+        void setPlayerCard(vector<Card> &PC);
+        void setTableCard(vector<Card> &TC);
         void clearCombo();
         void mergeCard(vector <Card> &TC, vector <Card> &PC);
         void makeCombo();
         void printCombo();
+        bool existPlayerCard();
         bool operator> (Combination&);
         bool operator< (Combination&);
         bool operator== (Combination&);
