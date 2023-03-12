@@ -5,7 +5,7 @@ Quarter::Quarter(){
 }
 
 void Quarter::executeAction(CandyGame& Game){
-    Player& playernow = Game.getPlayer(Game.getPlayerTurn());
+    CandyPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
     if (playernow.checkValidAbilityCard("QUARTER")){
         cout << endl << playernow.getNickname() << " melakukan QUARTER! Poin hadiah turun dari " << Game.getPoint();
         Game.setPoint(Game.getPoint()*0.25);

@@ -79,7 +79,7 @@ void CandyGame::startGame(){
     for(int i = 1; i <= 7; i++){
         cout << "Pemain " << i << ": ";
         cin >> name;
-        Player newPlayer = Player(this->deck, name);
+        CandyPlayer newPlayer = CandyPlayer(this->deck, name);
         this->players.push_back(newPlayer);
     }
     
@@ -228,4 +228,12 @@ bool CandyGame::isEndGame(){
 
 DeckCard<Card>& CandyGame::getDeckCard(){
     return this->deck;
+}
+
+CandyPlayer& CandyGame::getPlayer(int idx){
+    return this->players[idx];
+}
+
+vector<CandyPlayer>& CandyGame::getPlayers(){
+    return this->players;
 }

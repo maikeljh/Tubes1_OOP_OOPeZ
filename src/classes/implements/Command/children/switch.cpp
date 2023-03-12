@@ -5,7 +5,7 @@ Switch::Switch(){
 }
 
 void Switch::executeAction(CandyGame& Game){
-    Player& playernow = Game.getPlayer(Game.getPlayerTurn());
+    CandyPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
     int playerTurn = Game.getPlayerTurn();
     if (playernow.getAbilityCard().getType() != "SWITCH"){
         cout << "\nEits, kamu tidak memiliki kartu SWITCH!\n" << endl;
@@ -49,7 +49,7 @@ void Switch::executeAction(CandyGame& Game){
         }
 
         // switch
-        Player& playerSwitch = Game.getPlayer(idxSwitch);
+        CandyPlayer& playerSwitch = Game.getPlayer(idxSwitch);
         vector<Card>& deck0 = playernow.getDeckPlayer();
         vector<Card>& deck1 = playerSwitch.getDeckPlayer();
         Card cardnow_1 = playernow.pop();

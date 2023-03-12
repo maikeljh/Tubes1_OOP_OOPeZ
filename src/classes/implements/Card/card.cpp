@@ -41,3 +41,15 @@ double Card::value(){
         return ((1.0 * this->number)/10)+(3*0.03);
     }
 }
+
+int Card::getNumber(){
+    return this->number;
+}
+
+string Card::getColor(){
+    return this->color;
+}
+
+void Card::setNumber(int number) {
+    this->number = number;
+}

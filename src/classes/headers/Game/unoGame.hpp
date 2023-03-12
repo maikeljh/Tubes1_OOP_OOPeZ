@@ -21,6 +21,8 @@ class UnoGame : public Game {
         int chooseWinner();
         DeckCard<UnoCard>& getDeckCard();
         bool isEndGame();
+        vector<UnoPlayer>& getPlayers();
+        UnoPlayer& getPlayer(int idx);
 
 };
 

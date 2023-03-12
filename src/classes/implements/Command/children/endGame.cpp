@@ -2,8 +2,8 @@
 
 EndGame::EndGame():Command(){}
 
-void EndGame::printLeaderboard(Game& Game){
-    vector<Player> players = Game.getPlayers();
+void EndGame::printLeaderboard(CandyGame& Game){
+    vector<CandyPlayer> players = Game.getPlayers();
     cout << "\nPermainan berakhir." << endl;
     cout << "Leaderboard:" << endl;
     for(int i = 0; i < players.size(); i++){
@@ -12,7 +12,7 @@ void EndGame::printLeaderboard(Game& Game){
     this->printWinner(Game);
 }
 
-void EndGame::printWinner(Game& Game){
+void EndGame::printWinner(CandyGame& Game){
     int winner = Game.chooseWinner();
     cout << "Permainan dimenangkan oleh " << Game.getPlayer(winner).getNickname() << endl;
 }

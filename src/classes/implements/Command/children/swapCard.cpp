@@ -6,7 +6,7 @@ SwapCard::SwapCard(){
 
 void SwapCard::executeAction(CandyGame& Game){
     int playerTurn = Game.getPlayerTurn();
-    Player& playernow = Game.getPlayer(playerTurn);
+    CandyPlayer& playernow = Game.getPlayer(playerTurn);
     if (playernow.getAbilityCard().getType() != "SWAPCARD"){
         cout << "\nEits, kamu tidak memiliki kartu SWAPCARD!\n" << endl;
     } else if (playernow.checkValidAbilityCard("SWAPCARD")){
@@ -115,8 +115,8 @@ void SwapCard::executeAction(CandyGame& Game){
         cardSwap.push_back(option);
 
         // swap
-        Player& p0 = Game.getPlayer(playerSwap.first);
-        Player& p1 = Game.getPlayer(playerSwap.second);
+        CandyPlayer& p0 = Game.getPlayer(playerSwap.first);
+        CandyPlayer& p1 = Game.getPlayer(playerSwap.second);
         vector<Card>& deck0 = p0.getDeckPlayer();
         vector<Card>& deck1 = p1.getDeckPlayer();
         Card card0_1 = p0.pop();
