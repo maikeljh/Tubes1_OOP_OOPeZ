@@ -5,7 +5,7 @@ Quadruple::Quadruple(){
 }
 
 void Quadruple::executeAction(CandyGame& Game){
-    Player playernow = Game.getPlayer(Game.getPlayerTurn());
+    Player& playernow = Game.getPlayer(Game.getPlayerTurn());
     if (playernow.checkValidAbilityCard("QUADRUPLE")){
         cout << endl << playernow.getNickname() << " melakukan QUADRUPLE! Poin hadiah naik dari " << Game.getPoint();
         Game.setPoint(Game.getPoint()*4);

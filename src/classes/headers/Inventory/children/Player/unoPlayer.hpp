@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class UnoPlayer: public Player<BaseCard>{
+class UnoPlayer: public Player{
     private:
         
     public:

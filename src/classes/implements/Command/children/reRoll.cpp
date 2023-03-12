@@ -5,7 +5,7 @@ ReRoll::ReRoll():Command(){
 }
 
 void ReRoll::executeAction(CandyGame& Game){
-    Player playernow = Game.getPlayer(Game.getPlayerTurn());
+    Player& playernow = Game.getPlayer(Game.getPlayerTurn());
     if (playernow.checkValidAbilityCard("RE-ROLL")){
         // Buang Kartu
         cout << "\nMelakukan pembuangan kartu yang sedang dimiliki" << endl;
@@ -21,6 +21,6 @@ void ReRoll::executeAction(CandyGame& Game){
 
         Game.setValid(true);
     } else {
-        cout << "Ets, tidak bisa. Kamu tidak punya kartu Ability RE-ROLL." << endl;
+        cout << "\nEts, tidak bisa. Kamu tidak punya kartu Ability RE-ROLL.\n" << endl;
     }
 }
