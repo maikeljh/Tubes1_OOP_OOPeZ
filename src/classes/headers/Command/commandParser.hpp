@@ -14,6 +14,7 @@
 #include "./children/abilityLess.hpp"
 #include "./children/checkCard.hpp"
 #include "./children/checkTableCard.hpp"
+#include "./children/endGame.hpp"
 
 class CommandParser{
     public:

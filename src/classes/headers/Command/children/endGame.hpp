@@ -10,8 +10,8 @@ using namespace std;
 class EndGame: public Command {
     public:
         EndGame(); // ID = 11
-        void printLeaderboard(const Game& Game);
-        void printWinner(const Game& Game);
+        void printLeaderboard(Game& Game);
+        void printWinner(Game& Game);
 };
 
 #endif
