@@ -3,35 +3,42 @@
 
 using namespace std;
 
-TableCard::TableCard(int max):neff(0),max(max){}
+template <class T>
+TableCard<T>::TableCard(int max):neff(0),max(max){}
 
-void TableCard::addCard(const Card& C){
+template <class T>
+void TableCard<T>::addCard(const T& C){
     if(neff < max){
         listOfCards.push_back(C);
         neff++;
     }
 }
 
-void TableCard::clearTable(){
+template <class T>
+void TableCard<T>::clearTable(){
     for(int i = 0; i < this->neff; i++){
         listOfCards.pop_back();
     }
     this->neff = 0;
 }
 
-void TableCard::printTable(){
+template <class T>
+void TableCard<T>::printTable(){
     cout << "Isi dari table card sekarang :" << endl;
     for(int i = 0; i < this->neff; i++){
         cout << i+1 << ". " << this->listOfCards[i].getNumber() <<  " " << this->listOfCards[i].getColor() << endl;
     }
 }
 
-vector<Card>& TableCard::getTableCard() {
+template <class T>
+vector<T>& TableCard<T>::getTableCard() {
     return this->listOfCards;
 }
 
-TableCard::~TableCard(){}
+template <class T>
+TableCard<T>::~TableCard(){}
 
-int TableCard::getNeff(){
+template <class T>
+int TableCard<T>::getNeff(){
     return this->neff;
 }

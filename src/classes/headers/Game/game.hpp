@@ -13,14 +13,13 @@ class Game {
         const int nPlayers = 7;
         bool isClockWise;
         int playerTurn;
-        TableCard table;
         int firstIdxTurn;
         int lastIdxTurn;
         bool isReverse;
         bool valid;
 
     public:
-        Game(int max);
+        Game();
         Game(const Game& other);
         ~Game();
         virtual void startGame() = 0;
@@ -39,7 +38,6 @@ class Game {
         void setIsReverse(bool isReverse);
         bool getValid();
         void setValid(bool);
-        TableCard& getTableCard();
 };
 
 #endif

@@ -5,12 +5,12 @@
 
 using namespace std;
 
-CandyGame::CandyGame():Game(5){
+CandyGame::CandyGame():Game(),table(5){
     this->round = 0;
     this->point = 0;
 }
 
-CandyGame::CandyGame(const CandyGame& other):Game(other){
+CandyGame::CandyGame(const CandyGame& other):Game(other),table(5){
     this->round = other.round;
     this->point = other.point;
 }
@@ -236,4 +236,8 @@ CandyPlayer& CandyGame::getPlayer(int idx){
 
 vector<CandyPlayer>& CandyGame::getPlayers(){
     return this->players;
+}
+
+TableCard<Card>& CandyGame::getTableCard(){
+    return this->table;
 }

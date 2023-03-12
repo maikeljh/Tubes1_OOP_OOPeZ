@@ -8,21 +8,25 @@
 
 using namespace std;
 
+template <class T>
 class TableCard {
     private:
         int neff;
-        vector<Card> listOfCards;
+        vector<T> listOfCards;
         const int max;
 
     public:
         TableCard(int max);
         TableCard(const TableCard& other);
         ~TableCard();
-        void addCard(const Card& C);
-        vector<Card>& getTableCard();
+        void addCard(const T& C);
+        vector<T>& getTableCard();
         void clearTable();
         void printTable();
         int getNeff();
 };
+
+template class TableCard<Card>;
+template class TableCard<UnoCard>;
 
 #endif

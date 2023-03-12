@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Game::Game(int max):table(max){
+Game::Game(){
     this->isClockWise = true;
     this->playerTurn = 0;
     this->firstIdxTurn = 0;
@@ -14,7 +14,7 @@ Game::Game(int max):table(max){
     this->valid = false;
 }
 
-Game::Game(const Game& other):table(5){
+Game::Game(const Game& other){
     this->isClockWise = other.isClockWise;
     this->playerTurn = other.playerTurn;
     this->firstIdxTurn = other.firstIdxTurn;
@@ -75,8 +75,4 @@ bool Game::getValid(){
 
 void Game::setValid(bool val){
     this->valid = val;
-}
-
-TableCard& Game::getTableCard(){
-    return this->table;
 }

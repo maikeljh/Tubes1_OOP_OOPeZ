@@ -12,6 +12,7 @@ class UnoGame : public Game {
     private:
         DeckCard<UnoCard> deck;
         vector<UnoPlayer> players;
+        TableCard<UnoCard> table;
 
     public:
         UnoGame();
@@ -23,7 +24,7 @@ class UnoGame : public Game {
         bool isEndGame();
         vector<UnoPlayer>& getPlayers();
         UnoPlayer& getPlayer(int idx);
-
+        TableCard<UnoCard>& getTableCard();
 };
 
 #endif

@@ -15,6 +15,7 @@ class CandyGame : public Game {
         vector<CandyPlayer> players;
         DeckCard<Card> deck;
         DeckCard<AbilityCard> deckAbility;
+        TableCard<Card> table;
         const long long int maxPoint = (long long) 1 << 32;
 
     public:
@@ -33,6 +34,7 @@ class CandyGame : public Game {
         vector<CandyPlayer>& getPlayers();
         CandyPlayer& getPlayer(int idx);
         bool isEndGame();
+        TableCard<Card>& getTableCard();
 };
 
 #endif
