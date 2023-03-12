@@ -768,50 +768,55 @@ double Combination::value() {
         // comboValue = maxValue(this->comboCard).value() + 2.78;
     }
     //pair
-    else if (this->comboCard.size() >= 2 && this->existPlayerCard() && this->isPair()) {
-        bool green = false;
-        bool blue = false;
-        bool yellow = false;
-        bool red = false;
+    else if (this->comboCard.size() >= 2 && this->isPair()) {
+        if (this->existPlayerCard()) {
+            bool green = false;
+            bool blue = false;
+            bool yellow = false;
+            bool red = false;
 
-        for (int i = 0;i<this->comboCard.size();i++){
-            if (this->comboCard[i].getColor()=="Green"){
-                green = true;
+            for (int i = 0;i<this->comboCard.size();i++){
+                if (this->comboCard[i].getColor()=="Green"){
+                    green = true;
+                }
+                else if (this->comboCard[i].getColor()=="Blue"){
+                    blue = true;
+                }
+                else if (this->comboCard[i].getColor()=="Yellow"){
+                    yellow = true;
+                }
+                else if (this->comboCard[i].getColor()=="Red"){
+                    red = true;
+                }
             }
-            else if (this->comboCard[i].getColor()=="Blue"){
-                blue = true;
-            }
-            else if (this->comboCard[i].getColor()=="Yellow"){
-                yellow = true;
-            }
-            else if (this->comboCard[i].getColor()=="Red"){
-                red = true;
-            }
-        }
 
-        for (int i = 0; i < this->comboCard.size(); i++) {
-            if (this->isPlayerCard(this->comboCard[i])) {
-                comboValue = (1.0 * (this->comboCard[i].getNumber())/10);
+            for (int i = 0; i < this->comboCard.size(); i++) {
+                if (this->isPlayerCard(this->comboCard[i])) {
+                    comboValue = (1.0 * (this->comboCard[i].getNumber())/10);
+                }
+            }
+
+            if(green && blue){
+                comboValue += (1*0.015) + 1.39;
+            }
+            else if (green && yellow){
+                comboValue += (2*0.015) + 1.39;
+            }
+            else if (blue && yellow){
+                comboValue += (3*0.015) + 1.39;
+            }
+            else if (green && red){
+                comboValue += (4*0.015) + 1.39;
+            }
+            else if (blue && red){
+                comboValue += (5*0.015) + 1.39;
+            }
+            else if (yellow && red){
+                comboValue += (6*0.015) + 1.39;
             }
         }
-
-        if(green && blue){
-            comboValue += (1*0.015) + 1.39;
-        }
-        else if (green && yellow){
-            comboValue += (2*0.015) + 1.39;
-        }
-        else if (blue && yellow){
-            comboValue += (3*0.015) + 1.39;
-        }
-        else if (green && red){
-            comboValue += (4*0.015) + 1.39;
-        }
-        else if (blue && red){
-            comboValue += (5*0.015) + 1.39;
-        }
-        else if (yellow && red){
-            comboValue += (6*0.015) + 1.39;
+        else {
+            comboValue = -1;
         }
         // comboValue = maxValue(this->comboCard).value() + 1.39;//rumus
     }
@@ -976,14 +981,25 @@ void Combination::makeCombo() {
     else if (this->isPair()) {
         cout<<"Masuk sini 0h"<<endl;
         this->pair();
-        cout<<"Masuk sini 1h"<<endl;
-        this->setValue(this->value());
-        cout<<"Masuk sini 2h"<<endl;
-        this->setCombo("Pair");
-        cout<<"Masuk sini 3h"<<endl;
+        if (this->value() == -1) {
+            cout<<"Masuk sini 2g"<<endl;
+            this->comboCard.clear();
+            cout<<"Masuk sini 2g-1"<<endl;
+            this->mergeCard(this->tableCard, this->playerCard);
+            cout<<"Masuk sini 2g-2"<<endl;
+            this->comboLainPair();
+            cout<<"Masuk sini 3g"<<endl;
+        }
+        else {
+            cout<<"Masuk sini 1h"<<endl;
+            this->setValue(this->value());
+            cout<<"Masuk sini 2h"<<endl;
+            this->setCombo("Pair");
+            cout<<"Masuk sini 3h"<<endl;
+        }
     }
     else {
-        Card highest = maxValue(this->comboCard);
+        Card highest = maxValue(this->playerCard);
         this->comboCard.clear();
         this->comboCard.push_back(highest);
         this->setValue(this->value());
@@ -1148,6 +1164,14 @@ void Combination::comboLainTwoP() {
         this->setCombo("Pair");
         cout<<"Masuk sini 9o"<<endl;
     }
+}
+
+void Combination::comboLainPair() {
+    Card highest = maxValue(this->playerCard);
+    this->comboCard.clear();
+    this->comboCard.push_back(highest);
+    this->setValue(this->value());
+    this->setCombo("High Card");
 }
 
 void Combination::quicksort(vector <Card>& CC, int low, int high) {

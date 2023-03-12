@@ -35,6 +35,7 @@ class Combination {
         void comboLainStraight();
         void comboLainTK();
         void comboLainTwoP();
+        void comboLainPair();
         void printCombo();
         bool existPlayerCard();
         bool operator> (Combination&);
