@@ -6,7 +6,8 @@
 using namespace std;
 
 class Plus4 : public Command{
-
+    Plus4();
+    void executeActionUNO(UnoGame&);
 };
 
 #endif
