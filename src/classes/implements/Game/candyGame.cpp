@@ -19,7 +19,7 @@ CandyGame::~CandyGame(){}
 
 void CandyGame::startGame(){
     string name;
-    string action;
+    string action = "";
     cout << "@@@@@@@@@@@@@@@@@G7^P@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" <<
             "@@@@@@@@@@@@@@@@J   !??JY5PB#&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" <<
             "@@@@@@@@@@@@@@&!         ....:~?5#G!!#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n" <<
@@ -56,17 +56,24 @@ void CandyGame::startGame(){
 
     CardGenerator CG;
 
-    cout << "Apakah urutan kartu ingin dibaca dari file? (y or n) : ";
-    cin >> action;
+    while(action != "y" && action != "n" && action != "no" && action != "yes"){
+        try {
+            cout << "\nApakah urutan kartu ingin dibaca dari file? (y or n) : ";
+            cin >> action;
 
-    if(action == "y" || action == "yes"){
-        this->deck = CG.readFile("./config/orderCards.txt");
-    } else {
-        this->deck = CG.randomizeCard();
+            if(action == "y" || action == "yes"){
+                this->deck = CG.readFile("./config/orderCards.txt");
+            } else if (action == "n" || action == "no"){
+                this->deck = CG.randomizeCard();
+            } else {
+                throw "Input tidak valid!";
+            }
+        } catch (...){
+            cout << "Input tidak valid!" << endl;
+        }
     }
 
     cout << "Urutan kartu berhasil dibuat" << endl;
-
     cout << "\nSilahkan input nama-nama pemain" << endl;
 
     for(int i = 1; i <= 7; i++){

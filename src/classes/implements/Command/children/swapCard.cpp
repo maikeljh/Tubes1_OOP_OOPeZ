@@ -10,7 +10,7 @@ void SwapCard::executeAction(CandyGame& Game){
     if (playernow.getAbilityCard().getType() != "SWAPCARD"){
         cout << "\nEits, kamu tidak memiliki kartu SWAPCARD!\n" << endl;
     } else if (playernow.checkValidAbilityCard("SWAPCARD")){
-        cout << playernow.getNickname() << " melakukan SWAPCARD." << endl;
+        cout << endl << playernow.getNickname() << " melakukan SWAPCARD." << endl;
         pair<int,int> playerSwap;
         vector<int> indexPlayers;
         // Choose 1st player to be swapped
@@ -27,34 +27,91 @@ void SwapCard::executeAction(CandyGame& Game){
                 indexPlayers.push_back(i);
             }
         }
-
+        
         int p;
-        cin >> p; // input nomor sesuai output list player yang bisa di-swap
+        bool validInput = false;
+        while(!validInput){
+            try{
+                cout << "Pilihan : ";
+                cin >> p; // input nomor sesuai output list player yang bisa di-swap
+                if(p < 1 || p > 6){
+                    cout << "\nInput tidak valid!\n" << endl;
+                } else {
+                    validInput = true;
+                }
+            } catch(...){
+                cout << "\nInput tidak valid!\n" << endl;
+            }
+        }
+
         playerSwap.first = indexPlayers[p-1];
         indexPlayers.erase(indexPlayers.begin() + (p-1));
         
         // choose 2nd player to be swapped
-        cout << "Silahkan pilih pemain yang kartunya ingin anda tukar:" << endl;
+        cout << "\nSilahkan pilih pemain yang kartunya ingin anda tukar:" << endl;
         for (int i = 0; i < indexPlayers.size(); i++){
             cout << i+1 << ". " << Game.getPlayer(indexPlayers[i]).getNickname() << endl;
         }
 
-        cin >> p; // input nomor sesuai output list player yang bisa di-swap
+        validInput = false;
+        while(!validInput){
+            try{
+                cout << "Pilihan : ";
+                cin >> p; // input nomor sesuai output list player yang bisa di-swap
+                if(p < 1 || p > 5){
+                    cout << "\nInput tidak valid!\n" << endl;
+                } else {
+                    validInput = true;
+                }
+            } catch(...){
+                cout << "\nInput tidak valid!\n" << endl;
+            }
+        }
+
         playerSwap.second = indexPlayers[p-1];
         indexPlayers.erase(indexPlayers.begin() + (p-1));
 
-
         // Choose cards to be swapped
         vector<int> cardSwap;
-        cout << "Silakan pilih kartu kanan/kiri pemain " << Game.getPlayer(playerSwap.first).getNickname() << ":" << endl;
+        cout << "\nSilakan pilih kartu kanan/kiri pemain " << Game.getPlayer(playerSwap.first).getNickname() << ":" << endl;
         cout << "1. Kanan\n2. Kiri\n";
         int option;
-        cin >> option; // 1=kanan, 2=kiri
+
+        validInput = false;
+        while(!validInput){
+            try{
+                cout << "Pilihan : ";
+                cin >> option; // input nomor sesuai output list player yang bisa di-swap
+                if(option < 1 || option > 2){
+                    cout << "\nInput tidak valid!\n" << endl;
+                } else {
+                    validInput = true;
+                }
+            } catch(...){
+                cout << "\nInput tidak valid!\n" << endl;
+            }
+        }
+
         cardSwap.push_back(option);
 
-        cout << "Silakan pilih kartu kanan/kiri pemain " << Game.getPlayer(playerSwap.second).getNickname() << ":" << endl;
+        cout << "\nSilakan pilih kartu kanan/kiri pemain " << Game.getPlayer(playerSwap.second).getNickname() << ":" << endl;
         cout << "1. Kanan\n2. Kiri\n";
-        cin >> option; // 1=kanan, 2=kiri
+        
+        validInput = false;
+        while(!validInput){
+            try{
+                cout << "Pilihan : ";
+                cin >> option; // input nomor sesuai output list player yang bisa di-swap
+                if(option < 1 || option > 2){
+                    cout << "\nInput tidak valid!\n" << endl;
+                } else {
+                    validInput = true;
+                }
+            } catch(...){
+                cout << "\nInput tidak valid!\n" << endl;
+            }
+        }
+
         cardSwap.push_back(option);
 
         // swap
@@ -73,6 +130,7 @@ void SwapCard::executeAction(CandyGame& Game){
                 deck0.push_back(card0_1);
                 deck1.push_back(card0_0); // swapped
                 deck1.push_back(card1_1);
+                cout << "\nPenggunaan SWAP CARD berhasil untuk kartu kiri pemain " << p0.getNickname() << " dan kartu kiri pemain " << p1.getNickname() << endl;
             } else {
                 // cardSwap[1]==1
                 // 00 01 & 10 11 --> 11 01 & 10 00
@@ -80,6 +138,7 @@ void SwapCard::executeAction(CandyGame& Game){
                 deck0.push_back(card0_1);
                 deck1.push_back(card1_0);
                 deck1.push_back(card0_0);
+                cout << "\nPenggunaan SWAP CARD berhasil untuk kartu kiri pemain " << p0.getNickname() << " dan kartu kanan pemain " << p1.getNickname() << endl;
             }
         } else {
             // cardSwap[0]==1
@@ -89,6 +148,7 @@ void SwapCard::executeAction(CandyGame& Game){
                 deck0.push_back(card1_0);
                 deck1.push_back(card0_1);
                 deck1.push_back(card1_1);
+                cout << "\nPenggunaan SWAP CARD berhasil untuk kartu kanan pemain " << p0.getNickname() << " dan kartu kiri pemain " << p1.getNickname() << endl;
             } else {
                 // cardSwap[1]==1
                 // 00 01 & 10 11 --> 00 11 & 10 01
@@ -96,6 +156,7 @@ void SwapCard::executeAction(CandyGame& Game){
                 deck0.push_back(card1_1);
                 deck1.push_back(card1_0);
                 deck1.push_back(card0_1);
+                cout << "\nPenggunaan SWAP CARD berhasil untuk kartu kanan pemain " << p0.getNickname() << " dan kartu kanan pemain " << p1.getNickname() << endl;
             }
         }
         playernow.useAbilityCard();
