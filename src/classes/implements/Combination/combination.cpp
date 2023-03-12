@@ -925,35 +925,97 @@ void Combination::makeCombo() {
 }
 
 void Combination::comboLainSF() {
-
+    this->fourOfaKind();
+    if (this->value() == -1) {
+        this->comboCard.clear();
+        this->mergeCard(this->tableCard, this->playerCard);
+        this->comboLainFlush();
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Four of a Kind");
+    }
 }
 
 void Combination::comboLainFK() {
+    this->fullHouse();
+    if (this->value() == -1) {
+        this->comboCard.clear();
+        this->mergeCard(this->tableCard, this->playerCard);
+        this->comboLainFH();
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Full House");
+    }
     
 }
 
 void Combination::comboLainFH() {
-    
+    this->threeOfaKind();
+    if (this->value() == -1) {
+        this->comboCard.clear();
+        this->mergeCard(this->tableCard, this->playerCard);
+        this->comboLainTK();
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Three of a Kind");
+    }
 }
 
 void Combination::comboLainFlush() {
-    
+    this->straight();
+    if (this->value() == -1) {
+        this->comboCard.clear();
+        this->mergeCard(this->tableCard, this->playerCard);
+        this->comboLainStraight();
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Straight");
+    }
 }
 
 void Combination::comboLainStraight() {
-    
+    this->threeOfaKind();
+    if (this->value() == -1) {
+        this->comboCard.clear();
+        this->mergeCard(this->tableCard, this->playerCard);
+        this->comboLainTK();
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Three of a Kind");
+    }
 }
 
 void Combination::comboLainTK() {
-    
+    this->twoPair();
+    if (this->value() == -1) {
+        this->comboCard.clear();
+        this->mergeCard(this->tableCard, this->playerCard);
+        this->comboLainTwoP();
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Two Pair");
+    }
 }
 
 void Combination::comboLainTwoP() {
-    
-}
-
-void Combination::comboLainPair() {
-    
+    this->pair();
+    if (this->value() == -1) {
+        Card highest = maxValue(this->comboCard);
+        this->comboCard.clear();
+        this->comboCard.push_back(highest);
+        this->setValue(this->value());
+        this->setCombo("High Card");
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Pair");
+    }
 }
 
 void Combination::quicksort(vector <Card>& CC, int low, int high) {
