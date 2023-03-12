@@ -16,6 +16,7 @@ string Combination::getCombo() {
 }
 
 void Combination::setValue(double value) {
+    cout<<value<<endl;
     this->point = value;
 }
 
@@ -389,7 +390,6 @@ void Combination::flush() {
             dictWarna["Red"]++;
         }
     }
-
     for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
         if (itr->second == 5) {
             warna = itr->first;
@@ -402,7 +402,6 @@ void Combination::flush() {
             combo.push_back(this->comboCard[i]);
         }
     }
-
     this->comboCard.clear();
     this->setComboCard(combo);
 }
@@ -539,17 +538,37 @@ double Combination::value() {
     //straight flush
     if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isStraightFlush()) {
         cout << "Masuk straight flush" << endl;
-        comboValue = maxValue(this->comboCard).value() + 12.41;
+        comboValue = maxValue(this->comboCard).value() + 12.5;
     }
     //four of a kind
     else if (this->comboCard.size() >= 4 && this->existPlayerCard() && this->isFourOfaKind()) {
         cout << "Masuk four of a kind" << endl;
-        comboValue = maxValue(this->comboCard).value() + 11.02;
+        comboValue = maxValue(this->comboCard).value() + 11.11;
     }
     //full house
     else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isFullHouse()) {
         cout << "Masuk full house" << endl;
-        comboValue = maxValue(this->comboCard).value() + 9.72;
+        int nCard1 = 0;
+        int nCard2 = 0;
+        vector <Card> Card1;
+        vector <Card> Card2;
+        int Card = this->comboCard[0].getNumber();
+        for (int i = 0; i<this->comboCard.size();i++){
+            if(this->comboCard[i].getNumber()==Card){
+                nCard1++;
+                Card1.push_back(this->comboCard[i]);
+            }
+            else {
+                nCard2++;
+                Card2.push_back(this->comboCard[i]);
+            }
+        }
+        if(nCard1==3){
+            comboValue = maxValue(Card1).value() + 9.72;
+        }
+        else {
+            comboValue = maxValue(Card2).value() + 9.72;
+        }
     }
     //flush
     else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isFlush()) {
@@ -696,27 +715,18 @@ double Combination::value() {
 
 void Combination::makeCombo() {
     if (this->isStraightFlush()) {
-        cout<<"masuk straight flush 1"<<endl;
         this->straightFlush();
-        cout<<"masuk straight flush 2"<<endl;
         this->setValue(this->value());
-        cout<<"masuk straight flush 3"<<endl;
         this->setCombo("Straight Flush");
     }
     else if (this->isFourOfaKind()) {
-        cout<<"four of a kind 1"<<endl;
         this->fourOfaKind();
-        cout<<"four of a kind 2"<<endl;
         this->setValue(this->value());
-        cout<<"four of a kind 3"<<endl;
         this->setCombo("Four of a Kind");
     }
     else if (this->isFullHouse()) {
-        cout<<"full house 1"<<endl;
         this->fullHouse();
-        cout<<"full house 2"<<endl;
         this->setValue(this->value());
-        cout<<"full house 3"<<endl;
         this->setCombo("Full House");
     }
     else if (this->isFlush()) {
@@ -728,35 +738,23 @@ void Combination::makeCombo() {
         this->setCombo("Flush");
     }
     else if (this->isStraight()) {
-        cout<<"straight 1"<<endl;
-        this->straight(); // ini ada fakap kadang jd crash blm tau triggernya apa
-        cout<<"straight 2"<<endl;
+        this->straight();
         this->setValue(this->value());
-        cout<<"straight 3"<<endl;
         this->setCombo("Straight");
     }
     else if (this->isThreeOfaKind()) {
-        cout<<"three of a kind 1"<<endl;
         this->threeOfaKind();
-        cout<<"three of a kind 2"<<endl;
         this->setValue(this->value());
-        cout<<"three of a kind 3"<<endl;
         this->setCombo("Three of a Kind");
     }
     else if (this->isTwoPair()) {
-        cout<<"two pair 1"<<endl;
         this->twoPair();
-        cout<<"two pair 2"<<endl;
         this->setValue(this->value());
-        cout<<"two pair 3"<<endl;
         this->setCombo("Two Pair");
     }
     else if (this->isPair()) {
-        cout<<"pair 1"<<endl;
         this->pair();
-        cout<<"pair 2"<<endl;
         this->setValue(this->value());
-        cout<<"pair 3"<<endl;
         this->setCombo("Pair");
     }
     else {
