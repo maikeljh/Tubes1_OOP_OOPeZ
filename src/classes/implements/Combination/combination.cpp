@@ -52,22 +52,25 @@ void Combination::clearCombo(){
 }
 
 void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
-    this->clearCombo();
+    vector <Card> PC1;
+    vector <Card> TC1;
     vector <Card> CC;
     for (int i = 0; i < 5; i++) {
         CC.push_back(TC[i]);
+        TC1.push_back(TC[i]);
     }
 
     for (int i = 0; i < 2; i++) {
         CC.push_back(PC[i]);
+        PC1.push_back(PC[i]);
     }
-
+    this->clearCombo();
     // Sorting card berdasarkan angka dan warnanya
 
     this->quicksort(CC, 0, CC.size()-1);
     this->setComboCard(CC);
-    this->setPlayerCard(PC);
-    this->setTableCard(TC);
+    this->setPlayerCard(PC1);
+    this->setTableCard(TC1);
 }
 
 void Combination::printCombo() {
@@ -982,20 +985,20 @@ void Combination::makeCombo() {
         cout<<"Masuk sini 0h"<<endl;
         this->pair();
         if (this->value() == -1) {
-            cout<<"Masuk sini 2g"<<endl;
+            cout<<"Masuk sini 1h"<<endl;
             this->comboCard.clear();
-            cout<<"Masuk sini 2g-1"<<endl;
+            cout<<"Masuk sini 2h-1"<<endl;
             this->mergeCard(this->tableCard, this->playerCard);
-            cout<<"Masuk sini 2g-2"<<endl;
+            cout<<"Masuk sini 2h-2"<<endl;
             this->comboLainPair();
-            cout<<"Masuk sini 3g"<<endl;
+            cout<<"Masuk sini 3h"<<endl;
         }
         else {
-            cout<<"Masuk sini 1h"<<endl;
+            cout<<"Masuk sini 4h"<<endl;
             this->setValue(this->value());
-            cout<<"Masuk sini 2h"<<endl;
+            cout<<"Masuk sini 5h"<<endl;
             this->setCombo("Pair");
-            cout<<"Masuk sini 3h"<<endl;
+            cout<<"Masuk sini 6h"<<endl;
         }
     }
     else {
@@ -1146,16 +1149,12 @@ void Combination::comboLainTwoP() {
     cout<<"Masuk sini 1o"<<endl;
     if (this->value() == -1) {
         cout<<"Masuk sini 2o"<<endl;
-        Card highest = maxValue(this->comboCard);
-        cout<<"Masuk sini 2o-1"<<endl;
         this->comboCard.clear();
+        cout<<"Masuk sini 2o-1"<<endl;
+        this->mergeCard(this->tableCard, this->playerCard);
+        cout<<"Masuk sini 2o-2"<<endl;
+        this->comboLainPair();
         cout<<"Masuk sini 3o"<<endl;
-        this->comboCard.push_back(highest);
-        cout<<"Masuk sini 4o"<<endl;
-        this->setValue(this->value());
-        cout<<"Masuk sini 5o"<<endl;
-        this->setCombo("High Card");
-        cout<<"Masuk sini 6o"<<endl;
     }
     else {
         cout<<"Masuk sini 7o"<<endl;
@@ -1167,11 +1166,16 @@ void Combination::comboLainTwoP() {
 }
 
 void Combination::comboLainPair() {
+    cout<<"Masuk sini 1p"<<endl;
     Card highest = maxValue(this->playerCard);
     this->comboCard.clear();
+    cout<<"Masuk sini 2p"<<endl;
     this->comboCard.push_back(highest);
+    cout<<"Masuk sini 3p"<<endl;
     this->setValue(this->value());
+    cout<<"Masuk sini 4p"<<endl;
     this->setCombo("High Card");
+    cout<<"Masuk sini 5p"<<endl;
 }
 
 void Combination::quicksort(vector <Card>& CC, int low, int high) {
