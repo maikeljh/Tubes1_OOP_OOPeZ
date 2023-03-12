@@ -35,6 +35,12 @@ Command* CommandParser::parser(string inputCommand){
     } else if (inputCommand=="ABILITYLESS"){
         Abilityless *abilityless = new Abilityless();
         return abilityless;
+    } else if (inputCommand=="CHECKCARD"){
+        CheckCard *checkCard = new CheckCard();
+        return checkCard;
+    } else if (inputCommand=="CHECKTABLECARD"){
+        CheckTableCard *checkTableCard = new CheckTableCard();
+        return checkTableCard;
     } else {
         throw "Command tidak valid";
     }
