@@ -879,7 +879,7 @@ void Combination::makeCombo() {
         if (this->value() == -1) {
             this->comboCard.clear();
             this->mergeCard(this->tableCard, this->playerCard);
-            this->comboLainFlush();
+            this->comboLainStraight();
         }
         else {
             this->setValue(this->value());
@@ -925,7 +925,7 @@ void Combination::makeCombo() {
 }
 
 void Combination::comboLainSF() {
-    this->fourOfaKind();
+    this->comboLainFlush();
     if (this->value() == -1) {
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
@@ -933,7 +933,7 @@ void Combination::comboLainSF() {
     }
     else {
         this->setValue(this->value());
-        this->setCombo("Four of a Kind");
+        this->setCombo("Flush");
     }
 }
 
