@@ -98,7 +98,11 @@ bool Combination::operator==(Combination& other) {
 }
 
 bool Combination::existPlayerCard() {
-
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (this->comboCard[i] == this->playerCard[0] || this->comboCard[i] == this->playerCard[1]) {
+            return true;
+        }
+    }
 }
 
 bool Combination::isStraightFlush() {
@@ -406,6 +410,7 @@ void Combination::straight() {
             }
         }
         if (temp == true) {
+            index = i;
             break;
         }
     }
