@@ -76,9 +76,15 @@ void Combination::printCombo() {
         cout << this->combo << " " << this->comboCard[0].getColor() << endl;
     }
     for (int i = 0; i < this->comboCard.size() ; i++) {
-            cout << this->comboCard[i].getNumber() << " " << this->comboCard[i].getColor() << " ";
-        }
-        cout << endl;
+        cout << this->comboCard[i].getNumber() << " " << this->comboCard[i].getColor() << " ";
+    }
+    cout << endl;
+
+    // Print player card
+    for (int i = 0; i < this->playerCard.size(); i++) {
+       cout << this->playerCard[i].getNumber() << " " << this->playerCard[i].getColor() << " ";
+    }
+    cout << endl;
 }
 
 Combination::~Combination() {
@@ -100,9 +106,11 @@ bool Combination::operator==(Combination& other) {
 bool Combination::existPlayerCard() {
     for (int i = 0; i < this->comboCard.size(); i++) {
         if (this->comboCard[i] == this->playerCard[0] || this->comboCard[i] == this->playerCard[1]) {
+            cout << "Pernah masuk sini ga" << endl;
             return true;
         }
     }
+    return false;
 }
 
 bool Combination::isStraightFlush() {
@@ -530,26 +538,32 @@ double Combination::value() {
     double comboValue;
     //straight flush
     if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isStraightFlush()) {
+        cout << "Masuk straight flush" << endl;
         comboValue = maxValue(this->comboCard).value() + 12.41;
     }
     //four of a kind
     else if (this->comboCard.size() >= 4 && this->existPlayerCard() && this->isFourOfaKind()) {
+        cout << "Masuk four of a kind" << endl;
         comboValue = maxValue(this->comboCard).value() + 11.02;
     }
     //full house
     else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isFullHouse()) {
+        cout << "Masuk full house" << endl;
         comboValue = maxValue(this->comboCard).value() + 9.72;
     }
     //flush
     else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isFlush()) {
+        cout << "Masuk flush" << endl;
         comboValue = maxValue(this->comboCard).value() + 8.33;
     }
     //straight
     else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isStraight()) {
+        cout << "Masuk straight" << endl;
         comboValue = maxValue(this->comboCard).value() + 6.94;
     }
     //three of a kind
     else if (this->comboCard.size() >= 3 && this->existPlayerCard() && this->isThreeOfaKind()) {
+        cout << "Masuk three of a kind" << endl;
         bool green = false;
         bool blue = false;
         bool yellow = false;
@@ -586,6 +600,7 @@ double Combination::value() {
     }
     //two pair
     else if (this->comboCard.size() >= 4 && this->existPlayerCard() && this->isTwoPair()) {
+        cout << "Masuk two pair" << endl;
         int highetPairNumber = maxValue(this->comboCard).getNumber();
         bool green = false;
         bool blue = false;
@@ -631,6 +646,7 @@ double Combination::value() {
     }
     //pair
     else if (this->comboCard.size() >= 2 && this->existPlayerCard() && this->isPair()) {
+        cout << "Masuk pair" << endl;
         bool green = false;
         bool blue = false;
         bool yellow = false;
@@ -672,7 +688,7 @@ double Combination::value() {
     }
     //highcard max value 
     else {
-        comboValue = maxValue(this->comboCard).value();
+        comboValue = maxValue(this->playerCard).value();
     }
 
     return comboValue;
