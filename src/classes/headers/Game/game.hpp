@@ -10,7 +10,6 @@ using namespace std;
 
 class Game {
     protected:
-        vector<Player> players;
         const int nPlayers = 7;
         bool isClockWise;
         int playerTurn;
@@ -30,7 +29,6 @@ class Game {
         void setPlayerTurn(int playerTurn);
         bool getIsClockWise();
         int getPlayerTurn();
-        Player& getPlayer(int idx);
         virtual bool isEndGame() = 0;
         int getFirstIdxTurn();
         void setFirstIdxTurn(int first);
@@ -41,7 +39,6 @@ class Game {
         void setIsReverse(bool isReverse);
         bool getValid();
         void setValid(bool);
-        vector<Player>& getPlayers();
         TableCard& getTableCard();
 };
 

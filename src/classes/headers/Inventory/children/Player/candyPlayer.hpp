@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class CandyPlayer: public Player{
+class CandyPlayer: public Player<Card>{
     private:
         long long int point;
         AbilityCard ability;

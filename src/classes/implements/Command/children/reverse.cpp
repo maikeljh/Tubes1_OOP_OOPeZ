@@ -8,7 +8,7 @@ void Reverse::executeAction(CandyGame& Game){
     Player& playernow = Game.getPlayer(Game.getPlayerTurn());
     if (playernow.checkValidAbilityCard("REVERSE")){
         if (!playernow.getAbilityCard().getUseable()){
-            cout << "\nOops, kartu ability reversemu telah dimatikan sebelumnya:(.\nSilahkan lakukan perintah lain.\n" << endl;
+            cout << "\nOops, kartu ability reversemu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n" << endl;
         } else {
             cout << endl << playernow.getNickname() << " melakukan reverse!" << endl;
             cout << "(sisa) urutan eksekusi giliran ini : ";

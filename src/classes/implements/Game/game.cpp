@@ -15,12 +15,6 @@ Game::Game(int max):table(max){
 }
 
 Game::Game(const Game& other):table(5){
-    for(int i = 0; i < this->nPlayers; i++){
-        this->players.pop_back();
-    }
-    for(int i = 0; i < this->nPlayers; i++){
-        this->players.push_back(other.players[i]);
-    }
     this->isClockWise = other.isClockWise;
     this->playerTurn = other.playerTurn;
     this->firstIdxTurn = other.firstIdxTurn;
@@ -63,10 +57,6 @@ void Game::setLastIdxTurn(int last){
     this->lastIdxTurn = last;
 }
 
-Player& Game::getPlayer(int idx){
-    return this->players[idx];
-}
-
 int Game::getNPlayers(){
     return this->nPlayers;
 }
@@ -89,8 +79,4 @@ void Game::setValid(bool val){
 
 TableCard& Game::getTableCard(){
     return this->table;
-}
-
-vector<Player>& Game::getPlayers(){
-    return this->players;
 }

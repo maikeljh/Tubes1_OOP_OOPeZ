@@ -3,9 +3,12 @@
 
 using namespace std;
 
-Card::Card():Value(),BaseCard(){}
+Card::Card():Value(){}
 
-Card::Card(int number, string color):Value(),BaseCard(number, color){}
+Card::Card(int number, string color):Value(){
+    this->number = number;
+    this->color = color;
+}
 
 Card& Card::operator=(const Card& C) {
     this->number = C.number;
