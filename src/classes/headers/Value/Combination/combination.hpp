@@ -28,6 +28,14 @@ class Combination {
         void clearCombo();
         void mergeCard(vector <Card> &TC, vector <Card> &PC);
         void makeCombo();
+        void comboLainSF();
+        void comboLainFK();
+        void comboLainFH();
+        void comboLainFlush();
+        void comboLainStraight();
+        void comboLainTK();
+        void comboLainTwoP();
+        void comboLainPair();
         void printCombo();
         bool existPlayerCard();
         bool operator> (Combination&);

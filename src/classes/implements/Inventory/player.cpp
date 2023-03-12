@@ -75,9 +75,13 @@ Card Player::pop(){
     this->mainDeck.pop_back();
     return PCx;
 }
+
 void Player::printCard(){
     cout << "1. " << this->mainDeck[0].getNumber() << " " << this->mainDeck[0].getColor() << endl;
     cout << "2. " << this->mainDeck[1].getNumber() << " " << this->mainDeck[1].getColor() << endl;
+    if(this->ability.getType() != "" && this->ability.getUseable()){
+        cout << "3. " << this->ability.getType() << " Ability Card" << endl;
+    }
 }
 
 string Player::getNickname(){
