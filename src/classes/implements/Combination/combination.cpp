@@ -52,6 +52,7 @@ void Combination::clearCombo(){
 }
 
 void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
+    this->clearCombo();
     vector <Card> CC;
     for (int i = 0; i < 5; i++) {
         CC.push_back(TC[i]);
@@ -824,12 +825,15 @@ double Combination::value() {
 
 void Combination::makeCombo() {
     if (this->isStraightFlush()) {
+        cout<<"Masuk sini 0a"<<endl;
         this->straightFlush();
         cout<<"Masuk sini 1a"<<endl;
         if (this->value() == -1) {
             cout<<"Masuk sini 2a"<<endl;
             this->comboCard.clear();
+            cout<<"Masuk sini 2a-1"<<endl;
             this->mergeCard(this->tableCard, this->playerCard);
+            cout<<"Masuk sini 2a-2"<<endl;
             this->comboLainSF();
             cout<<"Masuk sini 3a"<<endl;
         }
@@ -842,12 +846,15 @@ void Combination::makeCombo() {
         }
     }
     else if (this->isFourOfaKind()) {
+        cout<<"Masuk sini 0b"<<endl;
         this->fourOfaKind();
         cout<<"Masuk sini 1b"<<endl;
         if (this->value() == -1) {
             cout<<"Masuk sini 2b"<<endl;
             this->comboCard.clear();
+            cout<<"Masuk sini 2b-1"<<endl;
             this->mergeCard(this->tableCard, this->playerCard);
+            cout<<"Masuk sini 2b-2"<<endl;
             this->comboLainFK();
             cout<<"Masuk sini 3b"<<endl;
         }
@@ -860,12 +867,15 @@ void Combination::makeCombo() {
         }
     }
     else if (this->isFullHouse()) {
+        cout<<"Masuk sini 0c"<<endl;
         this->fullHouse();
         cout<<"Masuk sini 1c"<<endl;
         if (this->value() == -1) {
             cout<<"Masuk sini 2c"<<endl;
             this->comboCard.clear();
+            cout<<"Masuk sini 2c-1"<<endl;
             this->mergeCard(this->tableCard, this->playerCard);
+            cout<<"Masuk sini 2c-2"<<endl;
             this->comboLainFH();
             cout<<"Masuk sini 3c"<<endl;
         }
@@ -884,7 +894,9 @@ void Combination::makeCombo() {
         if (this->value() == -1) {
             cout<<"Masuk sini 2d"<<endl;
             this->comboCard.clear();
+            cout<<"Masuk sini 2d-1"<<endl;
             this->mergeCard(this->tableCard, this->playerCard);
+            cout<<"Masuk sini 2d-2"<<endl;
             this->comboLainFlush();
             cout<<"Masuk sini 3d"<<endl;
         }
@@ -899,12 +911,15 @@ void Combination::makeCombo() {
         }
     }
     else if (this->isStraight()) {
+        cout<<"Masuk sini 0e"<<endl;
         this->straight();
         cout<<"Masuk sini 1e"<<endl;
         if (this->value() == -1) {
             cout<<"Masuk sini 2e"<<endl;
             this->comboCard.clear();
+            cout<<"Masuk sini 2e-1"<<endl;
             this->mergeCard(this->tableCard, this->playerCard);
+            cout<<"Masuk sini 2e-2"<<endl;
             this->comboLainStraight();
             cout<<"Masuk sini 3e"<<endl;
         }
@@ -917,12 +932,15 @@ void Combination::makeCombo() {
         }
     }
     else if (this->isThreeOfaKind()) {
+        cout<<"Masuk sini 0f"<<endl;
         this->threeOfaKind();
         cout<<"Masuk sini 1f"<<endl;
         if (this->value() == -1) {
             cout<<"Masuk sini 2f"<<endl;
             this->comboCard.clear();
+            cout<<"Masuk sini 2f-1"<<endl;
             this->mergeCard(this->tableCard, this->playerCard);
+            cout<<"Masuk sini 2f-2"<<endl;
             this->comboLainTK();
             cout<<"Masuk sini 3f"<<endl;
         } 
@@ -935,6 +953,7 @@ void Combination::makeCombo() {
         }
     }
     else if (this->isTwoPair()) {
+        cout<<"Masuk sini 0g"<<endl;
         this->twoPair();
         cout<<"Masuk sini 1g"<<endl;
         if (this->value() == -1) {
@@ -955,6 +974,7 @@ void Combination::makeCombo() {
         }
     }
     else if (this->isPair()) {
+        cout<<"Masuk sini 0h"<<endl;
         this->pair();
         cout<<"Masuk sini 1h"<<endl;
         this->setValue(this->value());
@@ -972,12 +992,15 @@ void Combination::makeCombo() {
 }
 
 void Combination::comboLainSF() {
+    cout<<"Masuk sini 0i"<<endl;
     this->comboLainFlush();
     cout<<"Masuk sini 1i"<<endl;
     if (this->value() == -1) {
         cout<<"Masuk sini 2i"<<endl;
         this->comboCard.clear();
+        cout<<"Masuk sini 2i-1"<<endl;
         this->mergeCard(this->tableCard, this->playerCard);
+        cout<<"Masuk sini 2i-2"<<endl;
         this->comboLainFlush();
         cout<<"Masuk sini 3i"<<endl;
     }
@@ -991,12 +1014,15 @@ void Combination::comboLainSF() {
 }
 
 void Combination::comboLainFK() {
+    cout<<"Masuk sini 0j"<<endl;
     this->fullHouse();
     cout<<"Masuk sini 1j"<<endl;
     if (this->value() == -1) {
         cout<<"Masuk sini 2j"<<endl;
         this->comboCard.clear();
+        cout<<"Masuk sini 2j-1"<<endl;
         this->mergeCard(this->tableCard, this->playerCard);
+        cout<<"Masuk sini 2j-2"<<endl;
         this->comboLainFH();
         cout<<"Masuk sini 3j"<<endl;
     }
@@ -1011,12 +1037,15 @@ void Combination::comboLainFK() {
 }
 
 void Combination::comboLainFH() {
+    cout<<"Masuk sini 0k"<<endl;
     this->threeOfaKind();
     cout<<"Masuk sini 1k"<<endl;
     if (this->value() == -1) {
         cout<<"Masuk sini 2k"<<endl;
         this->comboCard.clear();
+        cout<<"Masuk sini 2k-1"<<endl;
         this->mergeCard(this->tableCard, this->playerCard);
+        cout<<"Masuk sini 2k-2"<<endl;
         this->comboLainTK();
         cout<<"Masuk sini 3k"<<endl;
     }
@@ -1030,12 +1059,15 @@ void Combination::comboLainFH() {
 }
 
 void Combination::comboLainFlush() {
+    cout<<"Masuk sini 0l"<<endl;
     this->straight();
     cout<<"Masuk sini 1l"<<endl;
     if (this->value() == -1) {
         cout<<"Masuk sini 2l"<<endl;
         this->comboCard.clear();
+        cout<<"Masuk sini 2l-1"<<endl;
         this->mergeCard(this->tableCard, this->playerCard);
+        cout<<"Masuk sini 2l-2"<<endl;
         this->comboLainStraight();
         cout<<"Masuk sini 3l"<<endl;
     }
@@ -1049,12 +1081,15 @@ void Combination::comboLainFlush() {
 }
 
 void Combination::comboLainStraight() {
+    cout<<"Masuk sini 0m"<<endl;
     this->threeOfaKind();
     cout<<"Masuk sini 1m"<<endl;
     if (this->value() == -1) {
         cout<<"Masuk sini 2m"<<endl;
         this->comboCard.clear();
+        cout<<"Masuk sini 2m-1"<<endl;
         this->mergeCard(this->tableCard, this->playerCard);
+        cout<<"Masuk sini 2m-2"<<endl;
         this->comboLainTK();
         cout<<"Masuk sini 3m"<<endl;
     }
@@ -1068,12 +1103,15 @@ void Combination::comboLainStraight() {
 }
 
 void Combination::comboLainTK() {
+    cout<<"Masuk sini 0n"<<endl;
     this->twoPair();
     cout<<"Masuk sini 1n"<<endl;
     if (this->value() == -1) {
         cout<<"Masuk sini 2n"<<endl;
         this->comboCard.clear();
+        cout<<"Masuk sini 2n-1"<<endl;
         this->mergeCard(this->tableCard, this->playerCard);
+        cout<<"Masuk sini 2n-2"<<endl;
         this->comboLainTwoP();
         cout<<"Masuk sini 3n"<<endl;
     }
@@ -1087,11 +1125,13 @@ void Combination::comboLainTK() {
 }
 
 void Combination::comboLainTwoP() {
+    cout<<"Masuk sini 0o"<<endl;
     this->pair();
     cout<<"Masuk sini 1o"<<endl;
     if (this->value() == -1) {
         cout<<"Masuk sini 2o"<<endl;
         Card highest = maxValue(this->comboCard);
+        cout<<"Masuk sini 2o-1"<<endl;
         this->comboCard.clear();
         cout<<"Masuk sini 3o"<<endl;
         this->comboCard.push_back(highest);
@@ -1102,8 +1142,11 @@ void Combination::comboLainTwoP() {
         cout<<"Masuk sini 6o"<<endl;
     }
     else {
+        cout<<"Masuk sini 7o"<<endl;
         this->setValue(this->value());
+        cout<<"Masuk sini 8o"<<endl;
         this->setCombo("Pair");
+        cout<<"Masuk sini 9o"<<endl;
     }
 }
 
