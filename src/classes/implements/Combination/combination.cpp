@@ -228,18 +228,27 @@ bool Combination::isFlush() {
 }
 
 bool Combination::isStraight() {
-    bool temp;
-    for (int i = this->comboCard.size()-1 ; i >= 4; i--) {
-        temp = true;
-        for (int j = i; j > i-4; j--) {
-            if (this->comboCard[j].getNumber()-1 != this->comboCard[j-1].getNumber()) {
-                temp = false;
-            }
+    bool temp = false;
+    int idx = this->comboCard.size()-1;
+    int count = 0;
+    while (idx > 0) {
+        if (this->comboCard[idx].getNumber() == this->comboCard[idx-1].getNumber() + 1) {
+            count++;
         }
-        if (temp == true) {
+        else if (this->comboCard[idx].getNumber() == this->comboCard[idx-1].getNumber()) {
+            count += 0;
+        }
+        else {
+            count = 0;
+        }
+        idx--;
+
+        if (count == 4) {
+            temp = true;
             break;
         }
     }
+
     return temp;
 }
 
@@ -436,23 +445,33 @@ void Combination::flush() {
 }
 
 void Combination::straight() {
-    int index;
+    int idx = this->comboCard.size()-1;
+    int count = 0;
     vector <Card> combo;
-    for (int i = this->comboCard.size()-1 ; i >= 4; i--) {
-        bool temp = true;
-        for (int j = i; j > i-4; j--) {
-            if (this->comboCard[j].getNumber()-1 != this->comboCard[j-1].getNumber()) {
-                temp = false;
-            }
+    while (idx > 0) {
+        if (this->comboCard[idx].getNumber() == this->comboCard[idx-1].getNumber() + 1) {
+            count++;
         }
-        if (temp == true) {
-            index = i;
+        else if (this->comboCard[idx].getNumber() == this->comboCard[idx-1].getNumber()) {
+            count += 0;
+        }
+        else {
+            count = 0;
+        }
+        idx--;
+
+        if (count == 4) {
             break;
         }
     }
 
-    for (int i = index-4; i < index+1; i++) {
-        combo.push_back(this->comboCard[i]);
+    for (int i = idx; i <= i + 4; i++) {
+        if (this->comboCard[i].getNumber() != this->comboCard[i+1].getNumber()) {
+            combo.push_back(this->comboCard[i]);
+        }
+        if (combo.size() == 5) {
+            break;
+        }
     }
 
     this->comboCard.clear();
