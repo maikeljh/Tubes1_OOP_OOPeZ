@@ -205,7 +205,7 @@ bool Combination::isFlush() {
     }
 
     for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
-        if (itr->second == 5) {
+        if (itr->second >= 5) {
             return true;
         }
     }
@@ -400,7 +400,7 @@ void Combination::flush() {
         }
     }
     for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
-        if (itr->second == 5) {
+        if (itr->second >= 5) {
             warna = itr->first;
              cout << "Lewat sini ga 6" << endl;
         }
