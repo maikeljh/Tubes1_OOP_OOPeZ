@@ -3,9 +3,11 @@
 
 #include "../command.hpp"
 #include "../../Game/game.hpp"
+#include "../../Exception/exception.h"
 
 class ChangeColor: public Command{
-
+    ChangeColor();
+    void executeActionUNO(UnoGame&);
 };
 
 #endif

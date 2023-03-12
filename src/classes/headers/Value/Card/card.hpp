@@ -20,6 +20,7 @@ class Card : public Value {
         int getNumber();
         string getColor();
         void setNumber(int number);
+        void setColor(string color);
         double value();
 
 };
