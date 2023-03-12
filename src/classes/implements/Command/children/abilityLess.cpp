@@ -14,7 +14,9 @@ void Abilityless::executeAction(CandyGame& Game){
         }
     }
     if (playernow.checkValidAbilityCard("ABILITYLESS")){
-        if (isAllAbilityUsed(players)){
+        if(!playernow.getAbilityCard().getUseable()){
+            cout << "\nKartu Abilityless kamu sudah dipakai :(" << endl;
+        } else if (isAllAbilityUsed(players)){
             cout << "\nEits, ternyata semua pemain sudah memakai kartu kemampuan.\n";
             cout << "Yah kamu kena sendiri deh, kemampuanmu menjadi abilityless. Yah, pengunaan kartu ini sia-sia" << endl;
         } else {

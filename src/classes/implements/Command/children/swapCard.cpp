@@ -9,7 +9,7 @@ void SwapCard::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(playerTurn);
     if (playernow.getAbilityCard().getType() != "SWAPCARD"){
         cout << "\nEits, kamu tidak memiliki kartu SWAPCARD!\n" << endl;
-    } else if (playernow.checkValidAbilityCard("SWAPCARD")){
+    } else if (playernow.getAbilityCard().getUseable()){
         cout << endl << playernow.getNickname() << " melakukan SWAPCARD." << endl;
         pair<int,int> playerSwap;
         vector<int> indexPlayers;
