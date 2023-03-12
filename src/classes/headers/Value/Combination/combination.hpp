@@ -33,6 +33,7 @@ class Combination {
         bool operator> (Combination&);
         bool operator< (Combination&);
         bool operator== (Combination&);
+        bool isPlayerCard(Card &);
         bool isStraightFlush();
         bool isFourOfaKind();
         bool isFullHouse();

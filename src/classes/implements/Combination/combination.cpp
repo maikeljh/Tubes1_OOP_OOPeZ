@@ -16,7 +16,6 @@ string Combination::getCombo() {
 }
 
 void Combination::setValue(double value) {
-    cout<<value<<endl;
     this->point = value;
 }
 
@@ -107,11 +106,14 @@ bool Combination::operator==(Combination& other) {
 bool Combination::existPlayerCard() {
     for (int i = 0; i < this->comboCard.size(); i++) {
         if (this->comboCard[i] == this->playerCard[0] || this->comboCard[i] == this->playerCard[1]) {
-            cout << "Pernah masuk sini ga" << endl;
             return true;
         }
     }
     return false;
+}
+
+bool Combination::isPlayerCard(Card &a) {
+    return (this->playerCard[0] == a || this->playerCard[1] == a);
 }
 
 bool Combination::isStraightFlush() {
