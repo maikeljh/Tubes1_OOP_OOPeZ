@@ -45,5 +45,5 @@ int TableCard<T>::getNeff(){
 
 template <class T>
 T& getTop(){
-    return listOfCards[listOfCards.end()];
+    return listOfCards.back();
 }
