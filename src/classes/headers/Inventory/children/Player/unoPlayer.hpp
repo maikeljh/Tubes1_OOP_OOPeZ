@@ -13,15 +13,11 @@ using namespace std;
 
 class UnoPlayer: public Player<BaseCard>{
     private:
-        int id;
-        string nickname;
-        vector<BaseCard> mainDeck;
-        static int playersCreated;
-    
+        
     public:
         UnoPlayer();
         UnoPlayer(DeckCard<BaseCard> &DC, string nickname);
-        UnoPlayer& operator=(const UnoPlayer&);
+        UnoPlayer& operator=(UnoPlayer&);
         UnoPlayer& operator+(const BaseCard& add);
         UnoPlayer& operator-();
         ~UnoPlayer();
