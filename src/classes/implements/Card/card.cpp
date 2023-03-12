@@ -3,9 +3,12 @@
 
 using namespace std;
 
-Card::Card():Value(),BaseCard(){}
+Card::Card():Value(){}
 
-Card::Card(int number, string color):Value(),BaseCard(number, color){}
+Card::Card(int number, string color):Value(){
+    this->number = number;
+    this->color = color;
+}
 
 Card& Card::operator=(const Card& C) {
     this->number = C.number;
@@ -37,4 +40,16 @@ double Card::value(){
     else if (this->color == "Red"){
         return ((1.0 * this->number)/10)+(3*0.03);
     }
+}
+
+int Card::getNumber(){
+    return this->number;
+}
+
+string Card::getColor(){
+    return this->color;
+}
+
+void Card::setNumber(int number) {
+    this->number = number;
 }

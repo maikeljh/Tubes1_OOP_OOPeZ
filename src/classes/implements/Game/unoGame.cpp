@@ -61,10 +61,6 @@ int UnoGame::chooseWinner(){
     return -1;
 }
 
-DeckCard<BaseCard>& UnoGame::getDeckCard(){
-    return this->deck;
-}
-
 bool UnoGame::isEndGame(){
     for(int i = 0; i < 7; i++){
         if(this->players[i].getDeckPlayer().size() == 0){

@@ -5,9 +5,9 @@ Abilityless::Abilityless(){
 }
 
 void Abilityless::executeAction(CandyGame& Game){
-    Player& playernow = Game.getPlayer(Game.getPlayerTurn());
+    CandyPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
     int playerTurn = Game.getPlayerTurn();
-    vector<Player> players;
+    vector<CandyPlayer> players;
     for (int i = 0; i < Game.getNPlayers(); i++){
         if(i != playerTurn){
             players.push_back(Game.getPlayer(i));
@@ -52,7 +52,7 @@ void Abilityless::executeAction(CandyGame& Game){
             }
 
             // Turn off ability
-            Player& playerAbilityless = Game.getPlayer(idxAbilityless);
+            CandyPlayer& playerAbilityless = Game.getPlayer(idxAbilityless);
             AbilityCard& targetAbilityCard = playerAbilityless.getAbilityCard();
             if (targetAbilityCard.getUseable()){
                 targetAbilityCard.setUseable(false);
@@ -69,7 +69,7 @@ void Abilityless::executeAction(CandyGame& Game){
     }
 }
 
-bool Abilityless::isAllAbilityUsed(vector<Player> players){
+bool Abilityless::isAllAbilityUsed(vector<CandyPlayer> players){
     for (int i = 0; i < players.size(); i++){
         if (players[i].getAbilityCard().getUseable()){
             return false;

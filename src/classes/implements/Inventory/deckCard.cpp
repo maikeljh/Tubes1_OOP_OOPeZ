@@ -1,5 +1,4 @@
 #include "../../headers/Inventory/children/DeckCard/deckCard.hpp"
-#include "../../headers/BaseCard/baseCard.hpp"
 #include <iostream>
 
 using namespace std;
@@ -58,14 +57,6 @@ void DeckCard<Card>::printCard(){
 }
 
 template<>
-void DeckCard<BaseCard>::printCard(){
-    cout << "Isi dari deck sekarang :" << endl;
-    for(int i = 0; i < this->neff; i++){
-        cout << i+1 << ". " << this->deck[i].getNumber() <<  " " << this->deck[i].getColor() << endl;
-    }
-}
-
-template<>
 void DeckCard<AbilityCard>::printCard(){
     cout << "Isi dari deck sekarang :" << endl;
     for(int i = 0; i < this->neff; i++){
@@ -73,6 +64,14 @@ void DeckCard<AbilityCard>::printCard(){
     }
 }
 
+template<>
+void DeckCard<UnoCard>::printCard(){
+    cout << "Isi dari deck sekarang :" << endl;
+    for(int i = 0; i < this->neff; i++){
+        cout << i+1 << ". " << this->deck[i].getNumber() <<  " " << this->deck[i].getColor() << endl;
+    }
+}
+
 template class DeckCard<Card>;
 template class DeckCard<AbilityCard>;
-template class DeckCard<BaseCard>;
+template class DeckCard<UnoCard>;

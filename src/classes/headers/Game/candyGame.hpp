@@ -4,6 +4,7 @@
 #include <iostream>
 #include "game.hpp"
 #include "../Inventory/children/DeckCard/deckCard.hpp"
+#include "../Inventory/children/Player/candyPlayer.hpp"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ class CandyGame : public Game {
     private:
         int round;
         long long int point;
+        vector<CandyPlayer> players;
         DeckCard<Card> deck;
         DeckCard<AbilityCard> deckAbility;
         const long long int maxPoint = (long long) 1 << 32;
@@ -28,6 +30,8 @@ class CandyGame : public Game {
         long long int getPoint();
         DeckCard<Card>& getDeckCard();
         DeckCard<AbilityCard>& getAbilityDeckCard();
+        vector<CandyPlayer>& getPlayers();
+        CandyPlayer& getPlayer(int idx);
         bool isEndGame();
 };
 
