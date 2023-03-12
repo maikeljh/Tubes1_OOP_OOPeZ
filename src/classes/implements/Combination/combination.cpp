@@ -76,7 +76,7 @@ void Combination::printCombo() {
         cout << this->combo << " " << this->comboCard[0].getColor() << endl;
     }
     for (int i = 0; i < this->comboCard.size() ; i++) {
-            cout << this->comboCard[i].getNumber() << " ";
+            cout << this->comboCard[i].getNumber() << " " << this->comboCard[i].getColor() << " ";
         }
         cout << endl;
 }
