@@ -561,23 +561,33 @@ void Combination::pair(){
 double Combination::value() {
     double comboValue;
     //straight flush
-    if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isStraightFlush()) {
-        for (int i = 0; i < this->comboCard.size(); i++) {
+    if (this->comboCard.size() >= 5 && this->isStraightFlush()) {
+        if (this->existPlayerCard()) {
+            for (int i = 0; i < this->comboCard.size(); i++) {
             if (this->isPlayerCard(this->comboCard[i])) {
                 comboValue = this->comboCard[i].value() + 12.5;
             }
         }
+        }
+        else {
+            comboValue = -1;
+        }
     }
     //four of a kind
-    else if (this->comboCard.size() >= 4 && this->existPlayerCard() && this->isFourOfaKind()) {
-        for (int i = 0; i < this->comboCard.size(); i++) {
-            if (this->isPlayerCard(this->comboCard[i])) {
-                comboValue = this->comboCard[i].value() + 11.11;
+    else if (this->comboCard.size() >= 4 && this->isFourOfaKind()) {
+        if (this->existPlayerCard()) {
+            for (int i = 0; i < this->comboCard.size(); i++) {
+                if (this->isPlayerCard(this->comboCard[i])) {
+                    comboValue = this->comboCard[i].value() + 11.11;
+                }
             }
+        }
+        else {
+            comboValue = -1;
         }
     }
     //full house
-    else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isFullHouse()) {
+    else if (this->comboCard.size() >= 5 && this->isFullHouse()) {
         int nCard1 = 0;
         int nCard2 = 0;
         vector <Card> Card1;
@@ -609,7 +619,7 @@ double Combination::value() {
         }
     }
     //flush
-    else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isFlush()) {
+    else if (this->comboCard.size() >= 5 && this->isFlush()) {
         for (int i = 0; i < this->comboCard.size(); i++) {
             if (this->isPlayerCard(this->comboCard[i])) {
                 comboValue = this->comboCard[i].value() + 8.33;
@@ -617,7 +627,7 @@ double Combination::value() {
         }
     }
     //straight
-    else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isStraight()) {
+    else if (this->comboCard.size() >= 5 && this->isStraight()) {
         for (int i = 0; i < this->comboCard.size(); i++) {
             if (this->isPlayerCard(this->comboCard[i])) {
                 comboValue = this->comboCard[i].value() + 6.94;
@@ -625,7 +635,7 @@ double Combination::value() {
         }
     }
     //three of a kind
-    else if (this->comboCard.size() >= 3 && this->existPlayerCard() && this->isThreeOfaKind()) {
+    else if (this->comboCard.size() >= 3 && this->isThreeOfaKind()) {
         bool green = false;
         bool blue = false;
         bool yellow = false;
@@ -667,7 +677,7 @@ double Combination::value() {
         // comboValue = maxValue(this->comboCard).value() + 5.56; //rumus
     }
     //two pair
-    else if (this->comboCard.size() >= 4 && this->existPlayerCard() && this->isTwoPair()) {
+    else if (this->comboCard.size() >= 4 && this->isTwoPair()) {
         int highetPairNumber = maxValue(this->comboCard).getNumber();
         bool green = false;
         bool blue = false;
@@ -719,7 +729,7 @@ double Combination::value() {
         // comboValue = maxValue(this->comboCard).value() + 2.78;
     }
     //pair
-    else if (this->comboCard.size() >= 2 && this->existPlayerCard() && this->isPair()) {
+    else if (this->comboCard.size() >= 2 && this->isPair()) {
         bool green = false;
         bool blue = false;
         bool yellow = false;
@@ -777,8 +787,13 @@ double Combination::value() {
 void Combination::makeCombo() {
     if (this->isStraightFlush()) {
         this->straightFlush();
-        this->setValue(this->value());
-        this->setCombo("Straight Flush");
+        if (this->value() == -1) {
+
+        }
+        else {
+            this->setValue(this->value());
+            this->setCombo("Straight Flush");
+        }
     }
     else if (this->isFourOfaKind()) {
         this->fourOfaKind();
