@@ -905,7 +905,7 @@ void Combination::makeCombo() {
             cout<<"Masuk sini 2e"<<endl;
             this->comboCard.clear();
             this->mergeCard(this->tableCard, this->playerCard);
-            this->comboLainFlush();
+            this->comboLainStraight();
             cout<<"Masuk sini 3e"<<endl;
         }
         else {
@@ -970,7 +970,7 @@ void Combination::makeCombo() {
 }
 
 void Combination::comboLainSF() {
-    this->fourOfaKind();
+    this->comboLainFlush();
     if (this->value() == -1) {
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
@@ -978,7 +978,7 @@ void Combination::comboLainSF() {
     }
     else {
         this->setValue(this->value());
-        this->setCombo("Four of a Kind");
+        this->setCombo("Flush");
     }
 }
 
