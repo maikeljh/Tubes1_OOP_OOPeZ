@@ -10,12 +10,12 @@ void Switch::executeAction(CandyGame& Game){
     if (playernow.getAbilityCard().getType() != "SWITCH"){
         cout << "\nEits, kamu tidak memiliki kartu SWITCH!\n" << endl;
     } else if (playernow.checkValidAbilityCard("SWITCH")){
-        cout << playernow.getNickname() << " melakukan switch!" << endl;
+        cout << endl << playernow.getNickname() << " melakukan switch!" << endl;
         cout << "Kartumu sekarang adalah:" << endl;
         playernow.printCard();
 
         // choose a player
-        cout << "Silahkan pilih pemain yang kartunya ingin anda tukar:" << endl;
+        cout << "\nSilahkan pilih pemain yang kartunya ingin anda tukar:" << endl;
         for (int i=0; i<Game.getNPlayers(); i++){
             // print player list that can be switched (all exc the current player)
             if (i!=playerTurn){
@@ -27,8 +27,23 @@ void Switch::executeAction(CandyGame& Game){
                 cout << Game.getPlayer(i).getNickname() << endl;
             }
         }
+        
         int idxSwitch;
-        cin >> idxSwitch;
+        bool validInput = false;
+        while(!validInput){
+            try{
+                cout << "Pilihan : ";
+                cin >> idxSwitch; // input nomor sesuai output list player yang bisa di-switch
+                if(idxSwitch < 1 || idxSwitch > 6){
+                    cout << "\nInput tidak valid!\n" << endl;
+                } else {
+                    validInput = true;
+                }
+            } catch(...){
+                cout << "\nInput tidak valid!\n" << endl;
+            }
+        }
+
         if (idxSwitch <= playerTurn){
             idxSwitch--;
         }
@@ -47,7 +62,7 @@ void Switch::executeAction(CandyGame& Game){
         deck1.push_back(cardnow_0);
         deck1.push_back(cardnow_1);
 
-        cout << "Kedua kartu " << playernow.getNickname() << " telah ditukar dengan " << playerSwitch.getNickname() << "!" << endl;
+        cout << "\nKedua kartu " << playernow.getNickname() << " telah ditukar dengan " << playerSwitch.getNickname() << "!" << endl;
         cout << "Kartumu sekarang adalah:" << endl;
         playernow.printCard();
         playernow.useAbilityCard();
