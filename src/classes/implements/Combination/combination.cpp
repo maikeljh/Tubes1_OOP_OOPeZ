@@ -43,11 +43,12 @@ void Combination::setTableCard(vector <Card> &TC) {
 
 void Combination::clearCombo(){
     int size = this->comboCard.size();
-    for(int i = 0; i < size ; i++){
-        this->comboCard.pop_back();
-    }
+    this->comboCard.clear();
+    this->playerCard.clear();
+    this->tableCard.clear();
     this->combo = "";
     this->point = 0;
+
 }
 
 void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
@@ -75,10 +76,21 @@ void Combination::printCombo() {
     else {
         cout << this->combo << " " << this->comboCard[0].getColor() << endl;
     }
-    for (int i = 0; i < this->comboCard.size() ; i++) {
-        cout << this->comboCard[i].getNumber() << " " << this->comboCard[i].getColor() << " ";
+
+    if (this->combo == "High Card") {
+        if (this->playerCard[0].value() > this->playerCard[1].value()) {
+            cout << this->playerCard[0].getNumber() << " " << this->playerCard[0].getColor() << endl;
+        }
+        else {
+            cout << this->playerCard[1].getNumber() << " " << this->playerCard[1].getColor() << endl;
+        }
     }
-    cout << endl;
+    else {
+        for (int i = 0; i < this->comboCard.size() ; i++) {
+            cout << this->comboCard[i].getNumber() << " " << this->comboCard[i].getColor() << " ";
+        }
+        cout << endl;
+    }
 
     // Print player card
     for (int i = 0; i < this->playerCard.size(); i++) {
@@ -204,7 +216,7 @@ bool Combination::isFlush() {
     }
 
     for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
-        if (itr->second == 5) {
+        if (itr->second >= 5) {
             return true;
         }
     }
@@ -399,7 +411,7 @@ void Combination::flush() {
         }
     }
     for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
-        if (itr->second == 5) {
+        if (itr->second >= 5) {
             warna = itr->first;
              cout << "Lewat sini ga 6" << endl;
         }
@@ -411,6 +423,9 @@ void Combination::flush() {
              cout << "Lewat sini ga 7" << endl;
             combo.push_back(this->comboCard[i]);
         }
+    }
+    while (combo.size() > 5) {
+        combo.erase(combo.begin());
     }
     this->comboCard.clear();
     this->setComboCard(combo);
@@ -565,30 +580,43 @@ double Combination::value() {
     else if (this->comboCard.size() >= 5 && this->existPlayerCard() && this->isFullHouse()) {
         int nCard1 = 0;
         int nCard2 = 0;
-        vector <Card> Card1;
-        vector <Card> Card2;
+        bool flag = false;
         int Card = this->comboCard[0].getNumber();
         for (int i = 0; i<this->comboCard.size();i++){
             if(this->comboCard[i].getNumber()==Card){
-                nCard1++;
-                Card1.push_back(this->comboCard[i]);
+                nCard1+=1;
             }
             else {
-                nCard2++;
-                Card2.push_back(this->comboCard[i]);
+                nCard2+=1;
             }
         }
         if(nCard1==3){
-            for (int i = 0; i<Card1.size();i++){
-                if(isPlayerCard(Card1[i])){
-                    comboValue = Card1[i].value() + 9.72;
+            for (int i = 0; i<3;i++){
+                if(this->isPlayerCard(this->comboCard[i])){
+                    flag = true;
+                    comboValue = this->comboCard[i].value() + 9.72;
+                }
+            }
+            if(flag == false){
+                for (int i = 3; i<this->comboCard.size();i++){
+                    if(this->isPlayerCard(this->comboCard[i])){
+                        comboValue = this->comboCard[i].value() + 9.72;
+                    }
                 }
             }
         }
         else {
-            for (int i = 0; i<Card2.size();i++){
-                if(isPlayerCard(Card2[i])){
-                    comboValue = Card2[i].value() + 9.72;
+            for (int i = 2; i<this->comboCard.size();i++){
+                if(this->isPlayerCard(this->comboCard[i])){
+                    flag = true;
+                    comboValue = this->comboCard[i].value() + 9.72;
+                }
+            }
+            if(flag == false){
+                for (int i = 0; i<2;i++){
+                    if(this->isPlayerCard(this->comboCard[i])){
+                        comboValue = this->comboCard[i].value() + 9.72;
+                    }
                 }
             }
         }
