@@ -22,6 +22,7 @@ class TableCard {
         vector<Card>& getTableCard();
         void clearTable();
         void printTable();
+        int getNeff();
 };
 
 #endif

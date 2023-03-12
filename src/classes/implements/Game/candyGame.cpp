@@ -74,7 +74,6 @@ void CandyGame::startGame(){
         cin >> name;
         Player newPlayer = Player(this->deck, name);
         this->players.push_back(newPlayer);
-        newPlayer.printCard();
     }
     
     CommandParser CP;
@@ -98,11 +97,13 @@ void CandyGame::startGame(){
                 cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
                 while(!this->valid){
                     try{
+                        cout << "Command : ";
                         cin >> command;
                         Command *action = CP.parser(command);
                         action->executeAction(*this);
+                        delete action;
                     } catch(...){
-                        cout << "Command tidak valid!" << endl;
+                        cout << "\nCommand tidak valid!\n" << endl;
                     }
                 }
                 if(this->isClockWise){
