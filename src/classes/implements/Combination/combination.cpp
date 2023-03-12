@@ -940,7 +940,9 @@ void Combination::makeCombo() {
         if (this->value() == -1) {
             cout<<"Masuk sini 2g"<<endl;
             this->comboCard.clear();
+            cout<<"Masuk sini 2g-1"<<endl;
             this->mergeCard(this->tableCard, this->playerCard);
+            cout<<"Masuk sini 2g-2"<<endl;
             this->comboLainTwoP();
             cout<<"Masuk sini 3g"<<endl;
         }
@@ -971,91 +973,133 @@ void Combination::makeCombo() {
 
 void Combination::comboLainSF() {
     this->comboLainFlush();
+    cout<<"Masuk sini 1i"<<endl;
     if (this->value() == -1) {
+        cout<<"Masuk sini 2i"<<endl;
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainFlush();
+        cout<<"Masuk sini 3i"<<endl;
     }
     else {
+        cout<<"Masuk sini 4i"<<endl;
         this->setValue(this->value());
+        cout<<"Masuk sini 5i"<<endl;
         this->setCombo("Flush");
+        cout<<"Masuk sini 6i"<<endl;
     }
 }
 
 void Combination::comboLainFK() {
     this->fullHouse();
+    cout<<"Masuk sini 1j"<<endl;
     if (this->value() == -1) {
+        cout<<"Masuk sini 2j"<<endl;
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainFH();
+        cout<<"Masuk sini 3j"<<endl;
     }
     else {
+        cout<<"Masuk sini 4j"<<endl;
         this->setValue(this->value());
+        cout<<"Masuk sini 5j"<<endl;
         this->setCombo("Full House");
+        cout<<"Masuk sini 6j"<<endl;
     }
     
 }
 
 void Combination::comboLainFH() {
     this->threeOfaKind();
+    cout<<"Masuk sini 1k"<<endl;
     if (this->value() == -1) {
+        cout<<"Masuk sini 2k"<<endl;
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainTK();
+        cout<<"Masuk sini 3k"<<endl;
     }
     else {
+        cout<<"Masuk sini 4k"<<endl;
         this->setValue(this->value());
+        cout<<"Masuk sini 5k"<<endl;
         this->setCombo("Three of a Kind");
+        cout<<"Masuk sini 6k"<<endl;
     }
 }
 
 void Combination::comboLainFlush() {
     this->straight();
+    cout<<"Masuk sini 1l"<<endl;
     if (this->value() == -1) {
+        cout<<"Masuk sini 2l"<<endl;
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainStraight();
+        cout<<"Masuk sini 3l"<<endl;
     }
     else {
+        cout<<"Masuk sini 4l"<<endl;
         this->setValue(this->value());
+        cout<<"Masuk sini 5l"<<endl;
         this->setCombo("Straight");
+        cout<<"Masuk sini 6l"<<endl;
     }
 }
 
 void Combination::comboLainStraight() {
     this->threeOfaKind();
+    cout<<"Masuk sini 1m"<<endl;
     if (this->value() == -1) {
+        cout<<"Masuk sini 2m"<<endl;
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainTK();
+        cout<<"Masuk sini 3m"<<endl;
     }
     else {
+        cout<<"Masuk sini 4m"<<endl;
         this->setValue(this->value());
+        cout<<"Masuk sini 5m"<<endl;
         this->setCombo("Three of a Kind");
+        cout<<"Masuk sini 6m"<<endl;
     }
 }
 
 void Combination::comboLainTK() {
     this->twoPair();
+    cout<<"Masuk sini 1n"<<endl;
     if (this->value() == -1) {
+        cout<<"Masuk sini 2n"<<endl;
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainTwoP();
+        cout<<"Masuk sini 3n"<<endl;
     }
     else {
+        cout<<"Masuk sini 4n"<<endl;
         this->setValue(this->value());
+        cout<<"Masuk sini 5n"<<endl;
         this->setCombo("Two Pair");
+        cout<<"Masuk sini 6n"<<endl;
     }
 }
 
 void Combination::comboLainTwoP() {
     this->pair();
+    cout<<"Masuk sini 1o"<<endl;
     if (this->value() == -1) {
+        cout<<"Masuk sini 2o"<<endl;
         Card highest = maxValue(this->comboCard);
         this->comboCard.clear();
+        cout<<"Masuk sini 3o"<<endl;
         this->comboCard.push_back(highest);
+        cout<<"Masuk sini 4o"<<endl;
         this->setValue(this->value());
+        cout<<"Masuk sini 5o"<<endl;
         this->setCombo("High Card");
+        cout<<"Masuk sini 6o"<<endl;
     }
     else {
         this->setValue(this->value());
