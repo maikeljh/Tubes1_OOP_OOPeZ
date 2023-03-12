@@ -7,6 +7,10 @@
 
 using namespace std;
 
-
+class PickCard: public Command {
+    public:
+        PickCard();
+        void executeActionUNO(UnoGame&);
+};
 
 #endif

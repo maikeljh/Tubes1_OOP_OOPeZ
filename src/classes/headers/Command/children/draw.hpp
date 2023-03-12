@@ -7,8 +7,10 @@
 
 using namespace std;
 
-class Draw: public Command{
-
+class Draw: public Command {
+    public:
+        Draw();
+        void executeActionUNO(UnoGame&);
 };
 
 #endif 
