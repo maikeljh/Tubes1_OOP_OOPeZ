@@ -168,7 +168,10 @@ void CandyGame::startGame(){
         }
         this->table.clearTable();
     }
-    cout << "\nSELAMAT KEPADA PEMENANG YAITU " << this->players[chooseWinner()].getNickname();
+
+    // Print leaderboard and winner
+    EndGame GG;
+    GG.printLeaderboard(*this);
 }
 
 int CandyGame::chooseRoundWinner() {

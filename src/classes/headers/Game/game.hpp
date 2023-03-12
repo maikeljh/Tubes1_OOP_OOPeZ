@@ -41,6 +41,7 @@ class Game {
         void setIsReverse(bool isReverse);
         bool getValid();
         void setValid(bool);
+        vector<Player>& getPlayers();
         TableCard& getTableCard();
 };
 

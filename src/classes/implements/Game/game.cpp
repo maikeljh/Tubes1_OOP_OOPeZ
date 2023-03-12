@@ -90,3 +90,7 @@ void Game::setValid(bool val){
 TableCard& Game::getTableCard(){
     return this->table;
 }
+
+vector<Player>& Game::getPlayers(){
+    return this->players;
+}
