@@ -929,6 +929,16 @@ void Combination::comboLainSF() {
 }
 
 void Combination::comboLainFK() {
+    this->fullHouse();
+    if (this->value() == -1) {
+        this->comboCard.clear();
+        this->mergeCard(this->tableCard, this->playerCard);
+        this->comboLainFH();
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Full House");
+    }
     
 }
 
@@ -945,15 +955,31 @@ void Combination::comboLainStraight() {
 }
 
 void Combination::comboLainTK() {
-    
+    this->twoPair();
+    if (this->value() == -1) {
+        this->comboCard.clear();
+        this->mergeCard(this->tableCard, this->playerCard);
+        this->comboLainTwoP();
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Two Pair");
+    }
 }
 
 void Combination::comboLainTwoP() {
-    
-}
-
-void Combination::comboLainPair() {
-    
+    this->pair();
+    if (this->value() == -1) {
+        Card highest = maxValue(this->comboCard);
+        this->comboCard.clear();
+        this->comboCard.push_back(highest);
+        this->setValue(this->value());
+        this->setCombo("High Card");
+    }
+    else {
+        this->setValue(this->value());
+        this->setCombo("Pair");
+    }
 }
 
 void Combination::quicksort(vector <Card>& CC, int low, int high) {
