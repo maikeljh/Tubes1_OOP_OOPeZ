@@ -413,6 +413,9 @@ void Combination::flush() {
             combo.push_back(this->comboCard[i]);
         }
     }
+    while (combo.size() > 5) {
+        combo.erase(combo.begin());
+    }
     this->comboCard.clear();
     this->setComboCard(combo);
 }
