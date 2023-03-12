@@ -20,7 +20,7 @@ class CandyPlayer: public Player<Card>{
     public:
         CandyPlayer();
         CandyPlayer(DeckCard<Card> &DC, string nickname);
-        CandyPlayer& operator=(const CandyPlayer&);
+        CandyPlayer& operator=(CandyPlayer&);
         CandyPlayer& operator+(const Card& add);
         CandyPlayer& operator-();
         bool operator>(const CandyPlayer& other);
@@ -31,6 +31,9 @@ class CandyPlayer: public Player<Card>{
         bool checkValidAbilityCard(string ability);
         void addAbilityCard(const AbilityCard& AC);
         void addPoint(long long int);
+        Card getCard(int index);
+        void push(const Card& PC);
+        Card pop();
         void printCard();
         Combination& getCombo();
         long long int getPoint();

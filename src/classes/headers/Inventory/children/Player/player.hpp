@@ -22,12 +22,14 @@ class Player: public InventoryHolder<T>{
         Player();
         Player(string nickname);
         ~Player();
-        virtual T getCard(int index);
-        void push(const T& PC);
-        T pop();
+        virtual T getCard(int index) = 0;
+        virtual void push(const T& PC) = 0;
+        virtual T pop() = 0;
         virtual void printCard() = 0;
         string getNickname();
         vector<T>& getDeckPlayer();
 };
-
+template class Player<Card>;
+template class Player<AbilityCard>;
+template class Player<BaseCard>;
 #endif
