@@ -595,14 +595,14 @@ double Combination::value() {
         }
         if(nCard1==3){
             for (int i = 0; i<Card1.size();i++){
-                if(isPlayerCard(Card1[i])){
+                if(this->isPlayerCard(Card1[i])){
                     comboValue = Card1[i].value() + 9.72;
                 }
             }
         }
         else {
             for (int i = 0; i<Card2.size();i++){
-                if(isPlayerCard(Card2[i])){
+                if(this->isPlayerCard(Card2[i])){
                     comboValue = Card2[i].value() + 9.72;
                 }
             }
