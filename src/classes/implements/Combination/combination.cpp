@@ -76,10 +76,21 @@ void Combination::printCombo() {
     else {
         cout << this->combo << " " << this->comboCard[0].getColor() << endl;
     }
-    for (int i = 0; i < this->comboCard.size() ; i++) {
-        cout << this->comboCard[i].getNumber() << " " << this->comboCard[i].getColor() << " ";
+
+    if (this->combo == "High Card") {
+        if (this->playerCard[0].value() > this->playerCard[1].value()) {
+            cout << this->playerCard[0].getNumber() << " " << this->playerCard[0].getColor() << endl;
+        }
+        else {
+            cout << this->playerCard[1].getNumber() << " " << this->playerCard[1].getColor() << endl;
+        }
     }
-    cout << endl;
+    else {
+        for (int i = 0; i < this->comboCard.size() ; i++) {
+            cout << this->comboCard[i].getNumber() << " " << this->comboCard[i].getColor() << " ";
+        }
+        cout << endl;
+    }
 
     // Print player card
     for (int i = 0; i < this->playerCard.size(); i++) {
