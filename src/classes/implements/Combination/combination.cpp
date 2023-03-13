@@ -286,7 +286,7 @@ bool Combination::isTwoPair(){
             maxSama=tempSama;
         }
     }
-    if(maxSama==1 && nPair==2){
+    if(maxSama==1 && nPair>=2){
         return true;
     }
     return false;
