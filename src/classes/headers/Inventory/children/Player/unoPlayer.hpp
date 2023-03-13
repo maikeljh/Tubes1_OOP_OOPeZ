@@ -21,7 +21,10 @@ class UnoPlayer: public Player<UnoCard>{
         UnoPlayer& operator+(const UnoCard& add);
         UnoPlayer& operator-();
         ~UnoPlayer();
+        UnoCard getCard(int index);
         void printCard();
+        void push(const UnoCard& PC);
+        UnoCard pop();
 };
 
 #endif

@@ -27,6 +27,7 @@ class Player: public InventoryHolder<T>{
         virtual T pop() = 0;
         virtual void printCard() = 0;
         string getNickname();
+        int getID();
         vector<T>& getDeckPlayer();
 };
 template class Player<Card>;

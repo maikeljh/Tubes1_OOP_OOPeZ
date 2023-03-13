@@ -20,6 +20,7 @@ void PickCard::executeActionUNO(UnoGame& Game){
     }
 
     UnoCard& SCard = playernow.getDeckPlayer()[input_number-1];
+    
     if (!SCard.getIsNumber()){}{
         if (SCard.getType() == "PLUS2"){
         }
