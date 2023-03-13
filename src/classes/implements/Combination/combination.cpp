@@ -97,6 +97,7 @@ void Combination::printCombo() {
     }
 
     // Print player card
+    cout << "Kartu Player: " << endl;
     for (int i = 0; i < this->playerCard.size(); i++) {
        cout << this->playerCard[i].getNumber() << " " << this->playerCard[i].getColor() << " ";
     }
@@ -286,7 +287,7 @@ bool Combination::isTwoPair(){
             maxSama=tempSama;
         }
     }
-    if(maxSama==1 && nPair==2){
+    if(maxSama==1 && nPair>=2){
         return true;
     }
     return false;
@@ -518,10 +519,12 @@ void Combination::twoPair(){
             for(int j=i-1;j>=0;j--){
                 if(this->comboCard[i].getNumber()==this->comboCard[j].getNumber()){
                     tempSama +=1;
-                    nPair+=1;
+                    if(tempSama==1){
+                        nPair+=1;
+                    }
                 }
             }
-            if(tempSama==1){
+            if(tempSama>=1){
                 if(nPair==2){
                     cek2 = this->comboCard[i];
                 }
@@ -688,7 +691,7 @@ double Combination::value() {
     //three of a kind
     else if (this->comboCard.size() >= 3 && this->isThreeOfaKind()) {
         if (this->existPlayerCard()) {
-             bool green = false;
+            bool green = false;
             bool blue = false;
             bool yellow = false;
             bool red = false;
@@ -735,14 +738,20 @@ double Combination::value() {
     //two pair
     else if (this->comboCard.size() >= 4 && this->isTwoPair()) {
         if (this->existPlayerCard()) {
-            int highetPairNumber = maxValue(this->comboCard).getNumber();
+            int highestPairNumber;
+            for (int i = 0;i<this->comboCard.size();i++){
+                if(this->isPlayerCard(this->comboCard[i])){
+                    highestPairNumber = this->comboCard[i].getNumber();
+                }
+            }
+            // int highetPairNumber = maxValue(this->comboCard).getNumber();
             bool green = false;
             bool blue = false;
             bool yellow = false;
             bool red = false;
 
             for (int i = 0;i<this->comboCard.size();i++){
-                if(this->comboCard[i].getNumber()==highetPairNumber){
+                if(this->comboCard[i].getNumber()==highestPairNumber){
                     if (this->comboCard[i].getColor()=="Green"){
                         green = true;
                     }
