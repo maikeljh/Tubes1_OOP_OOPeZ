@@ -10,6 +10,6 @@ void Pass::executeActionUNO(UnoGame& Game){
         Game.setValid(true);
         Game.setAlreadyDraw(false);
     } else {
-        cout << "\nEits, kamu belum melakukan DRAW sehingga tidak bisa pass." << endl;
+        cout << "\nEits, kamu belum melakukan DRAW sehingga tidak bisa pass.\n" << endl;
     }
 }

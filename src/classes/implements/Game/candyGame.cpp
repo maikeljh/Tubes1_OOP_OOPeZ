@@ -89,7 +89,7 @@ void CandyGame::startGame(){
     string command;
     
     while(!isEndGame()){
-        cout << "\nPERMAINAN KE-" << ++this->phase << endl;
+        cout << "\nPERMAINAN KE-" << ++this->phase;
         this->point = 64;
         while(this->round < 6){
             this->round++;
@@ -148,19 +148,40 @@ void CandyGame::startGame(){
         cout << "Dengan combo "; this->players[roundWinner].getCombo().printCombo();
         cout << "Dengan poin combo sebesar : " << this->players[roundWinner].getCombo().getValue() << endl;
 
-        // Restart Game
-        this->round = 0;
-        this->deck = CG.randomizeCard();
-        for(int i = 0; i < 7; i++){
-            Card erase = this->players[i].pop();
-            erase = this->players[i].pop();
-            this->players[i].push(this->deck.pop());
-            this->players[i].push(this->deck.pop());
-            this->players[i].getCombo().clearCombo();
-            this->players[i].getAbilityCard().setType("");
-            this->players[i].getAbilityCard().setUseable(false);
+        if(!isEndGame()){
+            // Restart Game
+            this->round = 0;
+            for(int i = 0; i < 7; i++){
+                Card erase = this->players[i].pop();
+                erase = this->players[i].pop();
+                this->players[i].push(this->deck.pop());
+                this->players[i].push(this->deck.pop());
+                this->players[i].getCombo().clearCombo();
+                this->players[i].getAbilityCard().setType("");
+                this->players[i].getAbilityCard().setUseable(false);
+            }
+            this->table.clearTable();
+            
+            cout << "\nKartu dikembalikan dan disusun ulang" << endl;
+            action = "";
+            // Generate Deck Again
+            while(action != "y" && action != "n" && action != "no" && action != "yes"){
+                try {
+                    cout << "Apakah urutan kartu ingin dibaca dari file? (y or n) : ";
+                    cin >> action;
+
+                    if(action == "y" || action == "yes"){
+                        this->deck = CG.readFile("./config/orderCards.txt");
+                    } else if (action == "n" || action == "no"){
+                        this->deck = CG.randomizeCard();
+                    } else {
+                        throw InputActionInvalidExc();
+                    }
+                } catch (InputActionInvalidExc& err){
+                    cout << err.what() << endl;
+                }
+            }
         }
-        this->table.clearTable();
     }
 
     // Print leaderboard and winner

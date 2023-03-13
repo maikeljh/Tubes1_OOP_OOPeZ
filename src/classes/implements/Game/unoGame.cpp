@@ -121,12 +121,19 @@ void UnoGame::startGame(){
             } catch(...){
                 cout << "\nCommand tidak valid!\n" << endl;
             }
+            if(this->deck.getNeff() < 5){
+                this->deck = CG.randomizeUnoCard();
+                UnoCard temp = this->table.getTop();
+                this->table.clearTable();
+                this->table.addCard(temp);
+                cout << "Deck kartu terbuat ulang karena sudah hampir habis.\n" << endl;
+            }
         }
         this->valid = false;
         UnoPlayer& move = this->players[0];
         if (move.getDeckPlayer().size() == 1){
             if (!this->UNO){
-                cout << "Player " << move.getNickname() << " lupa mengatakan UNO!" << endl;
+                cout << "\nPlayer " << move.getNickname() << " lupa mengatakan UNO!" << endl;
                 cout << "\nKartu yang didapat oleh " << move.getNickname() << ":\n";
                 move.push(this->getDeckCard().pop());
                 move.getCard(move.getDeckPlayer().size()-2).printDetail();
@@ -136,7 +143,19 @@ void UnoGame::startGame(){
         }
         this->players.push_back(move);
         this->players.erase(this->players.begin() + 0);
+        this->UNO = false;
+        if(this->deck.getNeff() < 5){
+            this->deck = CG.randomizeUnoCard();
+            UnoCard temp = this->table.getTop();
+            this->table.clearTable();
+            this->table.addCard(temp);
+            cout << "\nDeck kartu terbuat ulang karena sudah hampir habis." << endl;
+        }
     }
+
+    int winner = this->chooseWinner();
+    cout << "\nPermainan berakhir." << endl;
+    cout << "Permainan dimenangkan oleh " << this->getPlayer(winner).getNickname() << endl;
 }
 
 int UnoGame::chooseWinner(){

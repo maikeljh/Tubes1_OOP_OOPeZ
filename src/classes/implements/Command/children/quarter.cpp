@@ -12,6 +12,9 @@ void Quarter::executeAction(CandyGame& Game){
         } else {
             cout << endl << playernow.getNickname() << " melakukan QUARTER! Poin hadiah turun dari " << Game.getPoint();
             Game.setPoint(Game.getPoint()*0.25);
+            if(Game.getPoint() == 0){
+                Game.setPoint(1);
+            }
             cout << " menjadi " << Game.getPoint() << "!" << endl;
             playernow.useAbilityCard();
             Game.setValid(true);

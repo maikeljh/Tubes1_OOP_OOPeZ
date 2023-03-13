@@ -5,7 +5,6 @@ using namespace std;
 UnoPlayer::UnoPlayer(){}
 
 UnoPlayer::UnoPlayer(DeckCard<UnoCard> &DC, string nickname):Player(nickname){
-// Gw baca2 awal main dapet 7 kartu, tapi nanti klo mo di modif gpp
     for (int i = 0; i < 7; i++){
         this->getDeckPlayer().push_back(DC.pop());
     }
