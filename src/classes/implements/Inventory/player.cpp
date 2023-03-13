@@ -29,6 +29,11 @@ string Player<T>::getNickname(){
 }
 
 template <class T>
+int Player<T>::getID(){
+    return this->id;
+}
+
+template <class T>
 vector<T>& Player<T>::getDeckPlayer(){
     return this->mainDeck;
 }

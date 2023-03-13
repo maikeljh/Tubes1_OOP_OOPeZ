@@ -53,3 +53,7 @@ string Card::getColor(){
 void Card::setNumber(int number) {
     this->number = number;
 }
+
+void Card::setColor(string color){
+    this->color = color;
+}

@@ -4,6 +4,11 @@
 
 #include "../command.hpp"
 #include "../../Game/game.hpp"
+#include "plus2.hpp"
+#include "plus4.hpp"
+#include "skip.hpp"
+#include "unoReverse.hpp"
+#include "changeColor.hpp"
 
 using namespace std;
 

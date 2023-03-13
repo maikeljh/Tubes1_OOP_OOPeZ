@@ -24,6 +24,7 @@ class TableCard {
         void clearTable();
         void printTable();
         int getNeff();
+        T& getTop();
 };
 
 template class TableCard<Card>;
