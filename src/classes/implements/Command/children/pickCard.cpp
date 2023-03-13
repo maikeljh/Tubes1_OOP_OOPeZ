@@ -38,7 +38,7 @@ void PickCard::executeActionUNO(UnoGame& Game){
         tableCard.addCard(playernow.getCard(input_number-1));
         playernow.getDeckPlayer().erase(playernow.getDeckPlayer().begin() + input_number-1);
 
-        if (!SCard.getIsNumber()){}{
+        if (!SCard.getIsNumber()){
             if (SCard.getType() == "PLUS2"){
                 Plus2 *plus2 = new Plus2();
                 plus2->executeActionUNO(Game);
