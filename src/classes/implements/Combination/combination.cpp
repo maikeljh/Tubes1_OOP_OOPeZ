@@ -518,10 +518,12 @@ void Combination::twoPair(){
             for(int j=i-1;j>=0;j--){
                 if(this->comboCard[i].getNumber()==this->comboCard[j].getNumber()){
                     tempSama +=1;
-                    nPair+=1;
+                    if(tempSama==1){
+                        nPair+=1;
+                    }
                 }
             }
-            if(tempSama==1){
+            if(tempSama>=1){
                 if(nPair==2){
                     cek2 = this->comboCard[i];
                 }
