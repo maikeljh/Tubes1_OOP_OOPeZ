@@ -14,6 +14,7 @@ void Reverse::executeAction(CandyGame& Game){
             cout << "\nOops, kartu ability reverse-mu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n" << endl;
         } else {
             playernow.useAbilityCard();
+            tempPlayer.useAbilityCard();
             cout << endl << playernow.getNickname() << " melakukan reverse!" << endl;
 
             // Reverse Algorithm
