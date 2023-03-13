@@ -28,6 +28,7 @@ class UnoGame : public Game {
         TableCard<UnoCard>& getTableCard();
         bool getAlreadyDraw();
         void setAlreadyDraw(bool draw);
+        UnoCard& getTop();
 };
 
 #endif
