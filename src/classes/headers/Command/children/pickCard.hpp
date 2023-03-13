@@ -9,6 +9,7 @@
 #include "skip.hpp"
 #include "unoReverse.hpp"
 #include "changeColor.hpp"
+#include "pass.hpp"
 
 using namespace std;
 

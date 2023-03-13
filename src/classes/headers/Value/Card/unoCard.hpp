@@ -16,6 +16,7 @@ class UnoCard : public Card, public AbilityCard {
         UnoCard& operator= (const UnoCard&);
         bool operator== (UnoCard&);
         bool getIsNumber();
+        void printDetail();
 };
 
 #endif

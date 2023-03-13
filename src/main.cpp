@@ -1,6 +1,7 @@
 #include <iostream>
 #include "./classes/headers/Game/candyGame.hpp"
 #include "./classes/headers/Game/unoGame.hpp"
+#include "./classes/headers/Exception/exception.h"
 
 using namespace std;
 
@@ -13,10 +14,10 @@ int main(){
                 cout << "Enter option (1 or 2): ";
                 cin >> action;
                 if(action != "1" && action != "2"){
-                    throw "Input tidak valid!";
+                    throw InputNumberInvalidExc();
                 }
-            } catch (...){
-                cout << "\nInput tidak valid!" << endl;
+            } catch (InputNumberInvalidExc& err){
+                cout << err.what() << endl;
             }
         }
         if(action == "1"){
@@ -34,10 +35,10 @@ int main(){
                 cout << "Enter option (1 or 2): ";
                 cin >> action;
                 if(action != "1" && action != "2"){
-                    throw "Input tidak valid!";
+                    throw InputNumberInvalidExc();
                 }
-            } catch (...){
-                cout << "\nInput tidak valid!" << endl;
+            } catch (InputNumberInvalidExc& err){
+                cout << err.what() << endl;
             }
         }
         if(action == "2") {

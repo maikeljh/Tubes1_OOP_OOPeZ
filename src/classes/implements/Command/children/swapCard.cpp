@@ -35,12 +35,12 @@ void SwapCard::executeAction(CandyGame& Game){
                 cout << "Pilihan : ";
                 cin >> p; // input nomor sesuai output list player yang bisa di-swap
                 if(p < 1 || p > 6){
-                    cout << "\nInput tidak valid!\n" << endl;
+                    throw InputNumberInvalidExc();
                 } else {
                     validInput = true;
                 }
-            } catch(...){
-                cout << "\nInput tidak valid!\n" << endl;
+            } catch(InputNumberInvalidExc& err){
+                cout << err.what() << endl;
             }
         }
 
@@ -59,12 +59,12 @@ void SwapCard::executeAction(CandyGame& Game){
                 cout << "Pilihan : ";
                 cin >> p; // input nomor sesuai output list player yang bisa di-swap
                 if(p < 1 || p > 5){
-                    cout << "\nInput tidak valid!\n" << endl;
+                    throw InputNumberInvalidExc();
                 } else {
                     validInput = true;
                 }
-            } catch(...){
-                cout << "\nInput tidak valid!\n" << endl;
+            } catch(InputNumberInvalidExc& err){
+                cout << err.what() << endl;
             }
         }
 
@@ -83,12 +83,12 @@ void SwapCard::executeAction(CandyGame& Game){
                 cout << "Pilihan : ";
                 cin >> option; // input nomor sesuai output list player yang bisa di-swap
                 if(option < 1 || option > 2){
-                    cout << "\nInput tidak valid!\n" << endl;
+                    throw InputNumberInvalidExc();
                 } else {
                     validInput = true;
                 }
-            } catch(...){
-                cout << "\nInput tidak valid!\n" << endl;
+            } catch(InputNumberInvalidExc& err){
+                cout << err.what() << endl;
             }
         }
 
@@ -103,12 +103,12 @@ void SwapCard::executeAction(CandyGame& Game){
                 cout << "Pilihan : ";
                 cin >> option; // input nomor sesuai output list player yang bisa di-swap
                 if(option < 1 || option > 2){
-                    cout << "\nInput tidak valid!\n" << endl;
+                    throw InputNumberInvalidExc();
                 } else {
                     validInput = true;
                 }
-            } catch(...){
-                cout << "\nInput tidak valid!\n" << endl;
+            } catch(InputNumberInvalidExc& err){
+                cout << err.what() << endl;
             }
         }
 

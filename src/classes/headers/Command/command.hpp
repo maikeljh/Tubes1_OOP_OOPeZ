@@ -5,6 +5,7 @@
 #include "../Game/unoGame.hpp"
 #include "../Game/candyGame.hpp"
 #include "../Inventory/children/DeckCard/deckCard.hpp"
+#include "../Exception/exception.h"
 
 using namespace std;
 

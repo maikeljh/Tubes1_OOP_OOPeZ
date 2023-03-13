@@ -25,4 +25,9 @@ public:
     const char* what() const throw();
 };
 
+class InputActionInvalidExc : public GameException{
+public:
+    const char* what() const throw();
+};
+
 #endif
