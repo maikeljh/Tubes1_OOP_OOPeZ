@@ -10,7 +10,7 @@ void Draw::executeActionUNO(UnoGame& Game){
     if(!Game.getAlreadyDraw()){
         UnoCard newCard = Game.getDeckCard().pop();
         playernow.push(newCard);
-        cout << "Kamu mendapatkan kartu baru yaitu: ";
+        cout << "\nKamu mendapatkan kartu baru yaitu: ";
         if(newCard.getIsNumber()){
             cout << newCard.getNumber() << " " << newCard.getColor() << endl;
         } else {
@@ -19,6 +19,6 @@ void Draw::executeActionUNO(UnoGame& Game){
         Game.setAlreadyDraw(true);
     }
     else{
-        cout << "Eits, kamu sudah melakukan DRAW pada ronde ini. Silahkan lakukan perintah lainnya!" << endl;
+        cout << "\nEits, kamu sudah melakukan DRAW pada ronde ini. Silahkan lakukan perintah lainnya!" << endl;
     }
 }

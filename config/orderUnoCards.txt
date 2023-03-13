@@ -56,7 +56,7 @@
 4 Yellow NONE
 10 Yellow SKIP
 1 Yellow NONE
-10 Black CHANGECOLOR
+10 Black PLUS4
 7 Green NONE
 10 Yellow SKIP
 7 Red NONE

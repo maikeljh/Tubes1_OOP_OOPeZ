@@ -75,9 +75,7 @@ void DeckCard<UnoCard>::printCard(){
 
 template <>
 UnoCard& DeckCard<UnoCard>::getUnoCard(int i){
-    for(int i = 0; i<this->size;i++){
-        return this->deck[i];
-    }
+    return this->deck[i];
 }
 
 template <>
