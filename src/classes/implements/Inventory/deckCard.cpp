@@ -4,7 +4,7 @@
 using namespace std;
 
 template <class T>
-DeckCard<T>::DeckCard():DeckCard(0, 52){
+DeckCard<T>::DeckCard():DeckCard(0, 108){
 
 }
 
@@ -66,9 +66,10 @@ void DeckCard<AbilityCard>::printCard(){
 
 template<>
 void DeckCard<UnoCard>::printCard(){
+    cout << this->neff << endl;
     cout << "Isi dari deck sekarang :" << endl;
     for(int i = 0; i < this->neff; i++){
-        cout << i+1 << ". " << this->deck[i].getNumber() <<  " " << this->deck[i].getColor() << endl;
+        cout << i+1 << ". " << this->deck[i].getNumber() <<  " " << this->deck[i].getColor() << " " << this->deck[i].getType() << endl;
     }
 }
 

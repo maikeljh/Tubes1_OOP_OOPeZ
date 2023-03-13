@@ -22,11 +22,19 @@ void TableCard<T>::clearTable(){
     this->neff = 0;
 }
 
-template <class T>
-void TableCard<T>::printTable(){
+template <>
+void TableCard<Card>::printTable(){
     cout << "Isi dari table card sekarang :" << endl;
     for(int i = 0; i < this->neff; i++){
         cout << i+1 << ". " << this->listOfCards[i].getNumber() <<  " " << this->listOfCards[i].getColor() << endl;
+    }
+}
+
+template <>
+void TableCard<UnoCard>::printTable(){
+    cout << "Isi dari table card sekarang :" << endl;
+    for(int i = 0; i < this->neff; i++){
+        cout << i+1 << ". " << this->listOfCards[i].getNumber() <<  " " << this->listOfCards[i].getColor() << " " << this->listOfCards[i].getType()  << endl;
     }
 }
 

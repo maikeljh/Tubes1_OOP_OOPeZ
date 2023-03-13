@@ -12,12 +12,9 @@
 using namespace std;
 
 class UnoPlayer: public Player<UnoCard>{
-    private:
-        
     public:
         UnoPlayer();
         UnoPlayer(DeckCard<UnoCard> &DC, string nickname);
-        UnoPlayer& operator=(UnoPlayer&);
         UnoPlayer& operator+(const UnoCard& add);
         UnoPlayer& operator-();
         ~UnoPlayer();

@@ -101,18 +101,117 @@ DeckCard<Card> CardGenerator::readFile(string pathfile){
     }
 
     Read.close();
-    //DC.printDeckCard();
 
     return DC;
 }
 
-// Testing
-// g++ cardGenerator.cpp ../Inventory/deckCard.cpp ../Card/card.cpp ../Inventory/inventoryHolder.cpp ../Inventory/deckAbilityCard.cpp ../Card/abilityCard.cpp -o tes
-/*
-int main(){
-    CardGenerator CG;
-    DeckCard<Card> DC = CG.randomizeCard();
-    DeckCard<AbilityCard> DAC = CG.generateAbilityDeck();
-    DeckCard DCFile = CG.readFile("../../../../config/orderCards.txt");
+DeckCard<UnoCard> CardGenerator::randomizeUnoCard(){
+    srand(time(0));
+    DeckCard<UnoCard> DC;
+    vector<UnoCard> temp, randomize;
+    string colors[4] = {"Green", "Blue", "Yellow", "Red"};
+    int numbers[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    string typesWithColor[3] = {"PLUS2", "SKIP", "UNOREVERSE"};
+    string typesWithoutColor[2] = {"PLUS4", "CHANGECOLOR"};
+    
+    for(string color : colors){
+        for(int number : numbers){
+            if(number != 0){
+                temp.push_back(UnoCard(number, color, "NONE"));
+            }
+            temp.push_back(UnoCard(number, color, "NONE"));
+        }
+    }
+
+    for(string color : colors){
+        for(string type : typesWithColor){
+            temp.push_back(UnoCard(10, color, type));
+            temp.push_back(UnoCard(10, color, type));
+        }
+    }
+
+    for(string type : typesWithoutColor){
+        for(int i = 0; i < 4; i++){
+            temp.push_back(UnoCard(10, "Black", type));
+        }
+    }
+
+    for(int i = 0 ; i < 108; i++){
+        int randomIndex = rand() % (108-i);
+        randomize.push_back(temp[randomIndex]);
+        temp.erase(temp.begin() + randomIndex);
+    }
+
+    while(randomize.size() != 0){
+        DC.push(randomize.back());
+        cout << randomize.back().getNumber() << " " << randomize.back().getColor() << " " << randomize.back().getType() << endl;
+        randomize.pop_back();
+    }
+
+    return DC;
 }
-*/
+
+DeckCard<UnoCard> CardGenerator::readUnoFile(string pathfile){
+    string line;
+    ifstream Read(pathfile);
+    DeckCard<UnoCard> DC;
+
+    // FORMAT YANG BENAR = ANGKA WARNA
+    while(getline(Read, line)){
+        int number;
+        string sNumber = "";
+        string color = "";
+        string type = "";
+        int idx = 0;
+
+        // READ NUMBER
+        while(idx < line.length()){
+            if(line[idx] - '0' >= 0 && line[idx] - '0' < 10){
+                sNumber += line[idx];
+            } else {
+                if(atoi(sNumber.c_str()) || sNumber == "0"){
+                    number = atoi(sNumber.c_str());
+                    if(number < 0 || number > 10){
+                        cout << "Out of range gan";
+                        throw "Out of range gan";
+                    }
+                } else {
+                    cout << "Bukan angka bang";
+                    throw "Bukan angka bang";
+                }
+                break;
+            }
+            idx++;
+        }
+
+        // READ COLOR
+        idx++;
+        while(idx < line.length() && line[idx] != ' '){
+            color += line[idx];
+            idx++;
+        }
+
+        if(color != "Red" && color != "Yellow" && color != "Blue" && color != "Green" && color != "Black"){
+            cout << "Bukan warna yang valid say";
+            throw "Bukan warna yang valid say";
+        }
+
+        // READ TYPE
+        idx++;
+        while(idx < line.length()){
+            type += line[idx];
+            idx++;
+        }
+
+        if(type != "PLUS2" && type != "PLUS4" && type != "SKIP" && type != "UNOREVERSE" && type != "CHANGECOLOR" && type != "NONE"){
+            cout << "Bukan tipe yang valid say";
+            throw "Bukan tipe yang valid say";
+        }
+
+        DC.push(UnoCard(number, color, type));
+    }
+
+    Read.close();
+
+    return DC;
+}

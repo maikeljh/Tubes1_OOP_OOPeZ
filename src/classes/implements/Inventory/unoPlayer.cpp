@@ -11,15 +11,6 @@ UnoPlayer::UnoPlayer(DeckCard<UnoCard> &DC, string nickname):Player(nickname){
     }
 }
 
-UnoPlayer& UnoPlayer::operator=(UnoPlayer& other){
-    int j = 0;
-    for (UnoCard i : other.getDeckPlayer()){
-        this->getDeckPlayer().push_back(other.getDeckPlayer()[j]);
-        j++;
-    }
-    return *this;
-}
-
 UnoPlayer& UnoPlayer::operator+(const UnoCard& add){
     this->getDeckPlayer().push_back(add);
     return *this;
@@ -36,16 +27,13 @@ UnoCard UnoPlayer::getCard(int index){
 }
 
 void UnoPlayer::printCard(){
-    int j = 1; 
-    for (UnoCard i : getDeckPlayer()){
-        if (this->getDeckPlayer()[j].getIsNumber()){
-            // Print number card
-            cout << j << ". " << this->getDeckPlayer()[j].getNumber() << " " << this->getDeckPlayer()[1].getColor() << endl;
+    vector<UnoCard> deck = this->getDeckPlayer();
+    for(int i = 0; i < deck.size(); i++){
+        if(deck[i].getIsNumber()){
+            cout << i+1 << ". " << deck[i].getNumber() << " " << deck[i].getColor() << endl;
+        } else {
+            cout << i+1 << ". " << deck[i].getType() << " " << deck[i].getColor() << endl;
         }
-        else{
-            // Print ability card
-        }
-        j++;
     }
 }
 

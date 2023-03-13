@@ -2,9 +2,9 @@
 
 using namespace std;
 
+Pass::Pass():Command(){}
+
 void Pass::executeActionUNO(UnoGame& Game){
-    if (Game.getPlayerTurn()!=Game.getLastIdxTurn()){
-        cout << "\nGiliran dilanjut ke pemain selanjutnya." << endl;
-    }
+    cout << "\nGiliran dilanjut ke pemain selanjutnya." << endl;
     Game.setValid(true);
 }

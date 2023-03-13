@@ -13,6 +13,7 @@ class UnoGame : public Game {
         DeckCard<UnoCard> deck;
         vector<UnoPlayer> players;
         TableCard<UnoCard> table;
+        bool alreadyDraw;
 
     public:
         UnoGame();

@@ -1,6 +1,6 @@
 #include "../../headers/Game/unoGame.hpp"
 #include "../../headers/CardGenerator/cardGenerator.hpp"
-#include "../../headers/Command/commandParser.hpp"
+#include "../../headers/Command/commandParserUNO.hpp"
 
 #include <iostream>
 
@@ -13,6 +13,8 @@ UnoGame::UnoGame(const UnoGame& other):Game(other),table(108){}
 UnoGame::~UnoGame(){}
 
 void UnoGame::startGame(){
+    string name;
+    string action = "";
     cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&&#BBGGPPPP5555555PPPGGBB#&&@@@@@@@@@@@@@@@@@@@@@@@" << endl;
     cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&#BGGPP555555555555555555555P55J??7??????JYPB&@@@@@@@@@@@" << endl;
     cout << "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&BGP5555555555555555555555555P5Y7~!7?JJJ????JJJJ?77JB@@@@@@@@" << endl;
@@ -49,6 +51,56 @@ void UnoGame::startGame(){
 
     cout << "\nHalo! Selamat Datang di Kompetisi Kartu UNO" << endl;
 
+    CardGenerator CG;
+
+    while(action != "y" && action != "n" && action != "no" && action != "yes"){
+        try {
+            cout << "\nApakah urutan kartu ingin dibaca dari file? (y or n) : ";
+            cin >> action;
+
+            if(action == "y" || action == "yes"){
+                this->deck = CG.readUnoFile("./config/orderUnoCards.txt");
+            } else if (action == "n" || action == "no"){
+                this->deck = CG.randomizeUnoCard();
+            } else {
+                throw "Input tidak valid!";
+            }
+        } catch (...){
+            cout << "Input tidak valid!" << endl;
+        }
+    }
+
+    cout << "Urutan kartu berhasil dibuat" << endl;
+    cout << "\nSilahkan input nama-nama pemain" << endl;
+
+    for(int i = 1; i <= 7; i++){
+        cout << "Pemain " << i << ": ";
+        cin >> name;
+        UnoPlayer newPlayer = UnoPlayer(this->deck, name);
+        this->players.push_back(newPlayer);
+    }
+    
+    CommandParserUNO CP;
+    string command;
+
+    while(!isEndGame()){
+        cout << "\nSekarang adalah giliran pemain " << this->players[0].getNickname() << endl;
+        while(!this->valid){
+            try{
+                cout << "Command : ";
+                cin >> command;
+                Command *action = CP.parser(command);
+                action->executeActionUNO(*this);
+                delete action;
+            } catch(...){
+                cout << "\nCommand tidak valid!\n" << endl;
+            }
+        }
+        this->valid = false;
+        UnoPlayer& move = this->players[0];
+        this->players.push_back(move);
+        this->players.erase(this->players.begin() + 0);
+    }
 }
 
 int UnoGame::chooseWinner(){
@@ -69,4 +121,12 @@ bool UnoGame::isEndGame(){
     }
 
     return false;
+}
+
+DeckCard<UnoCard>& UnoGame::getDeckCard(){
+    return this->deck;
+}
+
+UnoPlayer& UnoGame::getPlayer(int idx){
+    return this->players[idx];
 }

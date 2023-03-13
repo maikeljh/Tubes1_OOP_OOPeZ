@@ -14,6 +14,8 @@ Command* CommandParserUNO::parser(string inputCommand){
     } else if (inputCommand=="SAYUNO"){
         SayUno *sayUno = new SayUno();
         return sayUno;
+    } else {
+        throw "Input tidak valid!";
     }
 
 }
