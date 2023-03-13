@@ -27,6 +27,8 @@ class DeckCard: public InventoryHolder<T>{
         int getNeff();
         int getSize();
         void printCard();
+        UnoCard& getUnoCard(int i);
+        void setUnoCard(const UnoCard &card, int i);
 };
 
 #endif

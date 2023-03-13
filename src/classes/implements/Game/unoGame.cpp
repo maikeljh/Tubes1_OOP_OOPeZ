@@ -84,7 +84,28 @@ void UnoGame::startGame(){
     string command;
 
     // Initialize Card
-    this->getTableCard().addCard(this->deck.pop());
+    bool flag = false;
+    while(!flag){
+        this->getTableCard().addCard(this->deck.pop());
+        if(this->getTop().getType()=="CHANGECOLOR"){
+            cout<<"\nKartu pertama adalah wild card change color\n"<<endl;
+            ChangeColor().executeActionUNO(*this);
+            flag = true;
+        }
+        else if(this->getTop().getType()=="PLUS4"){
+            UnoCard temp = this->getDeckCard().getUnoCard(1);
+            for (int i = 0;i<this->getDeckCard().getSize()-1;i++){
+                this->getDeckCard().setUnoCard(this->getDeckCard().getUnoCard(i),i+1);
+                temp = this->getDeckCard().getUnoCard(i+2);
+            }
+            this->getTableCard().clearTable();
+            cout<<"\nKartu pertama adalah wild card plus4, ulang pengambilan kartu pertama\n"<<endl;
+            cout<<"\nPengambilan ulang kartu pertama ...\n"<<endl;
+        }
+        else {
+            flag = true;
+        }
+    }
 
     while(!isEndGame()){
         cout << "\nKartu baru di atas meja adalah ";

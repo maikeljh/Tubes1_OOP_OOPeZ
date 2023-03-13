@@ -1,15 +1,13 @@
 #include "../../../headers/Command/children/plus2.hpp"
 
-Plus2::Plus2(){
-
-}
+Plus2::Plus2(){}
 
 void Plus2::executeActionUNO(UnoGame& UnoGame){
     UnoPlayer& playernext = UnoGame.getPlayer(1);
     DeckCard<UnoCard>& deck = UnoGame.getDeckCard();
     cout << "sini" << endl;
-    int count=0;
-    while (count<2){
+    int count = 0;
+    while (count < 2){
         playernext.push(deck.pop());
         count++;
     }

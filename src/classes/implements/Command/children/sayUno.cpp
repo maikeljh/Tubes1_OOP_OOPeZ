@@ -8,6 +8,7 @@ void SayUno::executeActionUNO(UnoGame& Game){
         
     }
     else{
+        cout << "Kartumu tidak tersisa 1! Katakan UNO saat kartumu tersisa 2 dan akan mengeluarkan kartu!" << endl;
         playernow.push(Game.getDeckCard().pop());
         playernow.push(Game.getDeckCard().pop());
     }

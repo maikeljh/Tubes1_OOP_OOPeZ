@@ -25,7 +25,7 @@ UnoCard& UnoCard::operator=(const UnoCard& other){
 }
 
 bool UnoCard::operator==(const UnoCard& other){
-    if (this->number && other.number){
+    if (this->isNumber && other.isNumber){
         // Keduanya kartu angka
         if (this->number == other.number || this->color == other.color){
             return true; // true jika angka sama atau warna sama
