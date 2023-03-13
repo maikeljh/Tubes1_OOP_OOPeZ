@@ -11,6 +11,7 @@
 #include "./children/plus4.hpp"
 #include "./children/sayUno.hpp"
 #include "./children/unoReverse.hpp"
+#include "./children/seeCards.hpp"
 
 class CommandParserUNO{
     public:
