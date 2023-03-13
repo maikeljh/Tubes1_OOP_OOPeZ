@@ -94,8 +94,8 @@ void CandyGame::startGame(){
         while(this->round < 6){
             this->round++;
             cout << "\nRONDE " << this->round << endl;;
-            cout << "Kartu ability telah dibagikan ke seluruh pemain" << endl;
             if(this->round == 2){
+                cout << "Kartu ability telah dibagikan ke seluruh pemain" << endl;
                 this->deckAbility = CG.generateAbilityDeck();
                 for(int i = 0; i < 7; i++){
                     this->players[i].addAbilityCard(this->deckAbility.pop());
