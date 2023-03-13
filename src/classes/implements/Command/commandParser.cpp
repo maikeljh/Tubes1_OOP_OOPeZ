@@ -42,6 +42,6 @@ Command* CommandParser::parser(string inputCommand){
         CheckTableCard *checkTableCard = new CheckTableCard();
         return checkTableCard;
     } else {
-        throw "Command tidak valid";
+        throw CommandInvalidExc();
     }
 }

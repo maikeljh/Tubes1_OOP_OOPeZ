@@ -28,12 +28,12 @@ void Switch::executeAction(CandyGame& Game){
                 cout << "Pilihan : ";
                 cin >> idxSwitch; // input nomor sesuai output list player yang bisa di-switch
                 if(idxSwitch < 1 || idxSwitch > 6){
-                    cout << "\nInput tidak valid!\n" << endl;
+                    throw InputNumberInvalidExc();
                 } else {
                     validInput = true;
                 }
-            } catch(...){
-                cout << "\nInput tidak valid!\n" << endl;
+            } catch(InputNumberInvalidExc& err){
+                cout << err.what() << endl;
             }
         }
 
