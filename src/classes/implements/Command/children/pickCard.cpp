@@ -49,8 +49,11 @@ void PickCard::executeActionUNO(UnoGame& Game){
             changeColor->executeActionUNO(Game);
         }
     }
+    /* add to deck card, retrieve from player deck */
+    TableCard<UnoCard>& tableCard = Game.getTableCard();
+    tableCard.addCard(playernow.getCard(input_number-1));
     playernow.getDeckPlayer().erase(playernow.getDeckPlayer().begin() + input_number-1);
-    
+
     /* next player */
     Pass *pass;
     pass->executeActionUNO(Game);
