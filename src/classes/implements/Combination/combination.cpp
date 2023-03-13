@@ -287,7 +287,7 @@ bool Combination::isTwoPair(){
             maxSama=tempSama;
         }
     }
-    if(maxSama==1 && nPair==2){
+    if(maxSama==1 && nPair>=2){
         return true;
     }
     return false;
@@ -689,7 +689,7 @@ double Combination::value() {
     //three of a kind
     else if (this->comboCard.size() >= 3 && this->isThreeOfaKind()) {
         if (this->existPlayerCard()) {
-             bool green = false;
+            bool green = false;
             bool blue = false;
             bool yellow = false;
             bool red = false;
@@ -736,14 +736,20 @@ double Combination::value() {
     //two pair
     else if (this->comboCard.size() >= 4 && this->isTwoPair()) {
         if (this->existPlayerCard()) {
-            int highetPairNumber = maxValue(this->comboCard).getNumber();
+            int highestPairNumber;
+            for (int i = 0;i<this->comboCard.size();i++){
+                if(this->isPlayerCard(this->comboCard[i])){
+                    highestPairNumber = this->comboCard[i].getNumber();
+                }
+            }
+            // int highetPairNumber = maxValue(this->comboCard).getNumber();
             bool green = false;
             bool blue = false;
             bool yellow = false;
             bool red = false;
 
             for (int i = 0;i<this->comboCard.size();i++){
-                if(this->comboCard[i].getNumber()==highetPairNumber){
+                if(this->comboCard[i].getNumber()==highestPairNumber){
                     if (this->comboCard[i].getColor()=="Green"){
                         green = true;
                     }
