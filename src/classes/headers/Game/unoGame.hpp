@@ -26,6 +26,8 @@ class UnoGame : public Game {
         vector<UnoPlayer>& getPlayers();
         UnoPlayer& getPlayer(int idx);
         TableCard<UnoCard>& getTableCard();
+        bool getAlreadyDraw();
+        void setAlreadyDraw(bool draw);
 };
 
 #endif

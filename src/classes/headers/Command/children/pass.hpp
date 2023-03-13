@@ -1,6 +1,7 @@
 #ifndef PASS_HPP
 #define PASS_HPP
 
+#include <iostream>
 #include "../command.hpp"
 #include "../../Game/game.hpp"
 

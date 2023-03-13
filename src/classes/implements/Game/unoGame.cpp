@@ -130,3 +130,11 @@ DeckCard<UnoCard>& UnoGame::getDeckCard(){
 UnoPlayer& UnoGame::getPlayer(int idx){
     return this->players[idx];
 }
+
+bool UnoGame::getAlreadyDraw(){
+    return this->alreadyDraw;
+}
+
+void UnoGame::setAlreadyDraw(bool draw){
+    this->alreadyDraw = draw;
+}
