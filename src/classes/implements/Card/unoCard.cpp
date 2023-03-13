@@ -24,32 +24,39 @@ UnoCard& UnoCard::operator=(const UnoCard& other){
     return *this;
 }
 
-bool UnoCard::operator==(UnoCard& other){
-    if (getIsNumber() && other.getIsNumber()){
-        // keduanya kartu angka
-        if (getNumber()==other.getNumber() || getColor()==other.getColor()){
+bool UnoCard::operator==(const UnoCard& other){
+    if (this->number && other.number){
+        // Keduanya kartu angka
+        if (this->number == other.number || this->color == other.color){
             return true; // true jika angka sama atau warna sama
+        } else {
+            return false;
         }
     } else {
         // salah satunya atau keduanya kartu ability
-        if (getIsNumber()){
+        if (this->isNumber){
             // kartu pertama angka, kartu kedua ability
-            if (getColor()==other.getColor() || other.getColor()==""){
+            if (this->color == other.color || other.color == "Black"){
                 return true; // true jika warna sama atau ability card tanpa warna
+            } else {
+                return false;
             }
-        } else if (other.getIsNumber()){
+        } else if (other.isNumber){
             // kartu pertama ability, kartu kedua angka
-            if (getColor()==other.getColor() || getColor()==""){
+            if (this->color == other.color || this->color == "Black"){
                 return true; // true jika warna sama atau ability card tanpa warna
+            } else {
+                return false;
             }
         } else {
             // keduanya kartu ability
-            if (getColor()==other.getColor() || getType()==other.getType() || getColor()=="" || other.getColor()==""){
+            if (this->color == other.color || this->type == other.type || this->color == "Black" || other.color == "Black"){
                 return true; // true jika warna sama atau tipe sama atau ability card tanpa warna
+            } else {
+                return false;
             }
         }
     }
-    return false; // else
 }
 
 bool UnoCard::getIsNumber(){

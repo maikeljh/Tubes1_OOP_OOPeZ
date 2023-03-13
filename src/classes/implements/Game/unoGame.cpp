@@ -87,7 +87,7 @@ void UnoGame::startGame(){
     this->getTableCard().addCard(this->deck.pop());
 
     while(!isEndGame()){
-        cout << "Kartu baru di atas meja adalah ";
+        cout << "\nKartu baru di atas meja adalah ";
         this->getTop().printDetail();
         cout << "\nSekarang adalah giliran pemain " << this->players[0].getNickname() << endl;
         while(!this->valid){
