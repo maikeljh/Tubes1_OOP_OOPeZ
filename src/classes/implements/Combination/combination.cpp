@@ -97,6 +97,7 @@ void Combination::printCombo() {
     }
 
     // Print player card
+    cout << "Kartu Player: " << endl;
     for (int i = 0; i < this->playerCard.size(); i++) {
        cout << this->playerCard[i].getNumber() << " " << this->playerCard[i].getColor() << " ";
     }
