@@ -17,6 +17,9 @@ Command* CommandParserUNO::parser(string inputCommand){
     } else if (inputCommand=="PICKCARD"){
         PickCard *pickCard = new PickCard();
         return pickCard;
+    } else if (inputCommand == "CHECKCARD") {
+        SeeCards *seeCards = new SeeCards();
+        return seeCards;
     } else {
         throw "Input tidak valid!";
     }
