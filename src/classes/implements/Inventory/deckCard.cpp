@@ -73,6 +73,18 @@ void DeckCard<UnoCard>::printCard(){
     }
 }
 
+template <>
+UnoCard& DeckCard<UnoCard>::getUnoCard(int i){
+    for(int i = 0; i<this->size;i++){
+        return this->deck[i];
+    }
+}
+
+template <>
+void DeckCard<UnoCard>::setUnoCard(const UnoCard &card, int i){
+    this->deck[i] = card;
+}
+
 template class DeckCard<Card>;
 template class DeckCard<AbilityCard>;
 template class DeckCard<UnoCard>;
