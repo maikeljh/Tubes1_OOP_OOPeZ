@@ -534,15 +534,28 @@ void Combination::twoPair(){
     int nPair = 0;
     Card cek;
     Card cek2;
+    Card cek3;
     vector <Card> hasil;
+    int nPlayerCard = 0;
+    
     for(int i = this->comboCard.size()-1;i> 0;i--){
-        if(nPair<2){
+        if(nPair<3){
             int tempSama = 0;
             for(int j=i-1;j>=0;j--){
                 if(this->comboCard[i].getNumber()==this->comboCard[j].getNumber()){
-                    tempSama +=1;
-                    if(tempSama==1){
-                        nPair+=1;
+                    if(i==this->comboCard.size()-1){
+                        tempSama +=1;
+                        if(tempSama==1){
+                            nPair+=1;
+                        }
+                    }
+                    else {
+                        if(this->comboCard[i].getNumber()!=this->comboCard[i+1].getNumber()){
+                            tempSama +=1;
+                            if(tempSama==1){
+                                nPair+=1;
+                            }
+                        }
                     }
                 }
             }
@@ -550,12 +563,34 @@ void Combination::twoPair(){
                 if(nPair==2){
                     cek2 = this->comboCard[i];
                 }
-                else {
+                else if(nPair==1) {
                     cek = this->comboCard[i];
+                }
+                else {
+                    cek3 = this->comboCard[i];
                 }
             }
         }
     }
+    if(cek.getNumber()==this->playerCard[0].getNumber()||cek.getNumber()==this->playerCard[1].getNumber()){
+        nPlayerCard++;
+    }
+    else if (cek2.getNumber()==this->playerCard[0].getNumber()||cek2.getNumber()==this->playerCard[1].getNumber())
+    {
+        nPlayerCard++;
+    }
+
+    if(nPlayerCard==0){
+        if(cek3.getNumber()==this->playerCard[0].getNumber()||cek3.getNumber()==this->playerCard[1].getNumber()){
+            if(cek.getNumber()>cek2.getNumber()){
+                cek2 = cek3;
+            }
+            else {
+                cek = cek3;
+            }
+        }
+    }
+
     int n = 0;
     for (int i = 0;i<this->comboCard.size();i++){
         if(n<2){
