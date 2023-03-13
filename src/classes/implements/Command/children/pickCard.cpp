@@ -1,6 +1,6 @@
 #include "../../../headers/Command/children/pickCard.hpp"
-using namespace std;
-PickCard::PickCard(){}
+
+PickCard::PickCard():Command(){}
 
 void PickCard::executeActionUNO(UnoGame& Game){
     int input_number;
@@ -10,7 +10,6 @@ void PickCard::executeActionUNO(UnoGame& Game){
     cout << "Kartu yang dimiliki player sekarang: " << endl;
     playernow.printCard();
 
-
     cout << "Silahkan pilih nomor kartu yang ingin digunakan!" << endl;
     cin >> input_number;
     // Validasi input (Belum Exception)
@@ -19,7 +18,14 @@ void PickCard::executeActionUNO(UnoGame& Game){
         cin >> input_number;
     }
 
+    // Validasi input kartu yang bisa dikeluarkan
     UnoCard& SCard = playernow.getDeckPlayer()[input_number-1];
+    
+    while (!(Game.getTop()==SCard)){
+        cout << "Input nomor tidak valid. Silahkan input ulang!" << endl;
+        cin >> input_number;
+    }
+
     
     if (!SCard.getIsNumber()){}{
         if (SCard.getType() == "PLUS2"){
@@ -46,9 +52,8 @@ void PickCard::executeActionUNO(UnoGame& Game){
     playernow.getDeckPlayer().erase(playernow.getDeckPlayer().begin() + input_number-1);
     
     /* next player */
-    vector<UnoPlayer>& players = Game.getPlayers();
-    players.push_back(players.front());
-    players.erase(players.begin());
+    Pass *pass;
+    pass->executeActionUNO(Game);
     
     Game.setValid(true);
 }

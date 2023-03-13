@@ -68,10 +68,10 @@ void CandyGame::startGame(){
             } else if (action == "n" || action == "no"){
                 this->deck = CG.randomizeCard();
             } else {
-                throw "Input tidak valid!";
+                throw InputActionInvalidExc();
             }
-        } catch (...){
-            cout << "Input tidak valid!" << endl;
+        } catch (InputActionInvalidExc& err){
+            cout << err.what() << endl;
         }
     }
 
@@ -94,8 +94,8 @@ void CandyGame::startGame(){
         while(this->round < 6){
             this->round++;
             cout << "\nRONDE " << this->round << endl;;
-            cout << "Kartu ability telah dibagikan ke seluruh pemain" << endl;
             if(this->round == 2){
+                cout << "Kartu ability telah dibagikan ke seluruh pemain" << endl;
                 this->deckAbility = CG.generateAbilityDeck();
                 for(int i = 0; i < 7; i++){
                     this->players[i].addAbilityCard(this->deckAbility.pop());
@@ -111,8 +111,8 @@ void CandyGame::startGame(){
                         Command *action = CP.parser(command);
                         action->executeAction(*this);
                         delete action;
-                    } catch(...){
-                        cout << "\nCommand tidak valid!\n" << endl;
+                    } catch(CommandInvalidExc& err){
+                        cout << err.what() << endl;
                     }
                 }
                 CandyPlayer& move = this->players[0];

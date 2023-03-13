@@ -1,4 +1,5 @@
 #include "../../../headers/Command/children/abilityLess.hpp"
+#include "../../../headers/Exception/exception.h"
 
 Abilityless::Abilityless(){
     commandId = 10;
@@ -37,10 +38,10 @@ void Abilityless::executeAction(CandyGame& Game){
                     cout << "Pilihan : ";
                     cin >> idxAbilityless;
                     if(idxAbilityless < 1 || idxAbilityless > 6){
-                        cout << "Pilihan tidak valid!\n" << endl;
+                        throw InputNumberInvalidExc();
                     }
-                } catch(...){
-                    cout << "Pilihan tidak valid!\n" << endl;
+                } catch(InputNumberInvalidExc& err){
+                    cout << err.what() << endl;
                 }
             } while(idxAbilityless < 1 || idxAbilityless > 6);
             

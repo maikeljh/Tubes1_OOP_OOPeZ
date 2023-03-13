@@ -144,7 +144,6 @@ DeckCard<UnoCard> CardGenerator::randomizeUnoCard(){
 
     while(randomize.size() != 0){
         DC.push(randomize.back());
-        cout << randomize.back().getNumber() << " " << randomize.back().getColor() << " " << randomize.back().getType() << endl;
         randomize.pop_back();
     }
 

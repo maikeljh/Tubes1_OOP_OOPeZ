@@ -2,6 +2,7 @@
 #define COMMANDPARSER_UNO_HPP
 
 #include "command.hpp"
+#include "./children/pickCard.hpp"
 #include "./children/pass.hpp"
 #include "./children/changeColor.hpp"
 #include "./children/draw.hpp"
