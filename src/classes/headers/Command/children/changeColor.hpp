@@ -6,6 +6,7 @@
 #include "../../Exception/exception.h"
 
 class ChangeColor: public Command{
+public:
     ChangeColor();
     void executeActionUNO(UnoGame&);
 };

@@ -6,6 +6,6 @@ Skip::Skip(){
 
 void Skip::executeActionUNO(UnoGame& UnoGame){
     vector<UnoPlayer>& players = UnoGame.getPlayers();
-    players.push_back(players[0]);
+    players.push_back(players.front());
     players.erase(players.begin());
 }

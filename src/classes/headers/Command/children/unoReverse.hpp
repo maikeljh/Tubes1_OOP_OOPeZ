@@ -7,6 +7,7 @@
 using namespace std;
 
 class UnoReverse: public Command{
+public:
     UnoReverse();
     void executeActionUNO(UnoGame&);
 };
