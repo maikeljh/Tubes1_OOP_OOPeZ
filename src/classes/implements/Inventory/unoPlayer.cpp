@@ -17,6 +17,7 @@ UnoPlayer& UnoPlayer::operator=(UnoPlayer& other){
         this->getDeckPlayer().push_back(other.getDeckPlayer()[j]);
         j++;
     }
+    return *this;
 }
 
 UnoPlayer& UnoPlayer::operator+(const UnoCard& add){

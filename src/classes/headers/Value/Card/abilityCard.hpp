@@ -5,7 +5,7 @@
 using namespace std;
 
 class AbilityCard {
-    private:
+    protected:
         string type;
         bool useable;
     
