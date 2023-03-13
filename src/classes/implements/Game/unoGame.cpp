@@ -6,7 +6,7 @@
 
 using namespace std;
 
-UnoGame::UnoGame():Game(),table(108), alreadyDraw(false){}
+UnoGame::UnoGame():Game(),table(108), alreadyDraw(false), UNO(false){}
 
 UnoGame::UnoGame(const UnoGame& other):Game(other),table(108){}
 
@@ -124,6 +124,16 @@ void UnoGame::startGame(){
         }
         this->valid = false;
         UnoPlayer& move = this->players[0];
+        if (move.getDeckPlayer().size() == 1){
+            if (!this->UNO){
+                cout << "Player " << move.getNickname() << " lupa mengatakan UNO!" << endl;
+                cout << "\nKartu yang didapat oleh " << move.getNickname() << ":\n";
+                move.push(this->getDeckCard().pop());
+                move.getCard(move.getDeckPlayer().size()-2).printDetail();
+                move.push(this->getDeckCard().pop());
+                move.getCard(move.getDeckPlayer().size()-1).printDetail();
+            }
+        }
         this->players.push_back(move);
         this->players.erase(this->players.begin() + 0);
     }
@@ -175,4 +185,12 @@ UnoCard& UnoGame::getTop(){
 
 TableCard<UnoCard>& UnoGame::getTableCard(){
     return this->table;
+}
+
+bool UnoGame::getUNO(){
+    return this->UNO;
+}
+
+void UnoGame::setUNO(bool uno){
+    this->UNO = uno;
 }

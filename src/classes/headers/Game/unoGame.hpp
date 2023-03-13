@@ -14,6 +14,7 @@ class UnoGame : public Game {
         vector<UnoPlayer> players;
         TableCard<UnoCard> table;
         bool alreadyDraw;
+        bool UNO;
 
     public:
         UnoGame();
@@ -29,6 +30,8 @@ class UnoGame : public Game {
         bool getAlreadyDraw();
         void setAlreadyDraw(bool draw);
         UnoCard& getTop();
+        bool getUNO();
+        void setUNO(bool uno);
 };
 
 #endif
