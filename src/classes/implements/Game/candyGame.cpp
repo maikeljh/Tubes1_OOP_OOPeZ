@@ -139,14 +139,14 @@ void CandyGame::startGame(){
             this->players[i].getCombo().makeCombo();
             cout << "Combo akhir : " << endl;
             this->players[i].getCombo().printCombo();
-            cout << "DENGAN POIN  " << this->players[i].getCombo().getValue() << endl;
+            cout << "Dengan poin combo sebesar : " << this->players[i].getCombo().getValue() << endl;
         }
 
         int roundWinner = this->chooseRoundWinner();
         this->players[roundWinner].addPoint(this->point);
         cout << "\nSelamat kepada pemain " << this->players[roundWinner].getNickname() << " telah memenangkan babak dan memperoleh poin sebanyak " << this->point << endl;
         cout << "Dengan combo "; this->players[roundWinner].getCombo().printCombo();
-        cout << "DENGAN POIN  " << this->players[roundWinner].getCombo().getValue() << endl;
+        cout << "Dengan poin combo sebesar : " << this->players[roundWinner].getCombo().getValue() << endl;
 
         // Restart Game
         this->round = 0;
