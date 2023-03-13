@@ -138,3 +138,7 @@ bool UnoGame::getAlreadyDraw(){
 void UnoGame::setAlreadyDraw(bool draw){
     this->alreadyDraw = draw;
 }
+
+UnoCard& UnoGame::getTop(){
+    return this->table.getTop();
+}
