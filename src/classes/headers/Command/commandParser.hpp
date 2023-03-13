@@ -15,6 +15,7 @@
 #include "./children/checkCard.hpp"
 #include "./children/checkTableCard.hpp"
 #include "./children/endGame.hpp"
+#include "./children/help.hpp"
 
 class CommandParser{
     public:

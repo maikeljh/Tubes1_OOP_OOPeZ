@@ -20,8 +20,11 @@ Command* CommandParserUNO::parser(string inputCommand){
     } else if (inputCommand == "CHECKCARD") {
         SeeCards *seeCards = new SeeCards();
         return seeCards;
+    } else if (inputCommand == "HELP") {
+      HelpUno *helpUno = new HelpUno();
+      return helpUno;  
     } else {
-        throw "Input tidak valid!";
+        throw CommandInvalidExc();
     }
 
 }

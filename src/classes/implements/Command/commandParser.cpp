@@ -41,6 +41,9 @@ Command* CommandParser::parser(string inputCommand){
     } else if (inputCommand=="CHECKTABLECARD"){
         CheckTableCard *checkTableCard = new CheckTableCard();
         return checkTableCard;
+    } else if (inputCommand == "HELP") {
+        Help *help = new Help();
+        return help;  
     } else {
         throw CommandInvalidExc();
     }
