@@ -17,6 +17,7 @@ class PickCard: public Command {
     public:
         PickCard();
         void executeActionUNO(UnoGame&);
+        bool checkValid(UnoGame&);
 };
 
 #endif
