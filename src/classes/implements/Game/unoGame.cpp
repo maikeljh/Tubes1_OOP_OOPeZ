@@ -133,6 +133,7 @@ void UnoGame::startGame(){
                 move.push(this->getDeckCard().pop());
                 move.getCard(move.getDeckPlayer().size()-1).printDetail();
             }
+            this->setUNO(false);
         }
         this->players.push_back(move);
         this->players.erase(this->players.begin() + 0);
