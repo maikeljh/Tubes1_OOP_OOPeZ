@@ -6,7 +6,7 @@
 
 using namespace std;
 
-UnoGame::UnoGame():Game(),table(108){}
+UnoGame::UnoGame():Game(),table(108), alreadyDraw(false){}
 
 UnoGame::UnoGame(const UnoGame& other):Game(other),table(108){}
 
