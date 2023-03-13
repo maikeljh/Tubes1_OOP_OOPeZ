@@ -3,6 +3,7 @@
 
 #include "../command.hpp"
 #include "../../Game/game.hpp"
+#include "skip.hpp"
 using namespace std;
 
 class Plus2 : public Command{
