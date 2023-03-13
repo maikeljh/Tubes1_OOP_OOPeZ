@@ -113,6 +113,10 @@ int UnoGame::chooseWinner(){
     return -1;
 }
 
+vector<UnoPlayer>& UnoGame::getPlayers(){
+    return this->players;
+}
+
 bool UnoGame::isEndGame(){
     for(int i = 0; i < 7; i++){
         if(this->players[i].getDeckPlayer().size() == 0){
