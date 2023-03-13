@@ -55,3 +55,11 @@ bool UnoCard::operator==(UnoCard& other){
 bool UnoCard::getIsNumber(){
     return this->isNumber;
 }
+
+void UnoCard::printDetail(){
+    if(this->isNumber){
+        cout << this->number << " " << this->color << endl;
+    } else {
+        cout << this->type << " " << this->color << endl;
+    }
+}

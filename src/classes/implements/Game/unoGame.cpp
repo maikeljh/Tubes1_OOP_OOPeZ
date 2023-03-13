@@ -83,7 +83,12 @@ void UnoGame::startGame(){
     CommandParserUNO CP;
     string command;
 
+    // Initialize Card
+    this->getTableCard().addCard(this->deck.pop());
+
     while(!isEndGame()){
+        cout << "Kartu baru di atas meja adalah ";
+        this->getTop().printDetail();
         cout << "\nSekarang adalah giliran pemain " << this->players[0].getNickname() << endl;
         while(!this->valid){
             try{
@@ -145,4 +150,8 @@ void UnoGame::setAlreadyDraw(bool draw){
 
 UnoCard& UnoGame::getTop(){
     return this->table.getTop();
+}
+
+TableCard<UnoCard>& UnoGame::getTableCard(){
+    return this->table;
 }
