@@ -8,11 +8,13 @@ using namespace std;
 CandyGame::CandyGame():Game(),table(5){
     this->round = 0;
     this->point = 0;
+    this->phase = 0;
 }
 
 CandyGame::CandyGame(const CandyGame& other):Game(other),table(5){
     this->round = other.round;
     this->point = other.point;
+    this->phase = other.phase;
 }
 
 CandyGame::~CandyGame(){}
@@ -87,21 +89,21 @@ void CandyGame::startGame(){
     string command;
     
     while(!isEndGame()){
+        cout << "\nPERMAINAN KE-" << ++this->phase << endl;
         this->point = 64;
-        this->firstIdxTurn = 0;
-        this->lastIdxTurn = 6;
         while(this->round < 6){
-            this->playerTurn = this->firstIdxTurn;
             this->round++;
-            cout << "\nRONDE " << this->round;
+            cout << "\nRONDE " << this->round << endl;;
+            cout << "Kartu ability telah dibagikan ke seluruh pemain" << endl;
             if(this->round == 2){
                 this->deckAbility = CG.generateAbilityDeck();
                 for(int i = 0; i < 7; i++){
                     this->players[i].addAbilityCard(this->deckAbility.pop());
                 }
             }
+            this->playerTurn = 0;
             for(int i = 0; i < 7; i++){
-                cout << "\nSekarang adalah giliran pemain " << this->players[playerTurn].getNickname() << endl;
+                cout << "\nSekarang adalah giliran pemain " << this->players[0].getNickname() << endl;
                 while(!this->valid){
                     try{
                         cout << "Command : ";
@@ -113,28 +115,20 @@ void CandyGame::startGame(){
                         cout << "\nCommand tidak valid!\n" << endl;
                     }
                 }
-                if(this->isClockWise){
-                    this->playerTurn = (this->playerTurn + 1) % 7;
-                } else {
-                    this->playerTurn = ((this->playerTurn - 1) % 7 + 7) % 7;
-                }
+                CandyPlayer& move = this->players[0];
+                this->players.push_back(move);
+                this->players.erase(this->players.begin() + 0);
                 this->valid = false;
+                this->playerTurn++;
             }
             if(this->round < 6){
-                this->table.addCard(this->deck.pop());
+                Card newTableCard = this->deck.pop();
+                cout << "\nTelah tertambah di meja yaitu Kartu " << newTableCard.getNumber() << " " << newTableCard.getColor() << endl;
+                this->table.addCard(newTableCard);
             }
-            if(this->isReverse){
-                this->isClockWise = !this->isClockWise;
-                this->isReverse = false;
-            } else {
-                if(this->isClockWise){
-                    this->firstIdxTurn = (this->firstIdxTurn + 1) % 7;
-                    this->lastIdxTurn = (this->lastIdxTurn + 1) % 7;
-                } else {
-                    this->firstIdxTurn = ((this->firstIdxTurn - 1) % 7 + 7) % 7;
-                    this->lastIdxTurn = ((this->lastIdxTurn - 1) % 7 + 7) % 7;
-                }
-            }
+            CandyPlayer& move = this->players[0];
+            this->players.push_back(move);
+            this->players.erase(this->players.begin() + 0);
         }
 
         // Penambahan poin untuk pemenang babak
@@ -240,4 +234,12 @@ vector<CandyPlayer>& CandyGame::getPlayers(){
 
 TableCard<Card>& CandyGame::getTableCard(){
     return this->table;
+}
+
+int CandyGame::getPhase(){
+    return this->phase;
+}
+
+void CandyGame::setPhase(int phase){
+    this->phase = phase;
 }

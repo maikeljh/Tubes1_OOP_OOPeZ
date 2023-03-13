@@ -5,12 +5,14 @@ Abilityless::Abilityless(){
 }
 
 void Abilityless::executeAction(CandyGame& Game){
-    CandyPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
-    int playerTurn = Game.getPlayerTurn();
+    CandyPlayer& playernow = Game.getPlayer(0);
+    int playerTurn = 0;
     vector<CandyPlayer> players;
+    vector<int> indexPlayers;
     for (int i = 0; i < Game.getNPlayers(); i++){
         if(i != playerTurn){
             players.push_back(Game.getPlayer(i));
+            indexPlayers.push_back(i);
         }
     }
     if (playernow.checkValidAbilityCard("ABILITYLESS")){
@@ -23,19 +25,12 @@ void Abilityless::executeAction(CandyGame& Game){
             cout << endl << playernow.getNickname() << " akan mematikan kartu ablity lawan!" << endl;
             // choose a player
             cout << "\nSilahkan pilih pemain yang kartu abilitynya ingin dimatikan:" << endl;
-            for (int i = 0; i < Game.getNPlayers(); i++){
+            for (int i = 0; i < players.size(); i++){
                 // print player list that can be switched (all exc the current player)
-                if (i != playerTurn){
-                    if (i < playerTurn){
-                        cout << i+1 << ". ";
-                    } else {
-                        cout << i << ". ";
-                    }
-                    cout << Game.getPlayer(i).getNickname() << endl;
-                }
+                cout << i+1 << ". ";
+                cout << players[i].getNickname() << endl;
             }
 
-            cout << endl;
             int idxAbilityless;
             do {
                 try {
@@ -49,12 +44,9 @@ void Abilityless::executeAction(CandyGame& Game){
                 }
             } while(idxAbilityless < 1 || idxAbilityless > 6);
             
-            if (idxAbilityless<playerTurn){
-                idxAbilityless--;
-            }
 
             // Turn off ability
-            CandyPlayer& playerAbilityless = Game.getPlayer(idxAbilityless);
+            CandyPlayer& playerAbilityless = Game.getPlayer(indexPlayers[idxAbilityless-1]);
             AbilityCard& targetAbilityCard = playerAbilityless.getAbilityCard();
             if (targetAbilityCard.getUseable()){
                 targetAbilityCard.setUseable(false);

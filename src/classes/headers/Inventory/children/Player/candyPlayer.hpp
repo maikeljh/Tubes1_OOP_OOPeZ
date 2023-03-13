@@ -20,7 +20,6 @@ class CandyPlayer: public Player<Card>{
     public:
         CandyPlayer();
         CandyPlayer(DeckCard<Card> &DC, string nickname);
-        CandyPlayer& operator=(CandyPlayer&);
         CandyPlayer& operator+(const Card& add);
         CandyPlayer& operator-();
         bool operator>(const CandyPlayer& other);

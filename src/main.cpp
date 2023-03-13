@@ -44,4 +44,5 @@ int main(){
             break;
         }
     }
+    cout << "\nTerima kasih telah memainkan permainan kami :)" << endl;
 }

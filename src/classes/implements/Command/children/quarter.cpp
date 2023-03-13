@@ -5,7 +5,7 @@ Quarter::Quarter(){
 }
 
 void Quarter::executeAction(CandyGame& Game){
-    CandyPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
+    CandyPlayer& playernow = Game.getPlayer(0);
     if (playernow.checkValidAbilityCard("QUARTER")){
         if(!playernow.getAbilityCard().getUseable()){
             cout << "\nOops, kartu ability quarter-mu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n" << endl;

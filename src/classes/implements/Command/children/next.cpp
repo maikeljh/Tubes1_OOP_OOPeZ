@@ -5,8 +5,6 @@ Next::Next():Command(){
 }
 
 void Next::executeAction(CandyGame& Game){
-    if (Game.getPlayerTurn()!=Game.getLastIdxTurn()){
-        cout << "\nGiliran dilanjut ke pemain selanjutnya." << endl;
-    }
+    cout << "\nGiliran dilanjut ke pemain selanjutnya." << endl;
     Game.setValid(true);
 }

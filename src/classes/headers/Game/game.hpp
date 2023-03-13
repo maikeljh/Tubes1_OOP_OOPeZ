@@ -11,12 +11,8 @@ using namespace std;
 class Game {
     protected:
         const int nPlayers = 7;
-        bool isClockWise;
-        int playerTurn;
-        int firstIdxTurn;
-        int lastIdxTurn;
-        bool isReverse;
         bool valid;
+        int playerTurn;
 
     public:
         Game();
@@ -24,20 +20,12 @@ class Game {
         ~Game();
         virtual void startGame() = 0;
         virtual int chooseWinner() = 0;
-        void setIsClockWise(bool isClockWise);
-        void setPlayerTurn(int playerTurn);
-        bool getIsClockWise();
-        int getPlayerTurn();
         virtual bool isEndGame() = 0;
-        int getFirstIdxTurn();
-        void setFirstIdxTurn(int first);
-        int getLastIdxTurn();
-        void setLastIdxTurn(int last);
         int getNPlayers();
-        bool getIsReverse();
-        void setIsReverse(bool isReverse);
         bool getValid();
         void setValid(bool);
+        int getPlayerTurn();
+        void setPlayerTurn(int);
 };
 
 #endif

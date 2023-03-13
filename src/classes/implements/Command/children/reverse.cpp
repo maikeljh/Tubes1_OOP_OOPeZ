@@ -1,46 +1,80 @@
 #include "../../../headers/Command/children/reverse.hpp"
+#include "../../../headers/Command/commandParser.hpp"
 
 Reverse::Reverse(){
     commandId=7;
 }
 
 void Reverse::executeAction(CandyGame& Game){
-    CandyPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
+    CandyPlayer& playernow = Game.getPlayer(0);
+    CandyPlayer tempPlayer = Game.getPlayer(0);
+
     if (playernow.checkValidAbilityCard("REVERSE")){
         if (!playernow.getAbilityCard().getUseable()){
             cout << "\nOops, kartu ability reverse-mu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n" << endl;
         } else {
+            playernow.useAbilityCard();
             cout << endl << playernow.getNickname() << " melakukan reverse!" << endl;
+
+            // Reverse Algorithm
+            vector<CandyPlayer>& players = Game.getPlayers();
+            vector<CandyPlayer> temp;
+            while(players.size() != 0){
+                temp.push_back(players.back());
+                players.pop_back();
+            }
+            for(int i = 0; i < Game.getPlayerTurn() - 1; i++){
+                temp.push_back(temp.front());
+                temp.erase(temp.begin());
+            }
+            for(int i = 0; i < Game.getNPlayers(); i++){
+                players.push_back(temp[i]);
+            }
+
             cout << "(sisa) urutan eksekusi giliran ini : ";
             
-            int i = (Game.getPlayerTurn() + 1) % Game.getNPlayers();
-            while (i != (Game.getLastIdxTurn() + 1) % Game.getNPlayers()){
-                cout << Game.getPlayer(i).getNickname();
-                if (i != Game.getLastIdxTurn()){
-                    cout << ", ";
+            if(Game.getPlayerTurn() == Game.getNPlayers() - 1){
+                cout << "-" << endl;
+            } else {
+                int upperbound = Game.getNPlayers() - Game.getPlayerTurn();
+                for(int i = 1; i < upperbound; i++){
+                    cout << Game.getPlayer(i).getNickname();
+                    if (i != upperbound - 1){
+                        cout << ", ";
+                    }
                 }
-                i = (i+1) % Game.getNPlayers();
+                cout << endl;
             }
-            cout << endl;
 
             cout << "urutan eksekusi giliran selanjutnya : ";
-            int nextFirstIdx = ((Game.getPlayerTurn()-1) % Game.getNPlayers() + Game.getNPlayers()) % Game.getNPlayers();
-            i = nextFirstIdx;
-            while (i != Game.getPlayerTurn()){
-                cout << Game.getPlayer(i).getNickname();
+            int nextIdx = (Game.getNPlayers() - Game.getPlayerTurn() + 1) % Game.getNPlayers();
+            for(int i = 0; i < Game.getNPlayers()-1; i++){
+                cout << Game.getPlayer(nextIdx).getNickname();
                 cout << ", ";
-                i = ((i-1) % Game.getNPlayers() + Game.getNPlayers()) % Game.getNPlayers();
+                nextIdx = ((nextIdx + 1) % Game.getNPlayers() + Game.getNPlayers()) % Game.getNPlayers();
             }
-            cout << Game.getPlayer(Game.getPlayerTurn()).getNickname() << endl;
+            cout << Game.getPlayer(nextIdx).getNickname() << endl << endl;
 
-            // set isReverse & next idxreverse
-            Game.setFirstIdxTurn(nextFirstIdx);
-            Game.setLastIdxTurn(Game.getPlayerTurn());
-            Game.setIsReverse(true);
+            cout << "Sekarang adalah giliran pemain " << tempPlayer.getNickname() << " lagi." << endl;
+            
+            players.insert(players.begin(), tempPlayer);
 
-            playernow.useAbilityCard();
+            CommandParser CP;
+            string command;
 
-            Game.setValid(true);
+            while(!Game.getValid()){
+                try{
+                    cout << "Command : ";
+                    cin >> command;
+                    Command *action = CP.parser(command);
+                    action->executeAction(Game);
+                    delete action;
+                } catch(...){
+                    cout << "\nCommand tidak valid!\n" << endl;
+                }
+            }
+
+            players.erase(players.begin());
         }
     } else {
         cout << "\nEts, tidak bisa. Kamu tidak punya kartu Ability REVERSE.\nSilahkan lakukan perintah lain.\n" << endl;

@@ -10,13 +10,6 @@ CandyPlayer::CandyPlayer(DeckCard<Card>& DC, string nickname): Player(nickname){
     this->getDeckPlayer().push_back(DC.pop());
 }
 
-CandyPlayer& CandyPlayer::operator=(CandyPlayer& other){
-    this->point = other.point;
-    this->getDeckPlayer().push_back(other.getDeckPlayer()[0]);
-    this->getDeckPlayer().push_back(other.getDeckPlayer()[1]);
-    return *this;
-}
-
 CandyPlayer& CandyPlayer::operator+(const Card& add){
     this->getDeckPlayer().push_back(add);
     return *this;

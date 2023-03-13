@@ -5,7 +5,7 @@ SwapCard::SwapCard(){
 }
 
 void SwapCard::executeAction(CandyGame& Game){
-    int playerTurn = Game.getPlayerTurn();
+    int playerTurn = 0;
     CandyPlayer& playernow = Game.getPlayer(playerTurn);
     if (playernow.getAbilityCard().getType() != "SWAPCARD"){
         cout << "\nEits, kamu tidak memiliki kartu SWAPCARD!\n" << endl;

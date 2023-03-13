@@ -5,7 +5,7 @@ Quadruple::Quadruple(){
 }
 
 void Quadruple::executeAction(CandyGame& Game){
-    CandyPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
+    CandyPlayer& playernow = Game.getPlayer(0);
     if (playernow.checkValidAbilityCard("QUADRUPLE")){
         if(!playernow.getAbilityCard().getUseable()){
             cout << "\nOops, kartu ability quadruple-mu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n" << endl;

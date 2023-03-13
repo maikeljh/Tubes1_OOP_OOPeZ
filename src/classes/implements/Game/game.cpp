@@ -6,67 +6,19 @@
 using namespace std;
 
 Game::Game(){
-    this->isClockWise = true;
-    this->playerTurn = 0;
-    this->firstIdxTurn = 0;
-    this->lastIdxTurn = 6;
-    this->isReverse = false;
     this->valid = false;
+    this->playerTurn = 0;
 }
 
 Game::Game(const Game& other){
-    this->isClockWise = other.isClockWise;
-    this->playerTurn = other.playerTurn;
-    this->firstIdxTurn = other.firstIdxTurn;
-    this->lastIdxTurn = other.lastIdxTurn;
     this->valid = other.valid;
-    this->isReverse = other.isReverse;
+    this->playerTurn = other.playerTurn;
 }
 
 Game::~Game(){}
 
-void Game::setIsClockWise(bool isClockWise){
-    this->isClockWise = isClockWise;
-}
-
-void Game::setPlayerTurn(int playerTurn){
-    this->playerTurn = playerTurn;
-}
-
-bool Game::getIsClockWise(){
-    return this->isClockWise;
-}
-
-int Game::getPlayerTurn(){
-    return this->playerTurn;
-}
-
-int Game::getFirstIdxTurn(){
-    return this->firstIdxTurn;
-}
-
-void Game::setFirstIdxTurn(int first){
-    this->firstIdxTurn = first;
-}
-
-int Game::getLastIdxTurn(){
-    return this->lastIdxTurn;
-}
-
-void Game::setLastIdxTurn(int last){
-    this->lastIdxTurn = last;
-}
-
 int Game::getNPlayers(){
     return this->nPlayers;
-}
-
-bool Game::getIsReverse(){
-    return isReverse;
-}
-
-void Game::setIsReverse(bool isReverse){
-    this->isReverse = isReverse;
 }
 
 bool Game::getValid(){
@@ -75,4 +27,12 @@ bool Game::getValid(){
 
 void Game::setValid(bool val){
     this->valid = val;
+}
+
+int Game::getPlayerTurn(){
+    return this->playerTurn;
+}
+
+void Game::setPlayerTurn(int turn){
+    this->playerTurn = turn;
 }

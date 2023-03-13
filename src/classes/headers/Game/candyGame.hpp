@@ -16,6 +16,7 @@ class CandyGame : public Game {
         DeckCard<Card> deck;
         DeckCard<AbilityCard> deckAbility;
         TableCard<Card> table;
+        int phase;
         const long long int maxPoint = (long long) 1 << 32;
 
     public:
@@ -35,6 +36,8 @@ class CandyGame : public Game {
         CandyPlayer& getPlayer(int idx);
         bool isEndGame();
         TableCard<Card>& getTableCard();
+        int getPhase();
+        void setPhase(int);
 };
 
 #endif
