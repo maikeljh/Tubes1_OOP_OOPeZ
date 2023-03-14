@@ -9,17 +9,12 @@ const char* CommandInvalidExc::what() const throw(){
 
 /* File Not Found Invalid Exception */
 const char* FileInvalidExc::what() const throw(){
-    return "File tidak ditemukan!\n";
-}
-
-/* Directory Not Found Invalid Exception */
-const char* DirectoryInvalidExc::what() const throw(){
-    return "Directory tidak ditemukan!\n";
+    return "File tidak ditemukan!";
 }
 
 /* Input File Invalid Exception */
 const char* ConfigInvalidExc::what() const throw(){
-    return "File config tidak sesuai format!\n";
+    return "File config tidak sesuai format!";
 }
 
 /* Input Number Invalid Exception */

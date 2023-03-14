@@ -15,11 +15,6 @@ public:
     const char* what() const throw();
 };
 
-class InputFileInvalidExc : public GameException{
-public:
-    const char* what() const throw();
-};
-
 class InputNumberInvalidExc : public GameException{
 public:
     const char* what() const throw();
@@ -31,11 +26,6 @@ public:
 };
 
 class FileInvalidExc : public GameException{
-public:
-    const char* what() const throw();
-};
-
-class DirectoryInvalidExc : public GameException{
 public:
     const char* what() const throw();
 };

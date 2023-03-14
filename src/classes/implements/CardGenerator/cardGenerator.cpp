@@ -58,6 +58,11 @@ DeckCard<Card> CardGenerator::readFile(string pathfile){
     ifstream Read(pathfile);
     DeckCard<Card> DC;
 
+    // Throw exception
+    if(!Read.good()){
+        throw FileInvalidExc();
+    }
+
     // FORMAT YANG BENAR = ANGKA WARNA
     while(getline(Read, line)){
         int number;
@@ -91,7 +96,6 @@ DeckCard<Card> CardGenerator::readFile(string pathfile){
         }
 
         if(color != "Red" && color != "Yellow" && color != "Blue" && color != "Green"){
-            cout << "Bukan warna yang valid say";
             throw ConfigInvalidExc();
         } else {
             DC = DC + Card(number, color);
@@ -153,6 +157,11 @@ DeckCard<UnoCard> CardGenerator::readUnoFile(string pathfile){
     ifstream Read(pathfile);
     DeckCard<UnoCard> DC;
 
+    // Throw exception
+    if(!Read.good()){
+        throw FileInvalidExc();
+    }
+    
     // FORMAT YANG BENAR = ANGKA WARNA
     while(getline(Read, line)){
         int number;

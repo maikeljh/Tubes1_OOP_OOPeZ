@@ -111,14 +111,27 @@ void CandyGame::startGame(){
     cout << "\nHalo! Selamat Datang di Kompetisi Kartu ala Kerajaan Permen" << endl;
 
     CardGenerator CG;
-
+    
     while(action != "y" && action != "n" && action != "no" && action != "yes"){
         try {
             cout << "\nApakah urutan kartu ingin dibaca dari file? (y or n) : ";
             cin >> action;
 
             if(action == "y" || action == "yes"){
-                this->deck = CG.readFile("./config/orderCards.txt");
+                bool validDeck = false;
+                while(!validDeck){
+                    try{
+                        string pathfile = "./config/";
+                        string inputPath;
+                        cout << "\nMasukkan nama file konfigurasi: ";
+                        cin >> inputPath;
+                        pathfile += inputPath + ".txt";
+                        this->deck = CG.readFile(pathfile);
+                        validDeck = true;
+                    } catch(GameException& err2){
+                        cout << err2.what() << endl;
+                    }
+                }
             } else if (action == "n" || action == "no"){
                 this->deck = CG.randomizeCard();
             } else {
@@ -129,7 +142,7 @@ void CandyGame::startGame(){
         }
     }
 
-    cout << "Urutan kartu berhasil dibuat" << endl;
+    cout << "Urutan kartu berhasil dibuat." << endl;
     cout << "\nSilahkan input nama-nama pemain" << endl;
 
     for(int i = 1; i <= 7; i++){
@@ -228,11 +241,24 @@ void CandyGame::startGame(){
             // Generate Deck Again
             while(action != "y" && action != "n" && action != "no" && action != "yes"){
                 try {
-                    cout << "Apakah urutan kartu ingin dibaca dari file? (y or n) : ";
+                    cout << "\nApakah urutan kartu ingin dibaca dari file? (y or n) : ";
                     cin >> action;
 
                     if(action == "y" || action == "yes"){
-                        this->deck = CG.readFile("./config/orderCards.txt");
+                        bool validDeck = false;
+                        while(!validDeck){
+                            try{
+                                string pathfile = "./config/";
+                                string inputPath;
+                                cout << "\nMasukkan nama file konfigurasi: ";
+                                cin >> inputPath;
+                                pathfile += inputPath + ".txt";
+                                this->deck = CG.readFile(pathfile);
+                                validDeck = true;
+                            } catch(GameException& err2){
+                                cout << err2.what() << endl;
+                            }
+                        }
                     } else if (action == "n" || action == "no"){
                         this->deck = CG.randomizeCard();
                     } else {
@@ -242,6 +268,7 @@ void CandyGame::startGame(){
                     cout << err.what() << endl;
                 }
             }
+            cout << "Urutan kartu berhasil dibuat." << endl;
             // Restart Game Player Card
             for(int i = 0; i < 7; i++){
                 this->players[i] = this->players[i] + this->deck.pop();

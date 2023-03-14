@@ -98,14 +98,27 @@ void UnoGame::startGame(){
             cin >> action;
 
             if(action == "y" || action == "yes"){
-                this->deck = CG.readUnoFile("./config/orderUnoCards.txt");
+                bool validDeck = false;
+                while(!validDeck){
+                    try{
+                        string pathfile = "./config/";
+                        string inputPath;
+                        cout << "\nMasukkan nama file konfigurasi: ";
+                        cin >> inputPath;
+                        pathfile += inputPath + ".txt";
+                        this->deck = CG.readUnoFile(pathfile);
+                        validDeck = true;
+                    } catch(GameException& err2){
+                        cout << err2.what() << endl;
+                    }
+                }
             } else if (action == "n" || action == "no"){
                 this->deck = CG.randomizeUnoCard();
             } else {
-                throw "Input tidak valid!";
+                throw InputActionInvalidExc();
             }
-        } catch (...){
-            cout << "Input tidak valid!" << endl;
+        } catch (GameException& err){
+            cout << err.what() << endl;
         }
     }
 
@@ -157,8 +170,8 @@ void UnoGame::startGame(){
                 Command *action = CP.parser(command);
                 action->executeActionUNO(*this);
                 delete action;
-            } catch(...){
-                cout << "\nCommand tidak valid!\n" << endl;
+            } catch(GameException& err){
+                cout << endl << err.what() << endl;
             }
             if(this->deck.getNeff() < 5){
                 this->deck = CG.randomizeUnoCard();
