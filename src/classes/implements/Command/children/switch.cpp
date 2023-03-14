@@ -43,6 +43,8 @@ void Switch::executeAction(CandyGame& Game){
             }
         }
 
+        playernow.useAbilityCard();
+
         // switch
         CandyPlayer& playerSwitch = Game.getPlayer(idxSwitch);
         vector<Card>& deck0 = playernow.getDeckPlayer();
@@ -56,8 +58,6 @@ void Switch::executeAction(CandyGame& Game){
         deck0.push_back(cardswitch_1);
         deck1.push_back(cardnow_0);
         deck1.push_back(cardnow_1);
-
-        playernow.useAbilityCard();
         
         cout << "\nKedua kartu " << playernow.getNickname() << " telah ditukar dengan " << playerSwitch.getNickname() << "!" << endl;
         cout << "Kartumu sekarang adalah:" << endl;

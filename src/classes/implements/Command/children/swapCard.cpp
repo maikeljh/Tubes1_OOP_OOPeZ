@@ -133,6 +133,7 @@ void SwapCard::executeAction(CandyGame& Game){
             }
         }
 
+        playernow.useAbilityCard();
         cardSwap.push_back(option);
 
         // swap
@@ -180,7 +181,6 @@ void SwapCard::executeAction(CandyGame& Game){
                 cout << "\nPenggunaan SWAP CARD berhasil untuk kartu kanan pemain " << p0.getNickname() << " dan kartu kanan pemain " << p1.getNickname() << endl;
             }
         }
-        playernow.useAbilityCard();
         
         Game.setValid(true);
     } else {

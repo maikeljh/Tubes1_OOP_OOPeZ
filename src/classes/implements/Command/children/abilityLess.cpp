@@ -53,6 +53,7 @@ void Abilityless::executeAction(CandyGame& Game){
             
 
             // Turn off ability
+            playernow.useAbilityCard();
             CandyPlayer& playerAbilityless = Game.getPlayer(indexPlayers[idxAbilityless-1]);
             AbilityCard& targetAbilityCard = playerAbilityless.getAbilityCard();
             if (targetAbilityCard.getUseable()){
@@ -63,7 +64,6 @@ void Abilityless::executeAction(CandyGame& Game){
                 cout << "Yah, sayang penggunaan kartu ini sia-sia :(" << endl;
             }
         }
-        playernow.useAbilityCard();
         Game.setValid(true);
     } else {
         cout << "\nEits, kamu tidak punya kartunya :P\n" << endl;

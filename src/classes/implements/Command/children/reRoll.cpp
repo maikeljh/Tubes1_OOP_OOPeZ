@@ -12,6 +12,7 @@ void ReRoll::executeAction(CandyGame& Game){
         } else {
             // Buang Kartu
             cout << "\nMelakukan pembuangan kartu yang sedang dimiliki" << endl;
+            Game.getPlayer(0).useAbilityCard();
             Card c = Game.getPlayer(0).pop();
             c = Game.getPlayer(0).pop();
 
@@ -20,7 +21,6 @@ void ReRoll::executeAction(CandyGame& Game){
             Game.getPlayer(0).push(Game.getDeckCard().pop());
             cout << "Kamu mendapatkan 2 kartu baru yaitu:" << endl;
             Game.getPlayer(0).printCard();
-            Game.getPlayer(0).useAbilityCard();
 
             Game.setValid(true);
         }
