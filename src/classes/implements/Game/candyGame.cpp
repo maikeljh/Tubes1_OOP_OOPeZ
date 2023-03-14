@@ -1,6 +1,7 @@
 #include "../../headers/Game/candyGame.hpp"
 #include "../../headers/CardGenerator/cardGenerator.hpp"
 #include "../../headers/Command/commandParser.hpp"
+#include "../generic.cpp"
 #include <iostream>
 
 using namespace std;
@@ -70,7 +71,7 @@ void CandyGame::startGame(){
             } else {
                 throw InputActionInvalidExc();
             }
-        } catch (InputActionInvalidExc& err){
+        } catch (GameException& err){
             cout << err.what() << endl;
         }
     }
@@ -111,7 +112,7 @@ void CandyGame::startGame(){
                         Command *action = CP.parser(command);
                         action->executeAction(*this);
                         delete action;
-                    } catch(CommandInvalidExc& err){
+                    } catch(GameException& err){
                         cout << err.what() << endl;
                     }
                 }
@@ -177,7 +178,7 @@ void CandyGame::startGame(){
                     } else {
                         throw InputActionInvalidExc();
                     }
-                } catch (InputActionInvalidExc& err){
+                } catch (GameException& err){
                     cout << err.what() << endl;
                 }
             }
@@ -190,29 +191,16 @@ void CandyGame::startGame(){
 }
 
 int CandyGame::chooseRoundWinner() {
-    Combination maximum = this->players[0].getCombo();
-    int idx = 0;
-    for (int i = 1; i < 7; i++) {
-        if (this->players[i].getCombo() > maximum) {
-            maximum = this->players[i].getCombo();
-            idx = i;
-        }
+    vector<Combination> combos;
+    for(int i = 0; i < 7; i++){
+        combos.push_back(this->players[i].getCombo());
     }
-    return idx;
+    return findIndexMaxValue(combos);
 }
 
 
 int CandyGame::chooseWinner(){
-    double maximum = 0;
-    int idx = 0;
-    for(int i = 0; i < 7; i++){
-        if(this->players[i].getCombo().getValue() > maximum){
-            maximum = this->players[i].getCombo().getValue();
-            idx = i;
-        }
-    }
-    
-    return idx;
+    return findIndexMaxValue(this->players);
 }
 
 void CandyGame::setRound(int round){
@@ -232,13 +220,12 @@ long long int CandyGame::getPoint(){
 }
 
 bool CandyGame::isEndGame(){
-    for(int i = 0; i < this->nPlayers; i++){
-        if(this->players[i].getPoint() >= this->maxPoint){
-            return true;
-        }
+    CandyPlayer maximum = maxValue<CandyPlayer>(this->players);
+    if(maximum.getPoint() >= this->maxPoint){
+        return true;
+    } else {
+        return false;
     }
-
-    return false;
 }
 
 DeckCard<Card>& CandyGame::getDeckCard(){

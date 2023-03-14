@@ -73,12 +73,10 @@ DeckCard<Card> CardGenerator::readFile(string pathfile){
                 if(atoi(sNumber.c_str())){
                     number = atoi(sNumber.c_str());
                     if(number < 1 || number > 13){
-                        cout << "Out of range gan";
-                        throw "Out of range gan";
+                        throw ConfigInvalidExc();
                     }
                 } else {
-                    cout << "Bukan angka bang";
-                    throw "Bukan angka bang";
+                    throw ConfigInvalidExc();
                 }
                 break;
             }
@@ -94,7 +92,7 @@ DeckCard<Card> CardGenerator::readFile(string pathfile){
 
         if(color != "Red" && color != "Yellow" && color != "Blue" && color != "Green"){
             cout << "Bukan warna yang valid say";
-            throw "Bukan warna yang valid say";
+            throw ConfigInvalidExc();
         } else {
             DC.push(Card(number, color));
         }
@@ -171,12 +169,10 @@ DeckCard<UnoCard> CardGenerator::readUnoFile(string pathfile){
                 if(atoi(sNumber.c_str()) || sNumber == "0"){
                     number = atoi(sNumber.c_str());
                     if(number < 0 || number > 10){
-                        cout << "Out of range gan";
-                        throw "Out of range gan";
+                        throw ConfigInvalidExc();
                     }
                 } else {
-                    cout << "Bukan angka bang";
-                    throw "Bukan angka bang";
+                    throw ConfigInvalidExc();
                 }
                 break;
             }
@@ -191,8 +187,7 @@ DeckCard<UnoCard> CardGenerator::readUnoFile(string pathfile){
         }
 
         if(color != "Red" && color != "Yellow" && color != "Blue" && color != "Green" && color != "Black"){
-            cout << "Bukan warna yang valid say";
-            throw "Bukan warna yang valid say";
+            throw ConfigInvalidExc();
         }
 
         // READ TYPE
@@ -203,8 +198,7 @@ DeckCard<UnoCard> CardGenerator::readUnoFile(string pathfile){
         }
 
         if(type != "PLUS2" && type != "PLUS4" && type != "SKIP" && type != "UNOREVERSE" && type != "CHANGECOLOR" && type != "NONE"){
-            cout << "Bukan tipe yang valid say";
-            throw "Bukan tipe yang valid say";
+            throw ConfigInvalidExc();
         }
 
         DC.push(UnoCard(number, color, type));

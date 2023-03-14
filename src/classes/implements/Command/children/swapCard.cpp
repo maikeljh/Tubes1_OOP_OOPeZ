@@ -39,7 +39,7 @@ void SwapCard::executeAction(CandyGame& Game){
                 } else {
                     validInput = true;
                 }
-            } catch(InputNumberInvalidExc& err){
+            } catch(GameException& err){
                 cout << err.what() << endl;
             }
         }
@@ -63,7 +63,7 @@ void SwapCard::executeAction(CandyGame& Game){
                 } else {
                     validInput = true;
                 }
-            } catch(InputNumberInvalidExc& err){
+            } catch(GameException& err){
                 cout << err.what() << endl;
             }
         }
@@ -87,7 +87,7 @@ void SwapCard::executeAction(CandyGame& Game){
                 } else {
                     validInput = true;
                 }
-            } catch(InputNumberInvalidExc& err){
+            } catch(GameException& err){
                 cout << err.what() << endl;
             }
         }
@@ -107,7 +107,7 @@ void SwapCard::executeAction(CandyGame& Game){
                 } else {
                     validInput = true;
                 }
-            } catch(InputNumberInvalidExc& err){
+            } catch(GameException& err){
                 cout << err.what() << endl;
             }
         }

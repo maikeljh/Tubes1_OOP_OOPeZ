@@ -7,9 +7,19 @@ const char* CommandInvalidExc::what() const throw(){
     return "Command tidak valid!\n";
 }
 
-/* Input File Invalid Exception */
-const char* InputFileInvalidExc::what() const throw(){
+/* File Not Found Invalid Exception */
+const char* FileInvalidExc::what() const throw(){
     return "File tidak ditemukan!\n";
+}
+
+/* Directory Not Found Invalid Exception */
+const char* DirectoryInvalidExc::what() const throw(){
+    return "Directory tidak ditemukan!\n";
+}
+
+/* Input File Invalid Exception */
+const char* ConfigInvalidExc::what() const throw(){
+    return "File config tidak sesuai format!\n";
 }
 
 /* Input Number Invalid Exception */

@@ -70,7 +70,7 @@ void Reverse::executeAction(CandyGame& Game){
                     Command *action = CP.parser(command);
                     action->executeAction(Game);
                     delete action;
-                } catch(CommandInvalidExc& err){
+                } catch(GameException& err){
                     cout << err.what() << endl;
                 }
             }

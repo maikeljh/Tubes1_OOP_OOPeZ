@@ -1,8 +1,6 @@
 #include "../../../headers/Command/children/changeColor.hpp"
 
-ChangeColor::ChangeColor(){
-
-}
+ChangeColor::ChangeColor(){}
 
 void ChangeColor::executeActionUNO(UnoGame& UnoGame){
     cout << "\nSilakan pilih warna untuk diganti." << endl;
@@ -10,8 +8,20 @@ void ChangeColor::executeActionUNO(UnoGame& UnoGame){
     cout << "2. Green" << endl;
     cout << "3. Blue" << endl;
     cout << "4. Yellow" << endl;
+
     int colorInput;
-    cin >> colorInput;
+
+    do {
+        try{
+            cout << "Pilihan : ";
+            cin >> colorInput;
+            if(colorInput < 1 || colorInput > 4){
+                throw InputNumberInvalidExc();
+            }
+        } catch(GameException& err){
+            cout << err.what() << endl;
+        }
+    } while(colorInput < 1 || colorInput > 4);
     
     TableCard<UnoCard>& tableCards = UnoGame.getTableCard();
     UnoCard& topCard = tableCards.getTop();

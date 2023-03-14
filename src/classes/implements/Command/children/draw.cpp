@@ -16,6 +16,8 @@ void Draw::executeActionUNO(UnoGame& Game){
         } else {
             cout << newCard.getType() << " " << newCard.getColor() << endl;
         }
+
+        cout << endl;
         Game.setAlreadyDraw(true);
     }
     else{

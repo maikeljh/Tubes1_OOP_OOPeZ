@@ -16,7 +16,7 @@ int main(){
                 if(action != "1" && action != "2"){
                     throw InputNumberInvalidExc();
                 }
-            } catch (InputNumberInvalidExc& err){
+            } catch (GameException& err){
                 cout << err.what() << endl;
             }
         }
@@ -37,7 +37,7 @@ int main(){
                 if(action != "1" && action != "2"){
                     throw InputNumberInvalidExc();
                 }
-            } catch (InputNumberInvalidExc& err){
+            } catch (GameException& err){
                 cout << err.what() << endl;
             }
         }
