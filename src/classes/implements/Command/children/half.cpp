@@ -8,7 +8,7 @@ Half::Half():Command(){
 
 void Half::executeAction(CandyGame& Game){
     cout << endl << Game.getPlayer(0).getNickname() << " melakukan HALF! Poin hadiah";
-    int prevPoint = Game.getPoint();
+    long long int prevPoint = Game.getPoint();
     Game.setPoint(prevPoint*0.5);
     if(Game.getPoint() == 0){
         Game.setPoint(1);
