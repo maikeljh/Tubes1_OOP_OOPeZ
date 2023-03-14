@@ -154,13 +154,13 @@ void CandyGame::startGame(){
         cout << "Dengan poin combo sebesar : " << this->players[roundWinner].getCombo().getValue() << endl;
 
         if(!isEndGame()){
-            // Restart Game
+            // Restart Game clear
             this->round = 0;
             for(int i = 0; i < 7; i++){
                 Card erase = this->players[i].pop();
                 erase = this->players[i].pop();
-                this->players[i].push(this->deck.pop());
-                this->players[i].push(this->deck.pop());
+                // this->players[i].push(this->deck.pop());
+                // this->players[i].push(this->deck.pop());
                 this->players[i].getCombo().clearCombo();
                 this->players[i].getAbilityCard().setType("");
                 this->players[i].getAbilityCard().setUseable(false);
@@ -185,6 +185,11 @@ void CandyGame::startGame(){
                 } catch (GameException& err){
                     cout << err.what() << endl;
                 }
+            }
+            // Restart Game Player Card
+            for(int i = 0; i < 7; i++){
+                this->players[i].push(this->deck.pop());
+                this->players[i].push(this->deck.pop());
             }
         }
     }
