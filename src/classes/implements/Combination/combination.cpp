@@ -1,5 +1,5 @@
 #include "../../headers/Value/Combination/combination.hpp"
-#include "../generic.cpp"
+#include "../Generic/generic.cpp"
 #include <iostream>
 #include <map>
 

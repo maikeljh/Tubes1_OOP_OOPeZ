@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <vector>
-#include "card.hpp"
-#include "../../Inventory/children/DeckCard/deckCard.hpp"
+#include "../../../Value/Card/card.hpp"
+#include "../DeckCard/deckCard.hpp"
 
 using namespace std;
 

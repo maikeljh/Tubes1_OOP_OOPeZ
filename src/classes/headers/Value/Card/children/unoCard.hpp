@@ -1,8 +1,8 @@
 #ifndef UNO_CARD_HPP
 #define UNO_CARD_HPP
 
-#include "card.hpp"
-#include "abilityCard.hpp"
+#include "../card.hpp"
+#include "../abilityCard.hpp"
 #include <iostream>
 using namespace std;
 

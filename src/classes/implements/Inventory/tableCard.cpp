@@ -1,4 +1,4 @@
-#include "../../headers/Value/Card/tableCard.hpp"
+#include "../../headers/Inventory/children/TableCard/tableCard.hpp"
 #include <iostream>
 
 using namespace std;

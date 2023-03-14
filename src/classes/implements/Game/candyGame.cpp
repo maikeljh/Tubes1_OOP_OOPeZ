@@ -1,7 +1,7 @@
 #include "../../headers/Game/candyGame.hpp"
 #include "../../headers/CardGenerator/cardGenerator.hpp"
 #include "../../headers/Command/commandParser.hpp"
-#include "../generic.cpp"
+#include "../Generic/generic.cpp"
 #include <iostream>
 
 using namespace std;

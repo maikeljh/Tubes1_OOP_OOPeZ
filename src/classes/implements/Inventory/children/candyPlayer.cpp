@@ -1,4 +1,4 @@
-#include "../../headers/Inventory/children/Player/candyPlayer.hpp"
+#include "../../../headers/Inventory/children/Player/candyPlayer.hpp"
 
 using namespace std;
 

@@ -6,7 +6,7 @@
 #include "../../inventoryHolder.hpp"
 #include "./player.hpp"
 #include "../DeckCard/deckCard.hpp"
-#include "../../../Value/Card/unoCard.hpp"
+#include "../../../Value/Card/children/unoCard.hpp"
 #include "../../../Value/Combination/combination.hpp"
 
 using namespace std;

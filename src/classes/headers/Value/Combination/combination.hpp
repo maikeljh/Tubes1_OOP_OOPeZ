@@ -2,7 +2,7 @@
 #define COMBINATION_HPP
 
 #include "../Card/card.hpp"
-#include "../Card/tableCard.hpp"
+#include "../../Inventory/children/TableCard/tableCard.hpp"
 #include <iostream>
 #include <vector>
 using namespace std;
