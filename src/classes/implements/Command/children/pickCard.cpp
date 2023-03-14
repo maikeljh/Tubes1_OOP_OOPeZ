@@ -3,7 +3,7 @@
 
 PickCard::PickCard():Command(){}
 
-void PickCard::executeActionUNO(UnoGame& Game){
+void PickCard::executeAction(UnoGame& Game){
     // Validasi ada kartu yang bisa dipakai atau tidak
     if(!checkValid(Game)){
         cout << "\nMaaf, kamu tidak punya kartu yang bisa dipakai. Silahkan draw!" << endl;
@@ -51,23 +51,23 @@ void PickCard::executeActionUNO(UnoGame& Game){
         if (!SCard.getIsNumber()){
             if (SCard.getType() == "PLUS2"){
                 Plus2 *plus2 = new Plus2();
-                plus2->executeActionUNO(Game);
+                plus2->executeAction(Game);
             }
             else if (SCard.getType() == "PLUS4"){
                 Plus4 *plus4 = new Plus4();
-                plus4->executeActionUNO(Game);
+                plus4->executeAction(Game);
             }
             else if (SCard.getType() == "SKIP"){
                 Skip *skip = new Skip();
-                skip->executeActionUNO(Game);
+                skip->executeAction(Game);
             }
             else if (SCard.getType() == "UNOREVERSE"){
                 UnoReverse *unoReverse = new UnoReverse();
-                unoReverse->executeActionUNO(Game);
+                unoReverse->executeAction(Game);
             }
             else if (SCard.getType() == "CHANGECOLOR"){
                 ChangeColor *changeColor = new ChangeColor();
-                changeColor->executeActionUNO(Game);
+                changeColor->executeAction(Game);
             }
         }
         

@@ -2,13 +2,13 @@
 #define CHANGE_COLOR_HPP
 
 #include "../command.hpp"
-#include "../../Game/game.hpp"
+#include "../../Game/unoGame.hpp"
 #include "../../Exception/exception.h"
 
-class ChangeColor: public Command{
-public:
-    ChangeColor();
-    void executeActionUNO(UnoGame&);
+class ChangeColor: public Command<UnoGame> {
+    public:
+        ChangeColor();
+        void executeAction(UnoGame&);
 };
 
 #endif

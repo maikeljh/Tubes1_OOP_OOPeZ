@@ -1,9 +1,7 @@
 #include "../../../headers/Command/children/switch.hpp"
 #include <limits>
 
-Switch::Switch(){
-    commandId = 9;
-}
+Switch::Switch(){}
 
 void Switch::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);

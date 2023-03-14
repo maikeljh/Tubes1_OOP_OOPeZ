@@ -1,8 +1,6 @@
 #include "../../../headers/Command/children/quadruple.hpp"
 
-Quadruple::Quadruple(){
-    commandId=4;
-}
+Quadruple::Quadruple(){}
 
 void Quadruple::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);

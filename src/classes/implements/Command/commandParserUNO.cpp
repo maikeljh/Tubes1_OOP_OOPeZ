@@ -4,7 +4,7 @@ using namespace std;
 
 CommandParserUNO::CommandParserUNO(){}
 
-Command* CommandParserUNO::parser(string inputCommand){
+Command<UnoGame>* CommandParserUNO::parser(string inputCommand){
     if (inputCommand=="DRAW"){
         Draw *draw = new Draw();
         return draw;

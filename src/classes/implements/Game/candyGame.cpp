@@ -175,7 +175,7 @@ void CandyGame::startGame(){
                     try{
                         cout << "Command : ";
                         cin >> command;
-                        Command *action = CP.parser(command);
+                        Command<CandyGame> *action = CP.parser(command);
                         action->executeAction(*this);
                         delete action;
                     } catch(GameException& err){
@@ -279,7 +279,7 @@ void CandyGame::startGame(){
 
     // Print leaderboard and winner
     EndGame GG;
-    GG.printLeaderboard(*this);
+    GG.executeAction(*this);
 }
 
 int CandyGame::chooseWinner(){

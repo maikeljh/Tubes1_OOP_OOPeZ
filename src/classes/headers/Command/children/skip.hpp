@@ -2,11 +2,11 @@
 #define SKIP_HPP
 
 #include "../command.hpp"
-#include "../../Game/game.hpp"
-class Skip: public Command {
+#include "../../Game/unoGame.hpp"
+class Skip: public Command<UnoGame> {
 public:
     Skip();
-    void executeActionUNO(UnoGame&);
+    void executeAction(UnoGame&);
 };
 
 #endif

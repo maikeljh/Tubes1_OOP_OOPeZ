@@ -2,7 +2,7 @@
 
 HelpUno::HelpUno() : Command() {}
 
-void HelpUno::executeActionUNO(UnoGame &unogame) {
+void HelpUno::executeAction(UnoGame &unogame) {
     cout << "Berikut adalah command-command yang dapat digunakan oleh pemain: " << endl;
     cout << "1. DRAW : command ini digunakan untuk mengambil kartu dari deck kartu" << endl;
     cout << "2. PASS : command ini digunakan apabila pemain memutuskan untuk tidak menaruh kartu" << endl;

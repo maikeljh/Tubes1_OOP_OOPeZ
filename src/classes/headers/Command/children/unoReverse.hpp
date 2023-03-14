@@ -2,14 +2,14 @@
 #define UNO_REVERSE_HPP
 
 #include "../command.hpp"
-#include "../../Game/game.hpp"
+#include "../../Game/unoGame.hpp"
 #include <algorithm>
 using namespace std;
 
-class UnoReverse: public Command{
+class UnoReverse: public Command<UnoGame>{
 public:
     UnoReverse();
-    void executeActionUNO(UnoGame&);
+    void executeAction(UnoGame&);
 };
 
 #endif

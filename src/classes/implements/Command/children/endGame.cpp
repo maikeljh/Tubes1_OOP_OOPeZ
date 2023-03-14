@@ -2,7 +2,7 @@
 
 EndGame::EndGame():Command(){}
 
-void EndGame::printLeaderboard(CandyGame& Game){
+void EndGame::executeAction(CandyGame& Game){
     vector<CandyPlayer>& players = Game.getPlayers();
 
     // Sort by point DESC

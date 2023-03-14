@@ -7,10 +7,10 @@
 
 using namespace std;
 
-class EndGame: public Command {
+class EndGame: public Command<CandyGame> {
     public:
-        EndGame(); // ID = 11
-        void printLeaderboard(CandyGame& Game);
+        EndGame();
+        void executeAction(CandyGame& Game);
         void printWinner(CandyGame& Game);
 };
 

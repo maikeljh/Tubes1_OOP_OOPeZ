@@ -8,9 +8,9 @@
 
 using namespace std;
 
-class Reverse: public Command {
+class Reverse: public Command<CandyGame> {
     public:
-        Reverse(); // ID = 7
+        Reverse();
         void executeAction(CandyGame& Game);
 };
 

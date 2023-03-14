@@ -13,10 +13,10 @@
 
 using namespace std;
 
-class PickCard: public Command {
+class PickCard: public Command<UnoGame> {
     public:
         PickCard();
-        void executeActionUNO(UnoGame&);
+        void executeAction(UnoGame&);
         bool checkValid(UnoGame&);
 };
 

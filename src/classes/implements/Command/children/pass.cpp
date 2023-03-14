@@ -4,7 +4,7 @@ using namespace std;
 
 Pass::Pass():Command(){}
 
-void Pass::executeActionUNO(UnoGame& Game){
+void Pass::executeAction(UnoGame& Game){
     if(Game.getAlreadyDraw()){
         cout << "\nGiliran dilanjut ke pemain selanjutnya." << endl;
         Game.setValid(true);

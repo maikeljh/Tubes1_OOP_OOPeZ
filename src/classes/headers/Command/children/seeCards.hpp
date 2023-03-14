@@ -7,10 +7,10 @@
 
 using namespace std;
 
-class SeeCards: public Command {
+class SeeCards: public Command<UnoGame> {
     public:
         SeeCards();
-        void executeActionUNO(UnoGame&);
+        void executeAction(UnoGame&);
 };
 
 #endif

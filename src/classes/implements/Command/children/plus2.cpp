@@ -2,7 +2,7 @@
 
 Plus2::Plus2(){}
 
-void Plus2::executeActionUNO(UnoGame& UnoGame){
+void Plus2::executeAction(UnoGame& UnoGame){
     UnoPlayer& playernext = UnoGame.getPlayer(1);
     DeckCard<UnoCard>& deck = UnoGame.getDeckCard();
 
@@ -21,5 +21,5 @@ void Plus2::executeActionUNO(UnoGame& UnoGame){
     }
 
     Skip *skip = new Skip();
-    skip->executeActionUNO(UnoGame);
+    skip->executeAction(UnoGame);
 }

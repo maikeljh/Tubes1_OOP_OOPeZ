@@ -2,9 +2,7 @@
 #include "../../../headers/Exception/exception.h"
 #include <limits>
 
-Abilityless::Abilityless(){
-    commandId = 10;
-}
+Abilityless::Abilityless(){}
 
 void Abilityless::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);

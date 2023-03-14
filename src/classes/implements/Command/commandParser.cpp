@@ -4,7 +4,7 @@ using namespace std;
 
 CommandParser::CommandParser(){}
 
-Command* CommandParser::parser(string inputCommand){
+Command<CandyGame>* CommandParser::parser(string inputCommand){
     if (inputCommand=="NEXT"){
         Next *next = new Next();
         return next;

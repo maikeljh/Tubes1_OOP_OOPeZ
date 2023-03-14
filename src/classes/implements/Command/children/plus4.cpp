@@ -3,7 +3,7 @@
 
 Plus4::Plus4(){}
 
-void Plus4::executeActionUNO(UnoGame& UnoGame){
+void Plus4::executeAction(UnoGame& UnoGame){
     UnoPlayer& playernext = UnoGame.getPlayer(1);
     DeckCard<UnoCard>& deck = UnoGame.getDeckCard();
 
@@ -22,10 +22,10 @@ void Plus4::executeActionUNO(UnoGame& UnoGame){
     }
 
     ChangeColor *changeColor = new ChangeColor();
-    changeColor->executeActionUNO(UnoGame);
+    changeColor->executeAction(UnoGame);
     delete changeColor;
 
     Skip *skip = new Skip();
-    skip->executeActionUNO(UnoGame);
+    skip->executeAction(UnoGame);
     delete skip;
 }

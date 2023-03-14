@@ -1,9 +1,7 @@
 #include "../../../headers/Command/children/reverse.hpp"
 #include "../../../headers/Command/commandParser.hpp"
 
-Reverse::Reverse(){
-    commandId=7;
-}
+Reverse::Reverse(){}
 
 void Reverse::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);

@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class CheckCard: public Command {
+class CheckCard: public Command<CandyGame> {
     public:
         CheckCard();
         void executeAction(CandyGame& Game);

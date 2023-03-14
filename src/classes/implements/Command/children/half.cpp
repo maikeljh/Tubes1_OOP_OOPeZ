@@ -2,9 +2,7 @@
 
 #include "../../../headers/Command/children/quadruple.hpp"
 
-Half::Half():Command(){
-    commandId=5;
-}
+Half::Half():Command(){}
 
 void Half::executeAction(CandyGame& Game){
     cout << endl << Game.getPlayer(0).getNickname() << " melakukan HALF! Poin hadiah";

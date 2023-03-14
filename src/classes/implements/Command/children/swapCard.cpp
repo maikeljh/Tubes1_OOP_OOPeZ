@@ -1,9 +1,7 @@
 #include "../../../headers/Command/children/swapCard.hpp"
 #include <limits>
 
-SwapCard::SwapCard(){
-    commandId = 8;
-}
+SwapCard::SwapCard(){}
 
 void SwapCard::executeAction(CandyGame& Game){
     int playerTurn = 0;

@@ -1,8 +1,6 @@
 #include "../../../headers/Command/children/quarter.hpp"
 
-Quarter::Quarter(){
-    commandId=6;
-}
+Quarter::Quarter(){}
 
 void Quarter::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);

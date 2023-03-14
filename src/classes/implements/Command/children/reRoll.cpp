@@ -1,8 +1,6 @@
 #include "../../../headers/Command/children/reRoll.hpp"
 
-ReRoll::ReRoll():Command(){
-    commandId=2;
-}
+ReRoll::ReRoll():Command(){}
 
 void ReRoll::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);

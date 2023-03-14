@@ -20,7 +20,7 @@
 class CommandParser{
     public:
         CommandParser();
-        Command* parser(string inputCommand);
+        Command<CandyGame> *parser(string inputCommand);
 };
 
 #endif

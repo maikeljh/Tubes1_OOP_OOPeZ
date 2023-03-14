@@ -2,7 +2,7 @@
 
 SayUno::SayUno():Command(){}
 
-void SayUno::executeActionUNO(UnoGame& Game){
+void SayUno::executeAction(UnoGame& Game){
     UnoPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
     if (playernow.getDeckPlayer().size() == 2){
         cout << "\nPemain " << playernow.getNickname() << " mengatakan UNO!" << endl;

@@ -2,6 +2,6 @@
 
 SeeCards::SeeCards() : Command() {}
 
-void SeeCards::executeActionUNO(UnoGame &unogame) {
+void SeeCards::executeAction(UnoGame &unogame) {
     unogame.getPlayer(0).printCard();
 }

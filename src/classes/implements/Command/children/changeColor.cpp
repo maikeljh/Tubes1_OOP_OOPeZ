@@ -3,7 +3,7 @@
 
 ChangeColor::ChangeColor(){}
 
-void ChangeColor::executeActionUNO(UnoGame& UnoGame){
+void ChangeColor::executeAction(UnoGame& UnoGame){
     cout << "\nSilakan pilih warna untuk diganti." << endl;
     cout << "1. Red" << endl;
     cout << "2. Green" << endl;

@@ -1,8 +1,6 @@
 #include "../../../headers/Command/children/double.hpp"
 
-Double::Double():Command(){
-    commandId=3;
-}
+Double::Double():Command(){}
 
 void Double::executeAction(CandyGame& Game){
     CandyPlayer playernow = Game.getPlayer(0);

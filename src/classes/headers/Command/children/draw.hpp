@@ -3,14 +3,14 @@
 
 #include <iostream>
 #include "../command.hpp"
-#include "../../Game/game.hpp"
+#include "../../Game/unoGame.hpp"
 
 using namespace std;
 
-class Draw: public Command {
+class Draw: public Command<UnoGame> {
     public:
         Draw();
-        void executeActionUNO(UnoGame&);
+        void executeAction(UnoGame&);
 };
 
 #endif 

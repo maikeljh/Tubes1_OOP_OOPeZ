@@ -3,7 +3,7 @@ using namespace std;
 
 Draw::Draw():Command(){}
 
-void Draw::executeActionUNO(UnoGame& Game){
+void Draw::executeAction(UnoGame& Game){
     UnoPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
     
     // Ambil satu kartu

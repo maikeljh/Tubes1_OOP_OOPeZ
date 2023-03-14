@@ -8,9 +8,9 @@
 
 using namespace std;
 
-class Abilityless: public Command {
+class Abilityless: public Command<CandyGame> {
     public:
-        Abilityless(); // ID = 10
+        Abilityless();
         void executeAction(CandyGame& Game);
         bool isAllAbilityUsed(vector<CandyPlayer> players);
 };

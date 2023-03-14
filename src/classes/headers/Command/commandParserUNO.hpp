@@ -18,7 +18,7 @@
 class CommandParserUNO{
     public:
         CommandParserUNO();
-        Command* parser(string inputCommand);
+        Command<UnoGame> *parser(string inputCommand);
 };
 
 #endif

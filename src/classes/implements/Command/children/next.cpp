@@ -1,8 +1,6 @@
 #include "../../../headers/Command/children/next.hpp"
 
-Next::Next():Command(){
-    commandId = 1;
-}
+Next::Next():Command(){}
 
 void Next::executeAction(CandyGame& Game){
     cout << "\nGiliran dilanjut ke pemain selanjutnya." << endl;

@@ -2,28 +2,20 @@
 #define COMMAND_HPP
 
 #include <iostream>
-#include "../Game/unoGame.hpp"
 #include "../Game/candyGame.hpp"
 #include "../Inventory/children/DeckCard/deckCard.hpp"
 #include "../Exception/exception.h"
 
 using namespace std;
 
-class Command {
-    protected:
-        int commandId;
-    
+template <class T>
+class Command { 
     public:
         /* ctor */
         Command(){}
-        Command(int commandId){this->commandId = commandId;}
-        
-        /* getter */
-        int getCommandId();
 
-        /* other functions */        
-        virtual void executeAction(CandyGame&){};
-        virtual void executeActionUNO(UnoGame&){};
+        /* Functions */        
+        virtual void executeAction(T&) = 0;
 };
 
 #endif

@@ -8,9 +8,9 @@
 
 using namespace std;
 
-class SwapCard: public Command {
+class SwapCard: public Command<CandyGame> {
     public:
-        SwapCard(); // ID = 8
+        SwapCard();
         void executeAction(CandyGame& Game);
 };
 

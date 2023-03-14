@@ -141,7 +141,7 @@ void UnoGame::startGame(){
         this->getTableCard().push(this->deck.pop());
         if(this->getTop().getType()=="CHANGECOLOR"){
             cout<<"\nKartu pertama adalah Wild Card Change Color"<<endl;
-            ChangeColor().executeActionUNO(*this);
+            ChangeColor().executeAction(*this);
             flag = true;
         }
         else if(this->getTop().getType()=="PLUS4"){
@@ -167,8 +167,8 @@ void UnoGame::startGame(){
             try{
                 cout << "Command : ";
                 cin >> command;
-                Command *action = CP.parser(command);
-                action->executeActionUNO(*this);
+                Command<UnoGame> *action = CP.parser(command);
+                action->executeAction(*this);
                 delete action;
             } catch(GameException& err){
                 cout << endl << err.what() << endl;
