@@ -7,41 +7,41 @@ using namespace std;
 
 Combination::Combination(){}
 
-double Combination::getValue(){
+double Combination::getValue(){ //Mendapatkan nilai point/value dari combo
     return this->point;
 }
 
-string Combination::getCombo() {
+string Combination::getCombo() { //Mendapatkan nama combo
     return this->combo;
 }
 
-void Combination::setValue(double value) {
+void Combination::setValue(double value) { //Mengatur nilai point/value dari combo
     this->point = value;
 }
 
-void Combination::setCombo(string combo) {
+void Combination::setCombo(string combo) { //Mengatur nama combo
     this->combo = combo;
 }
 
-void Combination::setComboCard(vector<Card> &combo) {
+void Combination::setComboCard(vector<Card> &combo) { //Mengatur kartu - kartu combo
     for (int i = 0; i < combo.size(); i++) {
         this->comboCard.push_back(combo[i]);
     }
 }
 
-void Combination::setPlayerCard(vector <Card> &PC) {
+void Combination::setPlayerCard(vector <Card> &PC) { //Mengatur kartu Player
     for (int i = 0; i < PC.size(); i++) {
         this->playerCard.push_back(PC[i]);
     }
 }
 
-void Combination::setTableCard(vector <Card> &TC) {
+void Combination::setTableCard(vector <Card> &TC) { //Mengatur kartu meja
     for (int i = 0; i < TC.size(); i++) {
         this->tableCard.push_back(TC[i]);
     }
 }
 
-void Combination::clearCombo(){
+void Combination::clearCombo(){ //Me-reset combination
     int size = this->comboCard.size();
     this->comboCard.clear();
     this->playerCard.clear();
@@ -51,7 +51,7 @@ void Combination::clearCombo(){
 
 }
 
-void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
+void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) { //Menggabungkan kartu player dan kartu meja
     vector <Card> PC1;
     vector <Card> TC1;
     vector <Card> CC;
@@ -73,7 +73,7 @@ void Combination::mergeCard(vector <Card> &TC, vector <Card> &PC) {
     this->setTableCard(TC1);
 }
 
-void Combination::printCombo() {
+void Combination::printCombo() { //Menampilkan combo yang didapat
     if (this->combo != "Straight Flush" || this->combo != "Flush") {
         cout << this->combo << endl;
     }
@@ -114,7 +114,7 @@ bool Combination::operator==(Combination& other) {
     return this->point == other.point;
 }
 
-bool Combination::existPlayerCard() {
+bool Combination::existPlayerCard() { //Memvalidasi apakah terdapat kartu player pada kartu combo
     for (int i = 0; i < this->comboCard.size(); i++) {
         if (this->comboCard[i] == this->playerCard[0] || this->comboCard[i] == this->playerCard[1]) {
             return true;
@@ -123,11 +123,11 @@ bool Combination::existPlayerCard() {
     return false;
 }
 
-bool Combination::isPlayerCard(Card &a) {
+bool Combination::isPlayerCard(Card &a) { //Memvalidasi apakah kartu merupakan kartu player
     return (this->playerCard[0] == a || this->playerCard[1] == a);
 }
 
-bool Combination::isStraightFlush() {
+bool Combination::isStraightFlush() { //Mengecek apakah combo straight flush dapat dibentuk
     map<string, int> dictWarna;
     map<string,int>::iterator itr;
     dictWarna["Green"] = 0;
@@ -195,7 +195,7 @@ bool Combination::isStraightFlush() {
 
 }
 
-bool Combination::isFourOfaKind(){
+bool Combination::isFourOfaKind(){ //Mengecek apakah combo four of a kind dapat dibentuk
     int maxSama = 0;
     for(int i = 0;i<this->comboCard.size()-1;i++){
         int tempSama = 0;
@@ -213,7 +213,7 @@ bool Combination::isFourOfaKind(){
     }
     return false;
 }
-bool Combination::isFullHouse(){
+bool Combination::isFullHouse(){ //Mengecek apakah combo full house dapat dibentuk
     map<int, int> comboMap;
     map<int, int>::iterator itr;
     for (int i = 0; i < this->comboCard.size(); i++) {
@@ -243,7 +243,7 @@ bool Combination::isFullHouse(){
     }
 }
 
-bool Combination::isFlush() {
+bool Combination::isFlush() { //Mengecek apakah combo flush dapat dibentuk
     map<string, int> dictWarna;
     map<string,int>::iterator itr;
     dictWarna["Green"] = 0;
@@ -274,7 +274,7 @@ bool Combination::isFlush() {
     return false;
 }
 
-bool Combination::isStraight() {
+bool Combination::isStraight() { //Mengecek apakah combo straight dapat dibentuk
     bool temp = false;
     int idx = this->comboCard.size()-1;
     int count = 0;
@@ -299,7 +299,7 @@ bool Combination::isStraight() {
     return temp;
 }
 
-bool Combination::isThreeOfaKind(){
+bool Combination::isThreeOfaKind(){ //Mengecek apakah combo three of a kind dapat dibentuk
     int maxSama = 0;
     for(int i = 0;i<this->comboCard.size()-1;i++){
         int tempSama = 0;
@@ -318,7 +318,7 @@ bool Combination::isThreeOfaKind(){
     return false;
 
 }
-bool Combination::isTwoPair(){
+bool Combination::isTwoPair(){ //Mengecek apakah combo two pair dapat dibentuk
     int maxSama = 0;
     int nPair = 0;
     for(int i = 0;i<this->comboCard.size()-1;i++){
@@ -339,7 +339,7 @@ bool Combination::isTwoPair(){
     return false;
 }
 
-bool Combination::isPair(){
+bool Combination::isPair(){ //Mengecek apakah combo pair dapat dibentuk
     int maxSama = 0;
     for(int i = 0;i<this->comboCard.size()-1;i++){
         int tempSama = 0;
@@ -359,7 +359,7 @@ bool Combination::isPair(){
 
 }
 
-void Combination::straightFlush() {
+void Combination::straightFlush() { //Mengatur combo card menjadi kartu - kartu combo straight flush
     map<string, int> dictWarna;
     map<string,int>::iterator itr;
     dictWarna["Green"] = 0;
@@ -427,7 +427,7 @@ void Combination::straightFlush() {
     }
 }
 
-void Combination::fourOfaKind(){
+void Combination::fourOfaKind(){ //Mengatur combo card menjadi kartu - kartu combo four of a kind
     int maxSama = 0;
     Card checkCard;
     vector <Card> hasil;
@@ -453,7 +453,7 @@ void Combination::fourOfaKind(){
     this->setComboCard(hasil);
 }
 
-void Combination::fullHouse(){
+void Combination::fullHouse(){ //Mengatur combo card menjadi kartu - kartu combo full house
     map<int, int> comboMap;
     map<int, int>::iterator itr;
     for (int i = 0; i < this->comboCard.size(); i++) {
@@ -486,7 +486,7 @@ void Combination::fullHouse(){
     this->setComboCard(combo);
 }
 
-void Combination::flush() {
+void Combination::flush() { //Mengatur combo card menjadi kartu - kartu combo flush
     map<string, int> dictWarna;
     map<string,int>::iterator itr;
     string warna;
@@ -529,7 +529,7 @@ void Combination::flush() {
     this->setComboCard(combo);
 }
 
-void Combination::straight() {
+void Combination::straight() { //Mengatur combo card menjadi kartu - kartu combo straight
     int idx = this->comboCard.size()-1;
     int count = 0;
     vector <Card> combo;
@@ -563,7 +563,7 @@ void Combination::straight() {
     this->setComboCard(combo);
 }
 
-void Combination::threeOfaKind(){
+void Combination::threeOfaKind(){ //Mengatur combo card menjadi kartu - kartu combo three of a kind
     int maxSama = 0;
     Card checkCard;
     vector <Card> hasil;
@@ -592,7 +592,7 @@ void Combination::threeOfaKind(){
     this->setComboCard(hasil);
 
 }
-void Combination::twoPair(){
+void Combination::twoPair(){ //Mengatur combo card menjadi kartu - kartu combo two pair
     int nPair = 0;
     Card checkCard1;
     Card checkCard2;
@@ -674,7 +674,7 @@ void Combination::twoPair(){
     this->comboCard.clear();
     this->setComboCard(hasil);
 }
-void Combination::pair(){
+void Combination::pair(){ //Mengatur combo card menjadi kartu - kartu combo pair
     int maxSama = 0;
     Card checkCard;
     vector <Card> hasil;
@@ -703,7 +703,7 @@ void Combination::pair(){
     this->setComboCard(hasil);
 }
 
-double Combination::value() {
+double Combination::value() { //Menghitung point/value dari combo
     double comboValue;
     //straight flush
     if (this->comboCard.size() >= 5 && this->isStraightFlush()) {
@@ -974,7 +974,7 @@ double Combination::value() {
     return comboValue;
 }
 
-void Combination::makeCombo() {
+void Combination::makeCombo() { //Mengatur point/value, nama, dan isi dari combo
     if (this->isStraightFlush()) {
         this->straightFlush();
         if (this->value() == -1) {
@@ -1080,7 +1080,7 @@ void Combination::makeCombo() {
     }
 }
 
-void Combination::comboLainSF() {
+void Combination::comboLainSF() { //Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo straight flush sebelumnya berasal dari kartu meja seluruhnya
     this->comboLainFlush();
     if (this->value() == -1) {
         this->comboCard.clear();
@@ -1093,7 +1093,7 @@ void Combination::comboLainSF() {
     }
 }
 
-void Combination::comboLainFK() {
+void Combination::comboLainFK() { //Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo four of a kind sebelumnya berasal dari kartu meja seluruhnya
     this->fullHouse();
     if (this->value() == -1) {
         this->comboCard.clear();
@@ -1107,7 +1107,7 @@ void Combination::comboLainFK() {
     
 }
 
-void Combination::comboLainFH() {
+void Combination::comboLainFH() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo full house sebelumnya berasal dari kartu meja seluruhnya
     this->threeOfaKind();
     if (this->value() == -1) {
         this->comboCard.clear();
@@ -1120,7 +1120,7 @@ void Combination::comboLainFH() {
     }
 }
 
-void Combination::comboLainFlush() {
+void Combination::comboLainFlush() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo flush sebelumnya berasal dari kartu meja seluruhnya
     this->straight();
     if (this->value() == -1) {
         this->comboCard.clear();
@@ -1133,7 +1133,7 @@ void Combination::comboLainFlush() {
     }
 }
 
-void Combination::comboLainStraight() {
+void Combination::comboLainStraight() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo straight sebelumnya berasal dari kartu meja seluruhnya
     this->threeOfaKind();
     if (this->value() == -1) {
         this->comboCard.clear();
@@ -1146,7 +1146,7 @@ void Combination::comboLainStraight() {
     }
 }
 
-void Combination::comboLainTK() {
+void Combination::comboLainTK() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo three of a kind sebelumnya berasal dari kartu meja seluruhnya
     this->twoPair();
     if (this->value() == -1) {
         this->comboCard.clear();
@@ -1159,7 +1159,7 @@ void Combination::comboLainTK() {
     }
 }
 
-void Combination::comboLainTwoP() {
+void Combination::comboLainTwoP() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo two pair sebelumnya berasal dari kartu meja seluruhnya
     this->pair();
     if (this->value() == -1) {
         this->comboCard.clear();
@@ -1172,7 +1172,7 @@ void Combination::comboLainTwoP() {
     }
 }
 
-void Combination::comboLainPair() {
+void Combination::comboLainPair() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo pair sebelumnya berasal dari kartu meja seluruhnya
     Card highest = maxValue(this->playerCard);
     this->comboCard.clear();
     this->comboCard.push_back(highest);
@@ -1180,7 +1180,7 @@ void Combination::comboLainPair() {
     this->setCombo("High Card");
 }
 
-void Combination::quicksort(vector <Card>& CC, int low, int high) {
+void Combination::quicksort(vector <Card>& CC, int low, int high) { //Mengurutkan kartu dari kecil ke besar berdasarkan point/value dari masing - masing kartu.
     if (low < high) {
         double pivot = CC[high].value();
         int i = low-1;
