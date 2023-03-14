@@ -32,6 +32,11 @@ void Reverse::executeAction(CandyGame& Game){
                 players.push_back(temp[i]);
             }
 
+            if(Game.getPlayerTurn() == 0){
+                players.insert(players.begin(), players[players.size()-1]);
+                players.pop_back();
+            }
+
             cout << "(sisa) urutan eksekusi giliran ini : ";
             
             if(Game.getPlayerTurn() == Game.getNPlayers() - 1){
@@ -57,7 +62,7 @@ void Reverse::executeAction(CandyGame& Game){
             cout << Game.getPlayer(nextIdx).getNickname() << endl << endl;
 
             cout << "Sekarang adalah giliran pemain " << tempPlayer.getNickname() << " lagi." << endl;
-            
+
             players.insert(players.begin(), tempPlayer);
 
             CommandParser CP;

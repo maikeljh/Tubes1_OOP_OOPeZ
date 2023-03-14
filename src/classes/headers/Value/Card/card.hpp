@@ -19,7 +19,7 @@ class Card : public Value {
         Card& operator= (const Card&);
         bool operator> (Card&);
         bool operator< (Card&);
-        virtual bool operator== (Card&);
+        virtual bool operator== (const Card&);
 
         /* getter */
         int getNumber();

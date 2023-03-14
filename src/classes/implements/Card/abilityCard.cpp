@@ -34,3 +34,8 @@ void AbilityCard::setUseable(bool isUsable){
 void AbilityCard::setType(string type){
     this->type = type;
 }
+
+bool AbilityCard::operator==(const AbilityCard& other){
+    bool valid = other.type == this->type;
+    return valid;
+}

@@ -12,16 +12,11 @@ Player<T>::Player(){}
 template <class T>
 Player<T>::Player(string nickname):InventoryHolder<T>(), id(this->playersCreated+1){
     this->nickname = nickname;
-    // this->point = 0;
-    // this->mainDeck.push_back(D.pop());
-    // this->mainDeck.push_back(D.pop());
     this->playersCreated++;
 }
 
 template <class T>
-Player<T>::~Player(){
-
-}
+Player<T>::~Player(){}
 
 template <class T>
 string Player<T>::getNickname(){

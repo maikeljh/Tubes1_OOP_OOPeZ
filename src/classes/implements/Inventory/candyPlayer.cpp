@@ -15,6 +15,16 @@ CandyPlayer& CandyPlayer::operator+(const Card& add){
     return *this;
 }
 
+CandyPlayer& CandyPlayer::operator-(const Card& min){
+    for(int i = 0; i < this->mainDeck.size(); i++){
+        if(this->mainDeck[i] == min){
+            this->mainDeck.erase(this->mainDeck.begin() + i);
+            break;
+        }
+    }
+    return *this;
+}
+
 CandyPlayer& CandyPlayer::operator--(){
     Card trash = this->pop();
     return *this;

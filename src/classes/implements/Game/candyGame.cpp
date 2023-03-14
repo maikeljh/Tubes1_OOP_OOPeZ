@@ -210,8 +210,8 @@ void CandyGame::startGame(){
             // Restart Game clear
             this->round = 0;
             for(int i = 0; i < 7; i++){
-                --this->players[i];
-                --this->players[i];
+                this->players[i] = this->players[i] - this->players[i].getDeckPlayer().back();
+                this->players[i] = this->players[i] - this->players[i].getDeckPlayer().back();
                 this->players[i].getCombo().clearCombo();
                 this->players[i].getAbilityCard().setType("");
                 this->players[i].getAbilityCard().setUseable(false);
@@ -221,7 +221,7 @@ void CandyGame::startGame(){
             cout << "\nKartu dikembalikan dan disusun ulang" << endl;
             // Buang Kartu Dari Deck
             while(this->deck.getNeff() != 0){
-                --this->deck;
+                this->deck = this->deck - this->deck.getCard(0);
             }
             
             action = "";

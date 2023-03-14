@@ -99,6 +99,18 @@ DeckCard<T>& DeckCard<T>::operator+(const T& add){
 }
 
 template <class T>
+DeckCard<T>& DeckCard<T>::operator-(const T& min){
+    for(int i = 0; i < this->deck.size(); i++){
+        if(this->deck[i] == min){
+            this->deck.erase(this->deck.begin() + i);
+            this->neff--;
+            break;
+        }
+    }
+    return *this;
+}
+
+template <class T>
 DeckCard<T>& DeckCard<T>::operator--(){
     this->pop();
     return *this;

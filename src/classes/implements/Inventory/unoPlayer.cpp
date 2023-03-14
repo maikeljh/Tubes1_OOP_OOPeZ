@@ -15,6 +15,16 @@ UnoPlayer& UnoPlayer::operator+(const UnoCard& add){
     return *this;
 }
 
+UnoPlayer& UnoPlayer::operator-(const UnoCard& min){
+    for(int i = 0; i < this->mainDeck.size(); i++){
+        if(this->mainDeck[i] == min){
+            this->mainDeck.erase(this->mainDeck.begin() + i);
+            break;
+        }
+    }
+    return *this;
+}
+
 UnoPlayer& UnoPlayer::operator--(){
     UnoCard trash = this->pop();
     return *this;

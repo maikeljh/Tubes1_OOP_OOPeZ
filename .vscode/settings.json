@@ -5,6 +5,8 @@
     "string": "cpp",
     "ostream": "cpp",
     "deque": "cpp",
-    "*.tcc": "cpp"
+    "*.tcc": "cpp",
+    "random": "cpp",
+    "limits": "cpp"
   }
 }

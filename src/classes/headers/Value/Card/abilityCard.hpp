@@ -15,6 +15,8 @@ class AbilityCard {
         AbilityCard(string type);
         AbilityCard(const AbilityCard& other);
         
+        bool operator==(const AbilityCard&);
+
         /* getter */
         string getType();
         bool getUseable();
