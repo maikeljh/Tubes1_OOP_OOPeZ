@@ -93,10 +93,10 @@ void UnoGame::startGame(){
             flag = true;
         }
         else if(this->getTop().getType()=="PLUS4"){
-            UnoCard temp = this->getDeckCard().getUnoCard(1);
+            UnoCard temp = this->getDeckCard().getCard(1);
             for (int i = 0;i<this->getDeckCard().getSize()-1;i++){
-                this->getDeckCard().setUnoCard(this->getDeckCard().getUnoCard(i),i+1);
-                temp = this->getDeckCard().getUnoCard(i+2);
+                this->getDeckCard().setCard(this->getDeckCard().getCard(i),i+1);
+                temp = this->getDeckCard().getCard(i+2);
             }
             this->getTableCard().clearTable();
             cout<<"\nKartu pertama adalah Wild Card PLUS4, mengulangi pengambilan kartu pertama."<<endl;

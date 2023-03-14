@@ -21,14 +21,17 @@ class DeckCard: public InventoryHolder<T>{
         DeckCard();
         DeckCard(int neff, int size);
         DeckCard(const DeckCard& other);
+        DeckCard& operator=(const DeckCard& dc);
         ~DeckCard();
+        DeckCard& operator+(const T& add);
+        DeckCard& operator-();
         T pop();
         void push(const T& Card);
         int getNeff();
         int getSize();
         void printCard();
-        UnoCard& getUnoCard(int i);
-        void setUnoCard(const UnoCard &card, int i);
+        T& getCard(int i);
+        void setCard(const T &card, int i);
 };
 
 #endif

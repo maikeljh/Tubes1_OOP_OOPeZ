@@ -29,9 +29,10 @@ DeckCard<Card> CardGenerator::randomizeCard(){
     }
 
     for(int i = 0 ; i < 52; i++){
-        DC.push(randomize[i]);
+        DC = DC + randomize[i];
     }
 
+    DC.printCard();
     return DC;
 }
 
@@ -46,7 +47,7 @@ DeckCard<AbilityCard> CardGenerator::generateAbilityDeck(){
 
     for(int i = 0 ; i < 7; i++){
         int randomIndex = rand() % (7-i);
-        DAC.push(temp[randomIndex]);
+        DAC = DAC + temp[randomIndex];
         temp.erase(temp.begin() + randomIndex);
     }
 
@@ -94,7 +95,7 @@ DeckCard<Card> CardGenerator::readFile(string pathfile){
             cout << "Bukan warna yang valid say";
             throw ConfigInvalidExc();
         } else {
-            DC.push(Card(number, color));
+            DC = DC + Card(number, color);
         }
     }
 
@@ -141,7 +142,7 @@ DeckCard<UnoCard> CardGenerator::randomizeUnoCard(){
     }
 
     while(randomize.size() != 0){
-        DC.push(randomize.back());
+        DC = DC + randomize.back();
         randomize.pop_back();
     }
 
@@ -201,7 +202,7 @@ DeckCard<UnoCard> CardGenerator::readUnoFile(string pathfile){
             throw ConfigInvalidExc();
         }
 
-        DC.push(UnoCard(number, color, type));
+        DC = DC + UnoCard(number, color, type);
     }
 
     Read.close();

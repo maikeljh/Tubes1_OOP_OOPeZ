@@ -20,6 +20,15 @@ DeckCard<T>::DeckCard(const DeckCard& dc){
 }
 
 template <class T>
+DeckCard<T>& DeckCard<T>::operator=(const DeckCard& dc){
+    if(this != &dc){
+        this->deck = dc.deck;
+        this->neff = dc.neff;
+        this->size = dc.size;
+    }
+}
+
+template <class T>
 DeckCard<T>::~DeckCard(){
 
 }
@@ -73,14 +82,26 @@ void DeckCard<UnoCard>::printCard(){
     }
 }
 
-template <>
-UnoCard& DeckCard<UnoCard>::getUnoCard(int i){
+template <class T>
+T& DeckCard<T>::getCard(int i){
     return this->deck[i];
 }
 
-template <>
-void DeckCard<UnoCard>::setUnoCard(const UnoCard &card, int i){
+template <class T>
+void DeckCard<T>::setCard(const T &card, int i){
     this->deck[i] = card;
+}
+
+template <class T>
+DeckCard<T>& DeckCard<T>::operator+(const T& add){
+    this->deck.push_back(add);
+    return *this;
+}
+
+template <class T>
+DeckCard<T>& DeckCard<T>::operator-(){
+    this->deck.pop_back();
+    return *this;
 }
 
 template class DeckCard<Card>;
