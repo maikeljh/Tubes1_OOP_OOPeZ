@@ -420,37 +420,30 @@ void Combination::flush() {
     dictWarna["Yellow"] = 0;
     dictWarna["Blue"] = 0;
 
-    cout << "Lewat sini ga 1" << endl;
 
     for (int i = 0; i < this->comboCard.size(); i++) {
         if (this->comboCard[i].getColor() == "Green") {
             dictWarna["Green"]++;
-             cout << "Lewat sini ga 2" << endl;
         }
         else if (this->comboCard[i].getColor() == "Blue") {
             dictWarna["Blue"]++;
-             cout << "Lewat sini ga 3" << endl;
         }
         else if (this->comboCard[i].getColor() == "Yellow") {
             dictWarna["Yellow"]++;
-             cout << "Lewat sini ga 4" << endl;
         }
         else {
             dictWarna["Red"]++;
-             cout << "Lewat sini ga 5" << endl;
         }
     }
     for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
         if (itr->second >= 5) {
             warna = itr->first;
-             cout << "Lewat sini ga 6" << endl;
         }
     }
 
     vector<Card> combo;
     for (int i = 0; i < this->comboCard.size(); i++) {
         if (this->comboCard[i].getColor() == warna) {
-             cout << "Lewat sini ga 7" << endl;
             combo.push_back(this->comboCard[i]);
         }
     }
