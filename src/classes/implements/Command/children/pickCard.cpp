@@ -27,7 +27,7 @@ void PickCard::executeActionUNO(UnoGame& Game){
                     cin.ignore(numeric_limits<streamsize>::max(),'\n');
                     throw InputActionInvalidExc();
                 }
-                if(!(input_number-1 >= 0 && input_number-1 <= playernow.getDeckPlayer().size())){
+                if(!(input_number-1 >= 0 && input_number-1 < playernow.getDeckPlayer().size())){
                     throw InputNumberInvalidExc();
                 } else {
                     // Validasi input kartu yang bisa dikeluarkan
