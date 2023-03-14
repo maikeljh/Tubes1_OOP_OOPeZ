@@ -14,8 +14,14 @@ class Command {
         int commandId;
     
     public:
+        /* ctor */
         Command(){}
         Command(int commandId){this->commandId = commandId;}
+        
+        /* getter */
+        int getCommandId();
+
+        /* other functions */        
         virtual void executeAction(CandyGame&){};
         virtual void executeActionUNO(UnoGame&){};
 };
