@@ -1,5 +1,6 @@
 #include "../../../headers/Command/children/abilityLess.hpp"
 #include "../../../headers/Exception/exception.h"
+#include <limits>
 
 Abilityless::Abilityless(){
     commandId = 10;
@@ -37,6 +38,11 @@ void Abilityless::executeAction(CandyGame& Game){
                 try {
                     cout << "Pilihan : ";
                     cin >> idxAbilityless;
+                    if(cin.fail()){
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                        throw InputActionInvalidExc();
+                    }
                     if(idxAbilityless < 1 || idxAbilityless > 6){
                         throw InputNumberInvalidExc();
                     }

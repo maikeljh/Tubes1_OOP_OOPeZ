@@ -1,4 +1,5 @@
 #include "../../../headers/Command/children/swapCard.hpp"
+#include <limits>
 
 SwapCard::SwapCard(){
     commandId = 8;
@@ -34,6 +35,11 @@ void SwapCard::executeAction(CandyGame& Game){
             try{
                 cout << "Pilihan : ";
                 cin >> p; // input nomor sesuai output list player yang bisa di-swap
+                if(cin.fail()){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    throw InputActionInvalidExc();
+                }
                 if(p < 1 || p > 6){
                     throw InputNumberInvalidExc();
                 } else {
@@ -58,6 +64,11 @@ void SwapCard::executeAction(CandyGame& Game){
             try{
                 cout << "Pilihan : ";
                 cin >> p; // input nomor sesuai output list player yang bisa di-swap
+                if(cin.fail()){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    throw InputActionInvalidExc();
+                }
                 if(p < 1 || p > 5){
                     throw InputNumberInvalidExc();
                 } else {
@@ -82,6 +93,11 @@ void SwapCard::executeAction(CandyGame& Game){
             try{
                 cout << "Pilihan : ";
                 cin >> option; // input nomor sesuai output list player yang bisa di-swap
+                if(cin.fail()){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    throw InputActionInvalidExc();
+                }
                 if(option < 1 || option > 2){
                     throw InputNumberInvalidExc();
                 } else {
@@ -102,6 +118,11 @@ void SwapCard::executeAction(CandyGame& Game){
             try{
                 cout << "Pilihan : ";
                 cin >> option; // input nomor sesuai output list player yang bisa di-swap
+                if(cin.fail()){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    throw InputActionInvalidExc();
+                }
                 if(option < 1 || option > 2){
                     throw InputNumberInvalidExc();
                 } else {

@@ -1,4 +1,5 @@
 #include "../../../headers/Command/children/pickCard.hpp"
+#include <limits>
 
 PickCard::PickCard():Command(){}
 
@@ -18,18 +19,27 @@ void PickCard::executeActionUNO(UnoGame& Game){
         bool validCard = false;
         // Validasi input dan kartu
         while(!validCard){
-            cout << "\nSilahkan pilih nomor kartu yang ingin digunakan : ";
-            cin >> input_number;
-            if(!(input_number-1 >= 0 && input_number-1 <= playernow.getDeckPlayer().size())){
-                cout << "\nInput nomor tidak valid. Silahkan input ulang!" << endl;
-            } else {
-                // Validasi input kartu yang bisa dikeluarkan
-                SCard = playernow.getDeckPlayer()[input_number-1];
-                if (!(Game.getTop() == SCard)){
-                    cout << "\nKartu tidak bisa dipakai. Silahkan pilih kartu lain!" << endl;
-                } else {
-                    validCard = true;
+            try {
+                cout << "\nSilahkan pilih nomor kartu yang ingin digunakan : ";
+                cin >> input_number;
+                if(cin.fail()){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    throw InputActionInvalidExc();
                 }
+                if(!(input_number-1 >= 0 && input_number-1 <= playernow.getDeckPlayer().size())){
+                    throw InputNumberInvalidExc();
+                } else {
+                    // Validasi input kartu yang bisa dikeluarkan
+                    SCard = playernow.getDeckPlayer()[input_number-1];
+                    if (!(Game.getTop() == SCard)){
+                        cout << "\nKartu tidak bisa dipakai. Silahkan pilih kartu lain!" << endl;
+                    } else {
+                        validCard = true;
+                    }
+                }
+            } catch(GameException& err){
+                cout << endl << err.what() << endl;
             }
         }
         

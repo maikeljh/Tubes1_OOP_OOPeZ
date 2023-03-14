@@ -1,4 +1,5 @@
 #include "../../../headers/Command/children/changeColor.hpp"
+#include <limits>
 
 ChangeColor::ChangeColor(){}
 
@@ -15,6 +16,11 @@ void ChangeColor::executeActionUNO(UnoGame& UnoGame){
         try{
             cout << "Pilihan : ";
             cin >> colorInput;
+            if(cin.fail()){
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                throw InputActionInvalidExc();
+            }
             if(colorInput < 1 || colorInput > 4){
                 throw InputNumberInvalidExc();
             }

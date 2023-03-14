@@ -2,6 +2,7 @@
 #include "./classes/headers/Game/candyGame.hpp"
 #include "./classes/headers/Game/unoGame.hpp"
 #include "./classes/headers/Exception/exception.h"
+#include <limits>
 
 using namespace std;
 
@@ -13,6 +14,11 @@ int main(){
             try {
                 cout << "Enter option (1 or 2): ";
                 cin >> action;
+                if(cin.fail()){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    throw InputActionInvalidExc();
+                }
                 if(action != "1" && action != "2"){
                     throw InputNumberInvalidExc();
                 }
@@ -34,6 +40,11 @@ int main(){
             try {
                 cout << "Enter option (1 or 2): ";
                 cin >> action;
+                if(cin.fail()){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    throw InputActionInvalidExc();
+                }
                 if(action != "1" && action != "2"){
                     throw InputNumberInvalidExc();
                 }

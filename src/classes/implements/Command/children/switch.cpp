@@ -1,4 +1,5 @@
 #include "../../../headers/Command/children/switch.hpp"
+#include <limits>
 
 Switch::Switch(){
     commandId = 9;
@@ -27,6 +28,11 @@ void Switch::executeAction(CandyGame& Game){
             try{
                 cout << "Pilihan : ";
                 cin >> idxSwitch; // input nomor sesuai output list player yang bisa di-switch
+                if(cin.fail()){
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+                    throw InputActionInvalidExc();
+                }
                 if(idxSwitch < 1 || idxSwitch > 6){
                     throw InputNumberInvalidExc();
                 } else {
