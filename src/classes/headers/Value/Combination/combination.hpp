@@ -3,6 +3,7 @@
 
 #include "../Card/card.hpp"
 #include "../Card/tableCard.hpp"
+#include "../../Game/candyGame.hpp"
 #include <iostream>
 #include <vector>
 using namespace std;
