@@ -90,7 +90,7 @@ DeckCard<Card> CardGenerator::readFile(string pathfile){
 
         // READ COLOR
         idx++;
-        while(idx < line.length()){
+        while(idx < line.length() && line[idx] != '\n' && line[idx] != '\r'){
             color += line[idx];
             idx++;
         }
@@ -201,7 +201,7 @@ DeckCard<UnoCard> CardGenerator::readUnoFile(string pathfile){
 
         // READ TYPE
         idx++;
-        while(idx < line.length()){
+        while(idx < line.length() && line[idx] != '\n' && line[idx] != '\r'){
             type += line[idx];
             idx++;
         }
