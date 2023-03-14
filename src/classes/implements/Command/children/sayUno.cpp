@@ -11,8 +11,8 @@ void SayUno::executeActionUNO(UnoGame& Game){
     else{
         cout << "\nKartumu tidak tersisa 2! Katakan UNO saat kartumu tersisa 2 dan akan mengeluarkan kartu!" << endl;
         cout << "\nKartu yang didapat oleh " << playernow.getNickname() << ":\n";
-        playernow.push(Game.getDeckCard().pop());
-        playernow.push(Game.getDeckCard().pop());
+        playernow = playernow + Game.getDeckCard().pop();
+        playernow = playernow + Game.getDeckCard().pop();
         int count = 0;
         while (count < 2){
             cout << count+1 << ". ";

@@ -8,7 +8,7 @@ void Plus2::executeActionUNO(UnoGame& UnoGame){
 
     int count = 0;
     while (count < 2){
-        playernext.push(deck.pop());
+        playernext = playernext + deck.pop();
         count++;
     }
     

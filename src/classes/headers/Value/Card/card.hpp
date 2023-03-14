@@ -11,16 +11,25 @@ class Card : public Value {
         string color;
 
     public:
+        /* ctor */
         Card();
         Card(int number, string color);
+
+        /* operators */
         Card& operator= (const Card&);
         bool operator> (Card&);
         bool operator< (Card&);
         virtual bool operator== (Card&);
+
+        /* getter */
         int getNumber();
         string getColor();
+
+        /* setter */
         void setNumber(int number);
         void setColor(string color);
+
+        /* other functions */
         double value();
 
 };

@@ -31,8 +31,7 @@ DeckCard<Card> CardGenerator::randomizeCard(){
     for(int i = 0 ; i < 52; i++){
         DC = DC + randomize[i];
     }
-
-    DC.printCard();
+    
     return DC;
 }
 

@@ -9,7 +9,7 @@ void Draw::executeActionUNO(UnoGame& Game){
     // Ambil satu kartu
     if(!Game.getAlreadyDraw()){
         UnoCard newCard = Game.getDeckCard().pop();
-        playernow.push(newCard);
+        playernow = playernow + newCard;
         cout << "\nKamu mendapatkan kartu baru yaitu: ";
         if(newCard.getIsNumber()){
             cout << newCard.getNumber() << " " << newCard.getColor() << endl;

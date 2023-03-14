@@ -24,7 +24,7 @@ class DeckCard: public InventoryHolder<T>{
         DeckCard& operator=(const DeckCard& dc);
         ~DeckCard();
         DeckCard& operator+(const T& add);
-        DeckCard& operator-();
+        DeckCard& operator--();
         T pop();
         void push(const T& Card);
         int getNeff();

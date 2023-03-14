@@ -12,7 +12,7 @@ using namespace std;
 
 template <class T>
 class Player: public InventoryHolder<T>{
-    private:
+    protected:
         int id;
         string nickname;
         vector<T> mainDeck;

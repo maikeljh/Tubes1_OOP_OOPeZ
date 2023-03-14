@@ -9,7 +9,7 @@
 using namespace std;
 
 template <class T>
-class TableCard {
+class TableCard : public InventoryHolder<T> {
     private:
         int neff;
         vector<T> listOfCards;
@@ -19,12 +19,12 @@ class TableCard {
         TableCard(int max);
         TableCard(const TableCard& other);
         ~TableCard();
-        void addCard(const T& C);
+        void push(const T& C);
         vector<T>& getTableCard();
         void clearTable();
-        void printTable();
+        void printCard();
         int getNeff();
-        T& getTop();
+        T pop();
 };
 
 template class TableCard<Card>;

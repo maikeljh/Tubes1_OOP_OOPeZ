@@ -24,7 +24,7 @@ void ChangeColor::executeActionUNO(UnoGame& UnoGame){
     } while(colorInput < 1 || colorInput > 4);
     
     TableCard<UnoCard>& tableCards = UnoGame.getTableCard();
-    UnoCard& topCard = tableCards.getTop();
+    UnoCard topCard = tableCards.pop();
 
     if (colorInput<1 || colorInput>4){
         throw InputNumberInvalidExc();

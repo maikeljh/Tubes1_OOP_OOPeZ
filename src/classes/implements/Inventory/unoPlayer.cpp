@@ -6,27 +6,28 @@ UnoPlayer::UnoPlayer(){}
 
 UnoPlayer::UnoPlayer(DeckCard<UnoCard> &DC, string nickname):Player(nickname){
     for (int i = 0; i < 7; i++){
-        this->getDeckPlayer().push_back(DC.pop());
+        this->mainDeck.push_back(DC.pop());
     }
 }
 
 UnoPlayer& UnoPlayer::operator+(const UnoCard& add){
-    this->getDeckPlayer().push_back(add);
+    this->push(add);
     return *this;
 }
 
-UnoPlayer& UnoPlayer::operator-(){
-    this->getDeckPlayer().pop_back();
+UnoPlayer& UnoPlayer::operator--(){
+    UnoCard trash = this->pop();
     return *this;
 }
+
 UnoPlayer::~UnoPlayer(){}
 
 UnoCard UnoPlayer::getCard(int index){
-    return this->getDeckPlayer()[index];
+    return this->mainDeck[index];
 }
 
 void UnoPlayer::printCard(){
-    vector<UnoCard> deck = this->getDeckPlayer();
+    vector<UnoCard> deck = this->mainDeck;
     for(int i = 0; i < deck.size(); i++){
         if(deck[i].getIsNumber()){
             cout << i+1 << ". " << deck[i].getNumber() << " " << deck[i].getColor() << endl;
@@ -37,11 +38,11 @@ void UnoPlayer::printCard(){
 }
 
 void UnoPlayer::push(const UnoCard& PC){
-   this->getDeckPlayer().push_back(PC);
+   this->mainDeck.push_back(PC);
 }
 
 UnoCard UnoPlayer::pop(){
-    UnoCard PCx = this->getDeckPlayer().back();
-    this->getDeckPlayer().pop_back();
+    UnoCard PCx = this->mainDeck.back();
+    this->mainDeck.pop_back();
     return PCx;
 }

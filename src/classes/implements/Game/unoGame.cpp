@@ -3,15 +3,54 @@
 #include "../../headers/Command/commandParserUNO.hpp"
 
 #include <iostream>
-
 using namespace std;
 
+/* ctor, dtor*/
 UnoGame::UnoGame():Game(),table(108), alreadyDraw(false), UNO(false){}
 
 UnoGame::UnoGame(const UnoGame& other):Game(other),table(108){}
 
 UnoGame::~UnoGame(){}
 
+/* getter */
+vector<UnoPlayer>& UnoGame::getPlayers(){
+    return this->players;
+}
+
+UnoPlayer& UnoGame::getPlayer(int idx){
+    return this->players[idx];
+}
+
+DeckCard<UnoCard>& UnoGame::getDeckCard(){
+    return this->deck;
+}
+
+TableCard<UnoCard>& UnoGame::getTableCard(){
+    return this->table;
+}
+
+bool UnoGame::getAlreadyDraw(){
+    return this->alreadyDraw;
+}
+
+bool UnoGame::getUNO(){
+    return this->UNO;
+}
+
+UnoCard UnoGame::getTop(){
+    return this->table.pop();
+}
+
+/* setter */
+void UnoGame::setAlreadyDraw(bool draw){
+    this->alreadyDraw = draw;
+}
+
+void UnoGame::setUNO(bool uno){
+    this->UNO = uno;
+}
+
+/* other functions */
 void UnoGame::startGame(){
     string name;
     string action = "";
@@ -86,7 +125,7 @@ void UnoGame::startGame(){
     // Initialize Card
     bool flag = false;
     while(!flag){
-        this->getTableCard().addCard(this->deck.pop());
+        this->getTableCard().push(this->deck.pop());
         if(this->getTop().getType()=="CHANGECOLOR"){
             cout<<"\nKartu pertama adalah Wild Card Change Color"<<endl;
             ChangeColor().executeActionUNO(*this);
@@ -123,9 +162,9 @@ void UnoGame::startGame(){
             }
             if(this->deck.getNeff() < 5){
                 this->deck = CG.randomizeUnoCard();
-                UnoCard temp = this->table.getTop();
+                UnoCard temp = this->table.pop();
                 this->table.clearTable();
-                this->table.addCard(temp);
+                this->table.push(temp);
                 cout << "Deck kartu terbuat ulang karena sudah hampir habis.\n" << endl;
             }
         }
@@ -135,9 +174,9 @@ void UnoGame::startGame(){
             if (!this->UNO){
                 cout << "\nPlayer " << move.getNickname() << " lupa mengatakan UNO!" << endl;
                 cout << "\nKartu yang didapat oleh " << move.getNickname() << ":\n";
-                move.push(this->getDeckCard().pop());
+                move = move + this->getDeckCard().pop();
                 move.getCard(move.getDeckPlayer().size()-2).printDetail();
-                move.push(this->getDeckCard().pop());
+                move = move + this->getDeckCard().pop();
                 move.getCard(move.getDeckPlayer().size()-1).printDetail();
             }
             this->setUNO(false);
@@ -147,9 +186,9 @@ void UnoGame::startGame(){
         this->UNO = false;
         if(this->deck.getNeff() < 5){
             this->deck = CG.randomizeUnoCard();
-            UnoCard temp = this->table.getTop();
+            UnoCard temp = this->table.pop();
             this->table.clearTable();
-            this->table.addCard(temp);
+            this->table.push(temp);
             cout << "\nDeck kartu terbuat ulang karena sudah hampir habis." << endl;
         }
     }
@@ -169,10 +208,6 @@ int UnoGame::chooseWinner(){
     return -1;
 }
 
-vector<UnoPlayer>& UnoGame::getPlayers(){
-    return this->players;
-}
-
 bool UnoGame::isEndGame(){
     for(int i = 0; i < 7; i++){
         if(this->players[i].getDeckPlayer().size() == 0){
@@ -181,36 +216,4 @@ bool UnoGame::isEndGame(){
     }
 
     return false;
-}
-
-DeckCard<UnoCard>& UnoGame::getDeckCard(){
-    return this->deck;
-}
-
-UnoPlayer& UnoGame::getPlayer(int idx){
-    return this->players[idx];
-}
-
-bool UnoGame::getAlreadyDraw(){
-    return this->alreadyDraw;
-}
-
-void UnoGame::setAlreadyDraw(bool draw){
-    this->alreadyDraw = draw;
-}
-
-UnoCard& UnoGame::getTop(){
-    return this->table.getTop();
-}
-
-TableCard<UnoCard>& UnoGame::getTableCard(){
-    return this->table;
-}
-
-bool UnoGame::getUNO(){
-    return this->UNO;
-}
-
-void UnoGame::setUNO(bool uno){
-    this->UNO = uno;
 }

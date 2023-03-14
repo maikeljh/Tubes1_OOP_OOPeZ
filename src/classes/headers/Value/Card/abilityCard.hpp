@@ -10,12 +10,17 @@ class AbilityCard {
         bool useable;
     
     public:
+        /* ctor */
         AbilityCard();
         AbilityCard(string type);
         AbilityCard(const AbilityCard& other);
+        
+        /* getter */
         string getType();
-        void setType(string type);
         bool getUseable();
+
+        /* setter */
+        void setType(string type);
         void setUseable(bool);
 };
 

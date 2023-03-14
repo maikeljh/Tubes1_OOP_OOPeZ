@@ -21,7 +21,7 @@ class CandyPlayer: public Player<Card>{
         CandyPlayer();
         CandyPlayer(DeckCard<Card> &DC, string nickname);
         CandyPlayer& operator+(const Card& add);
-        CandyPlayer& operator-();
+        CandyPlayer& operator--();
         bool operator>(const CandyPlayer& other);
         bool operator<(const CandyPlayer& other);
         bool operator==(const CandyPlayer& other);

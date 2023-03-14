@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-class Combination {
+class Combination : public Value{
     private:
         double point;
         string combo;

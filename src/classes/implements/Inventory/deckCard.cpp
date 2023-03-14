@@ -94,13 +94,13 @@ void DeckCard<T>::setCard(const T &card, int i){
 
 template <class T>
 DeckCard<T>& DeckCard<T>::operator+(const T& add){
-    this->deck.push_back(add);
+    this->push(add);
     return *this;
 }
 
 template <class T>
-DeckCard<T>& DeckCard<T>::operator-(){
-    this->deck.pop_back();
+DeckCard<T>& DeckCard<T>::operator--(){
+    this->pop();
     return *this;
 }
 

@@ -16,7 +16,7 @@ class UnoPlayer: public Player<UnoCard>{
         UnoPlayer();
         UnoPlayer(DeckCard<UnoCard> &DC, string nickname);
         UnoPlayer& operator+(const UnoCard& add);
-        UnoPlayer& operator-();
+        UnoPlayer& operator--();
         ~UnoPlayer();
         UnoCard getCard(int index);
         void printCard();

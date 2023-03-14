@@ -7,7 +7,7 @@ template <class T>
 TableCard<T>::TableCard(int max):neff(0),max(max){}
 
 template <class T>
-void TableCard<T>::addCard(const T& C){
+void TableCard<T>::push(const T& C){
     if(neff < max){
         listOfCards.push_back(C);
         neff++;
@@ -23,7 +23,7 @@ void TableCard<T>::clearTable(){
 }
 
 template <>
-void TableCard<Card>::printTable(){
+void TableCard<Card>::printCard(){
     cout << "Isi dari table card sekarang :" << endl;
     for(int i = 0; i < this->neff; i++){
         cout << i+1 << ". " << this->listOfCards[i].getNumber() <<  " " << this->listOfCards[i].getColor() << endl;
@@ -31,7 +31,7 @@ void TableCard<Card>::printTable(){
 }
 
 template <>
-void TableCard<UnoCard>::printTable(){
+void TableCard<UnoCard>::printCard(){
     cout << "Isi dari table card sekarang :" << endl;
     for(int i = 0; i < this->neff; i++){
         cout << i+1 << ". " << this->listOfCards[i].getNumber() <<  " " << this->listOfCards[i].getColor() << " " << this->listOfCards[i].getType()  << endl;
@@ -52,6 +52,6 @@ int TableCard<T>::getNeff(){
 }
 
 template <class T>
-T& TableCard<T>::getTop(){
+T TableCard<T>::pop(){
     return this->listOfCards.back();
 }

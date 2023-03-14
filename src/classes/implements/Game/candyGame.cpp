@@ -6,6 +6,7 @@
 
 using namespace std;
 
+/* ctor, dtor */
 CandyGame::CandyGame():Game(),table(5){
     this->round = 0;
     this->point = 0;
@@ -20,6 +21,58 @@ CandyGame::CandyGame(const CandyGame& other):Game(other),table(5){
 
 CandyGame::~CandyGame(){}
 
+/* getter */
+int CandyGame::getRound(){
+    return this->round;
+}
+
+long long int CandyGame::getPoint(){
+    return this->point;
+}
+
+vector<CandyPlayer>& CandyGame::getPlayers(){
+    return this->players;
+}
+
+CandyPlayer& CandyGame::getPlayer(int idx){
+    return this->players[idx];
+}
+
+DeckCard<Card>& CandyGame::getDeckCard(){
+    return this->deck;
+}
+
+DeckCard<AbilityCard>& CandyGame::getAbilityDeckCard(){
+    return this->deckAbility;
+}
+
+TableCard<Card>& CandyGame::getTableCard(){
+    return this->table;
+}
+
+int CandyGame::getPhase(){
+    return this->phase;
+}
+
+long long int CandyGame::getMaxPoint(){
+    return this->maxPoint;
+}
+
+/* setter */
+void CandyGame::setRound(int round){
+    this->round = round;
+}
+
+void CandyGame::setPoint(long long int point){
+    this->point = point;
+}
+
+void CandyGame::setPhase(int phase){
+    this->phase = phase;
+}
+
+
+/* other functions */
 void CandyGame::startGame(){
     string name;
     string action = "";
@@ -125,7 +178,7 @@ void CandyGame::startGame(){
             if(this->round < 6){
                 Card newTableCard = this->deck.pop();
                 cout << "\nTelah tertambah di meja yaitu Kartu " << newTableCard.getNumber() << " " << newTableCard.getColor() << endl;
-                this->table.addCard(newTableCard);
+                this->table.push(newTableCard);
             }
             CandyPlayer& move = this->players[0];
             this->players.push_back(move);
@@ -140,6 +193,8 @@ void CandyGame::startGame(){
             this->players[i].getCombo().makeCombo();
             cout << "Combo akhir : " << endl;
             this->players[i].getCombo().printCombo();
+            cout << "Kartu player " << this->players[i].getNickname() << endl;
+            this->players[i].printCard();
             cout << "Dengan poin combo sebesar : " << this->players[i].getCombo().getValue() << endl;
         }
 
@@ -147,16 +202,16 @@ void CandyGame::startGame(){
         this->players[roundWinner].addPoint(this->point);
         cout << "\nSelamat kepada pemain " << this->players[roundWinner].getNickname() << " telah memenangkan babak dan memperoleh poin sebanyak " << this->point << endl;
         cout << "Dengan combo "; this->players[roundWinner].getCombo().printCombo();
+        cout << "Kartu player " << this->players[roundWinner].getNickname() << endl;
+        this->players[roundWinner].printCard();
         cout << "Dengan poin combo sebesar : " << this->players[roundWinner].getCombo().getValue() << endl;
 
         if(!isEndGame()){
-            // Restart Game
+            // Restart Game clear
             this->round = 0;
             for(int i = 0; i < 7; i++){
-                Card erase = this->players[i].pop();
-                erase = this->players[i].pop();
-                this->players[i].push(this->deck.pop());
-                this->players[i].push(this->deck.pop());
+                --this->players[i];
+                --this->players[i];
                 this->players[i].getCombo().clearCombo();
                 this->players[i].getAbilityCard().setType("");
                 this->players[i].getAbilityCard().setUseable(false);
@@ -164,6 +219,11 @@ void CandyGame::startGame(){
             this->table.clearTable();
             
             cout << "\nKartu dikembalikan dan disusun ulang" << endl;
+            // Buang Kartu Dari Deck
+            while(this->deck.getNeff() != 0){
+                --this->deck;
+            }
+            
             action = "";
             // Generate Deck Again
             while(action != "y" && action != "n" && action != "no" && action != "yes"){
@@ -182,12 +242,21 @@ void CandyGame::startGame(){
                     cout << err.what() << endl;
                 }
             }
+            // Restart Game Player Card
+            for(int i = 0; i < 7; i++){
+                this->players[i] = this->players[i] + this->deck.pop();
+                this->players[i] = this->players[i] + this->deck.pop();
+            }
         }
     }
 
     // Print leaderboard and winner
     EndGame GG;
     GG.printLeaderboard(*this);
+}
+
+int CandyGame::chooseWinner(){
+    return findIndexMaxValue(this->players);
 }
 
 int CandyGame::chooseRoundWinner() {
@@ -198,27 +267,6 @@ int CandyGame::chooseRoundWinner() {
     return findIndexMaxValue(combos);
 }
 
-
-int CandyGame::chooseWinner(){
-    return findIndexMaxValue(this->players);
-}
-
-void CandyGame::setRound(int round){
-    this->round = round;
-}
-
-void CandyGame::setPoint(long long int point){
-    this->point = point;
-}
-
-int CandyGame::getRound(){
-    return this->round;
-}  
-
-long long int CandyGame::getPoint(){
-    return this->point;
-}
-
 bool CandyGame::isEndGame(){
     CandyPlayer maximum = maxValue<CandyPlayer>(this->players);
     if(maximum.getPoint() >= this->maxPoint){
@@ -226,28 +274,4 @@ bool CandyGame::isEndGame(){
     } else {
         return false;
     }
-}
-
-DeckCard<Card>& CandyGame::getDeckCard(){
-    return this->deck;
-}
-
-CandyPlayer& CandyGame::getPlayer(int idx){
-    return this->players[idx];
-}
-
-vector<CandyPlayer>& CandyGame::getPlayers(){
-    return this->players;
-}
-
-TableCard<Card>& CandyGame::getTableCard(){
-    return this->table;
-}
-
-int CandyGame::getPhase(){
-    return this->phase;
-}
-
-void CandyGame::setPhase(int phase){
-    this->phase = phase;
 }

@@ -3,6 +3,7 @@
 
 using namespace std;
 
+/* ctor */
 AbilityCard::AbilityCard(){
     this->type = "";
     this->useable = false;
@@ -18,18 +19,18 @@ AbilityCard::AbilityCard(const AbilityCard& other){
     this->useable = other.useable;
 }
 
+/* getter */
 string AbilityCard::getType(){
     return this->type;
 }
-
 bool AbilityCard::getUseable(){
     return this->useable;
 }
 
+/* setter */
 void AbilityCard::setUseable(bool isUsable){
     useable = isUsable;
 }
-
 void AbilityCard::setType(string type){
     this->type = type;
 }

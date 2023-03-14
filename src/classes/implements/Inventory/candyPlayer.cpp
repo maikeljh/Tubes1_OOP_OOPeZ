@@ -6,17 +6,17 @@ CandyPlayer::CandyPlayer(): Player(){}
 
 CandyPlayer::CandyPlayer(DeckCard<Card>& DC, string nickname): Player(nickname){
     this->point = 0;
-    this->getDeckPlayer().push_back(DC.pop());
-    this->getDeckPlayer().push_back(DC.pop());
+    this->mainDeck.push_back(DC.pop());
+    this->mainDeck.push_back(DC.pop());
 }
 
 CandyPlayer& CandyPlayer::operator+(const Card& add){
-    this->getDeckPlayer().push_back(add);
+    this->push(add);
     return *this;
 }
 
-CandyPlayer& CandyPlayer::operator-(){
-    this->getDeckPlayer().pop_back();
+CandyPlayer& CandyPlayer::operator--(){
+    Card trash = this->pop();
     return *this;
 }
 
@@ -51,22 +51,22 @@ void CandyPlayer::addPoint(long long int round_points){
 }
 
 Card CandyPlayer::getCard(int index){
-    return this->getDeckPlayer()[index];
+    return this->mainDeck[index];
 }
 
 void CandyPlayer::push(const Card& PC){
-   this->getDeckPlayer().push_back(PC);
+   this->mainDeck.push_back(PC);
 }
 
 Card CandyPlayer::pop(){
-    Card PCx = this->getDeckPlayer().back();
-    this->getDeckPlayer().pop_back();
+    Card PCx = this->mainDeck.back();
+    this->mainDeck.pop_back();
     return PCx;
 }
 
 void CandyPlayer::printCard(){
-    cout << "1. " << this->getDeckPlayer()[0].getNumber() << " " << this->getDeckPlayer()[0].getColor() << endl;
-    cout << "2. " << this->getDeckPlayer()[1].getNumber() << " " << this->getDeckPlayer()[1].getColor() << endl;
+    cout << "1. " << this->mainDeck[0].getNumber() << " " << this->mainDeck[0].getColor() << endl;
+    cout << "2. " << this->mainDeck[1].getNumber() << " " << this->mainDeck[1].getColor() << endl;
     if(this->ability.getType() != "" && this->ability.getUseable()){
         cout << "3. " << this->ability.getType() << " Ability Card" << endl;
     }

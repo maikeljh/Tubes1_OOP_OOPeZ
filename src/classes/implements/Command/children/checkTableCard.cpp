@@ -10,7 +10,7 @@ void CheckTableCard::executeAction(CandyGame& Game){
         cout << "\nTable card masih kosong\n" << endl;
     } else {
         cout << endl;
-        now.printTable();
+        now.printCard();
         cout << endl;
     }
 }
