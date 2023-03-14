@@ -429,7 +429,7 @@ void Combination::straightFlush() {
 
 void Combination::fourOfaKind(){
     int maxSama = 0;
-    Card cek;
+    Card checkCard;
     vector <Card> hasil;
     for(int i = 0;i<this->comboCard.size()-1;i++){
         int tempSama = 0;
@@ -440,13 +440,13 @@ void Combination::fourOfaKind(){
         }
         if(tempSama>maxSama){
             maxSama=tempSama;
-            cek = this->comboCard[i];
+            checkCard = this->comboCard[i];
         }
     }
     for (int i = 0;i<this->comboCard.size();i++){
-        if(this->comboCard[i].getNumber()==cek.getNumber()){
-            Card temp = this->comboCard[i];
-            hasil.push_back(temp);  
+        if(this->comboCard[i].getNumber()==checkCard.getNumber()){
+            Card tempCard = this->comboCard[i];
+            hasil.push_back(tempCard);  
         }
     }
     this->comboCard.clear();
@@ -565,7 +565,7 @@ void Combination::straight() {
 
 void Combination::threeOfaKind(){
     int maxSama = 0;
-    Card cek;
+    Card checkCard;
     vector <Card> hasil;
     for(int i = this->comboCard.size()-1;i> 0;i--){
         if(maxSama<2){
@@ -577,12 +577,12 @@ void Combination::threeOfaKind(){
             }
             if(tempSama>maxSama){
                 maxSama=tempSama;
-                cek = this->comboCard[i];
+                checkCard = this->comboCard[i];
             }
         }
     }
     for (int i = 0;i<this->comboCard.size();i++){
-        if(this->comboCard[i].getNumber()==cek.getNumber()){
+        if(this->comboCard[i].getNumber()==checkCard.getNumber()){
             Card temp = this->comboCard[i];
             hasil.push_back(temp);  
         }
@@ -594,9 +594,9 @@ void Combination::threeOfaKind(){
 }
 void Combination::twoPair(){
     int nPair = 0;
-    Card cek;
-    Card cek2;
-    Card cek3;
+    Card checkCard1;
+    Card checkCard2;
+    Card checkCard3;
     vector <Card> hasil;
     int nPlayerCard = 0;
     
@@ -623,32 +623,32 @@ void Combination::twoPair(){
             }
             if(tempSama>=1){
                 if(nPair==2){
-                    cek2 = this->comboCard[i];
+                    checkCard2 = this->comboCard[i];
                 }
                 else if(nPair==1) {
-                    cek = this->comboCard[i];
+                    checkCard1 = this->comboCard[i];
                 }
                 else {
-                    cek3 = this->comboCard[i];
+                    checkCard3 = this->comboCard[i];
                 }
             }
         }
     }
-    if(cek.getNumber()==this->playerCard[0].getNumber()||cek.getNumber()==this->playerCard[1].getNumber()){
+    if(checkCard1.getNumber()==this->playerCard[0].getNumber()||checkCard1.getNumber()==this->playerCard[1].getNumber()){
         nPlayerCard++;
     }
-    else if (cek2.getNumber()==this->playerCard[0].getNumber()||cek2.getNumber()==this->playerCard[1].getNumber())
+    else if (checkCard2.getNumber()==this->playerCard[0].getNumber()||checkCard2.getNumber()==this->playerCard[1].getNumber())
     {
         nPlayerCard++;
     }
 
     if(nPlayerCard==0){
-        if(cek3.getNumber()==this->playerCard[0].getNumber()||cek3.getNumber()==this->playerCard[1].getNumber()){
-            if(cek.getNumber()>cek2.getNumber()){
-                cek2 = cek3;
+        if(checkCard3.getNumber()==this->playerCard[0].getNumber()||checkCard3.getNumber()==this->playerCard[1].getNumber()){
+            if(checkCard1.getNumber()>checkCard2.getNumber()){
+                checkCard2 = checkCard3;
             }
             else {
-                cek = cek3;
+                checkCard1 = checkCard3;
             }
         }
     }
@@ -656,14 +656,14 @@ void Combination::twoPair(){
     int n = 0;
     for (int i = 0;i<this->comboCard.size();i++){
         if(n<2){
-            if(this->comboCard[i].getNumber()==cek2.getNumber()){
+            if(this->comboCard[i].getNumber()==checkCard2.getNumber()){
                 Card temp = this->comboCard[i];
                 hasil.push_back(temp);  
                 n++;
             }
         }
         else {
-            if(this->comboCard[i].getNumber()==cek.getNumber()){
+            if(this->comboCard[i].getNumber()==checkCard1.getNumber()){
                 Card temp = this->comboCard[i];
                 hasil.push_back(temp);  
                 n++;
@@ -676,7 +676,7 @@ void Combination::twoPair(){
 }
 void Combination::pair(){
     int maxSama = 0;
-    Card cek;
+    Card checkCard;
     vector <Card> hasil;
     for(int i = this->comboCard.size()-1;i> 0;i--){
         if(maxSama<1){
@@ -688,12 +688,12 @@ void Combination::pair(){
             }
             if(tempSama>maxSama){
                 maxSama=tempSama;
-                cek = this->comboCard[i];
+                checkCard = this->comboCard[i];
             }
         }
     }
     for (int i = 0;i<this->comboCard.size();i++){
-        if(this->comboCard[i].getNumber()==cek.getNumber()){
+        if(this->comboCard[i].getNumber()==checkCard.getNumber()){
             Card temp = this->comboCard[i];
             hasil.push_back(temp);  
         }
