@@ -852,7 +852,6 @@ double Combination::value() {
         else {
             comboValue = -1;
         }
-        // comboValue = maxValue(this->comboCard).value() + 5.56; //rumus
     }
     //two pair
     else if (this->comboCard.size() >= 4 && this->isTwoPair()) {
@@ -863,7 +862,6 @@ double Combination::value() {
                     highestPairNumber = this->comboCard[i].getNumber();
                 }
             }
-            // int highetPairNumber = maxValue(this->comboCard).getNumber();
             bool green = false;
             bool blue = false;
             bool yellow = false;
@@ -915,7 +913,6 @@ double Combination::value() {
             comboValue = -1;
         }
 
-        // comboValue = maxValue(this->comboCard).value() + 2.78;
     }
     //pair
     else if (this->comboCard.size() >= 2 && this->isPair()) {
@@ -968,7 +965,6 @@ double Combination::value() {
         else {
             comboValue = -1;
         }
-        // comboValue = maxValue(this->comboCard).value() + 1.39;//rumus
     }
     //highcard max value 
     else {
