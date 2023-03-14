@@ -30,7 +30,7 @@ void ChangeColor::executeActionUNO(UnoGame& UnoGame){
     } while(colorInput < 1 || colorInput > 4);
     
     TableCard<UnoCard>& tableCards = UnoGame.getTableCard();
-    UnoCard topCard = tableCards.pop();
+    UnoCard& topCard = tableCards.getTop();
 
     if (colorInput<1 || colorInput>4){
         throw InputNumberInvalidExc();

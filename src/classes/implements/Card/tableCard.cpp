@@ -52,6 +52,11 @@ int TableCard<T>::getNeff(){
 }
 
 template <class T>
+T& TableCard<T>::getTop(){
+    return this->listOfCards.back();
+}
+
+template <class T>
 T TableCard<T>::pop(){
     return this->listOfCards.back();
 }

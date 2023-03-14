@@ -24,6 +24,7 @@ class TableCard : public InventoryHolder<T> {
         void clearTable();
         void printCard();
         int getNeff();
+        T& getTop();
         T pop();
 };
 
