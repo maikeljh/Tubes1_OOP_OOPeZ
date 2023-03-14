@@ -17,21 +17,28 @@ class UnoGame : public Game {
         bool UNO;
 
     public:
+        /* ctor, dtor */
         UnoGame();
         UnoGame(const UnoGame& other);
         ~UnoGame();
-        void startGame();
-        int chooseWinner();
-        DeckCard<UnoCard>& getDeckCard();
-        bool isEndGame();
+
+        /* getter */
         vector<UnoPlayer>& getPlayers();
         UnoPlayer& getPlayer(int idx);
+        DeckCard<UnoCard>& getDeckCard();
         TableCard<UnoCard>& getTableCard();
         bool getAlreadyDraw();
-        void setAlreadyDraw(bool draw);
-        UnoCard& getTop();
         bool getUNO();
+        UnoCard& getTop();
+
+        /* setter */
+        void setAlreadyDraw(bool draw);
         void setUNO(bool uno);
+
+        /* other functions */
+        void startGame();
+        int chooseWinner();
+        bool isEndGame();
 };
 
 #endif

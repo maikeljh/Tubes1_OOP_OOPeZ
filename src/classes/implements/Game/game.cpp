@@ -5,6 +5,7 @@
 
 using namespace std;
 
+/* ctor, dtor */
 Game::Game(){
     this->valid = false;
     this->playerTurn = 0;
@@ -17,6 +18,7 @@ Game::Game(const Game& other){
 
 Game::~Game(){}
 
+/* getter */
 int Game::getNPlayers(){
     return this->nPlayers;
 }
@@ -25,14 +27,15 @@ bool Game::getValid(){
     return this->valid;
 }
 
-void Game::setValid(bool val){
-    this->valid = val;
-}
-
 int Game::getPlayerTurn(){
     return this->playerTurn;
 }
 
+/* setter*/
 void Game::setPlayerTurn(int turn){
     this->playerTurn = turn;
+}
+
+void Game::setValid(bool val){
+    this->valid = val;
 }

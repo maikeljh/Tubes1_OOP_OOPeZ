@@ -3,15 +3,54 @@
 #include "../../headers/Command/commandParserUNO.hpp"
 
 #include <iostream>
-
 using namespace std;
 
+/* ctor, dtor*/
 UnoGame::UnoGame():Game(),table(108), alreadyDraw(false), UNO(false){}
 
 UnoGame::UnoGame(const UnoGame& other):Game(other),table(108){}
 
 UnoGame::~UnoGame(){}
 
+/* getter */
+vector<UnoPlayer>& UnoGame::getPlayers(){
+    return this->players;
+}
+
+UnoPlayer& UnoGame::getPlayer(int idx){
+    return this->players[idx];
+}
+
+DeckCard<UnoCard>& UnoGame::getDeckCard(){
+    return this->deck;
+}
+
+TableCard<UnoCard>& UnoGame::getTableCard(){
+    return this->table;
+}
+
+bool UnoGame::getAlreadyDraw(){
+    return this->alreadyDraw;
+}
+
+bool UnoGame::getUNO(){
+    return this->UNO;
+}
+
+UnoCard& UnoGame::getTop(){
+    return this->table.getTop();
+}
+
+/* setter */
+void UnoGame::setAlreadyDraw(bool draw){
+    this->alreadyDraw = draw;
+}
+
+void UnoGame::setUNO(bool uno){
+    this->UNO = uno;
+}
+
+/* other functions */
 void UnoGame::startGame(){
     string name;
     string action = "";
@@ -169,10 +208,6 @@ int UnoGame::chooseWinner(){
     return -1;
 }
 
-vector<UnoPlayer>& UnoGame::getPlayers(){
-    return this->players;
-}
-
 bool UnoGame::isEndGame(){
     for(int i = 0; i < 7; i++){
         if(this->players[i].getDeckPlayer().size() == 0){
@@ -181,36 +216,4 @@ bool UnoGame::isEndGame(){
     }
 
     return false;
-}
-
-DeckCard<UnoCard>& UnoGame::getDeckCard(){
-    return this->deck;
-}
-
-UnoPlayer& UnoGame::getPlayer(int idx){
-    return this->players[idx];
-}
-
-bool UnoGame::getAlreadyDraw(){
-    return this->alreadyDraw;
-}
-
-void UnoGame::setAlreadyDraw(bool draw){
-    this->alreadyDraw = draw;
-}
-
-UnoCard& UnoGame::getTop(){
-    return this->table.getTop();
-}
-
-TableCard<UnoCard>& UnoGame::getTableCard(){
-    return this->table;
-}
-
-bool UnoGame::getUNO(){
-    return this->UNO;
-}
-
-void UnoGame::setUNO(bool uno){
-    this->UNO = uno;
 }

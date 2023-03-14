@@ -20,24 +20,32 @@ class CandyGame : public Game {
         const long long int maxPoint = (long long) 1 << 32;
 
     public:
+        /* ctor, dtor */
         CandyGame();
         CandyGame(const CandyGame& other);
         ~CandyGame();
+
+        /* getter */
+        int getRound();
+        long long int getPoint();
+        vector<CandyPlayer>& getPlayers();
+        CandyPlayer& getPlayer(int idx);
+        DeckCard<Card>& getDeckCard();
+        DeckCard<AbilityCard>& getAbilityDeckCard();
+        TableCard<Card>& getTableCard();
+        int getPhase();
+        long long int getMaxPoint();
+
+        /* setter */
+        void setRound(int round);
+        void setPoint(long long int point);
+        void setPhase(int);
+
+        /* other functions */
         void startGame();
         int chooseWinner();
         int chooseRoundWinner();
-        void setRound(int round);
-        void setPoint(long long int point);
-        int getRound();
-        long long int getPoint();
-        DeckCard<Card>& getDeckCard();
-        DeckCard<AbilityCard>& getAbilityDeckCard();
-        vector<CandyPlayer>& getPlayers();
-        CandyPlayer& getPlayer(int idx);
         bool isEndGame();
-        TableCard<Card>& getTableCard();
-        int getPhase();
-        void setPhase(int);
 };
 
 #endif

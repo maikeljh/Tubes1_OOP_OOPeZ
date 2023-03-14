@@ -15,17 +15,25 @@ class Game {
         int playerTurn;
 
     public:
+        /* ctor, dtor */
         Game();
         Game(const Game& other);
         ~Game();
+
+        /* getter */
+        int getNPlayers();
+        bool getValid();
+        int getPlayerTurn();
+
+        /* setter */
+        void setPlayerTurn(int);
+        void setValid(bool);
+
+        /* functions */
         virtual void startGame() = 0;
         virtual int chooseWinner() = 0;
         virtual bool isEndGame() = 0;
-        int getNPlayers();
-        bool getValid();
-        void setValid(bool);
-        int getPlayerTurn();
-        void setPlayerTurn(int);
+        
 };
 
 #endif

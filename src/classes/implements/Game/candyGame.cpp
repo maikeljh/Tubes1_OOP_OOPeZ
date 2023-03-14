@@ -6,6 +6,7 @@
 
 using namespace std;
 
+/* ctor, dtor */
 CandyGame::CandyGame():Game(),table(5){
     this->round = 0;
     this->point = 0;
@@ -20,6 +21,58 @@ CandyGame::CandyGame(const CandyGame& other):Game(other),table(5){
 
 CandyGame::~CandyGame(){}
 
+/* getter */
+int CandyGame::getRound(){
+    return this->round;
+}
+
+long long int CandyGame::getPoint(){
+    return this->point;
+}
+
+vector<CandyPlayer>& CandyGame::getPlayers(){
+    return this->players;
+}
+
+CandyPlayer& CandyGame::getPlayer(int idx){
+    return this->players[idx];
+}
+
+DeckCard<Card>& CandyGame::getDeckCard(){
+    return this->deck;
+}
+
+DeckCard<AbilityCard>& CandyGame::getAbilityDeckCard(){
+    return this->deckAbility;
+}
+
+TableCard<Card>& CandyGame::getTableCard(){
+    return this->table;
+}
+
+int CandyGame::getPhase(){
+    return this->phase;
+}
+
+long long int CandyGame::getMaxPoint(){
+    return this->maxPoint;
+}
+
+/* setter */
+void CandyGame::setRound(int round){
+    this->round = round;
+}
+
+void CandyGame::setPoint(long long int point){
+    this->point = point;
+}
+
+void CandyGame::setPhase(int phase){
+    this->phase = phase;
+}
+
+
+/* other functions */
 void CandyGame::startGame(){
     string name;
     string action = "";
@@ -199,33 +252,16 @@ void CandyGame::startGame(){
     GG.printLeaderboard(*this);
 }
 
+int CandyGame::chooseWinner(){
+    return findIndexMaxValue(this->players);
+}
+
 int CandyGame::chooseRoundWinner() {
     vector<Combination> combos;
     for(int i = 0; i < 7; i++){
         combos.push_back(this->players[i].getCombo());
     }
     return findIndexMaxValue(combos);
-}
-
-
-int CandyGame::chooseWinner(){
-    return findIndexMaxValue(this->players);
-}
-
-void CandyGame::setRound(int round){
-    this->round = round;
-}
-
-void CandyGame::setPoint(long long int point){
-    this->point = point;
-}
-
-int CandyGame::getRound(){
-    return this->round;
-}  
-
-long long int CandyGame::getPoint(){
-    return this->point;
 }
 
 bool CandyGame::isEndGame(){
@@ -235,28 +271,4 @@ bool CandyGame::isEndGame(){
     } else {
         return false;
     }
-}
-
-DeckCard<Card>& CandyGame::getDeckCard(){
-    return this->deck;
-}
-
-CandyPlayer& CandyGame::getPlayer(int idx){
-    return this->players[idx];
-}
-
-vector<CandyPlayer>& CandyGame::getPlayers(){
-    return this->players;
-}
-
-TableCard<Card>& CandyGame::getTableCard(){
-    return this->table;
-}
-
-int CandyGame::getPhase(){
-    return this->phase;
-}
-
-void CandyGame::setPhase(int phase){
-    this->phase = phase;
 }
