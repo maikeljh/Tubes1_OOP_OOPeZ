@@ -2,6 +2,7 @@
 
 using namespace std;
 
+/* ctor */
 UnoCard::UnoCard(){}
 
 UnoCard::UnoCard(int number, string color, string type){
@@ -15,6 +16,7 @@ UnoCard::UnoCard(int number, string color, string type){
     }
 }
 
+/* operators */
 UnoCard& UnoCard::operator=(const UnoCard& other){
     number = other.number;
     color = other.color;
@@ -59,10 +61,12 @@ bool UnoCard::operator==(const UnoCard& other){
     }
 }
 
+/* getter */
 bool UnoCard::getIsNumber(){
     return this->isNumber;
 }
 
+/* other functions */
 void UnoCard::printDetail(){
     if(this->isNumber){
         cout << this->number << " " << this->color << endl;
