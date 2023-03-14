@@ -128,28 +128,71 @@ bool Combination::isPlayerCard(Card &a) {
 }
 
 bool Combination::isStraightFlush() {
-    bool temp = false;
-    int idx = this->comboCard.size()-1;
-    int count = 0;
-    while (idx > 0) {
-        if (this->comboCard[idx].getNumber() == this->comboCard[idx-1].getNumber() + 1 && this->comboCard[idx].getColor() == this->comboCard[idx-1].getColor()) {
-            count++;
+    map<string, int> dictWarna;
+    map<string,int>::iterator itr;
+    dictWarna["Green"] = 0;
+    dictWarna["Red"] = 0;
+    dictWarna["Yellow"] = 0;
+    dictWarna["Blue"] = 0;
+
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (this->comboCard[i].getColor() == "Green") {
+            dictWarna["Green"]++;
         }
-        else if (this->comboCard[idx].getNumber() == this->comboCard[idx-1].getNumber()) {
-            count += 0;
+        else if (this->comboCard[i].getColor() == "Blue") {
+            dictWarna["Blue"]++;
+        }
+        else if (this->comboCard[i].getColor() == "Yellow") {
+            dictWarna["Yellow"]++;
         }
         else {
-            count = 0;
-        }
-        idx--;
-
-        if (count == 4) {
-            temp = true;
-            break;
+            dictWarna["Red"]++;
         }
     }
+    bool flush = false;
+    string warna;
+    for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
+        if (itr->second >= 5) {
+            flush = true;
+            warna = itr->first;
+        }
+    }
+    
+    if (flush) {
+        vector<Card> warnaKartu;
+        for (int i = 0; i < this->comboCard.size(); i++) {
+            if (this->comboCard[i].getColor() == warna) {
+                warnaKartu.push_back(this->comboCard[i]);
+            }
+        }
+        bool temp = false;
+        int idx = warnaKartu.size()-1;
+        int count = 0;
+        while (idx > 0) {
+            if (warnaKartu[idx].getNumber() == warnaKartu[idx-1].getNumber() + 1) {
+                count++;
+            }
+            else if (warnaKartu[idx].getNumber() == warnaKartu[idx-1].getNumber()) {
+                count += 0;
+            }
+            else {
+                count = 0;
+            }
+            idx--;
 
-    return temp;
+            if (count == 4) {
+                temp = true;
+                break;
+            }
+        }
+
+        return temp;
+    }
+   
+   else {
+    return false;
+   }
+
 }
 
 bool Combination::isFourOfaKind(){
@@ -317,15 +360,48 @@ bool Combination::isPair(){
 }
 
 void Combination::straightFlush() {
-    int idx = this->comboCard.size()-1;
+    map<string, int> dictWarna;
+    map<string,int>::iterator itr;
+    dictWarna["Green"] = 0;
+    dictWarna["Red"] = 0;
+    dictWarna["Yellow"] = 0;
+    dictWarna["Blue"] = 0;
+
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (this->comboCard[i].getColor() == "Green") {
+            dictWarna["Green"]++;
+        }
+        else if (this->comboCard[i].getColor() == "Blue") {
+            dictWarna["Blue"]++;
+        }
+        else if (this->comboCard[i].getColor() == "Yellow") {
+            dictWarna["Yellow"]++;
+        }
+        else {
+            dictWarna["Red"]++;
+        }
+    }
+    string warna;
+    for (itr = dictWarna.begin(); itr != dictWarna.end(); itr++) {
+        if (itr->second >= 5) {
+            warna = itr->first;
+        }
+    }
+    
+    vector<Card> warnaKartu;
+    for (int i = 0; i < this->comboCard.size(); i++) {
+        if (this->comboCard[i].getColor() == warna) {
+            warnaKartu.push_back(this->comboCard[i]);
+        }
+    }
+
+    int idx = warnaKartu.size()-1;
     int count = 0;
-    string color;
-    vector <Card> combo;
     while (idx > 0) {
-        if (this->comboCard[idx].getNumber() == this->comboCard[idx-1].getNumber() + 1 && this->comboCard[idx].getColor() == this->comboCard[idx-1].getColor()) {
+        if (warnaKartu[idx].getNumber() == warnaKartu[idx-1].getNumber() + 1) {
             count++;
         }
-        else if (this->comboCard[idx].getNumber() == this->comboCard[idx-1].getNumber()) {
+        else if (warnaKartu[idx].getNumber() == warnaKartu[idx-1].getNumber()) {
             count += 0;
         }
         else {
@@ -334,22 +410,21 @@ void Combination::straightFlush() {
         idx--;
 
         if (count == 4) {
-            color = this->comboCard[idx].getColor();
             break;
         }
     }
+    
+    this->comboCard.clear();    
 
-    for (int i = idx; i <= this->comboCard.size()-1; i++) {
-        if (this->comboCard[i].getColor() == color) {
-            combo.push_back(this->comboCard[i]);
+    for (int i = idx; i < warnaKartu.size(); i++) {
+        if (warnaKartu[i].getNumber() != warnaKartu[i+1].getNumber()) {
+            this->comboCard.push_back(warnaKartu[i]);
         }
-        if (combo.size() == 5) {
+
+        if (this->comboCard.size() == 5) {
             break;
         }
     }
-
-    this->comboCard.clear();
-    this->setComboCard(combo);
 }
 
 void Combination::fourOfaKind(){
@@ -634,10 +709,10 @@ double Combination::value() {
     if (this->comboCard.size() >= 5 && this->isStraightFlush()) {
         if (this->existPlayerCard()) {
             for (int i = 0; i < this->comboCard.size(); i++) {
-            if (this->isPlayerCard(this->comboCard[i])) {
-                comboValue = this->comboCard[i].value() + 12.5;
+                if (this->isPlayerCard(this->comboCard[i])) {
+                    comboValue = this->comboCard[i].value() + 12.5;
+                }
             }
-        }
         }
         else {
             comboValue = -1;

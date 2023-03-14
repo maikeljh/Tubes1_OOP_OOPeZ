@@ -11,7 +11,7 @@
 6 Blue
 11 Red
 9 Red
-3 Blue
+1 Blue
 9 Green
 8 Yellow
 2 Blue
@@ -38,7 +38,7 @@
 3 Red
 2 Green
 13 Green
-1 Blue
+3 Blue
 6 Red
 1 Red
 10 Green
