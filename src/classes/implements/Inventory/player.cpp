@@ -10,7 +10,7 @@ template <class T>
 Player<T>::Player(){}
 
 template <class T>
-Player<T>::Player(string nickname):InventoryHolder<T>(), id(this->playersCreated+1){
+Player<T>::Player(string nickname):id(this->playersCreated+1){
     this->nickname = nickname;
     this->playersCreated++;
 }

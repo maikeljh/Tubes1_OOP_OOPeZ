@@ -57,5 +57,7 @@ double Card::value(){
     }
     else if (this->color == "Red"){
         return ((1.0 * this->number)/10)+(3*0.03);
+    } else {
+        return -1;
     }
 }

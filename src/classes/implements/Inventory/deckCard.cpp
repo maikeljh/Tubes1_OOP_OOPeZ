@@ -4,13 +4,10 @@
 using namespace std;
 
 template <class T>
-DeckCard<T>::DeckCard():DeckCard(0, 108){
-
-}
+DeckCard<T>::DeckCard():DeckCard(0, 108){}
 
 template <class T>
-DeckCard<T>::DeckCard(int neff, int size): InventoryHolder<T>(), neff(neff), size(size){
-}
+DeckCard<T>::DeckCard(int neff, int size):neff(neff), size(size){}
 
 template <class T>
 DeckCard<T>::DeckCard(const DeckCard& dc){
@@ -26,6 +23,7 @@ DeckCard<T>& DeckCard<T>::operator=(const DeckCard& dc){
         this->neff = dc.neff;
         this->size = dc.size;
     }
+    return *this;
 }
 
 template <class T>
