@@ -9,12 +9,13 @@ void Quarter::executeAction(CandyGame& Game){
             cout << "\nOops, kartu ability quarter-mu telah dimatikan sebelumnya :(.\nSilahkan lakukan perintah lain.\n" << endl;
         } else {
             cout << endl << playernow.getNickname() << " melakukan QUARTER! Poin hadiah";
-            Game.setPoint(Game.getPoint()*0.25);
+            long long int prevPoint = Game.getPoint();
+            Game.setPoint(prevPoint*0.25);
             if(Game.getPoint() == 0){
                 Game.setPoint(1);
                 cout << " tetap bernilai " << Game.getPoint() << "!" << endl;
             } else {
-                cout << " turun dari " << Game.getPoint() << " menjadi " << Game.getPoint() << "!" << endl;
+                cout << " turun dari " << prevPoint << " menjadi " << Game.getPoint() << "!" << endl;
             }
             playernow.useAbilityCard();
             Game.setValid(true);
