@@ -32,7 +32,7 @@ void Switch::executeAction(CandyGame& Game){
                 } else {
                     validInput = true;
                 }
-            } catch(InputNumberInvalidExc& err){
+            } catch(GameException& err){
                 cout << err.what() << endl;
             }
         }
@@ -51,10 +51,11 @@ void Switch::executeAction(CandyGame& Game){
         deck1.push_back(cardnow_0);
         deck1.push_back(cardnow_1);
 
+        playernow.useAbilityCard();
+        
         cout << "\nKedua kartu " << playernow.getNickname() << " telah ditukar dengan " << playerSwitch.getNickname() << "!" << endl;
         cout << "Kartumu sekarang adalah:" << endl;
         playernow.printCard();
-        playernow.useAbilityCard();
 
         Game.setValid(true);
     } else {

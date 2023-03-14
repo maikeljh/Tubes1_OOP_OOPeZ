@@ -40,7 +40,7 @@ void Abilityless::executeAction(CandyGame& Game){
                     if(idxAbilityless < 1 || idxAbilityless > 6){
                         throw InputNumberInvalidExc();
                     }
-                } catch(InputNumberInvalidExc& err){
+                } catch(GameException& err){
                     cout << err.what() << endl;
                 }
             } while(idxAbilityless < 1 || idxAbilityless > 6);

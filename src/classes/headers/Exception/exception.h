@@ -30,4 +30,18 @@ public:
     const char* what() const throw();
 };
 
+class FileInvalidExc : public GameException{
+public:
+    const char* what() const throw();
+};
+
+class DirectoryInvalidExc : public GameException{
+public:
+    const char* what() const throw();
+};
+
+class ConfigInvalidExc : public GameException{
+public:
+    const char* what() const throw();
+};
 #endif

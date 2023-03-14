@@ -5,14 +5,14 @@ Plus2::Plus2(){}
 void Plus2::executeActionUNO(UnoGame& UnoGame){
     UnoPlayer& playernext = UnoGame.getPlayer(1);
     DeckCard<UnoCard>& deck = UnoGame.getDeckCard();
-    cout << "sini" << endl;
+
     int count = 0;
     while (count < 2){
         playernext.push(deck.pop());
         count++;
     }
     
-    cout << "Kartu yang didapat oleh " << playernext.getNickname() << ":\n";
+    cout << "\nKartu yang didapat oleh " << playernext.getNickname() << ":\n";
     count=0;
     while (count<2){
         cout << count+1 << ". ";

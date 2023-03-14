@@ -1,6 +1,7 @@
 #include "../../headers/Game/candyGame.hpp"
 #include "../../headers/CardGenerator/cardGenerator.hpp"
 #include "../../headers/Command/commandParser.hpp"
+#include "../generic.cpp"
 #include <iostream>
 
 using namespace std;
@@ -70,7 +71,7 @@ void CandyGame::startGame(){
             } else {
                 throw InputActionInvalidExc();
             }
-        } catch (InputActionInvalidExc& err){
+        } catch (GameException& err){
             cout << err.what() << endl;
         }
     }
@@ -89,7 +90,7 @@ void CandyGame::startGame(){
     string command;
     
     while(!isEndGame()){
-        cout << "\nPERMAINAN KE-" << ++this->phase << endl;
+        cout << "\nPERMAINAN KE-" << ++this->phase;
         this->point = 64;
         while(this->round < 6){
             this->round++;
@@ -111,7 +112,7 @@ void CandyGame::startGame(){
                         Command *action = CP.parser(command);
                         action->executeAction(*this);
                         delete action;
-                    } catch(CommandInvalidExc& err){
+                    } catch(GameException& err){
                         cout << err.what() << endl;
                     }
                 }
@@ -152,19 +153,40 @@ void CandyGame::startGame(){
         this->players[roundWinner].printCard();
         cout << "Dengan poin combo sebesar : " << this->players[roundWinner].getCombo().getValue() << endl;
 
-        // Restart Game
-        this->round = 0;
-        this->deck = CG.randomizeCard();
-        for(int i = 0; i < 7; i++){
-            Card erase = this->players[i].pop();
-            erase = this->players[i].pop();
-            this->players[i].push(this->deck.pop());
-            this->players[i].push(this->deck.pop());
-            this->players[i].getCombo().clearCombo();
-            this->players[i].getAbilityCard().setType("");
-            this->players[i].getAbilityCard().setUseable(false);
+        if(!isEndGame()){
+            // Restart Game
+            this->round = 0;
+            for(int i = 0; i < 7; i++){
+                Card erase = this->players[i].pop();
+                erase = this->players[i].pop();
+                this->players[i].push(this->deck.pop());
+                this->players[i].push(this->deck.pop());
+                this->players[i].getCombo().clearCombo();
+                this->players[i].getAbilityCard().setType("");
+                this->players[i].getAbilityCard().setUseable(false);
+            }
+            this->table.clearTable();
+            
+            cout << "\nKartu dikembalikan dan disusun ulang" << endl;
+            action = "";
+            // Generate Deck Again
+            while(action != "y" && action != "n" && action != "no" && action != "yes"){
+                try {
+                    cout << "Apakah urutan kartu ingin dibaca dari file? (y or n) : ";
+                    cin >> action;
+
+                    if(action == "y" || action == "yes"){
+                        this->deck = CG.readFile("./config/orderCards.txt");
+                    } else if (action == "n" || action == "no"){
+                        this->deck = CG.randomizeCard();
+                    } else {
+                        throw InputActionInvalidExc();
+                    }
+                } catch (GameException& err){
+                    cout << err.what() << endl;
+                }
+            }
         }
-        this->table.clearTable();
     }
 
     // Print leaderboard and winner
@@ -173,29 +195,16 @@ void CandyGame::startGame(){
 }
 
 int CandyGame::chooseRoundWinner() {
-    Combination maximum = this->players[0].getCombo();
-    int idx = 0;
-    for (int i = 1; i < 7; i++) {
-        if (this->players[i].getCombo() > maximum) {
-            maximum = this->players[i].getCombo();
-            idx = i;
-        }
+    vector<Combination> combos;
+    for(int i = 0; i < 7; i++){
+        combos.push_back(this->players[i].getCombo());
     }
-    return idx;
+    return findIndexMaxValue(combos);
 }
 
 
 int CandyGame::chooseWinner(){
-    double maximum = 0;
-    int idx = 0;
-    for(int i = 0; i < 7; i++){
-        if(this->players[i].getCombo().getValue() > maximum){
-            maximum = this->players[i].getCombo().getValue();
-            idx = i;
-        }
-    }
-    
-    return idx;
+    return findIndexMaxValue(this->players);
 }
 
 void CandyGame::setRound(int round){
@@ -215,13 +224,12 @@ long long int CandyGame::getPoint(){
 }
 
 bool CandyGame::isEndGame(){
-    for(int i = 0; i < this->nPlayers; i++){
-        if(this->players[i].getPoint() >= this->maxPoint){
-            return true;
-        }
+    CandyPlayer maximum = maxValue<CandyPlayer>(this->players);
+    if(maximum.getPoint() >= this->maxPoint){
+        return true;
+    } else {
+        return false;
     }
-
-    return false;
 }
 
 DeckCard<Card>& CandyGame::getDeckCard(){

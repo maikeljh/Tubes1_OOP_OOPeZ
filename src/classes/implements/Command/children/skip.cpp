@@ -8,5 +8,5 @@ void Skip::executeActionUNO(UnoGame& UnoGame){
     vector<UnoPlayer>& players = UnoGame.getPlayers();
     players.push_back(players.front());
     players.erase(players.begin());
-    cout << "Player " << players[0].getNickname() << " dilewatkan." << endl;
+    cout << "\nPlayer " << players[0].getNickname() << " dilewatkan." << endl;
 }
