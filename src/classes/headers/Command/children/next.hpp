@@ -9,8 +9,11 @@ using namespace std;
 
 class Next: public Command<CandyGame> {
     public:
+        /* Ctor */
         Next();
-        void executeAction(CandyGame& Game);
+
+        /* Method */
+        void executeAction(CandyGame& Game); // Pass the turn to next player
 };
 
 #endif

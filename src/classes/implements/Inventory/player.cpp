@@ -16,9 +16,6 @@ Player<T>::Player(string nickname):id(this->playersCreated+1){
 }
 
 template <class T>
-Player<T>::~Player(){}
-
-template <class T>
 string Player<T>::getNickname(){
     return this->nickname;
 }

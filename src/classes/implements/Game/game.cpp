@@ -5,18 +5,11 @@
 
 using namespace std;
 
-/* ctor, dtor */
+/* ctor */
 Game::Game(){
     this->valid = false;
     this->playerTurn = 0;
 }
-
-Game::Game(const Game& other){
-    this->valid = other.valid;
-    this->playerTurn = other.playerTurn;
-}
-
-Game::~Game(){}
 
 /* getter */
 int Game::getNPlayers(){

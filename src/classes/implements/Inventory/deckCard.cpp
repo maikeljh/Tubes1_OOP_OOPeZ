@@ -10,13 +10,6 @@ template <class T>
 DeckCard<T>::DeckCard(int neff, int size):neff(neff), size(size){}
 
 template <class T>
-DeckCard<T>::DeckCard(const DeckCard& dc){
-    this->deck = dc.deck;
-    this->neff = dc.neff;
-    this->size = dc.size;
-}
-
-template <class T>
 DeckCard<T>& DeckCard<T>::operator=(const DeckCard& dc){
     if(this != &dc){
         this->deck = dc.deck;
@@ -24,11 +17,6 @@ DeckCard<T>& DeckCard<T>::operator=(const DeckCard& dc){
         this->size = dc.size;
     }
     return *this;
-}
-
-template <class T>
-DeckCard<T>::~DeckCard(){
-
 }
 
 template <class T>

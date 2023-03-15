@@ -18,21 +18,28 @@ class DeckCard: public InventoryHolder<T>{
         int size;
     
     public:
+        /* Ctor */
         DeckCard();
         DeckCard(int neff, int size);
-        DeckCard(const DeckCard& other);
+
+        /* Operator overloading */
         DeckCard& operator=(const DeckCard& dc);
-        ~DeckCard();
         DeckCard& operator+(const T& add);
         DeckCard& operator-(const T& min);
         DeckCard& operator--();
-        T pop();
-        void push(const T& Card);
+
+        /* Getter */
         int getNeff();
         int getSize();
-        void printCard();
         T& getCard(int i);
+
+        /* Setter */
         void setCard(const T &card, int i);
+
+        /* Other methods */
+        T pop();
+        void push(const T& Card);
+        void printCard();
 };
 
 #endif

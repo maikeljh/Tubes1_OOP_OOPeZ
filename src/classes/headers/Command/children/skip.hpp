@@ -3,10 +3,14 @@
 
 #include "../command.hpp"
 #include "../../Game/unoGame.hpp"
+
 class Skip: public Command<UnoGame> {
     public:
+        /* Ctor */
         Skip();
-        void executeAction(UnoGame&);
+
+        /* Method */
+        void executeAction(UnoGame&); // Skip the next player turn
 };
 
 #endif

@@ -29,7 +29,7 @@ class Card : public Value {
         void setNumber(int number);
         void setColor(string color);
 
-        /* other functions */
+        /* other methods */
         double value();
 
 };

@@ -10,9 +10,12 @@ using namespace std;
 
 class Abilityless: public Command<CandyGame> {
     public:
+        /* Ctor */
         Abilityless();
-        void executeAction(CandyGame& Game);
-        bool isAllAbilityUsed(vector<CandyPlayer> players);
+
+        /* Methods */
+        void executeAction(CandyGame& Game); // Execute abilityless
+        bool isAllAbilityUsed(vector<CandyPlayer> players); // Check if all other players have used their ability or not
 };
 
 #endif

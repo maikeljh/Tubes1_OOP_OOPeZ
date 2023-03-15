@@ -19,8 +19,11 @@
 
 class CommandParser{
     public:
+        /* Ctor */
         CommandParser();
-        Command<CandyGame> *parser(string inputCommand);
+
+        /* Method */
+        Command<CandyGame> *parser(string inputCommand); // Parses input to create an object based on input
 };
 
 #endif

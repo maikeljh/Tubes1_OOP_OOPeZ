@@ -9,8 +9,11 @@ using namespace std;
 
 class SeeCards: public Command<UnoGame> {
     public:
+        /* Ctor */
         SeeCards();
-        void executeAction(UnoGame&);
+
+        /* Method */
+        void executeAction(UnoGame&); // See the current player's cards
 };
 
 #endif

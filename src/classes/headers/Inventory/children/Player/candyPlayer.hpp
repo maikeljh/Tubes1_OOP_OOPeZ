@@ -18,26 +18,32 @@ class CandyPlayer: public Player<Card>{
         Combination kombo;
     
     public:
+        /* Ctor */
         CandyPlayer();
         CandyPlayer(DeckCard<Card> &DC, string nickname);
+
+        /* Operator overloading */
         CandyPlayer& operator+(const Card& add);
         CandyPlayer& operator-(const Card& add);
         CandyPlayer& operator--();
         bool operator>(const CandyPlayer& other);
         bool operator<(const CandyPlayer& other);
         bool operator==(const CandyPlayer& other);
-        ~CandyPlayer();
+
+        /* Getter */
+        Card getCard(int index);
+        Combination& getCombo();
+        long long int getPoint();
+        AbilityCard& getAbilityCard();
+
+        /* Other methods */
         void useAbilityCard();
         bool checkValidAbilityCard(string ability);
         void addAbilityCard(const AbilityCard& AC);
         void addPoint(long long int);
-        Card getCard(int index);
         void push(const Card& PC);
         Card pop();
         void printCard();
-        Combination& getCombo();
-        long long int getPoint();
-        AbilityCard& getAbilityCard();
 };
 
 #endif

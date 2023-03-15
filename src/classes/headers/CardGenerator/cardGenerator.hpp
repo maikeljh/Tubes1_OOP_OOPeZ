@@ -8,12 +8,15 @@ using namespace std;
 
 class CardGenerator {
     public:
+        /* Ctor */
         CardGenerator();
-        DeckCard<Card> readFile(string pathfile);
-        DeckCard<Card> randomizeCard();
-        DeckCard<AbilityCard> generateAbilityDeck();
-        DeckCard<UnoCard> readUnoFile(string pathfile);
-        DeckCard<UnoCard> randomizeUnoCard();
+
+        /* Methods */
+        DeckCard<Card> readFile(string pathfile); // Read file to generate order cards
+        DeckCard<Card> randomizeCard(); // Automatically generate order cards
+        DeckCard<AbilityCard> generateAbilityDeck(); // Automatically generate ability deck
+        DeckCard<UnoCard> readUnoFile(string pathfile); // Read file to generate order UNO cards
+        DeckCard<UnoCard> randomizeUnoCard(); // Automatically generate order UNO cards
 };
 
 #endif

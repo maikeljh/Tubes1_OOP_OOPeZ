@@ -10,8 +10,11 @@ using namespace std;
 
 class Quarter: public Command<CandyGame> {
     public:
+        /* Ctor */
         Quarter();
-        void executeAction(CandyGame& Game);
+
+        /* Method */
+        void executeAction(CandyGame& Game); // Quarter the current game point
 };
 
 #endif

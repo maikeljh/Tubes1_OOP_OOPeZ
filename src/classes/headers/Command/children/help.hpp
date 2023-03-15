@@ -8,8 +8,11 @@ using namespace std;
 
 class Help: public Command<CandyGame> {
     public:
-        Help(); 
-        void executeAction(CandyGame& Game);
+        /* Ctor */
+        Help();
+
+        /* Method */
+        void executeAction(CandyGame& Game); // Print all available commands to use
 };
 
 

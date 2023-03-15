@@ -15,10 +15,8 @@ class Game {
         int playerTurn;
 
     public:
-        /* ctor, dtor */
+        /* ctor */
         Game();
-        Game(const Game& other);
-        ~Game();
 
         /* getter */
         int getNPlayers();
@@ -29,7 +27,7 @@ class Game {
         void setPlayerTurn(int);
         void setValid(bool);
 
-        /* functions */
+        /* pure virtual methods */
         virtual void startGame() = 0;
         virtual int chooseWinner() = 0;
         virtual bool isEndGame() = 0;

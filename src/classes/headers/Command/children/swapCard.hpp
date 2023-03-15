@@ -10,8 +10,11 @@ using namespace std;
 
 class SwapCard: public Command<CandyGame> {
     public:
+        /* Ctor */
         SwapCard();
-        void executeAction(CandyGame& Game);
+
+        /* Method */
+        void executeAction(CandyGame& Game); // Swap other player's cards with another player's cards
 };
 
 #endif

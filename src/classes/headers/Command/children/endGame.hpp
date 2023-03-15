@@ -9,9 +9,12 @@ using namespace std;
 
 class EndGame: public Command<CandyGame> {
     public:
+        /* Ctor */
         EndGame();
-        void executeAction(CandyGame& Game);
-        void printWinner(CandyGame& Game);
+
+        /* Methods */
+        void executeAction(CandyGame& Game); // Execute print leaderboard
+        void printWinner(CandyGame& Game); // Print winner
 };
 
 #endif

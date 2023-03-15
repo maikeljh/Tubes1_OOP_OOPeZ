@@ -8,8 +8,11 @@ using namespace std;
 
 class UnoReverse: public Command<UnoGame>{
     public:
+        /* Ctor */
         UnoReverse();
-        void executeAction(UnoGame&);
+
+        /* Method */
+        void executeAction(UnoGame&); // Reverse the player's order
 };
 
 #endif

@@ -6,20 +6,12 @@
 
 using namespace std;
 
-/* ctor, dtor */
+/* ctor */
 CandyGame::CandyGame():Game(),table(5){
     this->round = 0;
     this->point = 0;
     this->phase = 0;
 }
-
-CandyGame::CandyGame(const CandyGame& other):Game(other),table(5){
-    this->round = other.round;
-    this->point = other.point;
-    this->phase = other.phase;
-}
-
-CandyGame::~CandyGame(){}
 
 /* getter */
 int CandyGame::getRound(){

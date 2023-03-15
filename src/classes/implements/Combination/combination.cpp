@@ -98,10 +98,6 @@ void Combination::printCombo() { //Menampilkan combo yang didapat
 
 }
 
-Combination::~Combination() {
-
-}
-
 bool Combination::operator<(Combination& other) {
     return this->point < other.point;
 }

@@ -8,8 +8,11 @@ using namespace std;
 
 class HelpUno : public Command<UnoGame> {
     public:
+        /* Ctor */
         HelpUno();
-        void executeAction(UnoGame&);
+
+        /* Method */
+        void executeAction(UnoGame&); // Print all available commands to use in UnoGame
 };
 
 

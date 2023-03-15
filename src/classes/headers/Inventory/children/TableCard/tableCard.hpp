@@ -16,15 +16,19 @@ class TableCard : public InventoryHolder<T> {
         const int max;
 
     public:
+        /* Ctor */
         TableCard(int max);
         TableCard(const TableCard& other);
-        ~TableCard();
-        void push(const T& C);
+        
+        /* Getter */
         vector<T>& getTableCard();
-        void clearTable();
-        void printCard();
         int getNeff();
         T& getTop();
+
+        /* Other methods */
+        void push(const T& C);
+        void clearTable();
+        void printCard();
         T pop();
 };
 

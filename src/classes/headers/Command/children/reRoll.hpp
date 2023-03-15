@@ -10,8 +10,11 @@ using namespace std;
 
 class ReRoll: public Command<CandyGame> {
     public:
+        /* Ctor */
         ReRoll();
-        void executeAction(CandyGame&);
+
+        /* Method */
+        void executeAction(CandyGame&); // Re-roll the current player cards with new cards from deck
 };
 
 #endif

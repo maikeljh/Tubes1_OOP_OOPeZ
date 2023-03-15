@@ -9,8 +9,11 @@ using namespace std;
 
 class Draw: public Command<UnoGame> {
     public:
+        /* Ctor */
         Draw();
-        void executeAction(UnoGame&);
+
+        /* Method */
+        void executeAction(UnoGame&); // Execute draw card from UNO deck
 };
 
 #endif 

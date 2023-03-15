@@ -11,8 +11,11 @@ using namespace std;
 
 class Quadruple: public Command<CandyGame> {
     public:
+        /* Ctor */
         Quadruple();
-        void executeAction(CandyGame& Game);
+
+        /* Method */
+        void executeAction(CandyGame& Game); // Quadruple the current game point
 };
 
 #endif

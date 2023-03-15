@@ -13,13 +13,19 @@ using namespace std;
 
 class UnoPlayer: public Player<UnoCard>{
     public:
+        /* Ctor */
         UnoPlayer();
         UnoPlayer(DeckCard<UnoCard> &DC, string nickname);
+
+        /* Operator overloading */
         UnoPlayer& operator+(const UnoCard& add);
         UnoPlayer& operator-(const UnoCard& add);
         UnoPlayer& operator--();
-        ~UnoPlayer();
+    
+        /* Getter */
         UnoCard getCard(int index);
+
+        /* Other methods */
         void printCard();
         void push(const UnoCard& PC);
         UnoCard pop();

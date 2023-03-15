@@ -16,16 +16,27 @@ class Combination : public Value{
         vector<Card> tableCard;
         
     public:
+        /* Ctor */
         Combination();
-        ~Combination();
-        double value();
+
+        /* Getter */
         double getValue();
         string getCombo();
+
+        /* Setter */
         void setValue(double);
         void setCombo(string);
         void setComboCard(vector <Card> &combo);
         void setPlayerCard(vector<Card> &PC);
         void setTableCard(vector<Card> &TC);
+
+        /* Operator overloading */
+        bool operator> (Combination&);
+        bool operator< (Combination&);
+        bool operator== (Combination&);
+        
+        /* Other methods */
+        double value();
         void clearCombo();
         void mergeCard(vector <Card> &TC, vector <Card> &PC);
         void makeCombo();
@@ -39,9 +50,6 @@ class Combination : public Value{
         void comboLainPair();
         void printCombo();
         bool existPlayerCard();
-        bool operator> (Combination&);
-        bool operator< (Combination&);
-        bool operator== (Combination&);
         bool isPlayerCard(Card &);
         bool isStraightFlush();
         bool isFourOfaKind();

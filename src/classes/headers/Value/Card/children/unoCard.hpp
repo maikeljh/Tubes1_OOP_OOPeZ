@@ -22,7 +22,7 @@ class UnoCard : public Card, public AbilityCard {
         /* getter */
         bool getIsNumber();
 
-        /* other functions */
+        /* other methods */
         void printDetail();
 };
 

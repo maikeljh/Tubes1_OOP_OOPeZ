@@ -44,9 +44,6 @@ vector<T>& TableCard<T>::getTableCard() {
 }
 
 template <class T>
-TableCard<T>::~TableCard(){}
-
-template <class T>
 int TableCard<T>::getNeff(){
     return this->neff;
 }

@@ -8,8 +8,11 @@ using namespace std;
 
 class Plus2 : public Command<UnoGame>{
     public:
+        /* Ctor */
         Plus2();
-        void executeAction(UnoGame&);
+
+        /* Method */
+        void executeAction(UnoGame&); // Give the next player additional two cards and skip his/her turn
 };
 
 #endif

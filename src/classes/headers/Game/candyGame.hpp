@@ -20,10 +20,9 @@ class CandyGame : public Game {
         const long long int maxPoint = (long long) 1 << 32;
 
     public:
-        /* ctor, dtor */
+        /* ctor */
         CandyGame();
         CandyGame(const CandyGame& other);
-        ~CandyGame();
 
         /* getter */
         int getRound();
@@ -41,7 +40,7 @@ class CandyGame : public Game {
         void setPoint(long long int point);
         void setPhase(int);
 
-        /* other functions */
+        /* other methods */
         void startGame();
         int chooseWinner();
         int chooseRoundWinner();

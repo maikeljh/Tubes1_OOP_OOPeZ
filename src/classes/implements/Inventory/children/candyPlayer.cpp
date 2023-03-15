@@ -42,8 +42,6 @@ bool CandyPlayer::operator==(const CandyPlayer& other){
     return (this->point == other.point);
 }
 
-CandyPlayer::~CandyPlayer(){}
-
 void CandyPlayer::useAbilityCard(){
     this->ability.setUseable(false);
 }

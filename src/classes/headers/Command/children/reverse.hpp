@@ -10,8 +10,11 @@ using namespace std;
 
 class Reverse: public Command<CandyGame> {
     public:
+        /* Ctor */
         Reverse();
-        void executeAction(CandyGame& Game);
+
+        /* Method */
+        void executeAction(CandyGame& Game); // Reverse the player's order based on requirements from spec
 };
 
 #endif

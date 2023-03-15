@@ -8,7 +8,10 @@
 using namespace std;
 class Pass : public Command<UnoGame> {
     public:
+        /* Ctor */
         Pass();
-        void executeAction(UnoGame&);
+
+        /* Method */
+        void executeAction(UnoGame&); // Pass the current player turn
 };
 #endif

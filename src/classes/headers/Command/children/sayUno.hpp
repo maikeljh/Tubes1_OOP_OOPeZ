@@ -9,8 +9,11 @@ using namespace std;
 
 class SayUno : public Command<UnoGame> {
     public:
+        /* Ctor */
         SayUno();
-        void executeAction(UnoGame&);
+
+        /* Method */
+        void executeAction(UnoGame&); // Say UNO
 };
 
 #endif

@@ -4,9 +4,10 @@
 #include <iostream>
 using namespace std;
 
+/* Abstract Base Class */
 class Value {
     public:
-        Value();
+        /* Pure Virtual Method */
         virtual double value() = 0;
 };
 

@@ -8,11 +8,12 @@
 
 using namespace std;
 
+/* Abstract Base Class Command */
 template <class T>
 class Command { 
     public:
-        /* Function */        
-        virtual void executeAction(T&) = 0;
+        /* Pure virtual method */        
+        virtual void executeAction(T&) = 0; // Execute action/command/ability
 };
 
 #endif

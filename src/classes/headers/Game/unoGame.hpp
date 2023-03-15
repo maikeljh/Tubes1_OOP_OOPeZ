@@ -17,10 +17,8 @@ class UnoGame : public Game {
         bool UNO;
 
     public:
-        /* ctor, dtor */
+        /* ctor */
         UnoGame();
-        UnoGame(const UnoGame& other);
-        ~UnoGame();
 
         /* getter */
         vector<UnoPlayer>& getPlayers();
@@ -35,7 +33,7 @@ class UnoGame : public Game {
         void setAlreadyDraw(bool draw);
         void setUNO(bool uno);
 
-        /* other functions */
+        /* other methods */
         void startGame();
         int chooseWinner();
         bool isEndGame();

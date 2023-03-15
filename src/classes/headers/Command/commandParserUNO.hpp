@@ -17,8 +17,11 @@
 
 class CommandParserUNO{
     public:
+        /* Ctor */
         CommandParserUNO();
-        Command<UnoGame> *parser(string inputCommand);
+
+        /* Method */
+        Command<UnoGame> *parser(string inputCommand); // Parses input to create an object based on input
 };
 
 #endif

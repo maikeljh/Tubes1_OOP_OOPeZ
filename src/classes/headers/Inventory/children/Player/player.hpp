@@ -19,13 +19,17 @@ class Player: public InventoryHolder<T>{
         static int playersCreated;
     
     public:
+        /* Ctor */
         Player();
         Player(string nickname);
-        ~Player();
+
+        /* Pure virtual methods */
         virtual T getCard(int index) = 0;
         virtual void push(const T& PC) = 0;
         virtual T pop() = 0;
         virtual void printCard() = 0;
+
+        /* Getter */
         string getNickname();
         int getID();
         vector<T>& getDeckPlayer();

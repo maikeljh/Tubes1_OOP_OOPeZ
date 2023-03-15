@@ -30,8 +30,6 @@ UnoPlayer& UnoPlayer::operator--(){
     return *this;
 }
 
-UnoPlayer::~UnoPlayer(){}
-
 UnoCard UnoPlayer::getCard(int index){
     return this->mainDeck[index];
 }

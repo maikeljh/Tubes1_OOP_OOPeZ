@@ -15,9 +15,12 @@ using namespace std;
 
 class PickCard: public Command<UnoGame> {
     public:
+        /* Ctor */
         PickCard();
-        void executeAction(UnoGame&);
-        bool checkValid(UnoGame&);
+
+        /* Methods */
+        void executeAction(UnoGame&); // Choose card to use
+        bool checkValid(UnoGame&); // Check if the current player can use one of their cards or not
 };
 
 #endif

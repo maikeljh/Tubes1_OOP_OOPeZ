@@ -7,8 +7,11 @@
 
 class ChangeColor: public Command<UnoGame> {
     public:
+        /* Ctor */
         ChangeColor();
-        void executeAction(UnoGame&);
+
+        /* Method */
+        void executeAction(UnoGame&); // Execute change color
 };
 
 #endif

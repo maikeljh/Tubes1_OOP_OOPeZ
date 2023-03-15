@@ -5,12 +5,8 @@
 #include <iostream>
 using namespace std;
 
-/* ctor, dtor*/
+/* ctor */
 UnoGame::UnoGame():Game(),table(108), alreadyDraw(false), UNO(false){}
-
-UnoGame::UnoGame(const UnoGame& other):Game(other),table(108){}
-
-UnoGame::~UnoGame(){}
 
 /* getter */
 vector<UnoPlayer>& UnoGame::getPlayers(){

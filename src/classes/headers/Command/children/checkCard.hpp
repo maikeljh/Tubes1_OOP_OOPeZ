@@ -9,8 +9,11 @@ using namespace std;
 
 class CheckCard: public Command<CandyGame> {
     public:
+        /* Ctor */
         CheckCard();
-        void executeAction(CandyGame& Game);
+
+        /* Method */
+        void executeAction(CandyGame& Game); // Print available player cards
 };
 
 #endif
