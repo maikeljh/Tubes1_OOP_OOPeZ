@@ -12,6 +12,9 @@ using namespace std;
 template <class T>
 class Command { 
     public:
+        /* Virtual dtor */
+        ~Command(){};
+
         /* Pure virtual method */        
         virtual void executeAction(T&) = 0; // Execute action/command/ability
 };
