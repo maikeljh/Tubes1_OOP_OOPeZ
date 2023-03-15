@@ -1082,7 +1082,7 @@ void Combination::makeCombo() { //Mengatur point/value, nama, dan isi dari combo
 
 void Combination::comboLainSF() { //Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo straight flush sebelumnya berasal dari kartu meja seluruhnya
     this->comboLainFlush();
-    if (this->value() == -1) {
+    if (this->value() == -1||this->comboCard.size()<5) {
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainFlush();
@@ -1095,7 +1095,7 @@ void Combination::comboLainSF() { //Mengatur point/value, nama, dan isi dari com
 
 void Combination::comboLainFK() { //Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo four of a kind sebelumnya berasal dari kartu meja seluruhnya
     this->fullHouse();
-    if (this->value() == -1) {
+    if (this->value() == -1||this->comboCard.size()<5) {
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainFH();
@@ -1109,7 +1109,7 @@ void Combination::comboLainFK() { //Mengatur point/value, nama, dan isi dari com
 
 void Combination::comboLainFH() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo full house sebelumnya berasal dari kartu meja seluruhnya
     this->threeOfaKind();
-    if (this->value() == -1) {
+    if (this->value() == -1||this->comboCard.size()<3) {
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainTK();
@@ -1122,7 +1122,7 @@ void Combination::comboLainFH() {//Mengatur point/value, nama, dan isi dari comb
 
 void Combination::comboLainFlush() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo flush sebelumnya berasal dari kartu meja seluruhnya
     this->straight();
-    if (this->value() == -1) {
+    if (this->value() == -1||this->comboCard.size()<5) {
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainStraight();
@@ -1135,7 +1135,7 @@ void Combination::comboLainFlush() {//Mengatur point/value, nama, dan isi dari c
 
 void Combination::comboLainStraight() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo straight sebelumnya berasal dari kartu meja seluruhnya
     this->threeOfaKind();
-    if (this->value() == -1) {
+    if (this->value() == -1||this->comboCard.size()<3) {
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainTK();
@@ -1148,7 +1148,7 @@ void Combination::comboLainStraight() {//Mengatur point/value, nama, dan isi dar
 
 void Combination::comboLainTK() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo three of a kind sebelumnya berasal dari kartu meja seluruhnya
     this->twoPair();
-    if (this->value() == -1) {
+    if (this->value() == -1||this->comboCard.size()<4) {
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainTwoP();
@@ -1161,7 +1161,7 @@ void Combination::comboLainTK() {//Mengatur point/value, nama, dan isi dari comb
 
 void Combination::comboLainTwoP() {//Mengatur point/value, nama, dan isi dari combo lain jika ternyata combo two pair sebelumnya berasal dari kartu meja seluruhnya
     this->pair();
-    if (this->value() == -1) {
+    if (this->value() == -1||this->comboCard.size()<2) {
         this->comboCard.clear();
         this->mergeCard(this->tableCard, this->playerCard);
         this->comboLainPair();
