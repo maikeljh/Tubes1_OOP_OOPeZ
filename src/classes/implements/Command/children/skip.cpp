@@ -1,9 +1,9 @@
 #include "../../../headers/Command/children/skip.hpp"
 
-Skip::Skip(){
+/* Ctor */
+Skip::Skip(){}
 
-}
-
+/* Skip the next player turn */
 void Skip::executeAction(UnoGame& UnoGame){
     vector<UnoPlayer>& players = UnoGame.getPlayers();
     players.push_back(players.front());

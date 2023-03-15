@@ -13,10 +13,10 @@ using namespace std;
 template <class T>
 class Player: public InventoryHolder<T>{
     protected:
-        int id;
-        string nickname;
-        vector<T> mainDeck;
-        static int playersCreated;
+        int id; /* Player's ID */
+        string nickname; /* Player's nickname */
+        vector<T> mainDeck; /* Player's deck card */
+        static int playersCreated; /* Determine how many players have been created */
     
     public:
         /* Ctor */

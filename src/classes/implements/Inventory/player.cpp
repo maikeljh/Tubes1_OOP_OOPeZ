@@ -6,6 +6,7 @@ using namespace std;
 template <class T>
 int Player<T>::playersCreated = 0;
 
+/* Ctor */
 template <class T>
 Player<T>::Player(){}
 
@@ -15,6 +16,7 @@ Player<T>::Player(string nickname):id(this->playersCreated+1){
     this->playersCreated++;
 }
 
+/* Getter */
 template <class T>
 string Player<T>::getNickname(){
     return this->nickname;

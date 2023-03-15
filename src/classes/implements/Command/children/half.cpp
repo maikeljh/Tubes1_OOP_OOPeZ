@@ -2,8 +2,10 @@
 
 #include "../../../headers/Command/children/quadruple.hpp"
 
-Half::Half():Command(){}
+/* Ctor */
+Half::Half(){}
 
+/* Execute half point */
 void Half::executeAction(CandyGame& Game){
     cout << endl << Game.getPlayer(0).getNickname() << " melakukan HALF! Poin hadiah";
     long long int prevPoint = Game.getPoint();

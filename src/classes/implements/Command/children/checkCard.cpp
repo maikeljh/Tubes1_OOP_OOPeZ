@@ -2,8 +2,10 @@
 
 using namespace std;
 
-CheckCard::CheckCard():Command(){}
+/* Ctor */
+CheckCard::CheckCard(){}
 
+/* Print available player cards */
 void CheckCard::executeAction(CandyGame& Game){
     CandyPlayer& now = Game.getPlayer(0);
     cout << "\nKartu Pemain " << now.getNickname() << " :" << endl;

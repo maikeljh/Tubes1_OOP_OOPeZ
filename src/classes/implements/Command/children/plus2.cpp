@@ -1,7 +1,9 @@
 #include "../../../headers/Command/children/plus2.hpp"
 
+/* Ctor */
 Plus2::Plus2(){}
 
+/* Give the next player additional two cards and skip his/her turn */
 void Plus2::executeAction(UnoGame& UnoGame){
     UnoPlayer& playernext = UnoGame.getPlayer(1);
     DeckCard<UnoCard>& deck = UnoGame.getDeckCard();

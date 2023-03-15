@@ -1,8 +1,10 @@
 #include "../../../headers/Command/children/reverse.hpp"
 #include "../../../headers/Command/commandParser.hpp"
 
+/* Ctor */
 Reverse::Reverse(){}
 
+/* Reverse the player's order based on requirements from spec */
 void Reverse::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);
     CandyPlayer tempPlayer = Game.getPlayer(0);

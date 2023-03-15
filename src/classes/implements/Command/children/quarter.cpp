@@ -1,7 +1,9 @@
 #include "../../../headers/Command/children/quarter.hpp"
 
+/* Ctor */
 Quarter::Quarter(){}
 
+/* Quarter the current game point */
 void Quarter::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);
     if (playernow.checkValidAbilityCard("QUARTER")){

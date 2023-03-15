@@ -66,7 +66,7 @@ bool UnoCard::getIsNumber(){
     return this->isNumber;
 }
 
-/* other functions */
+/* other methods */
 void UnoCard::printDetail(){
     if(this->isNumber){
         cout << this->number << " " << this->color << endl;

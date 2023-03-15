@@ -2,8 +2,10 @@
 
 using namespace std;
 
+/* Ctor */
 CommandParser::CommandParser(){}
 
+/* Parser */
 Command<CandyGame>* CommandParser::parser(string inputCommand){
     if (inputCommand=="NEXT"){
         Next *next = new Next();

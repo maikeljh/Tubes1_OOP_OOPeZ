@@ -14,15 +14,11 @@ AbilityCard::AbilityCard(string type){
     this->useable = true;
 }
 
-AbilityCard::AbilityCard(const AbilityCard& other){
-    this->type = other.type;
-    this->useable = other.useable;
-}
-
 /* getter */
 string AbilityCard::getType(){
     return this->type;
 }
+
 bool AbilityCard::getUseable(){
     return this->useable;
 }
@@ -31,10 +27,12 @@ bool AbilityCard::getUseable(){
 void AbilityCard::setUseable(bool isUsable){
     useable = isUsable;
 }
+
 void AbilityCard::setType(string type){
     this->type = type;
 }
 
+/* operator overloading */
 bool AbilityCard::operator==(const AbilityCard& other){
     bool valid = other.type == this->type;
     return valid;

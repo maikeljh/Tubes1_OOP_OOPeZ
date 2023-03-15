@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 
+/* Generic function to find the max value*/
 template <class T>
 T maxValue(vector<T>& x){
     T m = x[0];
@@ -13,6 +14,7 @@ T maxValue(vector<T>& x){
     return m;
 }
 
+/* Generic function to find the index of the max value */
 template <class T>
 int findIndexMaxValue(vector<T>& x){
     T maximum = x[0];

@@ -64,7 +64,7 @@ void CandyGame::setPhase(int phase){
 }
 
 
-/* other functions */
+/* other methods */
 void CandyGame::startGame(){
     string name;
     string action = "";

@@ -4,9 +4,9 @@
 using namespace std;
 
 /* ctor */
-Card::Card():Value(){}
+Card::Card(){}
 
-Card::Card(int number, string color):Value(){
+Card::Card(int number, string color){
     this->number = number;
     this->color = color;
 }
@@ -17,12 +17,15 @@ Card& Card::operator=(const Card& C) {
     this->color = C.color;
     return *this;
 }
+
 bool Card::operator> (Card& c){
     return this->value() > c.value();
 }
+
 bool Card::operator< (Card& c){
     return this->value() < c.value();
 }
+
 bool Card::operator== (const Card& c){
     return (this->number == c.number && this->color == c.color);
 }
@@ -31,6 +34,7 @@ bool Card::operator== (const Card& c){
 int Card::getNumber(){
     return this->number;
 }
+
 string Card::getColor(){
     return this->color;
 }
@@ -39,11 +43,12 @@ string Card::getColor(){
 void Card::setNumber(int number) {
     this->number = number;
 }
+
 void Card::setColor(string color){
     this->color = color;
 }
 
-/* other functions */
+/* other methods */
 double Card::value(){
     // Implement High Card
     if(this->color == "Green"){

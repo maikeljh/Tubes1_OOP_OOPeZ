@@ -1,8 +1,10 @@
 #include "../../../headers/Command/children/swapCard.hpp"
 #include <limits>
 
+/* Ctor */
 SwapCard::SwapCard(){}
 
+/* Swap other player's cards with another player's cards */
 void SwapCard::executeAction(CandyGame& Game){
     int playerTurn = 0;
     CandyPlayer& playernow = Game.getPlayer(playerTurn);

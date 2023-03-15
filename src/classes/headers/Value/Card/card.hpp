@@ -7,8 +7,8 @@ using namespace std;
 
 class Card : public Value {
     protected:
-        int number;
-        string color;
+        int number; // The number of the card
+        string color; // The color of the card
 
     public:
         /* ctor */

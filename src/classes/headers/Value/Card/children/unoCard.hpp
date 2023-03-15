@@ -8,7 +8,7 @@ using namespace std;
 
 class UnoCard : public Card, public AbilityCard {
     private:
-        bool isNumber;
+        bool isNumber; // Determine if the card is a basic or an ability UNO card
 
     public:
         /* ctor */

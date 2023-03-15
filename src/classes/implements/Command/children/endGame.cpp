@@ -1,7 +1,9 @@
 #include "../../../headers/Command/children/endGame.hpp"
 
-EndGame::EndGame():Command(){}
+/* Ctor */
+EndGame::EndGame(){}
 
+/* Execute print leaderboard */
 void EndGame::executeAction(CandyGame& Game){
     vector<CandyPlayer>& players = Game.getPlayers();
 
@@ -24,6 +26,7 @@ void EndGame::executeAction(CandyGame& Game){
     this->printWinner(Game);
 }
 
+/* Print winner */
 void EndGame::printWinner(CandyGame& Game){
     int winner = Game.chooseWinner();
     cout << "Permainan dimenangkan oleh " << Game.getPlayer(winner).getNickname() << endl;

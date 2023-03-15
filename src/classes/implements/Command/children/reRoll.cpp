@@ -1,7 +1,9 @@
 #include "../../../headers/Command/children/reRoll.hpp"
 
-ReRoll::ReRoll():Command(){}
+/* Ctor */
+ReRoll::ReRoll(){}
 
+/* Re-roll the current player cards with new cards from deck */
 void ReRoll::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);
     if (playernow.checkValidAbilityCard("RE-ROLL")){

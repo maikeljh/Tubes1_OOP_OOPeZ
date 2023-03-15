@@ -1,8 +1,10 @@
 #include "../../../headers/Command/children/switch.hpp"
 #include <limits>
 
+/* Ctor */
 Switch::Switch(){}
 
+/* Switch the current player's cards with another player's cards */
 void Switch::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);
     if (playernow.getAbilityCard().getType() != "SWITCH"){

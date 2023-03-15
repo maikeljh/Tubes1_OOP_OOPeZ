@@ -46,7 +46,7 @@ void UnoGame::setUNO(bool uno){
     this->UNO = uno;
 }
 
-/* other functions */
+/* other methods */
 void UnoGame::startGame(){
     string name;
     string action = "";

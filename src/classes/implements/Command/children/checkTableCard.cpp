@@ -2,8 +2,10 @@
 
 using namespace std;
 
-CheckTableCard::CheckTableCard():Command(){}
+/* Ctor */
+CheckTableCard::CheckTableCard(){}
 
+/* Print available table cards */
 void CheckTableCard::executeAction(CandyGame& Game){
     TableCard<Card>& now = Game.getTableCard();
     if(now.getNeff() == 0){

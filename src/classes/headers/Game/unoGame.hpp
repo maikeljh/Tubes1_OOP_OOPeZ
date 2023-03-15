@@ -10,11 +10,11 @@ using namespace std;
 
 class UnoGame : public Game {
     private:
-        DeckCard<UnoCard> deck;
-        vector<UnoPlayer> players;
-        TableCard<UnoCard> table;
-        bool alreadyDraw;
-        bool UNO;
+        DeckCard<UnoCard> deck; /* Deck Uno Card */
+        vector<UnoPlayer> players; /* List of Uno Players */
+        TableCard<UnoCard> table; /* Table Uno Card */
+        bool alreadyDraw; /* True if the current player already draw (only 1 draw can be done per turn )*/
+        bool UNO; /* True if someone says UNO! */
 
     public:
         /* ctor */

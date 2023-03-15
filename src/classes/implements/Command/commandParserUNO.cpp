@@ -2,8 +2,10 @@
 
 using namespace std;
 
+/* Ctor */
 CommandParserUNO::CommandParserUNO(){}
 
+/* Parser */
 Command<UnoGame>* CommandParserUNO::parser(string inputCommand){
     if (inputCommand=="DRAW"){
         Draw *draw = new Draw();
@@ -26,5 +28,4 @@ Command<UnoGame>* CommandParserUNO::parser(string inputCommand){
     } else {
         throw CommandInvalidExc();
     }
-
 }

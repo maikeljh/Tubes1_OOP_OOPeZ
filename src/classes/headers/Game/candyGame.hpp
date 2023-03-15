@@ -10,14 +10,14 @@ using namespace std;
 
 class CandyGame : public Game {
     private:
-        int round;
-        long long int point;
-        vector<CandyPlayer> players;
-        DeckCard<Card> deck;
-        DeckCard<AbilityCard> deckAbility;
-        TableCard<Card> table;
-        int phase;
-        const long long int maxPoint = (long long) 1 << 32;
+        int round; /* Determine the current round */
+        long long int point; /* Determine the current game point */
+        vector<CandyPlayer> players; /* List of players */
+        DeckCard<Card> deck; /* Deck Card */
+        DeckCard<AbilityCard> deckAbility; /* Deck Ability Card */
+        TableCard<Card> table; /* Table Card */
+        int phase; /* Determine the current phase */
+        const long long int maxPoint = (long long) 1 << 32; /* Determine the maximum point to win the game */
 
     public:
         /* ctor */

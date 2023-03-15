@@ -1,8 +1,10 @@
 #include "../../../headers/Command/children/draw.hpp"
 using namespace std;
 
-Draw::Draw():Command(){}
+/* Ctor */
+Draw::Draw(){}
 
+/* Execute draw card from UNO deck */
 void Draw::executeAction(UnoGame& Game){
     UnoPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
     

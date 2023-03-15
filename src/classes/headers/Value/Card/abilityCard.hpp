@@ -6,14 +6,13 @@ using namespace std;
 
 class AbilityCard {
     protected:
-        string type;
-        bool useable;
+        string type; // Determine the ability
+        bool useable; // True if the card can be used
     
     public:
         /* ctor */
         AbilityCard();
         AbilityCard(string type);
-        AbilityCard(const AbilityCard& other);
         
         /* operator overloading */
         bool operator==(const AbilityCard&);

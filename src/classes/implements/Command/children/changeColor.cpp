@@ -1,8 +1,10 @@
 #include "../../../headers/Command/children/changeColor.hpp"
 #include <limits>
 
+/* Ctor */
 ChangeColor::ChangeColor(){}
 
+/* Execute change color */
 void ChangeColor::executeAction(UnoGame& UnoGame){
     cout << "\nSilakan pilih warna untuk diganti." << endl;
     cout << "1. Red" << endl;

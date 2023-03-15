@@ -3,12 +3,14 @@
 
 using namespace std;
 
+/* Ctor */
 template <class T>
 DeckCard<T>::DeckCard():DeckCard(0, 108){}
 
 template <class T>
 DeckCard<T>::DeckCard(int neff, int size):neff(neff), size(size){}
 
+/* Operators */
 template <class T>
 DeckCard<T>& DeckCard<T>::operator=(const DeckCard& dc){
     if(this != &dc){
@@ -19,6 +21,53 @@ DeckCard<T>& DeckCard<T>::operator=(const DeckCard& dc){
     return *this;
 }
 
+template <class T>
+DeckCard<T>& DeckCard<T>::operator+(const T& add){
+    this->push(add);
+    return *this;
+}
+
+template <class T>
+DeckCard<T>& DeckCard<T>::operator-(const T& min){
+    for(int i = 0; i < this->deck.size(); i++){
+        if(this->deck[i] == min){
+            this->deck.erase(this->deck.begin() + i);
+            this->neff--;
+            break;
+        }
+    }
+    return *this;
+}
+
+template <class T>
+DeckCard<T>& DeckCard<T>::operator--(){
+    this->pop();
+    return *this;
+}
+
+/* Getter */
+template <class T>
+int DeckCard<T>::getNeff(){
+    return this->neff;
+}
+
+template <class T>
+int DeckCard<T>::getSize(){
+    return this->size;
+}
+
+template <class T>
+T& DeckCard<T>::getCard(int i){
+    return this->deck[i];
+}
+
+/* Setter*/
+template <class T>
+void DeckCard<T>::setCard(const T &card, int i){
+    this->deck[i] = card;
+}
+
+/* Other methods */
 template <class T>
 T DeckCard<T>::pop(){
     this->neff--;
@@ -31,16 +80,6 @@ template <class T>
 void DeckCard<T>::push(const T& Card){
     this->deck.push_back(Card);
     this->neff++;
-}
-
-template <class T>
-int DeckCard<T>::getNeff(){
-    return this->neff;
-}
-
-template <class T>
-int DeckCard<T>::getSize(){
-    return this->size;
 }
 
 template<>
@@ -66,40 +105,6 @@ void DeckCard<UnoCard>::printCard(){
     for(int i = 0; i < this->neff; i++){
         cout << i+1 << ". " << this->deck[i].getNumber() <<  " " << this->deck[i].getColor() << " " << this->deck[i].getType() << endl;
     }
-}
-
-template <class T>
-T& DeckCard<T>::getCard(int i){
-    return this->deck[i];
-}
-
-template <class T>
-void DeckCard<T>::setCard(const T &card, int i){
-    this->deck[i] = card;
-}
-
-template <class T>
-DeckCard<T>& DeckCard<T>::operator+(const T& add){
-    this->push(add);
-    return *this;
-}
-
-template <class T>
-DeckCard<T>& DeckCard<T>::operator-(const T& min){
-    for(int i = 0; i < this->deck.size(); i++){
-        if(this->deck[i] == min){
-            this->deck.erase(this->deck.begin() + i);
-            this->neff--;
-            break;
-        }
-    }
-    return *this;
-}
-
-template <class T>
-DeckCard<T>& DeckCard<T>::operator--(){
-    this->pop();
-    return *this;
 }
 
 template class DeckCard<Card>;

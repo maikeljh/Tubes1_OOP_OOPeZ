@@ -3,15 +3,38 @@
 
 using namespace std;
 
+/* Ctor */
 template <class T>
 TableCard<T>::TableCard(int max):neff(0),max(max){}
 
+/* Getter */
+template <class T>
+vector<T>& TableCard<T>::getTableCard() {
+    return this->listOfCards;
+}
+
+template <class T>
+int TableCard<T>::getNeff(){
+    return this->neff;
+}
+
+template <class T>
+T& TableCard<T>::getTop(){
+    return this->listOfCards.back();
+}
+
+/* Other Methods */
 template <class T>
 void TableCard<T>::push(const T& C){
     if(neff < max){
         listOfCards.push_back(C);
         neff++;
     }
+}
+
+template <class T>
+T TableCard<T>::pop(){
+    return this->listOfCards.back();
 }
 
 template <class T>
@@ -36,24 +59,4 @@ void TableCard<UnoCard>::printCard(){
     for(int i = 0; i < this->neff; i++){
         cout << i+1 << ". " << this->listOfCards[i].getNumber() <<  " " << this->listOfCards[i].getColor() << " " << this->listOfCards[i].getType()  << endl;
     }
-}
-
-template <class T>
-vector<T>& TableCard<T>::getTableCard() {
-    return this->listOfCards;
-}
-
-template <class T>
-int TableCard<T>::getNeff(){
-    return this->neff;
-}
-
-template <class T>
-T& TableCard<T>::getTop(){
-    return this->listOfCards.back();
-}
-
-template <class T>
-T TableCard<T>::pop(){
-    return this->listOfCards.back();
 }

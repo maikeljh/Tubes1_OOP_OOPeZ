@@ -2,6 +2,7 @@
 
 using namespace std;
 
+/* Ctor */
 UnoPlayer::UnoPlayer(){}
 
 UnoPlayer::UnoPlayer(DeckCard<UnoCard> &DC, string nickname):Player(nickname){
@@ -10,6 +11,7 @@ UnoPlayer::UnoPlayer(DeckCard<UnoCard> &DC, string nickname):Player(nickname){
     }
 }
 
+/* Operators */
 UnoPlayer& UnoPlayer::operator+(const UnoCard& add){
     this->push(add);
     return *this;
@@ -30,10 +32,12 @@ UnoPlayer& UnoPlayer::operator--(){
     return *this;
 }
 
+/* Getter */
 UnoCard UnoPlayer::getCard(int index){
     return this->mainDeck[index];
 }
 
+/* Other methods */
 void UnoPlayer::printCard(){
     vector<UnoCard> deck = this->mainDeck;
     for(int i = 0; i < deck.size(); i++){

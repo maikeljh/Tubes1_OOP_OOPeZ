@@ -10,9 +10,9 @@ using namespace std;
 
 class Game {
     protected:
-        const int nPlayers = 7;
-        bool valid;
-        int playerTurn;
+        const int nPlayers = 7; /* Determine how many players should be created in this game */
+        bool valid; /* Valid if the current player finished his/her turn */
+        int playerTurn; /* Determine which current player should be doing action(s) */
 
     public:
         /* ctor */

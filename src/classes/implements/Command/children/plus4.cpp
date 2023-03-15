@@ -1,8 +1,10 @@
 #include "../../../headers/Command/children/plus4.hpp"
 #include "../../../headers/Command/children/changeColor.hpp"
 
+/* Ctor */
 Plus4::Plus4(){}
 
+/* Give the next player additional four cards, skip his/her turn, and choose color */
 void Plus4::executeAction(UnoGame& UnoGame){
     UnoPlayer& playernext = UnoGame.getPlayer(1);
     DeckCard<UnoCard>& deck = UnoGame.getDeckCard();

@@ -1,8 +1,10 @@
 #include "../../../headers/Command/children/pickCard.hpp"
 #include <limits>
 
-PickCard::PickCard():Command(){}
+/* Ctor */
+PickCard::PickCard(){}
 
+/* Choose card to use */
 void PickCard::executeAction(UnoGame& Game){
     // Validasi ada kartu yang bisa dipakai atau tidak
     if(!checkValid(Game)){
@@ -76,6 +78,7 @@ void PickCard::executeAction(UnoGame& Game){
     }
 }
 
+/* Check if the current player can use one of their cards or not */
 bool PickCard::checkValid(UnoGame& Game){
     vector<UnoCard>& now = Game.getPlayer(0).getDeckPlayer();
     for(int i = 0; i < now.size(); i++){

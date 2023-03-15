@@ -2,6 +2,7 @@
 
 using namespace std;
 
+/* Ctor */
 CandyPlayer::CandyPlayer(): Player(){}
 
 CandyPlayer::CandyPlayer(DeckCard<Card>& DC, string nickname): Player(nickname){
@@ -10,6 +11,7 @@ CandyPlayer::CandyPlayer(DeckCard<Card>& DC, string nickname): Player(nickname){
     this->mainDeck.push_back(DC.pop());
 }
 
+/* Operators */
 CandyPlayer& CandyPlayer::operator+(const Card& add){
     this->push(add);
     return *this;
@@ -42,6 +44,24 @@ bool CandyPlayer::operator==(const CandyPlayer& other){
     return (this->point == other.point);
 }
 
+/* Getter */
+Card CandyPlayer::getCard(int index){
+    return this->mainDeck[index];
+}
+
+Combination& CandyPlayer::getCombo(){
+    return this->kombo;
+}
+
+long long int CandyPlayer::getPoint(){
+    return this->point;
+}
+
+AbilityCard& CandyPlayer::getAbilityCard(){
+    return this->ability;
+}
+
+/* Other methods */
 void CandyPlayer::useAbilityCard(){
     this->ability.setUseable(false);
 }
@@ -56,10 +76,6 @@ void CandyPlayer::addAbilityCard(const AbilityCard& AC){
 
 void CandyPlayer::addPoint(long long int round_points){
     this->point += round_points;
-}
-
-Card CandyPlayer::getCard(int index){
-    return this->mainDeck[index];
 }
 
 void CandyPlayer::push(const Card& PC){
@@ -78,16 +94,4 @@ void CandyPlayer::printCard(){
     if(this->ability.getType() != "" && this->ability.getUseable()){
         cout << "3. " << this->ability.getType() << " Ability Card" << endl;
     }
-}
-
-Combination& CandyPlayer::getCombo(){
-    return this->kombo;
-}
-
-long long int CandyPlayer::getPoint(){
-    return this->point;
-}
-
-AbilityCard& CandyPlayer::getAbilityCard(){
-    return this->ability;
 }

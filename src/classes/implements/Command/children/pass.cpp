@@ -2,8 +2,10 @@
 
 using namespace std;
 
-Pass::Pass():Command(){}
+/* Ctor */
+Pass::Pass(){}
 
+/* Pass the current player turn */
 void Pass::executeAction(UnoGame& Game){
     if(Game.getAlreadyDraw()){
         cout << "\nGiliran dilanjut ke pemain selanjutnya." << endl;

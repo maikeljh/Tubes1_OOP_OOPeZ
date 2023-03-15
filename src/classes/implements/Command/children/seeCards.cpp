@@ -1,7 +1,9 @@
 #include "../../../headers/Command/children/seeCards.hpp"
 
-SeeCards::SeeCards() : Command() {}
+/* Ctor */
+SeeCards::SeeCards(){}
 
+/* See the current player's cards */
 void SeeCards::executeAction(UnoGame &unogame) {
     unogame.getPlayer(0).printCard();
 }

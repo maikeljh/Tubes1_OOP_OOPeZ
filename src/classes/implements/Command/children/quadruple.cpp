@@ -1,7 +1,9 @@
 #include "../../../headers/Command/children/quadruple.hpp"
 
+/* Ctor */
 Quadruple::Quadruple(){}
 
+/* Quadruple the current game point */
 void Quadruple::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);
     if (playernow.checkValidAbilityCard("QUADRUPLE")){

@@ -13,9 +13,9 @@ using namespace std;
 
 class CandyPlayer: public Player<Card>{
     private:
-        long long int point;
-        AbilityCard ability;
-        Combination kombo;
+        long long int point; /* Determine the player's point */
+        AbilityCard ability; /* Player's ability card */
+        Combination kombo; /* Player's combo */
     
     public:
         /* Ctor */

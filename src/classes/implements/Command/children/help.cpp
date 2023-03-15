@@ -1,9 +1,11 @@
 #include "../../../headers/Command/children/help.hpp"
 
-Help::Help() : Command() {}
+/* Ctor */
+Help::Help(){}
 
+/* Print all available commands to use */
 void Help::executeAction(CandyGame &candyGame) {
-    cout << "Berikut adalah beberapa command yang dapat dilakukan pemain" << endl;
+    cout << "\nBerikut adalah beberapa command yang dapat dilakukan pemain" << endl;
     cout << "1. NEXT : command ini tidak melakukan apa-apa dan giliran diteruskan ke pemain selanjutnya" << endl;
     cout << "2. DOUBLE : command ini digunakan untuk membuat poin hadiah berjumlah 2x dari sebelumnya" << endl;
     cout << "3. CHECKCARD : command ini digunakan untuk melihat kartu yang dimiliki pemain" << endl;
@@ -15,5 +17,5 @@ void Help::executeAction(CandyGame &candyGame) {
     cout << "9. REVERSE : command ini hanya dapat digunakan apabila pemain memiliki Reverse Card, dimana command ini akan memutar arah giliran pada giliran selanjutnya" << endl;
     cout << "10. SWAPCARD : command ini hanya dapat digunakan apabila pemain memiliki SwapCard Card, dimana command ini akan menukar 1 kartu main deck pemilik lain dengan 1 kartu main deck milik pemain lain. Tidak boleh ditukar dengan kartu main deck diri sendiri" << endl;
     cout << "11. SWITCH : command ini hanya dapat digunakan apabila pemain memiliki Switch Card, dimana command ini akan menukarkan 2 kartu main deck milik diri sendiri dengan 2 kartu main deck milik pemain lain. Harus menukar milik diri sendiri dengan pemain lain" << endl;
-    cout << "12. ABILITYLESS : command ini hanya dapat digunakan apabila pemain memiliki Abilityless Card, dimana command ini akan mematikan kartu ability pemain lain" << endl;
+    cout << "12. ABILITYLESS : command ini hanya dapat digunakan apabila pemain memiliki Abilityless Card, dimana command ini akan mematikan kartu ability pemain lain\n" << endl;
 }

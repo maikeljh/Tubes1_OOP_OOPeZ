@@ -1,7 +1,9 @@
 #include "../../../headers/Command/children/sayUno.hpp"
 
-SayUno::SayUno():Command(){}
+/* Ctor */
+SayUno::SayUno(){}
 
+/* Say UNO */
 void SayUno::executeAction(UnoGame& Game){
     UnoPlayer& playernow = Game.getPlayer(Game.getPlayerTurn());
     if (playernow.getDeckPlayer().size() == 2){

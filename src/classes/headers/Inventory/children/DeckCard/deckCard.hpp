@@ -13,9 +13,9 @@ using namespace std;
 template <class T>
 class DeckCard: public InventoryHolder<T>{
     private:
-        vector<T> deck;
-        int neff;
-        int size;
+        vector<T> deck; /* List of cards */
+        int neff; /* Determine how many cards are currently in the deck */
+        int size; /* Determine the maximum size of the deck */
     
     public:
         /* Ctor */

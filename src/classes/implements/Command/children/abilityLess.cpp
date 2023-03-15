@@ -2,8 +2,10 @@
 #include "../../../headers/Exception/exception.h"
 #include <limits>
 
+/* Ctor */
 Abilityless::Abilityless(){}
 
+/* Execute abilityless */
 void Abilityless::executeAction(CandyGame& Game){
     CandyPlayer& playernow = Game.getPlayer(0);
     int playerTurn = 0;
