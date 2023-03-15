@@ -83,9 +83,15 @@ void CandyPlayer::push(const Card& PC){
 }
 
 Card CandyPlayer::pop(){
-    Card PCx = this->mainDeck.back();
-    this->mainDeck.pop_back();
-    return PCx;
+    Card PCx;
+    if(this->mainDeck.size() > 0){
+        PCx = this->mainDeck.back();
+        this->mainDeck.pop_back();
+        return PCx;
+    } else {
+        cout << "\nKartu player sudah kosong" << endl;
+        return PCx;
+    }
 }
 
 void CandyPlayer::printCard(){

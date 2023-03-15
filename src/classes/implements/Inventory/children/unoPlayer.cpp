@@ -54,7 +54,13 @@ void UnoPlayer::push(const UnoCard& PC){
 }
 
 UnoCard UnoPlayer::pop(){
-    UnoCard PCx = this->mainDeck.back();
-    this->mainDeck.pop_back();
-    return PCx;
+    UnoCard PCx;
+    if(this->mainDeck.size() > 0){
+        PCx = this->mainDeck.back();
+        this->mainDeck.pop_back();
+        return PCx;
+    } else {
+        cout << "\nKartu player sudah kosong" << endl;
+        return PCx;
+    }
 }

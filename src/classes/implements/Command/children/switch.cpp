@@ -10,6 +10,8 @@ void Switch::executeAction(CandyGame& Game){
     if (playernow.getAbilityCard().getType() != "SWITCH"){
         cout << "\nEits, kamu tidak memiliki kartu SWITCH!\n" << endl;
     } else if (playernow.getAbilityCard().getUseable()){
+        playernow.useAbilityCard();
+        
         cout << endl << playernow.getNickname() << " melakukan switch!" << endl;
         cout << "Kartumu sekarang adalah:" << endl;
         playernow.printCard();
@@ -42,8 +44,6 @@ void Switch::executeAction(CandyGame& Game){
                 cout << err.what() << endl;
             }
         }
-
-        playernow.useAbilityCard();
 
         // switch
         CandyPlayer& playerSwitch = Game.getPlayer(idxSwitch);

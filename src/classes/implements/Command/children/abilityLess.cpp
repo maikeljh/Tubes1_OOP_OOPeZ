@@ -11,12 +11,14 @@ void Abilityless::executeAction(CandyGame& Game){
     int playerTurn = 0;
     vector<CandyPlayer> players;
     vector<int> indexPlayers;
+
     for (int i = 0; i < Game.getNPlayers(); i++){
         if(i != playerTurn){
             players.push_back(Game.getPlayer(i));
             indexPlayers.push_back(i);
         }
     }
+
     if (playernow.checkValidAbilityCard("ABILITYLESS")){
         if(!playernow.getAbilityCard().getUseable()){
             cout << "\nKartu Abilityless kamu sudah dipakai :(" << endl;
@@ -64,12 +66,14 @@ void Abilityless::executeAction(CandyGame& Game){
                 cout << "Yah, sayang penggunaan kartu ini sia-sia :(" << endl;
             }
         }
+        
         Game.setValid(true);
     } else {
         cout << "\nEits, kamu tidak punya kartunya :P\n" << endl;
     }
 }
 
+/* Check if all other players' ability have been used */
 bool Abilityless::isAllAbilityUsed(vector<CandyPlayer> players){
     for (int i = 0; i < players.size(); i++){
         if (players[i].getAbilityCard().getUseable()){

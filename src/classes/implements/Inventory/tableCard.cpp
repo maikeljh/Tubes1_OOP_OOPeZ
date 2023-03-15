@@ -34,7 +34,16 @@ void TableCard<T>::push(const T& C){
 
 template <class T>
 T TableCard<T>::pop(){
-    return this->listOfCards.back();
+    T C;
+    if(this->neff > 0){
+        this->neff--;
+        C = this->listOfCards.back();
+        this->listOfCards.pop_back();
+        return C;
+    } else {
+        cout << "\nTable sudah kosong" << endl;
+        return C;
+    }
 }
 
 template <class T>

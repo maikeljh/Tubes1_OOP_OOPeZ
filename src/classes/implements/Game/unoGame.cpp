@@ -34,7 +34,7 @@ bool UnoGame::getUNO(){
 }
 
 UnoCard UnoGame::getTop(){
-    return this->table.pop();
+    return this->table.getTableCard().back();
 }
 
 /* setter */
@@ -88,6 +88,7 @@ void UnoGame::startGame(){
 
     CardGenerator CG;
 
+    /* Read config file or generate order cards */
     while(action != "y" && action != "n" && action != "no" && action != "yes"){
         try {
             cout << "\nApakah urutan kartu ingin dibaca dari file? (y or n) : ";
@@ -121,31 +122,33 @@ void UnoGame::startGame(){
     cout << "Urutan kartu berhasil dibuat" << endl;
     cout << "\nSilahkan input nama-nama pemain" << endl;
 
+    /* Create players */
     for(int i = 1; i <= 7; i++){
         cout << "Pemain " << i << ": ";
         cin >> name;
         UnoPlayer newPlayer = UnoPlayer(this->deck, name);
         this->players.push_back(newPlayer);
     }
-    
+
+    /* Create command parser */
     CommandParserUNO CP;
     string command;
 
-    // Initialize Card
+    // Initialize First Card
     bool flag = false;
     while(!flag){
         this->getTableCard().push(this->deck.pop());
+        /* If top of the table card is CHANGECOLOR */
         if(this->getTop().getType()=="CHANGECOLOR"){
             cout<<"\nKartu pertama adalah Wild Card Change Color"<<endl;
-            ChangeColor().executeAction(*this);
+            ChangeColor *changeColor = new ChangeColor();
+            changeColor->executeAction(*this);
             flag = true;
+            delete changeColor;
         }
-        else if(this->getTop().getType()=="PLUS4"){
-            UnoCard temp = this->getDeckCard().getCard(1);
-            for (int i = 0;i<this->getDeckCard().getSize()-1;i++){
-                this->getDeckCard().setCard(this->getDeckCard().getCard(i),i+1);
-                temp = this->getDeckCard().getCard(i+2);
-            }
+        else if(this->getTop().getType()=="PLUS4"){ /* If top of the table card is PLUS4 */
+            vector<UnoCard>& TC = this->getTableCard().getTableCard();
+            TC.insert(TC.begin(), this->getTop());
             this->getTableCard().clearTable();
             cout<<"\nKartu pertama adalah Wild Card PLUS4, mengulangi pengambilan kartu pertama."<<endl;
             cout<<"Pengambilan ulang kartu pertama ..."<<endl;
@@ -155,6 +158,7 @@ void UnoGame::startGame(){
         }
     }
 
+    /* While no player has zero card left */
     while(!isEndGame()){
         cout << "\nKartu baru di atas meja adalah ";
         this->getTop().printDetail();
@@ -202,11 +206,13 @@ void UnoGame::startGame(){
         }
     }
 
+    /* Choose winner of the game */
     int winner = this->chooseWinner();
     cout << "\nPermainan berakhir." << endl;
     cout << "Permainan dimenangkan oleh " << this->getPlayer(winner).getNickname() << endl;
 }
 
+/* Choose the index of the game winner*/
 int UnoGame::chooseWinner(){
     for(int i = 0; i < 7; i++){
         if(this->players[i].getDeckPlayer().size() == 0){
@@ -217,6 +223,7 @@ int UnoGame::chooseWinner(){
     return -1;
 }
 
+/* Check if the game has ended or not */
 bool UnoGame::isEndGame(){
     for(int i = 0; i < 7; i++){
         if(this->players[i].getDeckPlayer().size() == 0){
