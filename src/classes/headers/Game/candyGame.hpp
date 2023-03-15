@@ -22,7 +22,6 @@ class CandyGame : public Game {
     public:
         /* ctor */
         CandyGame();
-        CandyGame(const CandyGame& other);
 
         /* getter */
         int getRound();
