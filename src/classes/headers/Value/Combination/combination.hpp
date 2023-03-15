@@ -14,6 +14,7 @@ class Combination : public Value{
         vector<Card> comboCard;
         vector<Card> playerCard;
         vector<Card> tableCard;
+        
     public:
         Combination();
         ~Combination();

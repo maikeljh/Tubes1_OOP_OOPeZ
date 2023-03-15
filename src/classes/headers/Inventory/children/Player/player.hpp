@@ -30,7 +30,9 @@ class Player: public InventoryHolder<T>{
         int getID();
         vector<T>& getDeckPlayer();
 };
+
 template class Player<Card>;
 template class Player<AbilityCard>;
 template class Player<UnoCard>;
+
 #endif

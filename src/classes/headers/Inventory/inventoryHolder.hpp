@@ -13,7 +13,9 @@ class InventoryHolder {
         virtual void push(const T&) = 0;
         virtual T pop() = 0;
 };
+
 template class InventoryHolder<Card>;
 template class InventoryHolder<AbilityCard>;
 template class InventoryHolder<UnoCard>;
+
 #endif

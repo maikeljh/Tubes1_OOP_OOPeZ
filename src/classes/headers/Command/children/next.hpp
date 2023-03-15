@@ -9,7 +9,7 @@ using namespace std;
 
 class Next: public Command<CandyGame> {
     public:
-        Next(); // ID = 1
+        Next();
         void executeAction(CandyGame& Game);
 };
 

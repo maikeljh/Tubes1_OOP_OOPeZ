@@ -11,7 +11,7 @@ using namespace std;
 template <class T>
 class Command { 
     public:
-        /* Functions */        
+        /* Function */        
         virtual void executeAction(T&) = 0;
 };
 

@@ -6,32 +6,32 @@
 using namespace std;
 
 class GameException : public exception{
-public:
-    virtual const char* what() const throw()=0;
+    public:
+        virtual const char* what() const throw()=0;
 };
 
 class CommandInvalidExc : public GameException{
-public:
-    const char* what() const throw();
+    public:
+        const char* what() const throw();
 };
 
 class InputNumberInvalidExc : public GameException{
-public:
-    const char* what() const throw();
+    public:
+        const char* what() const throw();
 };
 
 class InputActionInvalidExc : public GameException{
-public:
-    const char* what() const throw();
+    public:
+        const char* what() const throw();
 };
 
 class FileInvalidExc : public GameException{
-public:
-    const char* what() const throw();
+    public:
+        const char* what() const throw();
 };
 
 class ConfigInvalidExc : public GameException{
-public:
-    const char* what() const throw();
+    public:
+        const char* what() const throw();
 };
 #endif

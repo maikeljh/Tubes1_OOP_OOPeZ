@@ -7,9 +7,9 @@
 using namespace std;
 
 class UnoReverse: public Command<UnoGame>{
-public:
-    UnoReverse();
-    void executeAction(UnoGame&);
+    public:
+        UnoReverse();
+        void executeAction(UnoGame&);
 };
 
 #endif
