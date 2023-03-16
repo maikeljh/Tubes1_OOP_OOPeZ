@@ -145,11 +145,12 @@ Berikut keperluan untuk menjalankan permainan:
 * Makefile
 
 Apabila belum terdapat makefile dan g++, instalasi bisa menggunakan command
+
 `sudo apt-get install build-essential`
 
 ## Cara Kompilasi Program
 1. Masuk ke direktori utama dari program, yaitu pada folder Tubes1_OOP_OOPeZ.
-2. jalankan command `make build` untuk mengkompilasi keseluruhan program.
+2. Jalankan command `make build` untuk mengkompilasi keseluruhan program.
 
 ## Cara Menjalankan Program
 1. Jalankan command `./bin/main` atau `make run` untuk menjalankan program pada direktori utama dari prorgram.
