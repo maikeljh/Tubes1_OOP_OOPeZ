@@ -24,34 +24,34 @@ Dalam rangka merayakan pesta panen gula di kerajaan permen, akan diadakan kompet
 |   ├─── classes
 |   |   ├─── headers
 |   |   |   ├─── CardGenerator
-|   |   |   |  ├─── cardGenerator.hpp
+|   |   |   |   ├─── cardGenerator.hpp
 |   |   |   ├─── Command
-|   |   |   |  ├─── children
-|   |   |   |  |    ├─── abilityLess.hpp
-|   |   |   |  |    ├─── changeColor.hpp
-|   |   |   |  |    ├─── checkCard.hpp
-|   |   |   |  |    ├─── checkTableCard.hpp
-|   |   |   |       ├─── double.hpp
-|   |   |   |       ├─── draw.hpp
-|   |   |   |       ├─── endGame.hpp
-|   |   |   |       ├─── half.hpp
-|   |   |   |       ├─── help.hpp
-|   |   |   |       ├─── helpUno.hpp
-|   |   |   |       ├─── next.hpp
-|   |   |   |       ├─── pass.hpp
-|   |   |   |       ├─── pickCard.hpp
-|   |   |   |       ├─── plus2.hpp
-|   |   |   |       ├─── plus4.hpp
-|   |   |   |       ├─── quadruple.hpp
-|   |   |   |       ├─── quarter.hpp
-|   |   |   |       ├─── reRoll.hpp
-|   |   |   |       ├─── reverse.hpp
-|   |   |   |       ├─── sayUno.hpp
-|   |   |   |       ├─── seeCards.hpp
-|   |   |   |       ├─── skip.hpp
-|   |   |   |       ├─── swapCard.hpp
-|   |   |   |       ├─── switch.hpp
-|   |   |   |       ├─── unoReverse.hpp
+|   |   |   |   ├─── children
+|   |   |   |   |   ├─── abilityLess.hpp
+|   |   |   |   |   ├─── changeColor.hpp
+|   |   |   |   |   ├─── checkCard.hpp
+|   |   |   |   |   ├─── checkTableCard.hpp
+|   |   |   |   |   ├─── double.hpp
+|   |   |   |   |   ├─── draw.hpp
+|   |   |   |   |   ├─── endGame.hpp
+|   |   |   |   |   ├─── half.hpp
+|   |   |   |   |   ├─── help.hpp
+|   |   |   |   |   ├─── helpUno.hpp
+|   |   |   |   |   ├─── next.hpp
+|   |   |   |   |   ├─── pass.hpp
+|   |   |   |   |   ├─── pickCard.hpp
+|   |   |   |   |   ├─── plus2.hpp
+|   |   |   |   |   ├─── plus4.hpp
+|   |   |   |   |   ├─── quadruple.hpp
+|   |   |   |   |   ├─── quarter.hpp
+|   |   |   |   |   ├─── reRoll.hpp
+|   |   |   |   |   ├─── reverse.hpp
+|   |   |   |   |   ├─── sayUno.hpp
+|   |   |   |   |   ├─── seeCards.hpp
+|   |   |   |   |   ├─── skip.hpp
+|   |   |   |   |   ├─── swapCard.hpp
+|   |   |   |   |   ├─── switch.hpp
+|   |   |   |   |   ├─── unoReverse.hpp
 |   |   |   |   ├─── command.hpp
 |   |   |   |   ├─── commandParser.hpp
 |   |   |   |   ├─── commandParserUNO.hpp
@@ -63,31 +63,31 @@ Dalam rangka merayakan pesta panen gula di kerajaan permen, akan diadakan kompet
 |   |   |   |   ├─── unoGame.hpp
 |   |   |   ├─── Inventory
 |   |   |   |   ├─── children
-|   |   |   |       ├─── DeckCard
-|   |   |   |           ├─── deckCard.hpp
-|   |   |   |       ├─── Player
-|   |   |   |           ├─── candyPlayer.hpp
-|   |   |   |           ├─── player.hpp
-|   |   |   |           ├─── unoPlayer.hpp
-|   |   |   |       ├─── TableCard
-|   |   |   |           ├─── tableCard.hpp
+|   |   |   |   |   ├─── DeckCard
+|   |   |   |   |   |   ├─── deckCard.hpp
+|   |   |   |   |   ├─── Player
+|   |   |   |   |   |   ├─── candyPlayer.hpp
+|   |   |   |   |   |   ├─── player.hpp
+|   |   |   |   |   |   ├─── unoPlayer.hpp
+|   |   |   |   |   ├─── TableCard
+|   |   |   |   |   |   ├─── tableCard.hpp
 |   |   |   |   ├─── inventoryHolder.hpp
 |   |   |   ├─── Value
 |   |   |       ├─── Card
-|   |   |           ├─── children
-|   |   |               ├─── unoCard.hpp
-|   |   |           ├─── abilityCard.hpp
-|   |   |           ├─── card.hpp
+|   |   |       |   ├─── children
+|   |   |       |   |   ├─── unoCard.hpp
+|   |   |       |   ├─── abilityCard.hpp
+|   |   |       |   ├─── card.hpp
 |   |   |       ├─── Combination
-|   |   |           ├─── combination.hpp
+|   |   |       |   ├─── combination.hpp
 |   |   |       ├─── value.hpp
 |   |   |─── implements
 |   |       ├─── CardGenerator
 |   |       |   ├─── cardGenerator.cpp
 |   |       ├─── Combination
-|   |           ├─── combination.cpp
+|   |       |   ├─── combination.cpp
 |   |       ├─── Command
-|   |           ├─── children
+|   |       |   ├─── children
 |   |       |   |   ├─── abilityLess.cpp
 |   |       |   |   ├─── changeColor.cpp
 |   |       |   |   ├─── checkCard.cpp
@@ -148,11 +148,11 @@ Apabila belum terdapat makefile dan g++, instalasi bisa menggunakan command
 `sudo apt-get install build-essential`
 
 ## Cara Kompilasi Program
-1. Masuk ke directory utama dari program, yaitu pada folder Tubes1_OOP_OOPeZ.
+1. Masuk ke direktori utama dari program, yaitu pada folder Tubes1_OOP_OOPeZ.
 2. jalankan command `make build` untuk mengkompilasi keseluruhan program.
 
 ## Cara Menjalankan Program
-1. Jalankan command `./bin/main` atau `make run` untuk menjalankan program pada directory utama dari prorgram.
+1. Jalankan command `./bin/main` atau `make run` untuk menjalankan program pada direktori utama dari prorgram.
 
 ## Dibuat oleh
 * Nama: Arleen Chrysantha Gunardi
