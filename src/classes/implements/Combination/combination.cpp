@@ -546,14 +546,31 @@ void Combination::straight() { //Mengatur combo card menjadi kartu - kartu combo
         }
     }
 
-    for (int i = idx; i <= this->comboCard.size()-1; i++) {
+    int i = idx;
+    while (i <= this->comboCard.size()-1 && this->combo.size() < 5) {
         if (this->comboCard[i].getNumber() != this->comboCard[i+1].getNumber()) {
             combo.push_back(this->comboCard[i]);
         }
-        if (combo.size() == 5) {
-            break;
+        else if (this->comboCard[i].getNumber() == this->comboCard[i+1].getNumber()) {
+            if (this->comboCard[i] == this->playerCard[0] || this->comboCard[i] == this->playerCard[1]) {
+                combo.push_back(this->comboCard[i]);
+            }
+            else if (this->comboCard[i+1] == this->playerCard[0] || this->comboCard[i+1] == this->playerCard[1]) {
+                combo.push_back(this->comboCard[i+1]);
+            }
+            i++;
         }
+        i++;
     }
+
+    // for (int i = idx; i <= this->comboCard.size()-1; i++) {
+    //     if (this->comboCard[i].getNumber() != this->comboCard[i+1].getNumber()) {
+    //         combo.push_back(this->comboCard[i]);
+    //     }
+    //     if (combo.size() == 5) {
+    //         break;
+    //     }
+    // }
 
     this->comboCard.clear();
     this->setComboCard(combo);
