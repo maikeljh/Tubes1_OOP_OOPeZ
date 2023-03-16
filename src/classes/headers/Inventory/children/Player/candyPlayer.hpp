@@ -24,6 +24,7 @@ class CandyPlayer: public Player<Card>{
 
         /* Operator overloading */
         CandyPlayer& operator+(const Card& add);
+        CandyPlayer& operator+(long long int point);
         CandyPlayer& operator-(const Card& add);
         CandyPlayer& operator--();
         bool operator>(const CandyPlayer& other);
@@ -31,7 +32,6 @@ class CandyPlayer: public Player<Card>{
         bool operator==(const CandyPlayer& other);
 
         /* Getter */
-        Card getCard(int index);
         Combination& getCombo();
         long long int getPoint();
         AbilityCard& getAbilityCard();
@@ -40,9 +40,6 @@ class CandyPlayer: public Player<Card>{
         void useAbilityCard();
         bool checkValidAbilityCard(string ability);
         void addAbilityCard(const AbilityCard& AC);
-        void addPoint(long long int);
-        void push(const Card& PC);
-        Card pop();
         void printCard();
 };
 

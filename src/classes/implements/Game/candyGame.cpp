@@ -223,7 +223,7 @@ void CandyGame::startGame(){
 
         /* Choose round winner and print */
         int roundWinner = this->chooseRoundWinner();
-        this->players[roundWinner].addPoint(this->point);
+        this->players[roundWinner] = this->players[roundWinner] + this->point;
         cout << "\nSelamat kepada pemain " << this->players[roundWinner].getNickname() << " telah memenangkan babak dan memperoleh poin sebanyak " << this->point << endl;
         cout << "Dengan combo "; this->players[roundWinner].getCombo().printCombo();
         cout << "Kartu player " << this->players[roundWinner].getNickname() << endl;

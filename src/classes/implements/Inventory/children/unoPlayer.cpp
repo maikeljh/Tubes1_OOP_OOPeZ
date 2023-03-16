@@ -6,9 +6,7 @@ using namespace std;
 UnoPlayer::UnoPlayer(){}
 
 UnoPlayer::UnoPlayer(DeckCard<UnoCard> &DC, string nickname):Player(nickname){
-    for (int i = 0; i < 7; i++){
-        this->mainDeck.push_back(DC.pop());
-    }
+    this->push(DC, 7);
 }
 
 /* Operators */
@@ -32,11 +30,6 @@ UnoPlayer& UnoPlayer::operator--(){
     return *this;
 }
 
-/* Getter */
-UnoCard UnoPlayer::getCard(int index){
-    return this->mainDeck[index];
-}
-
 /* Other methods */
 void UnoPlayer::printCard(){
     vector<UnoCard> deck = this->mainDeck;
@@ -46,21 +39,5 @@ void UnoPlayer::printCard(){
         } else {
             cout << i+1 << ". " << deck[i].getType() << " " << deck[i].getColor() << endl;
         }
-    }
-}
-
-void UnoPlayer::push(const UnoCard& PC){
-   this->mainDeck.push_back(PC);
-}
-
-UnoCard UnoPlayer::pop(){
-    UnoCard PCx;
-    if(this->mainDeck.size() > 0){
-        PCx = this->mainDeck.back();
-        this->mainDeck.pop_back();
-        return PCx;
-    } else {
-        cout << "\nKartu player sudah kosong" << endl;
-        return PCx;
     }
 }
