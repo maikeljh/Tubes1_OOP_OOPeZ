@@ -15,12 +15,14 @@ void SayUno::executeAction(UnoGame& Game){
         cout << "\nKartu yang didapat oleh " << playernow.getNickname() << ":\n";
         playernow = playernow + Game.getDeckCard().pop();
         playernow = playernow + Game.getDeckCard().pop();
+
         int count = 0;
         while (count < 2){
             cout << count+1 << ". ";
             playernow.getCard(playernow.getDeckPlayer().size()+(count-2)).printDetail();
             count++;
         }
+        
         cout << endl;
     }
 }

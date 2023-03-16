@@ -24,7 +24,7 @@ int Game::getPlayerTurn(){
     return this->playerTurn;
 }
 
-/* setter*/
+/* setter */
 void Game::setPlayerTurn(int turn){
     this->playerTurn = turn;
 }

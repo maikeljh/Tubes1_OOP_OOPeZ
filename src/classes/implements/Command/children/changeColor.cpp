@@ -44,7 +44,7 @@ void ChangeColor::executeAction(UnoGame& UnoGame){
         } else if (colorInput==3){
             topCard.setColor("Blue");
         } else {
-            // colorInput==4
+            // colorInput == 4
             topCard.setColor("Yellow");
         }
     }

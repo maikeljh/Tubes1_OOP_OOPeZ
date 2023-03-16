@@ -8,12 +8,14 @@ using namespace std;
 
 int main(){
     while(true){
+        /* Choose which game to play */
         cout << "\nPlease choose a game :\n1. Candy Game\n2. Uno Game" << endl;
         string action = "";
         while(action != "1" && action != "2"){
             try {
                 cout << "Enter option (1 or 2): ";
                 cin >> action;
+                /* Handling exception */
                 if(cin.fail()){
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(),'\n');
@@ -26,6 +28,8 @@ int main(){
                 cout << err.what() << endl;
             }
         }
+
+        /* Run Game */
         if(action == "1"){
             CandyGame GG;
             GG.startGame();
@@ -34,6 +38,7 @@ int main(){
             GG.startGame();
         }
 
+        /* Choose to play again or exit */
         action = "";
         cout << "\nLanjut?\n   1. Main Lagi\n   2. Exit" << endl;
         while(action != "1" && action != "2"){

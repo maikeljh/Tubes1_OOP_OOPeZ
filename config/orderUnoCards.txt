@@ -1,4 +1,4 @@
-10 Black CHANGECOLOR
+1 Yellow NONE
 9 Red NONE
 6 Blue NONE
 4 Green NONE
@@ -55,7 +55,7 @@
 10 Blue UNOREVERSE
 4 Yellow NONE
 10 Yellow SKIP
-1 Yellow NONE
+10 Black CHANGECOLOR
 10 Black PLUS4
 7 Green NONE
 10 Yellow SKIP

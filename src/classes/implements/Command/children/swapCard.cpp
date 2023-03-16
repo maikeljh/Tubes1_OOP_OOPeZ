@@ -12,8 +12,10 @@ void SwapCard::executeAction(CandyGame& Game){
         cout << "\nEits, kamu tidak memiliki kartu SWAPCARD!\n" << endl;
     } else if (playernow.getAbilityCard().getUseable()){
         cout << endl << playernow.getNickname() << " melakukan SWAPCARD." << endl;
+
         pair<int,int> playerSwap;
         vector<int> indexPlayers;
+        
         // Choose 1st player to be swapped
         cout << "Silahkan pilih pemain yang kartunya ingin anda tukar:" << endl;
         for (int i = 0; i < Game.getNPlayers(); i++){

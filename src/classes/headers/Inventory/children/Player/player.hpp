@@ -23,10 +23,11 @@ class Player: public InventoryHolder<T>{
         Player();
         Player(string nickname);
 
-        /* Pure virtual methods */
-        virtual T getCard(int index) = 0;
-        virtual void push(const T& PC) = 0;
-        virtual T pop() = 0;
+        /* Other Methods */
+        T getCard(int index);
+        void push(const T& PC);
+        void push(DeckCard<T>& DC, int count);
+        T pop();
         virtual void printCard() = 0;
 
         /* Getter */

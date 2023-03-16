@@ -18,15 +18,15 @@ Card& Card::operator=(const Card& C) {
     return *this;
 }
 
-bool Card::operator> (Card& c){
+bool Card::operator>(Card& c){
     return this->value() > c.value();
 }
 
-bool Card::operator< (Card& c){
+bool Card::operator<(Card& c){
     return this->value() < c.value();
 }
 
-bool Card::operator== (const Card& c){
+bool Card::operator==(const Card& c){
     return (this->number == c.number && this->color == c.color);
 }
 

@@ -70,16 +70,24 @@ void DeckCard<T>::setCard(const T &card, int i){
 /* Other methods */
 template <class T>
 T DeckCard<T>::pop(){
-    this->neff--;
-    T C = this->deck[this->neff];
-    this->deck.pop_back();
-    return this->deck[this->neff];
+    T C;
+    if(this->neff > 0){
+        this->neff--;
+        C = this->deck[this->neff];
+        this->deck.pop_back();
+        return C;
+    } else {
+        cout << "\nDeck card sudah kosong" << endl;
+        return C;
+    }
 }
 
 template <class T>
 void DeckCard<T>::push(const T& Card){
-    this->deck.push_back(Card);
-    this->neff++;
+    if(this->neff < this->size){
+        this->deck.push_back(Card);
+        this->neff++;
+    }
 }
 
 template<>

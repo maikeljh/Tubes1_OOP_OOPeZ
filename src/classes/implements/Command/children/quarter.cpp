@@ -13,12 +13,14 @@ void Quarter::executeAction(CandyGame& Game){
             cout << endl << playernow.getNickname() << " melakukan QUARTER! Poin hadiah";
             long long int prevPoint = Game.getPoint();
             Game.setPoint(prevPoint*0.25);
+
             if(Game.getPoint() == 0){
                 Game.setPoint(1);
                 cout << " tetap bernilai " << Game.getPoint() << "!" << endl;
             } else {
                 cout << " turun dari " << prevPoint << " menjadi " << Game.getPoint() << "!" << endl;
             }
+            
             playernow.useAbilityCard();
             Game.setValid(true);
         }

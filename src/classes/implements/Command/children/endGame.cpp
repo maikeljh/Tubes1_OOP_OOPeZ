@@ -23,6 +23,7 @@ void EndGame::executeAction(CandyGame& Game){
     for(int i = 0; i < players.size(); i++){
         cout << "   " << i+1 << ". " << players[i].getNickname() << ": " << players[i].getPoint() << endl;
     }
+    
     this->printWinner(Game);
 }
 

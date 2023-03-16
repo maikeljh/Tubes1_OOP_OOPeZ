@@ -7,13 +7,17 @@ CandyPlayer::CandyPlayer(): Player(){}
 
 CandyPlayer::CandyPlayer(DeckCard<Card>& DC, string nickname): Player(nickname){
     this->point = 0;
-    this->mainDeck.push_back(DC.pop());
-    this->mainDeck.push_back(DC.pop());
+    this->push(DC, 2);
 }
 
 /* Operators */
 CandyPlayer& CandyPlayer::operator+(const Card& add){
     this->push(add);
+    return *this;
+}
+
+CandyPlayer& CandyPlayer::operator+(long long int point){
+    this->point += point;
     return *this;
 }
 
@@ -45,10 +49,6 @@ bool CandyPlayer::operator==(const CandyPlayer& other){
 }
 
 /* Getter */
-Card CandyPlayer::getCard(int index){
-    return this->mainDeck[index];
-}
-
 Combination& CandyPlayer::getCombo(){
     return this->kombo;
 }
@@ -72,20 +72,6 @@ bool CandyPlayer::checkValidAbilityCard(string ability){
 
 void CandyPlayer::addAbilityCard(const AbilityCard& AC){
     this->ability = AC;
-}
-
-void CandyPlayer::addPoint(long long int round_points){
-    this->point += round_points;
-}
-
-void CandyPlayer::push(const Card& PC){
-   this->mainDeck.push_back(PC);
-}
-
-Card CandyPlayer::pop(){
-    Card PCx = this->mainDeck.back();
-    this->mainDeck.pop_back();
-    return PCx;
 }
 
 void CandyPlayer::printCard(){

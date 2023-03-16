@@ -104,6 +104,7 @@ void CandyGame::startGame(){
 
     CardGenerator CG;
     
+    /* Read config or generate order cards */
     while(action != "y" && action != "n" && action != "no" && action != "yes"){
         try {
             cout << "\nApakah urutan kartu ingin dibaca dari file? (y or n) : ";
@@ -137,6 +138,7 @@ void CandyGame::startGame(){
     cout << "Urutan kartu berhasil dibuat." << endl;
     cout << "\nSilahkan input nama-nama pemain" << endl;
 
+    /* Create players */
     for(int i = 1; i <= 7; i++){
         cout << "Pemain " << i << ": ";
         cin >> name;
@@ -144,15 +146,23 @@ void CandyGame::startGame(){
         this->players.push_back(newPlayer);
     }
     
+    /* Create command parser */
     CommandParser CP;
     string command;
     
+    /* While no player has reached 2^32 points */
     while(!isEndGame()){
         cout << "\nPERMAINAN KE-" << ++this->phase;
+
+        /* Initialize point */
         this->point = 64;
+
+        /* Looping for 6 rounds */
         while(this->round < 6){
             this->round++;
-            cout << "\nRONDE " << this->round << endl;;
+            cout << "\nRONDE " << this->round << endl;
+
+            /* Distribute ability cards to players */
             if(this->round == 2){
                 cout << "Kartu ability telah dibagikan ke seluruh pemain" << endl;
                 this->deckAbility = CG.generateAbilityDeck();
@@ -160,6 +170,8 @@ void CandyGame::startGame(){
                     this->players[i].addAbilityCard(this->deckAbility.pop());
                 }
             }
+
+            /* Looping through 7 players */
             this->playerTurn = 0;
             for(int i = 0; i < 7; i++){
                 cout << "\nSekarang adalah giliran pemain " << this->players[0].getNickname() << endl;
@@ -170,21 +182,27 @@ void CandyGame::startGame(){
                         Command<CandyGame> *action = CP.parser(command);
                         action->executeAction(*this);
                         delete action;
-                    } catch(GameException& err){
+                    } catch(GameException& err){ /* Catch an error that was thrown */
                         cout << err.what() << endl;
                     }
                 }
+
+                /* Move player to end of array and change turn */
                 CandyPlayer& move = this->players[0];
                 this->players.push_back(move);
                 this->players.erase(this->players.begin() + 0);
                 this->valid = false;
                 this->playerTurn++;
             }
+
+            /* If the round hasn't reached 6, add card to table */
             if(this->round < 6){
                 Card newTableCard = this->deck.pop();
                 cout << "\nTelah tertambah di meja yaitu Kartu " << newTableCard.getNumber() << " " << newTableCard.getColor() << endl;
                 this->table.push(newTableCard);
             }
+
+            /* Round Robin */
             CandyPlayer& move = this->players[0];
             this->players.push_back(move);
             this->players.erase(this->players.begin() + 0);
@@ -203,16 +221,18 @@ void CandyGame::startGame(){
             cout << "Dengan poin combo sebesar : " << this->players[i].getCombo().getValue() << endl;
         }
 
+        /* Choose round winner and print */
         int roundWinner = this->chooseRoundWinner();
-        this->players[roundWinner].addPoint(this->point);
+        this->players[roundWinner] = this->players[roundWinner] + this->point;
         cout << "\nSelamat kepada pemain " << this->players[roundWinner].getNickname() << " telah memenangkan babak dan memperoleh poin sebanyak " << this->point << endl;
         cout << "Dengan combo "; this->players[roundWinner].getCombo().printCombo();
         cout << "Kartu player " << this->players[roundWinner].getNickname() << endl;
         this->players[roundWinner].printCard();
         cout << "Dengan poin combo sebesar : " << this->players[roundWinner].getCombo().getValue() << endl;
 
+        /* If the game has to continue */
         if(!isEndGame()){
-            // Restart Game clear
+            // Restart Game
             this->round = 0;
             for(int i = 0; i < 7; i++){
                 this->players[i] = this->players[i] - this->players[i].getDeckPlayer().back();
@@ -224,13 +244,14 @@ void CandyGame::startGame(){
             this->table.clearTable();
             
             cout << "\nKartu dikembalikan dan disusun ulang" << endl;
+
             // Buang Kartu Dari Deck
             while(this->deck.getNeff() != 0){
                 this->deck = this->deck - this->deck.getCard(0);
             }
             
             action = "";
-            // Generate Deck Again
+            // /* Read config file or generate order cards again */
             while(action != "y" && action != "n" && action != "no" && action != "yes"){
                 try {
                     cout << "\nApakah urutan kartu ingin dibaca dari file? (y or n) : ";
@@ -260,6 +281,7 @@ void CandyGame::startGame(){
                     cout << err.what() << endl;
                 }
             }
+            
             cout << "Urutan kartu berhasil dibuat." << endl;
             // Restart Game Player Card
             for(int i = 0; i < 7; i++){
@@ -274,10 +296,12 @@ void CandyGame::startGame(){
     GG.executeAction(*this);
 }
 
+/* Choose index of the game winner */
 int CandyGame::chooseWinner(){
     return findIndexMaxValue(this->players);
 }
 
+/* Choose index of the round winner */
 int CandyGame::chooseRoundWinner() {
     vector<Combination> combos;
     for(int i = 0; i < 7; i++){
@@ -286,6 +310,7 @@ int CandyGame::chooseRoundWinner() {
     return findIndexMaxValue(combos);
 }
 
+/* Determine if the game is finished or not */
 bool CandyGame::isEndGame(){
     CandyPlayer maximum = maxValue<CandyPlayer>(this->players);
     if(maximum.getPoint() >= this->maxPoint){

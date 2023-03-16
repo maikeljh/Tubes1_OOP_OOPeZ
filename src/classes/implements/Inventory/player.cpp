@@ -31,3 +31,35 @@ template <class T>
 vector<T>& Player<T>::getDeckPlayer(){
     return this->mainDeck;
 }
+
+template <class T>
+T Player<T>::getCard(int index){
+    return this->mainDeck[index];
+}
+
+template <class T>
+void Player<T>::push(const T& PC){
+   this->mainDeck.push_back(PC);
+}
+
+template <class T>
+void Player<T>::push(DeckCard<T>& DC, int count){
+    if(DC.getNeff() >= count){
+        for(int i = 0; i < count; i++){
+            this->mainDeck.push_back(DC.pop());
+        }
+    }
+}
+
+template <class T>
+T Player<T>::pop(){
+    T PCx;
+    if(this->mainDeck.size() > 0){
+        PCx = this->mainDeck.back();
+        this->mainDeck.pop_back();
+        return PCx;
+    } else {
+        cout << "\nKartu player sudah kosong" << endl;
+        return PCx;
+    }
+}

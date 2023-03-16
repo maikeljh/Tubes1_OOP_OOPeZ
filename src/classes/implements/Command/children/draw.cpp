@@ -13,6 +13,7 @@ void Draw::executeAction(UnoGame& Game){
         UnoCard newCard = Game.getDeckCard().pop();
         playernow = playernow + newCard;
         cout << "\nKamu mendapatkan kartu baru yaitu: ";
+        
         if(newCard.getIsNumber()){
             cout << newCard.getNumber() << " " << newCard.getColor() << endl;
         } else {

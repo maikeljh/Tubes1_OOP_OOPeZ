@@ -547,7 +547,26 @@ void Combination::straight() { //Mengatur combo card menjadi kartu - kartu combo
     }
 
     int i = idx;
-    while (i <= this->comboCard.size()-1 && this->combo.size() < 5) {
+    int countPlayerCard = 0;
+    for (int j = idx; j < this->comboCard.size(); j++) {
+        if (this->comboCard[j] == this->playerCard[0] || this->comboCard[j] == this->playerCard[1]) {
+            countPlayerCard++;
+        }
+    }
+
+
+    if (this->comboCard[i-1].getNumber() == this->comboCard[i].getNumber()) {
+        if (this->comboCard[i-1] == this->playerCard[0] || this->comboCard[i-1] == this->playerCard[1]) {
+            combo.push_back(this->comboCard[i-1]);
+            i++;
+        }
+    }
+    else if (this->comboCard[i-1].getNumber() == this->comboCard[i].getNumber()-1) {
+        if ((this->comboCard[i-1] == this->playerCard[0] || this->comboCard[i-1] == this->playerCard[1]) && countPlayerCard == 0) {
+            combo.push_back(this->comboCard[i-1]);
+        }
+    }
+    while (i <= this->comboCard.size()-1 && combo.size() < 5) {
         if (this->comboCard[i].getNumber() != this->comboCard[i+1].getNumber()) {
             combo.push_back(this->comboCard[i]);
         }

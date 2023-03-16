@@ -21,14 +21,9 @@ class UnoPlayer: public Player<UnoCard>{
         UnoPlayer& operator+(const UnoCard& add);
         UnoPlayer& operator-(const UnoCard& add);
         UnoPlayer& operator--();
-    
-        /* Getter */
-        UnoCard getCard(int index);
 
         /* Other methods */
         void printCard();
-        void push(const UnoCard& PC);
-        UnoCard pop();
 };
 
 #endif
