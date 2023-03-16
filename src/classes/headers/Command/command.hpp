@@ -12,7 +12,7 @@ using namespace std;
 template <class T>
 class Command { 
     public:
-        /* Virtual dtor */
+        /* Dtor */
         ~Command(){};
 
         /* Pure virtual method */        
