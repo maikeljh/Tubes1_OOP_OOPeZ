@@ -556,7 +556,7 @@ void Combination::straight() { //Mengatur combo card menjadi kartu - kartu combo
 
 
     if (this->comboCard[i-1].getNumber() == this->comboCard[i].getNumber()) {
-        if (this->comboCard[i-1] == this->playerCard[0] || this->comboCard[i-1] == this->playerCard[1]) {
+        if ((this->comboCard[i-1] == this->playerCard[0] || this->comboCard[i-1] == this->playerCard[1]) && countPlayerCard == 0) {
             combo.push_back(this->comboCard[i-1]);
             i++;
         }
@@ -571,13 +571,14 @@ void Combination::straight() { //Mengatur combo card menjadi kartu - kartu combo
             combo.push_back(this->comboCard[i]);
         }
         else if (this->comboCard[i].getNumber() == this->comboCard[i+1].getNumber()) {
-            if (this->comboCard[i] == this->playerCard[0] || this->comboCard[i] == this->playerCard[1]) {
-                combo.push_back(this->comboCard[i]);
-            }
-            else if (this->comboCard[i+1] == this->playerCard[0] || this->comboCard[i+1] == this->playerCard[1]) {
+            if (this->comboCard[i+1] == this->playerCard[0] || this->comboCard[i+1] == this->playerCard[1]) {
                 combo.push_back(this->comboCard[i+1]);
+                i++;
             }
-            i++;
+            else if (this->comboCard[i] == this->playerCard[0] || this->comboCard[i] == this->playerCard[1]) {
+                combo.push_back(this->comboCard[i]);
+                i++;
+            }
         }
         i++;
     }
